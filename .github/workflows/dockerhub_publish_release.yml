@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-name: Docker Hub Publish
+name: Docker Hub Publish Release version
 
 on:
   release:
@@ -42,4 +42,3 @@ jobs:
           # Tag the images using the tagname and also latest.
           tags: |
             lfenergycompas/compas-open-scd:${{ steps.extract_tagname.outputs.tagname }}
-            lfenergycompas/compas-open-scd:latest
