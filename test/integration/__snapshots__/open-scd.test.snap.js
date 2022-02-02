@@ -329,6 +329,23 @@ snapshots["open-scd looks like its snapshot"] =
       aria-disabled="false"
       class="middle"
       graphic="icon"
+      iconid="extension"
+      mwc-list-item=""
+      tabindex="-1"
+    >
+      <mwc-icon slot="graphic">
+        extension
+      </mwc-icon>
+      <span>
+        Field Extensions
+      </span>
+      <mwc-linear-progress indeterminate="">
+      </mwc-linear-progress>
+    </mwc-list-item>
+    <mwc-list-item
+      aria-disabled="false"
+      class="middle"
+      graphic="icon"
       iconid="help"
       mwc-list-item=""
       tabindex="-1"
@@ -976,6 +993,22 @@ snapshots["open-scd looks like its snapshot"] =
         settings
       </mwc-icon>
       CoMPAS Settings
+    </mwc-check-list-item>
+    <mwc-check-list-item
+      aria-disabled="false"
+      class="official"
+      graphic="control"
+      hasmeta=""
+      left=""
+      mwc-list-item=""
+      selected=""
+      tabindex="-1"
+      value="/src/menu/PrivateFieldsSettings.js"
+    >
+      <mwc-icon slot="meta">
+        extension
+      </mwc-icon>
+      Field Extensions
     </mwc-check-list-item>
     <mwc-check-list-item
       aria-disabled="false"
