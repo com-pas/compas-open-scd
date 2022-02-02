@@ -1,16 +1,11 @@
-import { html, TemplateResult } from 'lit-html';
-import { get, translate } from 'lit-translate';
+import {html, TemplateResult} from 'lit-html';
+import {get, translate} from 'lit-translate';
 
 import '../wizard-textfield.js';
-import {
-  createElement,
-  EditorAction,
-  getValue,
-  Wizard,
-  WizardActor,
-  WizardInput,
-} from '../foundation.js';
-import { updateNamingAction } from './foundation/actions.js';
+
+import {createElement, EditorAction, getValue, Wizard, WizardActor, WizardInput,} from '../foundation.js';
+import {privateFields} from "../privates/PrivateFields.js";
+import {updateNamingAndPrivatesAction} from "./foundation/actions.js";
 
 export function renderBayWizard(name: string | null, desc: string | null): TemplateResult[] {
   return [
@@ -74,12 +69,14 @@ export function editBayWizard(element: Element): Wizard {
       primary: {
         icon: 'edit',
         label: get('save'),
-        action: updateNamingAction(element),
+        action: updateNamingAndPrivatesAction('bay-wizard', element),
       },
-      content: renderBayWizard(
+      content: [...renderBayWizard(
         element.getAttribute('name'),
         element.getAttribute('desc')
       ),
+        ...privateFields.renderPrivateFields('bay-wizard', element)
+        ]
     },
   ];
 }

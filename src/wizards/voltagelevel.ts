@@ -1,5 +1,5 @@
-import { html, TemplateResult } from 'lit-html';
-import { get, translate } from 'lit-translate';
+import {html, TemplateResult} from 'lit-html';
+import {get, translate} from 'lit-translate';
 
 import '../wizard-textfield.js';
 import {
@@ -13,6 +13,7 @@ import {
   WizardActor,
   WizardInput,
 } from '../foundation.js';
+import { privateFields } from "../privates/PrivateFields.js";
 
 const initial = {
   nomFreq: '50',
@@ -189,6 +190,7 @@ export function updateAction(element: Element): WizardActor {
 
     let voltageLevelAction: EditorAction | null;
     let voltageAction: EditorAction | null;
+    let privateActions: EditorAction[] = [];
 
     if (
       name === element.getAttribute('name') &&
@@ -204,6 +206,7 @@ export function updateAction(element: Element): WizardActor {
         nomFreq,
         numPhases,
       });
+
       voltageLevelAction = { old: { element }, new: { element: newElement } };
     }
 
@@ -226,9 +229,17 @@ export function updateAction(element: Element): WizardActor {
       );
     }
 
+    privateActions = privateFields.updatePrivateFields(
+      'voltageLevel-wizard',
+      inputs,
+      element,
+      voltageLevelAction?.new.element ?? element);
+
+
     const actions: EditorAction[] = [];
     if (voltageLevelAction) actions.push(voltageLevelAction);
     if (voltageAction) actions.push(voltageAction);
+    actions.push(...privateActions);
     return actions;
   };
 }
@@ -243,7 +254,7 @@ export function voltageLevelEditWizard(element: Element): Wizard {
         label: get('save'),
         action: updateAction(element),
       },
-      content: render(
+      content: [...render(
         element.getAttribute('name') ?? '',
         element.getAttribute('desc'),
         element.getAttribute('nomFreq'),
@@ -254,6 +265,8 @@ export function voltageLevelEditWizard(element: Element): Wizard {
           .querySelector('VoltageLevel > Voltage')
           ?.getAttribute('multiplier') ?? null
       ),
+        ...privateFields.renderPrivateFields('voltageLevel-wizard', element)
+      ]
     },
   ];
 }

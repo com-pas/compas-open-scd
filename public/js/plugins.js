@@ -161,6 +161,15 @@ export const officialPlugins = [
     position: 'bottom'
   },
   {
+    name: 'Field Extensions',
+    src: '/src/menu/PrivateFieldsSettings.js',
+    icon: 'extension',
+    default: true,
+    kind: 'menu',
+    requireDoc: false,
+    position: 'bottom'
+  },
+  {
     name: 'Help',
     src: '/src/menu/Help.js',
     icon: 'help',

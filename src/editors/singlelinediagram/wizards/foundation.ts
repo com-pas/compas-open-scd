@@ -9,6 +9,7 @@ import {
   WizardInput,
 } from '../../../foundation.js';
 import { SCL_COORDINATES_NAMESPACE } from "../foundation.js";
+import { addPrefixAndNamespaceToDocument } from "../../../privates/foundation.js";
 
 export function getNameAttribute(element: Element): string | null {
   return element.getAttribute('name');
@@ -43,6 +44,7 @@ function updateXYAttribute(element: Element, attributeName: string, value: strin
   if (value === null) {
     element.removeAttributeNS(SCL_COORDINATES_NAMESPACE, attributeName)
   } else {
+    addPrefixAndNamespaceToDocument(element, SCL_COORDINATES_NAMESPACE, 'sxy')
     element.setAttributeNS(SCL_COORDINATES_NAMESPACE, attributeName, value);
   }
 }

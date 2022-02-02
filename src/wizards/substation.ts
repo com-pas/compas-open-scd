@@ -1,5 +1,5 @@
-import { html, TemplateResult } from 'lit-element';
-import { get, translate } from 'lit-translate';
+import {html, TemplateResult} from 'lit-element';
+import {get, translate} from 'lit-translate';
 
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
@@ -14,7 +14,8 @@ import {
   WizardActor,
   WizardInput,
 } from '../foundation.js';
-import { updateNamingAction } from './foundation/actions.js';
+import { privateFields } from "../privates/PrivateFields.js";
+import { updateNamingAndPrivatesAction } from "./foundation/actions.js";
 import { guessVoltageLevel } from '../editors/substation/guess-wizard.js';
 
 function render(
@@ -97,13 +98,16 @@ export function substationEditWizard(element: Element): Wizard {
       primary: {
         icon: 'edit',
         label: get('save'),
-        action: updateNamingAction(element),
+        action: updateNamingAndPrivatesAction('substation-wizard', element),
       },
-      content: render(
+      content: [
+        ...render(
         element.getAttribute('name') ?? '',
         element.getAttribute('desc'),
         false
       ),
+        ...privateFields.renderPrivateFields('substation-wizard', element)
+      ]
     },
   ];
 }
