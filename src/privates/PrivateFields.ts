@@ -29,7 +29,7 @@ export class PrivateFields {
     this.updatePrivateFiledsPlugins();
   }
 
-  public static getInstance(): PrivateFields {
+  public static async getInstance(): Promise<PrivateFields> {
     if (!PrivateFields.instance) {
       PrivateFields.instance = new PrivateFields();
     }
@@ -71,7 +71,7 @@ export class PrivateFields {
       });
   }
 
-  public activatePrivateFieldsPlugins(indices: Set<number>) {
+  public activatePrivateFieldsPlugins(indices: Set<number>): void {
     const newPlugins = this.privateFieldsPlugins
       .map((plugin, index) => {
         return { ...plugin, installed: indices.has(index), worker: undefined };
@@ -92,12 +92,12 @@ export class PrivateFields {
   private get storedPlugins(): PrivateFieldsPlugin[] {
     return <PrivateFieldsPlugin[]>(
       JSON.parse(localStorage.getItem(PrivateFields.LOCAL_STORAGE_KEY) ?? '[]', (key, value) =>
-        value.src ? this.addContent(value) : value
+        value.src ? PrivateFields.addContent(value) : value
       )
     );
   }
 
-  private addContent(plugin: PrivateFieldsPlugin): PrivateFieldsPlugin {
+  private static addContent(plugin: PrivateFieldsPlugin): PrivateFieldsPlugin {
     return {
       ...plugin,
       worker: PrivateFields.loadedPrivateFieldPlugins.get(plugin.src)!,
@@ -140,10 +140,10 @@ export class PrivateFields {
     localStorage.setItem(PrivateFields.LOCAL_STORAGE_KEY, JSON.stringify(newPlugins));
 
     PrivateFields.loadedPrivateFieldPlugins.clear();
-    newPlugins.forEach(plugin => this.updateContent(plugin))
+    newPlugins.forEach(plugin => this.updateWorker(plugin))
   }
 
-  private updateContent(plugin: PrivateFieldsPlugin) : void {
+  private updateWorker(plugin: PrivateFieldsPlugin) : void {
     Promise.resolve(import(plugin.src))
       .then(module =>
         PrivateFields.loadedPrivateFieldPlugins.set(plugin.src, new module.default));
@@ -151,4 +151,4 @@ export class PrivateFields {
 }
 
 // Initialize the PrivateFields Class.
-export const privateFields = PrivateFields.getInstance();
+export const privateFields = await PrivateFields.getInstance();

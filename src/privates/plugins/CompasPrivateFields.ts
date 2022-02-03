@@ -1,62 +1,75 @@
 import { html, TemplateResult } from "lit-element";
 
-import {
-  EditorAction,
-  getValue,
-  WizardInput
-} from "../../foundation.js";
+import { EditorAction, WizardInput } from "../../foundation.js";
 import { PrivateFieldsWorker, WizardKind } from "../PrivateFields.js";
 import {
+  inputFieldChanged,
   getOrCreatePrivate,
   getPrivate,
   getPrivateTextValue,
-  setOrCreatePrivateTextElement } from "../foundation.js";
-import { EXTENSION_NAMESPACE } from "../../compas-services/foundation.js";
+  processPrivateTextElement, getInputFieldValue
+} from "../foundation.js";
 
-export default class CompasPrivateFields implements PrivateFieldsWorker {
+const EXTENSION_NAMESPACE = 'https://www.lfenergy.org/compas/extension/v1';
+
+export default class CompasPrivateFieldsWorker implements PrivateFieldsWorker {
   public renderFields(wizardKind: WizardKind, element: Element | null): TemplateResult[] {
     switch (wizardKind) {
       case 'substation-wizard':
-        return [html `<wizard-textfield
-                      label="compasName"
-                      .maybeValue=${getPrivateTextValue(element, 'compas_substation', 'CompasName')}
-                      helper="CoMPAS Name"
-                      nullable
-                    ></wizard-textfield>`];
+        return [
+          html `<wizard-textfield
+                  label="compasName"
+                  .maybeValue=${getPrivateTextValue(element, 'compas_substation', 'CompasName')}
+                  helper="CoMPAS Name"
+                  nullable
+                ></wizard-textfield>`
+        ];
       case 'voltageLevel-wizard':
-        return [html `<wizard-textfield
-                        label="compasName"
-                        .maybeValue=${getPrivateTextValue(element, 'compas_voltageLevel', 'CompasName')}
-                        helper="CoMPAS Name"
-                        nullable
-                      ></wizard-textfield>`];
+        return [
+          html `<wizard-textfield
+                  label="compasName"
+                  .maybeValue=${getPrivateTextValue(element, 'compas_voltageLevel', 'CompasName')}
+                  helper="CoMPAS Name"
+                  nullable
+                ></wizard-textfield>`,
+          html `<wizard-textfield
+                  label="compasData"
+                  .maybeValue=${getPrivateTextValue(element, 'compas_voltageLevel', 'CompasData')}
+                  helper="CoMPAS Data"
+                  nullable
+                ></wizard-textfield>`
+        ];
     }
     return [];
   }
 
   public updateFields(wizardKind: WizardKind, inputs: WizardInput[], oldElement: Element, newElement: Element): EditorAction[] {
-    if (!this.fieldsModified(wizardKind, inputs, oldElement)) {
+    if (!this.fieldsChanged(wizardKind, inputs, oldElement)) {
       return [];
     }
 
     switch (wizardKind) {
       case 'substation-wizard': {
-        const name = getValue(inputs.find(i => i.label === 'compasName')!)!;
-        const oldPrivateElement = getPrivate(oldElement, 'compas_substation');
         const newPrivateElement = getOrCreatePrivate(oldElement, newElement, 'compas_substation');
-        setOrCreatePrivateTextElement(newPrivateElement, EXTENSION_NAMESPACE, 'compas', 'CompasName', name);
 
+        const compasName = getInputFieldValue(inputs, 'compasName');
+        processPrivateTextElement(newPrivateElement, EXTENSION_NAMESPACE, 'compas', 'CompasName', compasName);
+
+        const oldPrivateElement = getPrivate(oldElement, 'compas_substation');
         if (oldPrivateElement) {
           return [{old: {element: oldPrivateElement}, new: {element: newPrivateElement}}];
         }
         return [{new: {parent: newElement, element: newPrivateElement}}];
       }
       case 'voltageLevel-wizard': {
-        const name = getValue(inputs.find(i => i.label === 'compasName')!)!;
-        const oldPrivateElement = getPrivate(oldElement, 'compas_voltageLevel');
         const newPrivateElement = getOrCreatePrivate(oldElement, newElement, 'compas_voltageLevel');
-        setOrCreatePrivateTextElement(newPrivateElement, EXTENSION_NAMESPACE, 'compas', 'CompasName', name);
 
+        const compasName = getInputFieldValue(inputs, 'compasName');
+        processPrivateTextElement(newPrivateElement, EXTENSION_NAMESPACE, 'compas', 'CompasName', compasName);
+        const compasData = getInputFieldValue(inputs, 'compasData');
+        processPrivateTextElement(newPrivateElement, EXTENSION_NAMESPACE, 'compas', 'CompasData', compasData);
+
+        const oldPrivateElement = getPrivate(oldElement, 'compas_voltageLevel');
         if (oldPrivateElement) {
           return [{old: {element: oldPrivateElement}, new: {element: newPrivateElement}}];
         }
@@ -66,21 +79,17 @@ export default class CompasPrivateFields implements PrivateFieldsWorker {
     return [];
   }
 
-  private fieldsModified(wizardKind: WizardKind, inputs: WizardInput[], oldElement: Element | null): boolean {
+  private fieldsChanged(wizardKind: WizardKind, inputs: WizardInput[], oldElement: Element | null): boolean {
     switch (wizardKind) {
       case 'substation-wizard': {
-        const compasName = getValue(inputs.find(i => i.label === 'compasName')!)!;
-        if (oldElement) {
-          return compasName !== getPrivateTextValue(oldElement, 'compas_substation', 'CompasName');
-        }
-        return compasName !== null;
+        const oldCompasName = getPrivateTextValue(oldElement, 'compas_substation', 'CompasName');
+        return inputFieldChanged(inputs, 'compasName', oldCompasName);
       }
       case 'voltageLevel-wizard': {
-        const compasName = getValue(inputs.find(i => i.label === 'compasName')!)!;
-        if (oldElement) {
-          return compasName !== getPrivateTextValue(oldElement, 'compas_voltageLevel', 'CompasName');
-        }
-        return compasName !== null;
+        const oldCompasName = getPrivateTextValue(oldElement, 'compas_voltageLevel', 'CompasName');
+        const oldCompasData = getPrivateTextValue(oldElement, 'compas_voltageLevel', 'CompasData');
+        return inputFieldChanged(inputs, 'compasName', oldCompasName)
+          || inputFieldChanged(inputs, 'compasData', oldCompasData);
       }
     }
     return false;

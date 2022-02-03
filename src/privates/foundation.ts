@@ -1,5 +1,17 @@
-import { cloneElement } from "../foundation.js";
+import { cloneElement, getValue, WizardInput } from "../foundation.js";
 import { SCL_NAMESPACE } from "../schemas.js";
+
+export function getInputFieldValue(inputs: WizardInput[], labelName: string): string | null {
+  return getValue(inputs.find(i => i.label === labelName)!);
+}
+
+export function inputFieldChanged(inputs: WizardInput[], labelName: string, oldValue: string | null): boolean {
+  const value = getInputFieldValue(inputs, labelName);
+  if (oldValue) {
+    return value !== oldValue;
+  }
+  return value !== null;
+}
 
 export function getPrivate(element: Element, type: string): Element | null {
   return element.querySelector(`Private[type="${type}"]`);
@@ -11,26 +23,32 @@ export function getOrCreatePrivate(oldElement: Element | null, newElement: Eleme
     const foundPrivateElement = getPrivate(oldElement, type);
     if (foundPrivateElement) {
       newPrivateElement = cloneElement(foundPrivateElement, {});
-      newElement.append(newPrivateElement);
+      newElement.prepend(newPrivateElement);
     }
   }
 
   if (!newPrivateElement) {
     newPrivateElement = newElement.ownerDocument.createElementNS(SCL_NAMESPACE, "Private");
     newPrivateElement.setAttribute("type", type);
-    newElement.append(newPrivateElement);
+    newElement.prepend(newPrivateElement);
   }
   return newPrivateElement;
 }
 
-export function setOrCreatePrivateTextElement(privateElement: Element, namespace: string, prefix: string, name: string, value: string): void {
-  let newPrivate = privateElement.querySelector(`${name}`);
-  if (!newPrivate) {
-    addPrefixAndNamespaceToDocument(privateElement, namespace, prefix);
-    newPrivate = privateElement.ownerDocument.createElementNS(namespace, name);
-    privateElement.append(newPrivate);
+export function processPrivateTextElement(privateElement: Element, namespace: string, prefix: string, name: string, value: string | null): void {
+  let privateTextElement = privateElement.querySelector(`${name}`);
+  if (value === null) {
+    if (privateTextElement) {
+      privateElement.removeChild(privateTextElement);
+    }
+  } else {
+    if (!privateTextElement) {
+      addPrefixAndNamespaceToDocument(privateElement, namespace, prefix);
+      privateTextElement = privateElement.ownerDocument.createElementNS(namespace, name);
+      privateElement.append(privateTextElement);
+    }
+    privateTextElement.textContent = value;
   }
-  newPrivate.textContent = value;
 }
 
 export function addPrefixAndNamespaceToDocument(element: Element, namespace: string, prefix: string) : void {

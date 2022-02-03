@@ -8,7 +8,6 @@ export const APPLICATION_ERROR = 'ApplicationError';
 export const SERVER_ERROR = 'ServerError';
 
 export const COMMONS_NAMESPACE = 'https://www.lfenergy.org/compas/commons/v1';
-export const EXTENSION_NAMESPACE = 'https://www.lfenergy.org/compas/extension/v1';
 
 export function getOpenScdElement(): OpenSCD {
   return <OpenSCD>document.querySelector('open-scd');

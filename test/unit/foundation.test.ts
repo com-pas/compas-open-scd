@@ -23,7 +23,7 @@ import {
   SCLTag,
   getChildElementsByTagName,
   cloneElement,
-  depth,
+  depth, newUserInfoEvent,
 } from '../../src/foundation.js';
 
 import { MockAction } from './mock-actions.js';
