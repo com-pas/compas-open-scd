@@ -152,9 +152,27 @@ export const officialPlugins = [
     position: 'middle'
   },
   {
+    name: 'Settings',
+    src: '/src/menu/Settings.js',
+    icon: 'settings',
+    default: true,
+    kind: 'menu',
+    requireDoc: false,
+    position: 'bottom'
+  },
+  {
     name: 'CoMPAS Settings',
     src: '/src/menu/CompasSettings.js',
     icon: 'settings',
+    default: true,
+    kind: 'menu',
+    requireDoc: false,
+    position: 'bottom'
+  },
+  {
+    name: 'Extensions',
+    src: '/src/menu/Extensions.js',
+    icon: 'extension',
     default: true,
     kind: 'menu',
     requireDoc: false,

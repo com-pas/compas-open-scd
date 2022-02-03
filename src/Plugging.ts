@@ -153,6 +153,10 @@ export function Plugging<TBase extends new (...args: any[]) => EditingElement>(
     @query('#pluginAdd')
     pluginDownloadUI!: Dialog;
 
+    public showPluginUI(): void {
+      this.pluginUI.show();
+    }
+
     private setPlugins(indices: Set<number>) {
       const newPlugins = this.plugins.map((plugin, index) => {
         return { ...plugin, installed: indices.has(index), content: undefined };
@@ -368,6 +372,7 @@ export function Plugging<TBase extends new (...args: any[]) => EditingElement>(
               class="${plugin.official ? 'official' : 'external'}"
               value="${plugin.src}"
               ?selected=${plugin.installed}
+              ?disabled="${plugin.src === '/src/menu/Settings.js' || plugin.src === '/src/menu/Extensions.js' }"
               hasMeta
               left
             >

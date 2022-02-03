@@ -295,7 +295,7 @@ snapshots["open-scd looks like its snapshot"] =
     </li>
     <mwc-list-item
       aria-disabled="false"
-      class="static"
+      class="middle"
       graphic="icon"
       iconid="settings"
       mwc-list-item=""
@@ -307,6 +307,8 @@ snapshots["open-scd looks like its snapshot"] =
       <span>
         Settings
       </span>
+      <mwc-linear-progress indeterminate="">
+      </mwc-linear-progress>
     </mwc-list-item>
     <mwc-list-item
       aria-disabled="false"
@@ -321,6 +323,23 @@ snapshots["open-scd looks like its snapshot"] =
       </mwc-icon>
       <span>
         CoMPAS Settings
+      </span>
+      <mwc-linear-progress indeterminate="">
+      </mwc-linear-progress>
+    </mwc-list-item>
+    <mwc-list-item
+      aria-disabled="false"
+      class="middle"
+      graphic="icon"
+      iconid="extension"
+      mwc-list-item=""
+      tabindex="-1"
+    >
+      <mwc-icon slot="graphic">
+        extension
+      </mwc-icon>
+      <span>
+        Extensions
       </span>
       <mwc-linear-progress indeterminate="">
       </mwc-linear-progress>
@@ -365,21 +384,6 @@ snapshots["open-scd looks like its snapshot"] =
       role="separator"
     >
     </li>
-    <mwc-list-item
-      aria-disabled="false"
-      class="static"
-      graphic="icon"
-      iconid="extension"
-      mwc-list-item=""
-      tabindex="-1"
-    >
-      <mwc-icon slot="graphic">
-        extension
-      </mwc-icon>
-      <span>
-        Extensions
-      </span>
-    </mwc-list-item>
   </mwc-list>
   <mwc-top-app-bar-fixed slot="appContent">
     <mwc-icon-button
@@ -979,6 +983,23 @@ snapshots["open-scd looks like its snapshot"] =
     >
     </li>
     <mwc-check-list-item
+      aria-disabled="true"
+      class="official"
+      disabled=""
+      graphic="control"
+      hasmeta=""
+      left=""
+      mwc-list-item=""
+      selected=""
+      tabindex="-1"
+      value="/src/menu/Settings.js"
+    >
+      <mwc-icon slot="meta">
+        settings
+      </mwc-icon>
+      Settings
+    </mwc-check-list-item>
+    <mwc-check-list-item
       aria-disabled="false"
       class="official"
       graphic="control"
@@ -993,6 +1014,23 @@ snapshots["open-scd looks like its snapshot"] =
         settings
       </mwc-icon>
       CoMPAS Settings
+    </mwc-check-list-item>
+    <mwc-check-list-item
+      aria-disabled="true"
+      class="official"
+      disabled=""
+      graphic="control"
+      hasmeta=""
+      left=""
+      mwc-list-item=""
+      selected=""
+      tabindex="-1"
+      value="/src/menu/Extensions.js"
+    >
+      <mwc-icon slot="meta">
+        extension
+      </mwc-icon>
+      Extensions
     </mwc-check-list-item>
     <mwc-check-list-item
       aria-disabled="false"

@@ -43,7 +43,7 @@ export class PrivateFieldsSettingsElement extends LitElement {
           this.requestUpdate();
         }}>
         <mwc-list-item graphic="avatar" noninteractive>
-          <strong>${translate(`privateField.settings.extensions`)}</strong>
+          <strong>${translate(`privateFields.settings.extensions`)}</strong>
         </mwc-list-item>
         <li divider role="separator"></li>
         ${privateFields.privateFieldsPlugins.map(plugin => this.renderPlugin(plugin))}
@@ -83,7 +83,7 @@ export function privateFieldsSettingWizard(): Wizard {
 
   return [
     {
-      title: get('privateField.settings.title'),
+      title: get('privateFields.settings.title'),
       primary: {
         icon: 'close',
         label: get('close'),
@@ -174,7 +174,7 @@ export function privateFieldsAddWizard(): Wizard {
 
   return [
     {
-      title: get('privateField.add.title'),
+      title: get('privateFields.add.title'),
       primary: {
         icon: 'add',
         label: get('add'),

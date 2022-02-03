@@ -415,6 +415,15 @@ export const de: Translations = {
   userinfo: {
     loggedInAs: '???'
   },
+  privateFields: {
+    add: {
+      title: '???',
+    },
+    settings: {
+      title: '???',
+      extensions: '???',
+    }
+  },
   add: 'Hinzufügen',
   new: 'Neu',
   remove: 'Entfernen',

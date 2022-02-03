@@ -198,19 +198,7 @@ export function Hosting<
         },
         'divider',
         ...middleMenu,
-        {
-          icon: 'settings',
-          name: 'settings.title',
-          action: (): void => this.settingsUI.show(),
-          kind: 'static',
-        },
         ...bottomMenu,
-        {
-          icon: 'extension',
-          name: 'plugins.heading',
-          action: (): void => this.pluginUI.show(),
-          kind: 'static',
-        },
       ];
     }
 

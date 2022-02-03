@@ -56,6 +56,10 @@ export function Setting<TBase extends LitElementConstructor>(Base: TBase) {
     @query('#showieds')
     showiedsUI!: Switch;
 
+    public showSettingsUI(): void {
+      this.settingsUI.show();
+    }
+
     private getSetting<T extends keyof Settings>(setting: T): Settings[T] {
       return (
         <Settings[T] | null>localStorage.getItem(setting) ?? defaults[setting]

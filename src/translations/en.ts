@@ -412,6 +412,15 @@ export const en = {
   userinfo: {
     loggedInAs: 'Logged in as {{name}}'
   },
+  privateFields: {
+    add: {
+      title: 'Add Private Fields Extension',
+    },
+    settings: {
+      title: 'Private Fields Extensions',
+      extensions: 'Wizard Extensions',
+    }
+  },
   add: 'Add',
   new: 'New',
   remove: 'Remove',
