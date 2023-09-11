@@ -24,7 +24,7 @@ import {
   newActionEvent,
   newLogEvent,
   newPendingStateEvent,
-  selector,
+  find,
   SimpleAction,
 } from '../foundation.js';
 
@@ -454,7 +454,7 @@ export default class ImportingIedPlugin extends LitElement {
 
     const ieds = selectedItems
       .map(item => {
-        return this.importDoc!.querySelector(selector('IED', item.value));
+        return find(this.importDoc!, 'IED', item.value);
       })
       .filter(ied => ied) as Element[];
 
