@@ -19,11 +19,12 @@ import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import '../filtered-list.js';
 import {
   createElement,
-  find,
   identity,
   isPublic,
   newActionEvent,
   newLogEvent,
+  newPendingStateEvent,
+  selector,
   SimpleAction,
 } from '../foundation.js';
 
@@ -367,6 +368,12 @@ function isIedNameUnique(ied: Element, doc: Document): boolean {
   return true;
 }
 
+function resetSelection(dialog: Dialog): void {
+  (
+    (dialog.querySelector('filtered-list') as List).selected as ListItemBase[]
+  ).forEach(item => (item.selected = false));
+}
+
 export default class ImportingIedPlugin extends LitElement {
   @property({ attribute: false })
   doc!: XMLDocument;
@@ -374,13 +381,12 @@ export default class ImportingIedPlugin extends LitElement {
   editCount = -1;
 
   @state()
-  iedSelection: TemplateResult[] = [];
+  importDoc?: XMLDocument;
 
   @query('#importied-plugin-input') pluginFileUI!: HTMLInputElement;
   @query('mwc-dialog') dialog!: Dialog;
 
   async run(): Promise<void> {
-    this.iedSelection = [];
     this.pluginFileUI.click();
   }
 
@@ -417,7 +423,6 @@ export default class ImportingIedPlugin extends LitElement {
     // This doesn't provide redo/undo capability as it is not using the Editing
     // action API. To use it would require us to cache the full SCL file in
     // OpenSCD as it is now which could use significant memory.
-
     // TODO: In open-scd core update this to allow including in undo/redo.
     updateNamespaces(
       this.doc.documentElement,
@@ -442,25 +447,19 @@ export default class ImportingIedPlugin extends LitElement {
     );
   }
 
-  private async importIEDs(
-    importDoc: XMLDocument,
-    fileName: string
-  ): Promise<void> {
-    const documentDialog: Dialog = this.shadowRoot!.querySelector(
-      `mwc-dialog[data-file="${fileName}"]`
-    )!;
-
+  private async importIEDs(): Promise<void> {
     const selectedItems = <ListItemBase[]>(
-      (<List>documentDialog.querySelector('filtered-list')).selected
+      (<List>this.dialog.querySelector('filtered-list')).selected
     );
 
     const ieds = selectedItems
       .map(item => {
-        return find(importDoc, 'IED', item.value);
+        return this.importDoc!.querySelector(selector('IED', item.value));
       })
       .filter(ied => ied) as Element[];
 
-    documentDialog.close();
+    resetSelection(this.dialog);
+    this.dialog.close();
 
     for (const ied of ieds) {
       this.importIED(ied);
@@ -468,8 +467,8 @@ export default class ImportingIedPlugin extends LitElement {
     }
   }
 
-  async prepareImport(importDoc: XMLDocument, fileName: string): Promise<void> {
-    if (!importDoc) {
+  public prepareImport(): void {
+    if (!this.importDoc) {
       this.dispatchEvent(
         newLogEvent({
           kind: 'error',
@@ -479,7 +478,7 @@ export default class ImportingIedPlugin extends LitElement {
       return;
     }
 
-    if (importDoc.querySelector('parsererror')) {
+    if (this.importDoc.querySelector('parsererror')) {
       this.dispatchEvent(
         newLogEvent({
           kind: 'error',
@@ -489,7 +488,7 @@ export default class ImportingIedPlugin extends LitElement {
       return;
     }
 
-    const ieds = Array.from(importDoc.querySelectorAll(':root > IED'));
+    const ieds = Array.from(this.importDoc.querySelectorAll(':root > IED'));
     if (ieds.length === 0) {
       this.dispatchEvent(
         newLogEvent({
@@ -502,23 +501,10 @@ export default class ImportingIedPlugin extends LitElement {
 
     if (ieds.length === 1) {
       this.importIED(ieds[0]);
-      return await this.docUpdate();
+      return;
     }
 
-    this.buildIedSelection(importDoc, fileName);
-    await this.requestUpdate();
-    const dialog = <Dialog>(
-      this.shadowRoot!.querySelector(`mwc-dialog[data-file="${fileName}"]`)
-    );
-    dialog.show();
-
-    // await closing of dialog
-    await new Promise<void>(resolve => {
-      dialog.addEventListener('closed', function onClosed(evt) {
-        evt.target?.removeEventListener('closed', onClosed);
-        resolve();
-      });
-    });
+    this.dialog.show();
   }
 
   /** Loads the file `event.target.files[0]` into [[`src`]] as a `blob:...`. */
@@ -527,20 +513,23 @@ export default class ImportingIedPlugin extends LitElement {
       (<HTMLInputElement | null>event.target)?.files ?? []
     );
 
-    const promises = files.map(file => {
-      return {
-        text: file
-          .text()
-          .then(text =>
-            new DOMParser().parseFromString(text, 'application/xml')
-          ),
-        name: file.name,
-      };
+    const promises = files.map(async file => {
+      this.importDoc = new DOMParser().parseFromString(
+        await file.text(),
+        'application/xml'
+      );
+
+      return this.prepareImport();
     });
 
-    for await (const file of promises) {
-      await this.prepareImport(await file.text, file.name);
-    }
+    const mergedPromise = new Promise<void>((resolve, reject) =>
+      Promise.allSettled(promises).then(
+        () => resolve(),
+        () => reject()
+      )
+    );
+
+    this.dispatchEvent(newPendingStateEvent(mergedPromise));
   }
 
   protected renderInput(): TemplateResult {
@@ -550,10 +539,10 @@ export default class ImportingIedPlugin extends LitElement {
     }} id="importied-plugin-input" accept=".sed,.scd,.ssd,.isd,.iid,.cid,.icd" type="file"></input>`;
   }
 
-  protected buildIedSelection(importDoc: XMLDocument, fileName: string): void {
-    this.iedSelection.push(html`<mwc-dialog data-file="${fileName}">
+  protected renderIedSelection(): TemplateResult {
+    return html`<mwc-dialog>
       <filtered-list hasSlot multi>
-        ${Array.from(importDoc?.querySelectorAll(':root > IED') ?? []).map(
+        ${Array.from(this.importDoc?.querySelectorAll(':root > IED') ?? []).map(
           ied =>
             html`<mwc-check-list-item value="${identity(ied)}"
               >${ied.getAttribute('name')}</mwc-check-list-item
@@ -571,13 +560,13 @@ export default class ImportingIedPlugin extends LitElement {
         label="IEDs"
         slot="primaryAction"
         icon="add"
-        @click=${() => this.importIEDs(importDoc, fileName)}
+        @click=${this.importIEDs}
       ></mwc-button>
-    </mwc-dialog>`);
+    </mwc-dialog>`;
   }
 
   render(): TemplateResult {
-    return html`${this.iedSelection}${this.renderInput()}`;
+    return html`${this.renderIedSelection()}${this.renderInput()}`;
   }
 
   static styles = css`
