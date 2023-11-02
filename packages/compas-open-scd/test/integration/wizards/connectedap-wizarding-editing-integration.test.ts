@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
-import { editConnectedApWizard } from '../../../../../src/wizards/connectedap.js';
+import { editConnectedApWizard } from '../../../src/wizards/connectedap.js';
 
 describe('connectedap wizarding editing integration', () => {
   let doc: XMLDocument;

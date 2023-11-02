@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { spy, stub, useFakeTimers, restore } from 'sinon';
 
-import ExportCommunication from '../../../../../src/menu/ExportCommunication.js';
+import ExportCommunication from '../../../src/menu/ExportCommunication.js';
 
 if (!customElements.get('export-communication'))
   customElements.define('export-communication', ExportCommunication);

@@ -5,7 +5,7 @@ import fc from 'fast-check';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   ComplexAction,
   Create,
@@ -17,7 +17,7 @@ import {
   Replace,
   Wizard,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   contentGseControlWizard,
   createGseControlWizard,
@@ -26,9 +26,9 @@ import {
   removeGseControlAction,
   selectGseControlWizard,
   updateGseControlAction,
-} from '../../../../../src/wizards/gsecontrol.js';
+} from '../../../src/wizards/gsecontrol.js';
 import { regExp, regexString } from '../../foundation.js';
-import { FinderList } from '../../../../../src/finder-list.js';
+import { FinderList } from '../../../src/finder-list.js';
 
 describe('gsecontrol wizards', () => {
   let doc: XMLDocument;

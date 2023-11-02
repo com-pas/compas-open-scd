@@ -4,8 +4,8 @@ import {
   isBusBar,
   getConnectedTerminals,
   calculateConnectivityNodeCoordinates, getCommonParentElement,
-} from '../../../../../../src/editors/singlelinediagram/foundation.js';
-import { getDescriptionAttribute, getInstanceAttribute, getNameAttribute, getPathNameAttribute } from '../../../../../../src/foundation.js';
+} from '../../../../src/editors/singlelinediagram/foundation.js';
+import { getDescriptionAttribute, getInstanceAttribute, getNameAttribute, getPathNameAttribute } from '../../../../src/foundation.js';
 
 describe('Single Line Diagram foundation', () => {
   let doc: Document;

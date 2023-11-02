@@ -3,15 +3,15 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
-import { WizardInputElement } from '../../../../../src/foundation.js';
-import { replaceNamingAction } from '../../../../../src/wizards/foundation/actions.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
+import { WizardInputElement } from '../../../src/foundation.js';
+import { replaceNamingAction } from '../../../src/wizards/foundation/actions.js';
 
 import {
   createAction,
   createPowerTransformerWizard,
   editPowerTransformerWizard,
-} from '../../../../../src/wizards/powertransformer.js';
+} from '../../../src/wizards/powertransformer.js';
 
 import {
   executeWizardCreateAction,

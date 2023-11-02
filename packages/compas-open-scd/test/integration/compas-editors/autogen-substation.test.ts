@@ -2,8 +2,8 @@ import { expect, fixture, html } from '@open-wc/testing';
 
 import '../../unit/mock-editor.js';
 import { MockEditor } from '../../unit/mock-editor.js';
-import '../../../../../src/compas-editors/autogen-substation.js';
-import CompasAutogenerateSubstation from '../../../../../src/compas-editors/autogen-substation.js';
+import '../../../src/compas-editors/autogen-substation.js';
+import CompasAutogenerateSubstation from '../../../src/compas-editors/autogen-substation.js';
 
 describe('autogen-substation-integration', () => {
   if (customElements.get('') === undefined)

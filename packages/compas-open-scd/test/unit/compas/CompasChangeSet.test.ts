@@ -1,10 +1,10 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import {ListItemBase} from "@material/mwc-list/mwc-list-item-base";
 
-import {ChangeSet} from "../../../../../src/compas-services/CompasSclDataService.js";
-import {CompasChangeSetRadiogroup} from "../../../../../src/compas/CompasChangeSetRadiogroup.js";
+import {ChangeSet} from "../../../src/compas-services/CompasSclDataService.js";
+import {CompasChangeSetRadiogroup} from "../../../src/compas/CompasChangeSetRadiogroup.js";
 
-import "../../../../../src/compas/CompasChangeSetRadiogroup.js";
+import "../../../src/compas/CompasChangeSetRadiogroup.js";
 
 describe('compas-changeset-radiogroup', () => {
   let element: CompasChangeSetRadiogroup;

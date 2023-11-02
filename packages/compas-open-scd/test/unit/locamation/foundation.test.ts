@@ -1,7 +1,7 @@
 import {expect} from "@open-wc/testing";
 
-import {Create, isCreate, isReplace, Replace} from "../../../../../src/foundation.js";
-import {initializeNsdoc} from "../../../../../src/foundation/nsdoc.js";
+import {Create, isCreate, isReplace, Replace} from "../../../src/foundation.js";
+import {initializeNsdoc} from "../../../src/foundation/nsdoc.js";
 
 import {
   addPrefixAndNamespaceToDocument,
@@ -10,7 +10,7 @@ import {
   lDeviceHeader,
   lnHeader,
   LOCAMATION_PREFIX, LOCAMATION_PRIVATE
-} from "../../../../../src/locamation/foundation.js";
+} from "../../../src/locamation/foundation.js";
 
 describe('locamation foundation - ', () => {
   describe('lnHeader - ', () => {

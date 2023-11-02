@@ -7,15 +7,15 @@ import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Create,
   isCreate,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import { regExp, regexString } from '../../foundation.js';
-import { editLNodeWizard, lNodeWizard } from '../../../../../src/wizards/lnode.js';
+import { editLNodeWizard, lNodeWizard } from '../../../src/wizards/lnode.js';
 
 describe('Wizards for LNode element', () => {
   let element: MockWizardEditor;

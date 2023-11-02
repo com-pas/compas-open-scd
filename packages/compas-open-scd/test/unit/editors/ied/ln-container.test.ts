@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/ied/ln-container.js';
-import { LNContainer } from '../../../../../../src/editors/ied/ln-container.js';
-import { initializeNsdoc } from '../../../../../../src/foundation/nsdoc.js';
+import '../../../../src/editors/ied/ln-container.js';
+import { LNContainer } from '../../../../src/editors/ied/ln-container.js';
+import { initializeNsdoc } from '../../../../src/foundation/nsdoc.js';
 
 describe('ln-container', async () => {
   let element: LNContainer;

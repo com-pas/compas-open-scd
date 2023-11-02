@@ -1,10 +1,10 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '../../../../../../src/editors/substation/powertransformer-editor.js';
+import '../../../../src/editors/substation/powertransformer-editor.js';
 
-import { PowerTransformerEditor } from '../../../../../../src/editors/substation/powertransformer-editor.js';
-import { isDelete } from '../../../../../../src/foundation.js';
+import { PowerTransformerEditor } from '../../../../src/editors/substation/powertransformer-editor.js';
+import { isDelete } from '../../../../src/foundation.js';
 
 describe('powertransformer-editor', () => {
   let element: PowerTransformerEditor;

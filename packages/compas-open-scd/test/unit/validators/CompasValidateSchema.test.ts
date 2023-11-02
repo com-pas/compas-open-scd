@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import CompasValidateSchema from '../../../../../src/validators/CompasValidateSchema.js';
+import CompasValidateSchema from '../../../src/validators/CompasValidateSchema.js';
 
 describe('CompasValidateSchema', () => {
   if (customElements.get('compas-validate-schema') === undefined)

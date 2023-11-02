@@ -4,7 +4,7 @@ import { SinonSpy, spy } from 'sinon';
 import '../../mock-editor-logger.js';
 import { MockEditorLogger } from '../../mock-editor-logger.js';
 
-import ValidateTemplates from '../../../../../src/validators/ValidateTemplates.js';
+import ValidateTemplates from '../../../src/validators/ValidateTemplates.js';
 
 describe('ValidateTemplates', () => {
   if (customElements.get('validate-templates') === undefined)

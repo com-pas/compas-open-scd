@@ -4,9 +4,9 @@ import { SinonSpy, spy } from 'sinon';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardCheckbox } from '../../../../../src/wizard-checkbox.js';
-import { isReplace, Replace } from '../../../../../src/foundation.js';
-import { editSmvOptsWizard } from '../../../../../src/wizards/smvopts.js';
+import { WizardCheckbox } from '../../../src/wizard-checkbox.js';
+import { isReplace, Replace } from '../../../src/foundation.js';
+import { editSmvOptsWizard } from '../../../src/wizards/smvopts.js';
 
 describe('Wizards for SCL SmvOpts element', () => {
   let element: MockWizard;

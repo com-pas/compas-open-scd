@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import CompasSaveMenuPlugin from '../../../../../src/menu/CompasSave.js';
+import CompasSaveMenuPlugin from '../../../src/menu/CompasSave.js';
 
 describe('compas-save-menu', () => {
   if (customElements.get('compare-save-menu') === undefined)

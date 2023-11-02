@@ -1,5 +1,5 @@
 import { expect } from "@open-wc/testing";
-import { initializeNsdoc, Nsdoc } from "../../../../../src/foundation/nsdoc.js";
+import { initializeNsdoc, Nsdoc } from "../../../src/foundation/nsdoc.js";
 
 describe('nsdoc', () => {
   let nsdoc74!: string;

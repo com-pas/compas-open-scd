@@ -3,10 +3,10 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 
-import '../../../../../../src/editors/subscription/fcda-binding-list.js';
-import { FcdaBindingList } from '../../../../../../src/editors/subscription/fcda-binding-list.js';
+import '../../../../src/editors/subscription/fcda-binding-list.js';
+import { FcdaBindingList } from '../../../../src/editors/subscription/fcda-binding-list.js';
 import { SinonSpy, spy } from 'sinon';
 import { ListItem } from '@material/mwc-list/mwc-list-item.js';
 

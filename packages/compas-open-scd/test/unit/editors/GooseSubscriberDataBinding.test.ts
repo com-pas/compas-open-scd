@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import GooseSubscriberDataBinding from '../../../../../src/editors/GooseSubscriberDataBinding.js';
+import GooseSubscriberDataBinding from '../../../src/editors/GooseSubscriberDataBinding.js';
 
 describe('SMV Subscribe Data Binding Plugin', () => {
   customElements.define(

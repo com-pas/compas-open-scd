@@ -4,18 +4,18 @@ import '../../mock-wizard.js';
 
 import { LitElement } from 'lit-element';
 
-import '../../../../../src/editors/IED.js';
+import '../../../src/editors/IED.js';
 
-import { Editing } from '../../../../../src/Editing.js';
-import { Wizarding, WizardingElement } from '../../../../../src/Wizarding.js';
-import { initializeNsdoc, Nsdoc } from '../../../../../src/foundation/nsdoc.js';
-import { FilterButton } from '../../../../../src/oscd-filter-button.js';
+import { Editing } from '../../../src/Editing.js';
+import { Wizarding, WizardingElement } from '../../../src/Wizarding.js';
+import { initializeNsdoc, Nsdoc } from '../../../src/foundation/nsdoc.js';
+import { FilterButton } from '../../../src/oscd-filter-button.js';
 
-import IED from '../../../../../src/editors/IED.js';
-import { LDeviceContainer } from '../../../../../src/editors/ied/ldevice-container.js';
-import { LNContainer } from '../../../../../src/editors/ied/ln-container.js';
-import { DOContainer } from '../../../../../src/editors/ied/do-container.js';
-import { DAContainer } from '../../../../../src/editors/ied/da-container.js';
+import IED from '../../../src/editors/IED.js';
+import { LDeviceContainer } from '../../../src/editors/ied/ldevice-container.js';
+import { LNContainer } from '../../../src/editors/ied/ln-container.js';
+import { DOContainer } from '../../../src/editors/ied/do-container.js';
+import { DAContainer } from '../../../src/editors/ied/da-container.js';
 
 describe('IED Plugin', () => {
   if (customElements.get('ied-plugin') === undefined)

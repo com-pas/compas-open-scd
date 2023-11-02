@@ -4,13 +4,13 @@ import { SinonSpy, spy } from 'sinon';
 import { Dialog } from '@material/mwc-dialog';
 import { Select } from '@material/mwc-select';
 
-import '../../../../../../src/editors/substation/bay-editor.js';
-import '../../../../../../src/editors/substation/substation-editor.js';
-import '../../../../../../src/editors/substation/voltage-level-editor.js';
-import { BayEditor } from '../../../../../../src/editors/substation/bay-editor.js';
-import { SubstationEditor } from '../../../../../../src/editors/substation/substation-editor.js';
-import { VoltageLevelEditor } from '../../../../../../src/editors/substation/voltage-level-editor.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import '../../../../src/editors/substation/bay-editor.js';
+import '../../../../src/editors/substation/substation-editor.js';
+import '../../../../src/editors/substation/voltage-level-editor.js';
+import { BayEditor } from '../../../../src/editors/substation/bay-editor.js';
+import { SubstationEditor } from '../../../../src/editors/substation/substation-editor.js';
+import { VoltageLevelEditor } from '../../../../src/editors/substation/voltage-level-editor.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 
 async function loadAndClone(
   cloneEntity: BayEditor | VoltageLevelEditor | SubstationEditor,

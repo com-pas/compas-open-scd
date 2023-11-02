@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/ied/do-container.js';
-import { DOContainer } from '../../../../../../src/editors/ied/do-container.js';
-import { initializeNsdoc } from '../../../../../../src/foundation/nsdoc.js';
+import '../../../../src/editors/ied/do-container.js';
+import { DOContainer } from '../../../../src/editors/ied/do-container.js';
+import { initializeNsdoc } from '../../../../src/foundation/nsdoc.js';
 
 describe('do-container', async () => {
   let element: DOContainer;

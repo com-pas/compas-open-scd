@@ -2,9 +2,9 @@ import { html, fixture, expect } from '@open-wc/testing';
 
 import '../../mock-wizard.js';
 
-import Protocol104 from '../../../../../src/editors/Protocol104.js';
-import { Editing } from '../../../../../src/Editing.js';
-import { Wizarding } from '../../../../../src/Wizarding.js';
+import Protocol104 from '../../../src/editors/Protocol104.js';
+import { Editing } from '../../../src/Editing.js';
+import { Wizarding } from '../../../src/Wizarding.js';
 
 describe('Protocol 104 Plugin', () => {
   customElements.define(

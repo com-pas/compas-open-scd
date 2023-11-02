@@ -10,10 +10,10 @@ import {
   Create,
   Delete,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
-import { editSMvWizard } from '../../../../../src/wizards/smv.js';
+} from '../../../src/foundation.js';
+import { editSMvWizard } from '../../../src/wizards/smv.js';
 import { invertedRegex, MAC, regExp } from '../../foundation.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 
 describe('Wizards for SCL element SMV', () => {
   let doc: XMLDocument;

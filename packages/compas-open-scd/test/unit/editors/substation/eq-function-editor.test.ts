@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/eq-function-editor.js';
-import { EqFunctionEditor } from '../../../../../../src/editors/substation/eq-function-editor.js';
+import '../../../../src/editors/substation/eq-function-editor.js';
+import { EqFunctionEditor } from '../../../../src/editors/substation/eq-function-editor.js';
 
 describe('web component rendering EqFunction element', () => {
   let element: EqFunctionEditor;

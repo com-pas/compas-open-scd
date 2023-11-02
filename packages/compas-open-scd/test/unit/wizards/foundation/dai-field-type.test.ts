@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../../mock-wizard.js';
 import { MockWizard } from '../../../mock-wizard.js';
 
-import { Wizard, WizardInputElement } from '../../../../../../src/foundation.js';
+import { Wizard, WizardInputElement } from '../../../../src/foundation.js';
 
 import {
   CustomField,
@@ -11,7 +11,7 @@ import {
   getCustomField,
   getDateValueFromTimestamp,
   getTimeValueFromTimestamp,
-} from '../../../../../../src/wizards/foundation/dai-field-type.js';
+} from '../../../../src/wizards/foundation/dai-field-type.js';
 
 describe('dai-field-type', async () => {
   let validSCL: XMLDocument;

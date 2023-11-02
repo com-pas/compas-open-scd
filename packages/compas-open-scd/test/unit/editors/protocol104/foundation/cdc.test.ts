@@ -3,7 +3,7 @@ import {
   createAddressElements,
   hasScaleFields,
   hasUnitMultiplierField,
-} from '../../../../../../../src/editors/protocol104/foundation/cdc.js';
+} from '../../../../../src/editors/protocol104/foundation/cdc.js';
 
 describe('createAddressElements', () => {
   it('only single address element created without expected value', async () => {

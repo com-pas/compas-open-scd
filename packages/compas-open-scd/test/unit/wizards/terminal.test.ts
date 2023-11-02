@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { editTerminalWizard } from '../../../../../src/wizards/terminal.js';
+import { editTerminalWizard } from '../../../src/wizards/terminal.js';
 
 describe('Wizards for SCL element Terminal', () => {
   let doc: XMLDocument;

@@ -3,11 +3,11 @@ import sinon from 'sinon';
 
 import { TextField } from '@material/mwc-textfield';
 
-import { CompasExistsInElement } from '../../../../../src/compas/CompasExistsIn.js';
-import { CompasLabelsFieldElement } from '../../../../../src/compas/CompasLabelsField.js';
-import CompasSaveElement from '../../../../../src/compas/CompasSave.js';
+import { CompasExistsInElement } from '../../../src/compas/CompasExistsIn.js';
+import { CompasLabelsFieldElement } from '../../../src/compas/CompasLabelsField.js';
+import CompasSaveElement from '../../../src/compas/CompasSave.js';
 
-import '../../../../../src/compas/CompasSave.js';
+import '../../../src/compas/CompasSave.js';
 
 import { addLabel } from './test-support.js';
 

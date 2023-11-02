@@ -2,13 +2,13 @@ import {expect, fixture, html} from "@open-wc/testing";
 
 import {MockWizard} from "../../mock-wizard.js";
 import {fetchDoc} from "../wizards/test-support.js";
-import {initializeNsdoc, Nsdoc} from "../../../../../src/foundation/nsdoc.js";
+import {initializeNsdoc, Nsdoc} from "../../../src/foundation/nsdoc.js";
 
 import "../../mock-wizard.js";
 
-import {LocamationLNodeListElement, locamationLNListWizard} from "../../../../../src/locamation/LocamationLNList.js";
+import {LocamationLNodeListElement, locamationLNListWizard} from "../../../src/locamation/LocamationLNList.js";
 
-import "../../../../../src/locamation/LocamationLNList.js";
+import "../../../src/locamation/LocamationLNList.js";
 
 describe('Wizards for Locamation Plugin to select the Logical Node - ', () => {
   let nsdoc: Nsdoc;

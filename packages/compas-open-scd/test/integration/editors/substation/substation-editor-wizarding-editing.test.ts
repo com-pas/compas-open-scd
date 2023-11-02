@@ -3,9 +3,9 @@ import { fixture, html, expect } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import '../../../../../../src/editors/substation/substation-editor.js';
-import { SubstationEditor } from '../../../../../../src/editors/substation/substation-editor.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import '../../../../src/editors/substation/substation-editor.js';
+import { SubstationEditor } from '../../../../src/editors/substation/substation-editor.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 import { MenuBase } from '@material/mwc-menu/mwc-menu-base.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base.js';
 

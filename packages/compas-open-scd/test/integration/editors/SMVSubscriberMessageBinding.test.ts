@@ -2,10 +2,10 @@ import { expect, fixture, html } from '@open-wc/testing';
 
 import '../../mock-wizard.js';
 
-import SMVSubscriberMessageBindingPlugin from '../../../../../src/editors/SMVSubscriberMessageBinding.js';
-import { Editing } from '../../../../../src/Editing.js';
-import { Logging } from '../../../../../src/Logging.js';
-import { Wizarding } from '../../../../../src/Wizarding.js';
+import SMVSubscriberMessageBindingPlugin from '../../../src/editors/SMVSubscriberMessageBinding.js';
+import { Editing } from '../../../src/Editing.js';
+import { Logging } from '../../../src/Logging.js';
+import { Wizarding } from '../../../src/Wizarding.js';
 import { ListItem } from '@material/mwc-list/mwc-list-item.js';
 
 describe('Sampled Values Plugin', () => {

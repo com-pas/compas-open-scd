@@ -2,8 +2,8 @@ import { expect, fixture, html } from '@open-wc/testing';
 
 import { Dialog } from '@material/mwc-dialog';
 
-import { CompasSessionExpiredDialogElement } from '../../../../../src/compas/CompasSessionExpiredDialog.js';
-import '../../../../../src/compas/CompasSessionExpiredDialog.js';
+import { CompasSessionExpiredDialogElement } from '../../../src/compas/CompasSessionExpiredDialog.js';
+import '../../../src/compas/CompasSessionExpiredDialog.js';
 
 describe('compas-session-expired-dialog', () => {
   let element: CompasSessionExpiredDialogElement;

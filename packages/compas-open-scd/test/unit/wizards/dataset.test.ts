@@ -6,8 +6,8 @@ import { MockWizard } from '../../mock-wizard.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { editDataSetWizard } from '../../../../../src/wizards/dataset.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { editDataSetWizard } from '../../../src/wizards/dataset.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Delete,
   isDelete,
@@ -15,7 +15,7 @@ import {
   Replace,
   Wizard,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 
 describe('dataset wizards', () => {
   let doc: XMLDocument;

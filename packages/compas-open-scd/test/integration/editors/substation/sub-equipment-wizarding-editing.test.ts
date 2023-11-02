@@ -3,10 +3,10 @@ import { fixture, html, expect } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import '../../../../../../src/editors/substation/sub-equipment-editor.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
-import { SubEquipmentEditor } from '../../../../../../src/editors/substation/sub-equipment-editor.js';
-import { WizardCheckbox } from '../../../../../../src/wizard-checkbox.js';
+import '../../../../src/editors/substation/sub-equipment-editor.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
+import { SubEquipmentEditor } from '../../../../src/editors/substation/sub-equipment-editor.js';
+import { WizardCheckbox } from '../../../../src/wizard-checkbox.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { MenuBase } from '@material/mwc-menu/mwc-menu-base.js';
 

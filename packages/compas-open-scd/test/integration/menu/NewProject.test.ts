@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
-import NewProjectPlugin from '../../../../../src/menu/NewProject.js';
+import NewProjectPlugin from '../../../src/menu/NewProject.js';
 
 describe('NewProject loader', () => {
   customElements.define('new-project-plugin', NewProjectPlugin);

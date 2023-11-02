@@ -8,9 +8,9 @@ import {
   ITEM_LIST_WITH_LABELS_RESPONSE,
   stubFetchResponseFunction,
 } from './CompasSclDataServiceResponses.js';
-import { CompasSclList } from '../../../../../src/compas/CompasSclList.js';
+import { CompasSclList } from '../../../src/compas/CompasSclList.js';
 
-import '../../../../../src/compas/CompasSclList.js';
+import '../../../src/compas/CompasSclList.js';
 
 describe('compas-scl-list', () => {
   const FETCH_FUNCTION = 'fetchData';

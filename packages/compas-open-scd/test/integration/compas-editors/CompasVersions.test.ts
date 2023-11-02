@@ -1,15 +1,15 @@
 import {expect, fixtureSync, html, waitUntil} from '@open-wc/testing';
 import sinon, {SinonStub} from "sinon";
 
-import {Editing} from '../../../../../src/Editing.js';
-import {Wizarding} from '../../../../../src/Wizarding.js';
+import {Editing} from '../../../src/Editing.js';
+import {Wizarding} from '../../../src/Wizarding.js';
 
 import {
   BASIC_VERSIONS_LIST_RESPONSE,
   stubFetchResponseFunction,
   VERSION_ENTRY_ELEMENT_NAME
 } from "../../unit/compas/CompasSclDataServiceResponses.js";
-import CompasVersionsPlugin from "../../../../../src/compas-editors/CompasVersions.js";
+import CompasVersionsPlugin from "../../../src/compas-editors/CompasVersions.js";
 
 describe('compas-versions-plugin', () => {
   const FETCH_FUNCTION = 'fetchData';

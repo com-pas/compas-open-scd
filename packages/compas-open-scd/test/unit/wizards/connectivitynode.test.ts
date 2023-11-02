@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { editConnectivityNodeWizard } from '../../../../../src/wizards/connectivitynode.js';
+import { editConnectivityNodeWizard } from '../../../src/wizards/connectivitynode.js';
 
 describe('Wizards for SCL element ConnectivityNode', () => {
   let doc: XMLDocument;

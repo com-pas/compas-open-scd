@@ -3,7 +3,7 @@ import { expect } from '@open-wc/testing';
 import {
   tagValidator,
   validateChildren,
-} from '../../../../../../src/validators/templates/foundation.js';
+} from '../../../../src/validators/templates/foundation.js';
 
 describe('validator foundation', () => {
   describe('tagValidator', () => {

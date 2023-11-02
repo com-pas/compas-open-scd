@@ -9,10 +9,10 @@ import {
   setWizardTextFieldValue,
 } from '../../../wizards/test-support.js';
 
-import { WizardTextField } from '../../../../../../../src/wizard-textfield.js';
-import { WizardInputElement } from '../../../../../../../src/foundation.js';
-import { editConductingEquipmentWizard } from '../../../../../../../src/editors/singlelinediagram/wizards/conductingequipment.js';
-import { updateNamingAndCoordinatesAction } from '../../../../../../../src/editors/singlelinediagram/wizards/foundation.js';
+import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardInputElement } from '../../../../../src/foundation.js';
+import { editConductingEquipmentWizard } from '../../../../../src/editors/singlelinediagram/wizards/conductingequipment.js';
+import { updateNamingAndCoordinatesAction } from '../../../../../src/editors/singlelinediagram/wizards/foundation.js';
 
 describe('Wizards for SCL element Conducting Equipment (X/Y)', () => {
   let doc: XMLDocument;

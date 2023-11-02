@@ -5,9 +5,9 @@ import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '../../../../../../src/editors/communication/subnetwork-editor.js';
-import { SubNetworkEditor } from '../../../../../../src/editors/communication/subnetwork-editor.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import '../../../../src/editors/communication/subnetwork-editor.js';
+import { SubNetworkEditor } from '../../../../src/editors/communication/subnetwork-editor.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 
 describe('subnetwork-editor wizarding editing integration', () => {
   describe('edit wizard', () => {

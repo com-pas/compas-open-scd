@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { identity } from '../../../../../../src/foundation.js';
+import { identity } from '../../../../src/foundation.js';
 
 import {
   getFunctionNamingPrefix,
@@ -8,7 +8,7 @@ import {
   getUniqueFunctionName,
   isLeafFunction,
   VirtualIEDDescription,
-} from '../../../../../../src/menu/virtualtemplateied/foundation.js';
+} from '../../../../src/menu/virtualtemplateied/foundation.js';
 
 describe('foundation for virtual IED creation', () => {
   describe('function checking for leaf function type elements', () => {

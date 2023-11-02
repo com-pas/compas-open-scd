@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import { CompasCommentElement } from '../../../../../src/compas/CompasComment.js';
-import '../../../../../src/compas/CompasComment.js';
+import { CompasCommentElement } from '../../../src/compas/CompasComment.js';
+import '../../../src/compas/CompasComment.js';
 
 describe('compas-comment', () => {
   let element: CompasCommentElement;

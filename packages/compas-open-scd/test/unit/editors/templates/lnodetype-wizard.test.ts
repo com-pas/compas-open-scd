@@ -11,8 +11,8 @@ import {
   isSimple,
   Replace,
   WizardInputElement,
-} from '../../../../../../src/foundation.js';
-import { lNodeTypeWizard } from '../../../../../../src/editors/templates/lnodetype-wizard.js';
+} from '../../../../src/foundation.js';
+import { lNodeTypeWizard } from '../../../../src/editors/templates/lnodetype-wizard.js';
 import { regExp, regexString } from '../../../foundation.js';
 
 describe('wizards for LNodeType element', () => {

@@ -10,8 +10,8 @@ import {
   isSimple,
   Replace,
   WizardInputElement,
-} from '../../../../../../src/foundation.js';
-import { eNumTypeEditWizard } from '../../../../../../src/editors/templates/enumtype-wizard.js';
+} from '../../../../src/foundation.js';
+import { eNumTypeEditWizard } from '../../../../src/editors/templates/enumtype-wizard.js';
 
 describe('wizards for EnumType element', () => {
   let doc: XMLDocument;

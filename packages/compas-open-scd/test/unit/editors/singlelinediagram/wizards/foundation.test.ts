@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import {getFixedCoordinateValue} from "../../../../../../../src/editors/singlelinediagram/wizards/foundation.js";
+import {getFixedCoordinateValue} from "../../../../../src/editors/singlelinediagram/wizards/foundation.js";
 
 describe('Single Line Diagram Wizard foundation', () => {
   describe('defines a getFixedCoordinateValue function that', () => {

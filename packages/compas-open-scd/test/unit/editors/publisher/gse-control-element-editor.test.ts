@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/publisher/gse-control-element-editor.js';
-import { GseControlElementEditor } from '../../../../../../src/editors/publisher/gse-control-element-editor.js';
+import '../../../../src/editors/publisher/gse-control-element-editor.js';
+import { GseControlElementEditor } from '../../../../src/editors/publisher/gse-control-element-editor.js';
 
 describe('Editor for GSEControl element and its direct children', () => {
   let doc: XMLDocument;

@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/l-node-editor.js';
-import { LNodeEditor } from '../../../../../../src/editors/substation/l-node-editor.js';
+import '../../../../src/editors/substation/l-node-editor.js';
+import { LNodeEditor } from '../../../../src/editors/substation/l-node-editor.js';
 
 describe('web component rendering LNode element', () => {
   let element: LNodeEditor;

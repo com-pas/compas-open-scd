@@ -7,7 +7,7 @@ import {
   createUpdateAction,
   newActionEvent,
   Update,
-} from '../../../../src/foundation.js';
+} from '../../src/foundation.js';
 
 describe('Editing-Logging integration', () => {
   let elm: MockEditorLogger;

@@ -4,9 +4,9 @@ import sinon, { SinonStub } from 'sinon';
 import { Select } from '@material/mwc-select';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '../../../../../src/compas/CompasSclTypeSelect.js';
+import '../../../src/compas/CompasSclTypeSelect.js';
 
-import { CompasSclTypeSelect } from '../../../../../src/compas/CompasSclTypeSelect.js';
+import { CompasSclTypeSelect } from '../../../src/compas/CompasSclTypeSelect.js';
 
 import {
   BASIC_TYPE_LIST_RESPONSE,

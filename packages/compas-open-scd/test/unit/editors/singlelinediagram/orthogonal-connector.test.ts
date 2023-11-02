@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { getOrthogonalPath } from '../../../../../../src/editors/singlelinediagram/ortho-connector.js';
+import { getOrthogonalPath } from '../../../../src/editors/singlelinediagram/ortho-connector.js';
 
 const gridAlloc: (0 | 1)[][] = [
   [1, 0, 1, 0, 1],

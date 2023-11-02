@@ -3,9 +3,9 @@ import { fixture, html, expect } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import '../../../../../../src/editors/substation/l-node-editor.js';
-import { LNodeEditor } from '../../../../../../src/editors/substation/l-node-editor.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import '../../../../src/editors/substation/l-node-editor.js';
+import { LNodeEditor } from '../../../../src/editors/substation/l-node-editor.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 
 describe('l-node-editor wizarding editing integration', () => {
   let doc: XMLDocument;

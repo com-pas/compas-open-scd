@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import { typeStr } from '../../../../../../src/wizards/conductingequipment.js';
+import { typeStr } from '../../../../src/wizards/conductingequipment.js';
 
 describe('conductingequipmentwizard', () => {
   describe('recognises an earth switch in the conducting equipment wizard that', () => {

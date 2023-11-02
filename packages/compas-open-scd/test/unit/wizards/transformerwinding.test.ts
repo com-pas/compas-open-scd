@@ -4,19 +4,19 @@ import { SinonSpy, spy } from 'sinon';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Create,
   isCreate,
   isReplace,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createTransformerWindingWizard,
   editTransformerWindingWizard,
-} from '../../../../../src/wizards/transformerWinding.js';
-import { WizardCheckbox } from '../../../../../src/wizard-checkbox.js';
+} from '../../../src/wizards/transformerWinding.js';
+import { WizardCheckbox } from '../../../src/wizard-checkbox.js';
 
 describe('Wizards for SCL TransformerWinding element', () => {
   let doc: XMLDocument;

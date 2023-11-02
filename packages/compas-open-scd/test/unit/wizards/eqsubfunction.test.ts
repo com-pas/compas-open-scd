@@ -4,18 +4,18 @@ import { SinonSpy, spy } from 'sinon';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Create,
   isCreate,
   isReplace,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createEqSubFunctionWizard,
   editEqSubFunctionWizard,
-} from '../../../../../src/wizards/eqsubfunction.js';
+} from '../../../src/wizards/eqsubfunction.js';
 
 describe('Wizards for SCL EqSubFunction element', () => {
   let doc: XMLDocument;

@@ -4,9 +4,9 @@ import fc from 'fast-check';
 import '../../../mock-wizard.js';
 import { MockWizard } from '../../../mock-wizard.js';
 
-import '../../../../../../src/editors/substation/voltage-level-editor.js';
+import '../../../../src/editors/substation/voltage-level-editor.js';
 import { regexString, regExp, inverseRegExp } from '../../../foundation.js';
-import { patterns } from '../../../../../../src/foundation.js';
+import { patterns } from '../../../../src/foundation.js';
 
 describe('voltage-level-editor wizarding integration', () => {
   let doc: XMLDocument;

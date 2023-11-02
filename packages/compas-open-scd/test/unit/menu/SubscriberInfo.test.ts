@@ -1,7 +1,7 @@
 import { expect } from '@open-wc/testing';
 
-import { createMissingIEDNameSubscriberInfo } from '../../../../../src/menu/SubscriberInfo.js';
-import { Create, isCreate, SimpleAction } from '../../../../../src/foundation.js';
+import { createMissingIEDNameSubscriberInfo } from '../../../src/menu/SubscriberInfo.js';
+import { Create, isCreate, SimpleAction } from '../../../src/foundation.js';
 
 describe('menu plugin adding subscriber info', () => {
   describe('for Edition2 and higher files', () => {

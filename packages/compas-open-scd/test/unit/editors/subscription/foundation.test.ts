@@ -6,9 +6,9 @@ import {
   getFirstSubscribedExtRef,
   instantiatedSupervisionsCount,
   updateExtRefElement,
-} from '../../../../../../src/editors/subscription/foundation.js';
+} from '../../../../src/editors/subscription/foundation.js';
 
-import { identity } from '../../../../../../src/foundation.js';
+import { identity } from '../../../../src/foundation.js';
 
 describe('foundation', () => {
   let doc: XMLDocument;

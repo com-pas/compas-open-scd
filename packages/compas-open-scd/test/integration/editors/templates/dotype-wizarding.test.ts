@@ -6,12 +6,12 @@ import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Select } from '@material/mwc-select';
 
-import { FilteredList } from '../../../../../../src/filtered-list.js';
-import TemplatesPlugin from '../../../../../../src/editors/Templates.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import { FilteredList } from '../../../../src/filtered-list.js';
+import TemplatesPlugin from '../../../../src/editors/Templates.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { patterns } from '../../../../../../src/wizards/foundation/limits.js';
+import { patterns } from '../../../../src/wizards/foundation/limits.js';
 
 describe('DOType wizards', () => {
   if (customElements.get('templates-editor') === undefined)

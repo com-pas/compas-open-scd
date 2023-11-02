@@ -6,10 +6,10 @@ import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Select } from '@material/mwc-select';
 
-import { FilteredList } from '../../../../../../src/filtered-list.js';
-import TemplatesPlugin from '../../../../../../src/editors/Templates.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
-import { patterns } from '../../../../../../src/foundation.js';
+import { FilteredList } from '../../../../src/filtered-list.js';
+import TemplatesPlugin from '../../../../src/editors/Templates.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
+import { patterns } from '../../../../src/foundation.js';
 
 describe('EnumType wizards', () => {
   if (customElements.get('templates-editor') === undefined)

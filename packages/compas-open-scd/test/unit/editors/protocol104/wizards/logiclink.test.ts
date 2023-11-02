@@ -3,10 +3,10 @@ import { SinonSpy, spy } from 'sinon';
 
 import '../../../../mock-wizard.js';
 
-import { ComplexAction, Create, Delete, isCreate, isDelete, isReplace, Replace, WizardInputElement } from '../../../../../../../src/foundation.js';
+import { ComplexAction, Create, Delete, isCreate, isDelete, isReplace, Replace, WizardInputElement } from '../../../../../src/foundation.js';
 import { MockWizard } from '../../../../mock-wizard.js';
-import { WizardTextField } from '../../../../../../../src/wizard-textfield.js';
-import { createLogicLinkWizard, editLogicLinkWizard } from '../../../../../../../src/editors/protocol104/wizards/logiclink.js';
+import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { createLogicLinkWizard, editLogicLinkWizard } from '../../../../../src/editors/protocol104/wizards/logiclink.js';
 
 describe('Wizards for the Logic Link SCL element group', () => {
   let doc: XMLDocument;

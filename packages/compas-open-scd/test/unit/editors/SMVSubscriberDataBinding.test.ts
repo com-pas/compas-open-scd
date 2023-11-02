@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import SMVSubscribeDataBindingPlugin from '../../../../../src/editors/SMVSubscriberDataBinding.js';
+import SMVSubscribeDataBindingPlugin from '../../../src/editors/SMVSubscriberDataBinding.js';
 
 describe('SMV Subscribe Data Binding Plugin', () => {
   customElements.define(

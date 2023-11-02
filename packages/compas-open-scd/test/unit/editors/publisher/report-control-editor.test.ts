@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/publisher/report-control-editor.js';
-import { ReportControlEditor } from '../../../../../../src/editors/publisher/report-control-editor.js';
+import '../../../../src/editors/publisher/report-control-editor.js';
+import { ReportControlEditor } from '../../../../src/editors/publisher/report-control-editor.js';
 import { cloneTestDoc } from './foundation.test.js';
 
 describe('Editor for ReportControl element', () => {

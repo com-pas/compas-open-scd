@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/tapchanger-editor.js';
-import { TapChangerEditor } from '../../../../../../src/editors/substation/tapchanger-editor.js';
+import '../../../../src/editors/substation/tapchanger-editor.js';
+import { TapChangerEditor } from '../../../../src/editors/substation/tapchanger-editor.js';
 
 describe('web component rendering TapChanger element', () => {
   let element: TapChangerEditor;

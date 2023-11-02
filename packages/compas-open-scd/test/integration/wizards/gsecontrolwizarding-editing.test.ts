@@ -8,10 +8,10 @@ import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import {
   editGseControlWizard,
   selectGseControlWizard,
-} from '../../../../../src/wizards/gsecontrol.js';
-import { FilteredList } from '../../../../../src/filtered-list.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
-import { FinderList } from '../../../../../src/finder-list.js';
+} from '../../../src/wizards/gsecontrol.js';
+import { FilteredList } from '../../../src/filtered-list.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
+import { FinderList } from '../../../src/finder-list.js';
 
 describe('Wizards for SCL element GSEControl', () => {
   let doc: XMLDocument;

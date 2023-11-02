@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import { CompasNSDocFileService } from '../../../../../src/compas-services/CompasNSDocFileService.js';
+import { CompasNSDocFileService } from '../../../src/compas-services/CompasNSDocFileService.js';
 
 describe('compas-nsdocfile-service', () => {
   it('Should list all NSDoc files', async () => {

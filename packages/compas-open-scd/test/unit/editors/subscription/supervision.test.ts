@@ -3,9 +3,9 @@ import { expect } from '@open-wc/testing';
 import {
   instantiateSubscriptionSupervision,
   removeSubscriptionSupervision,
-} from '../../../../../../src/editors/subscription/foundation.js';
+} from '../../../../src/editors/subscription/foundation.js';
 
-import { Create, Delete } from '../../../../../../src/foundation.js';
+import { Create, Delete } from '../../../../src/foundation.js';
 
 describe('supervision', () => {
   let doc: XMLDocument;

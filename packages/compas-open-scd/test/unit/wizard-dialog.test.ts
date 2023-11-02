@@ -4,13 +4,13 @@ import './mock-editor.js';
 
 import { Button } from '@material/mwc-button';
 
-import '../../../../src/wizard-textfield.js';
-import '../../../../src/wizard-dialog.js';
-import { WizardDialog } from '../../../../src/wizard-dialog.js';
-import { EditorAction, WizardInputElement } from '../../../../src/foundation.js';
-import { WizardCheckbox } from '../../../../src/wizard-checkbox.js';
-import { WizardSelect } from '../../../../src/wizard-select.js';
-import { WizardTextField } from '../../../../src/wizard-textfield.js';
+import '../../src/wizard-textfield.js';
+import '../../src/wizard-dialog.js';
+import { WizardDialog } from '../../src/wizard-dialog.js';
+import { EditorAction, WizardInputElement } from '../../src/foundation.js';
+import { WizardCheckbox } from '../../src/wizard-checkbox.js';
+import { WizardSelect } from '../../src/wizard-select.js';
+import { WizardTextField } from '../../src/wizard-textfield.js';
 
 describe('wizard-dialog', () => {
   let element: WizardDialog;

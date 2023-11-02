@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import { getDataModelChildren } from '../../../../../../src/wizards/foundation/finder.js';
+import { getDataModelChildren } from '../../../../src/wizards/foundation/finder.js';
 
 describe('data model nodes child getter', () => {
   let doc: XMLDocument;

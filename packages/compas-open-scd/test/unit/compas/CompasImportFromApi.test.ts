@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import CompasImportFromApiElement from '../../../../../src/compas/CompasImportFromApi.js';
+import CompasImportFromApiElement from '../../../src/compas/CompasImportFromApi.js';
 
-import '../../../../../src/compas/CompasImportFromApi.js';
+import '../../../src/compas/CompasImportFromApi.js';
 
 describe('compas-import-from-api', () => {
   let element: CompasImportFromApiElement;

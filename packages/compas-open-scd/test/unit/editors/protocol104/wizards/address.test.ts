@@ -4,9 +4,9 @@ import { MockWizard } from '../../../../mock-wizard.js';
 
 import '../../../../mock-wizard.js';
 
-import { WizardInputElement } from '../../../../../../../src/foundation.js';
-import { WizardTextField } from '../../../../../../../src/wizard-textfield.js';
-import { WizardSelect } from '../../../../../../../src/wizard-select.js';
+import { WizardInputElement } from '../../../../../src/foundation.js';
+import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardSelect } from '../../../../../src/wizard-select.js';
 
 import {
   executeWizardReplaceAction,
@@ -19,7 +19,7 @@ import {
 import {
   editAddressWizard,
   updateAddressValue,
-} from '../../../../../../../src/editors/protocol104/wizards/address.js';
+} from '../../../../../src/editors/protocol104/wizards/address.js';
 
 describe('Wizards for 104 Address Element', () => {
   let doc: XMLDocument;

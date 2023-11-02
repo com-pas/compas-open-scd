@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '../../../../../../src/editors/protocol104/network-container.js';
-import { Network104Container } from '../../../../../../src/editors/protocol104/network-container.js';
+import '../../../../src/editors/protocol104/network-container.js';
+import { Network104Container } from '../../../../src/editors/protocol104/network-container.js';
 
 describe('network-104-container', () => {
   let element: Network104Container;

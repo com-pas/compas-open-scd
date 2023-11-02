@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/sub-equipment-editor.js';
-import { SubEquipmentEditor } from '../../../../../../src/editors/substation/sub-equipment-editor.js';
+import '../../../../src/editors/substation/sub-equipment-editor.js';
+import { SubEquipmentEditor } from '../../../../src/editors/substation/sub-equipment-editor.js';
 
 describe('sub-equipment-editor', () => {
   let element: SubEquipmentEditor;

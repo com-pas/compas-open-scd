@@ -8,7 +8,7 @@ import {
   CommitEntry,
   newIssueEvent,
   newLogEvent,
-} from '../../../../src/foundation.js';
+} from '../../src/foundation.js';
 
 describe('LoggingElement', () => {
   let element: MockLogger;

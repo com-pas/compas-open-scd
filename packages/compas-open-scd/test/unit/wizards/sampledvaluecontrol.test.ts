@@ -14,18 +14,18 @@ import {
   isSimple,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createSampledValueControlWizard,
   editSampledValueControlWizard,
   removeSampledValueControlAction,
   selectSampledValueControlWizard,
-} from '../../../../../src/wizards/sampledvaluecontrol.js';
+} from '../../../src/wizards/sampledvaluecontrol.js';
 import fc, { integer } from 'fast-check';
 import { inverseRegExp, regExp, regexString } from '../../foundation.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
-import { WizardCheckbox } from '../../../../../src/wizard-checkbox.js';
-import { FinderList } from '../../../../../src/finder-list.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
+import { WizardCheckbox } from '../../../src/wizard-checkbox.js';
+import { FinderList } from '../../../src/finder-list.js';
 
 describe('Wizards for SCL element SampledValueControl', () => {
   let doc: XMLDocument;

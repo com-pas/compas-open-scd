@@ -7,11 +7,11 @@ import {
   WizardActor,
   ComplexAction,
   isSimple
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 
-import '../../../../../src/wizard-textfield.js';
-import { createAction } from '../../../../../src/wizards/bay.js';
-import { replaceNamingAttributeWithReferencesAction } from '../../../../../src/wizards/foundation/actions.js';
+import '../../../src/wizard-textfield.js';
+import { createAction } from '../../../src/wizards/bay.js';
+import { replaceNamingAttributeWithReferencesAction } from '../../../src/wizards/foundation/actions.js';
 
 describe('BayEditor', () => {
   const noOp = () => {

@@ -3,8 +3,8 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-editor-logger.js';
 import { MockEditorLogger } from '../../mock-editor-logger.js';
 
-import ValidateSchema from '../../../../../src/validators/ValidateSchema.js';
-import { IssueDetail, LogEntry } from '../../../../../src/foundation.js';
+import ValidateSchema from '../../../src/validators/ValidateSchema.js';
+import { IssueDetail, LogEntry } from '../../../src/foundation.js';
 
 describe('ValidateSchema plugin', () => {
   if (customElements.get('') === undefined)

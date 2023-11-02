@@ -4,7 +4,7 @@ import { SinonSpy, spy } from 'sinon';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   isCreate,
   isDelete,
@@ -14,11 +14,11 @@ import {
   Delete,
   Create,
   patterns,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createSubNetworkWizard,
   editSubNetworkWizard,
-} from '../../../../../src/wizards/subnetwork.js';
+} from '../../../src/wizards/subnetwork.js';
 
 describe('Wizards for SCL element SubNetwork', () => {
   let doc: XMLDocument;

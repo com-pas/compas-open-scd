@@ -3,9 +3,9 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { wizardContent } from '../../../../../src/wizards/abstractda.js';
-import { WizardSelect } from '../../../../../src/wizard-select.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { wizardContent } from '../../../src/wizards/abstractda.js';
+import { WizardSelect } from '../../../src/wizard-select.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Create,
   isCreate,
@@ -13,12 +13,12 @@ import {
   Replace,
   Wizard,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createDaAction,
   renderDa,
   updateDaAction,
-} from '../../../../../src/wizards/da.js';
+} from '../../../src/wizards/da.js';
 
 describe('da wizards', () => {
   describe('updateDaAction', () => {

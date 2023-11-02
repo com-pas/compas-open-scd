@@ -1,8 +1,8 @@
 import { html, fixture, expect } from '@open-wc/testing';
 import { spy } from 'sinon';
 
-import '../../../../../../src/editors/protocol104/connectedap-editor.js'
-import { ConnectedAP104Editor } from '../../../../../../src/editors/protocol104/connectedap-editor.js';
+import '../../../../src/editors/protocol104/connectedap-editor.js'
+import { ConnectedAP104Editor } from '../../../../src/editors/protocol104/connectedap-editor.js';
 
 describe('connectedap-104-editor', () => {
   let element: ConnectedAP104Editor;

@@ -13,8 +13,8 @@ import {
   getFullPath,
   getTypeAttribute,
   isEnumDataAttribute,
-} from '../../../../../../../src/editors/protocol104/foundation/foundation.js';
-import { PROTOCOL_104_PRIVATE } from '../../../../../../../src/editors/protocol104/foundation/private.js';
+} from '../../../../../src/editors/protocol104/foundation/foundation.js';
+import { PROTOCOL_104_PRIVATE } from '../../../../../src/editors/protocol104/foundation/private.js';
 
 describe('foundation', () => {
   let doc: XMLDocument;

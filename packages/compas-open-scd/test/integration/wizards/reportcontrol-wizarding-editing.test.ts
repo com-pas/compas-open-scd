@@ -5,15 +5,15 @@ import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { FilteredList } from '../../../../../src/filtered-list.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { FilteredList } from '../../../src/filtered-list.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   createReportControlWizard,
   reportControlCopyToIedSelector,
   reportControlParentSelector,
   selectReportControlWizard,
-} from '../../../../../src/wizards/reportcontrol.js';
-import { FinderList } from '../../../../../src/finder-list.js';
+} from '../../../src/wizards/reportcontrol.js';
+import { FinderList } from '../../../src/finder-list.js';
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
 
 describe('Wizards for SCL element ReportControl', () => {

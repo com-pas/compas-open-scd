@@ -4,11 +4,11 @@ import { SinonSpy, spy } from 'sinon';
 import '@material/mwc-list/mwc-check-list-item';
 import '@material/mwc-list/mwc-radio-list-item';
 
-import { getIcon } from '../../../../src/icons/icons.js';
+import { getIcon } from '../../src/icons/icons.js';
 
-import '../../../../src/oscd-filter-button.js';
+import '../../src/oscd-filter-button.js';
 
-import { FilterButton } from '../../../../src/oscd-filter-button.js';
+import { FilterButton } from '../../src/oscd-filter-button.js';
 
 describe('oscd-filter-button', () => {
   let element: FilterButton;

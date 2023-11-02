@@ -1,10 +1,10 @@
 'use strict';
 import { html, fixture, expect } from '@open-wc/testing';
 
-import { Editing } from '../../../../../../src/Editing.js';
-import { Wizarding } from '../../../../../../src/Wizarding.js';
+import { Editing } from '../../../../src/Editing.js';
+import { Wizarding } from '../../../../src/Wizarding.js';
 
-import { CleanupDataTypes } from '../../../../../../src/editors/cleanup/datatypes-container.js';
+import { CleanupDataTypes } from '../../../../src/editors/cleanup/datatypes-container.js';
 
 import { ListItem } from '@material/mwc-list/mwc-list-item.js';
 

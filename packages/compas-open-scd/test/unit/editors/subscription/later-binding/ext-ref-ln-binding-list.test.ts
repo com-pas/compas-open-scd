@@ -1,11 +1,11 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import { initializeNsdoc } from '../../../../../../../src/foundation/nsdoc.js';
+import { initializeNsdoc } from '../../../../../src/foundation/nsdoc.js';
 
-import '../../../../../../../src/editors/subscription/later-binding/ext-ref-ln-binding-list.js';
+import '../../../../../src/editors/subscription/later-binding/ext-ref-ln-binding-list.js';
 
-import { newFcdaSelectEvent } from '../../../../../../../src/editors/subscription/foundation.js';
-import { ExtRefLnBindingList } from '../../../../../../../src/editors/subscription/later-binding/ext-ref-ln-binding-list.js';
+import { newFcdaSelectEvent } from '../../../../../src/editors/subscription/foundation.js';
+import { ExtRefLnBindingList } from '../../../../../src/editors/subscription/later-binding/ext-ref-ln-binding-list.js';
 
 describe('extref-ln-binding-list', async () => {
   let doc: XMLDocument;

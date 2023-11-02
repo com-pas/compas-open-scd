@@ -4,18 +4,18 @@ import { SinonSpy, spy } from 'sinon';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Create,
   isCreate,
   isReplace,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createFunctionWizard,
   editFunctionWizard,
-} from '../../../../../src/wizards/function.js';
+} from '../../../src/wizards/function.js';
 
 describe('Wizards for SCL Function element', () => {
   let doc: XMLDocument;

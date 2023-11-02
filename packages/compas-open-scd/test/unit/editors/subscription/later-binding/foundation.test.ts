@@ -6,7 +6,7 @@ import {
   isSubscribedTo,
   sameAttributeValue,
   sameAttributeValueDiffName,
-} from '../../../../../../../src/editors/subscription/later-binding/foundation.js';
+} from '../../../../../src/editors/subscription/later-binding/foundation.js';
 
 describe('smv-list', () => {
   let doc: XMLDocument;

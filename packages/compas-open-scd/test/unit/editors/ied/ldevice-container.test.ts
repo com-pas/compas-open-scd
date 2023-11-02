@@ -1,10 +1,10 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import { initializeNsdoc, Nsdoc } from '../../../../../../src/foundation/nsdoc.js';
+import { initializeNsdoc, Nsdoc } from '../../../../src/foundation/nsdoc.js';
 
-import '../../../../../../src/editors/ied/ldevice-container.js';
+import '../../../../src/editors/ied/ldevice-container.js';
 
-import { LDeviceContainer } from '../../../../../../src/editors/ied/ldevice-container.js';
+import { LDeviceContainer } from '../../../../src/editors/ied/ldevice-container.js';
 
 import { getLNClasses } from './test-support.js';
 

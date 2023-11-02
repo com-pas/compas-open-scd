@@ -2,7 +2,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 
 import ExportIEDParamsPlugin, {
   Configuration,
-} from '../../../../../src/menu/ExportIEDParams.js';
+} from '../../../src/menu/ExportIEDParams.js';
 
 describe('Export IED Params Plugin -', () => {
   if (customElements.get('export-ied-params') === undefined)

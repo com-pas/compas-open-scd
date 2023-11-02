@@ -1,6 +1,6 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../src/wizard-textfield.js';
+import '../../../src/wizard-textfield.js';
 import {
   WizardInputElement,
   isCreate,
@@ -9,11 +9,11 @@ import {
   isSimple,
   ComplexAction,
   WizardActor,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createAction,
   updateAction,
-} from '../../../../../src/wizards/voltagelevel.js';
+} from '../../../src/wizards/voltagelevel.js';
 
 describe('VoltageLevelEditor', () => {
   const noOp = () => {

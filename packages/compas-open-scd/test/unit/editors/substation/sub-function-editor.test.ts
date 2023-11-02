@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/sub-function-editor.js';
-import { SubFunctionEditor } from '../../../../../../src/editors/substation/sub-function-editor.js';
+import '../../../../src/editors/substation/sub-function-editor.js';
+import { SubFunctionEditor } from '../../../../src/editors/substation/sub-function-editor.js';
 
 describe('web component rendering SubFunction element', () => {
   let element: SubFunctionEditor;

@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Create,
   isCreate,
@@ -12,7 +12,7 @@ import {
   Replace,
   Wizard,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 
 import {
   executeWizardComplexAction,
@@ -22,7 +22,7 @@ import {
 import {
   editCompasSCLWizard,
   updateSCL,
-} from '../../../../../src/compas-wizards/scl.js';
+} from '../../../src/compas-wizards/scl.js';
 
 describe('Wizards for SCL element (CoMPAS)', () => {
   let doc: XMLDocument;

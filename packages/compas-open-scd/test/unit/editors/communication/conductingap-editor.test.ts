@@ -1,9 +1,9 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '../../../../../../src/editors/communication/connectedap-editor.js';
-import { ConnectedAPEditor } from '../../../../../../src/editors/communication/connectedap-editor.js';
-import { isDelete } from '../../../../../../src/foundation.js';
+import '../../../../src/editors/communication/connectedap-editor.js';
+import { ConnectedAPEditor } from '../../../../src/editors/communication/connectedap-editor.js';
+import { isDelete } from '../../../../src/foundation.js';
 
 describe('A component to visualize SCL element ConnectedAP', () => {
   let element: ConnectedAPEditor;

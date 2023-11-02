@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import { lNodeTypeValidator } from '../../../../../../src/validators/templates/lnodetype.js';
+import { lNodeTypeValidator } from '../../../../src/validators/templates/lnodetype.js';
 
 describe('lnodetype validator', () => {
   let doc: XMLDocument;

@@ -6,12 +6,12 @@ import { customElement, LitElement } from 'lit-element';
 import {
   NOT_FOUND_ERROR,
   SERVER_ERROR,
-} from '../../../../../src/compas-services/foundation.js';
+} from '../../../src/compas-services/foundation.js';
 
 import {
   CompasExistsIn,
   CompasExistsInElement,
-} from '../../../../../src/compas/CompasExistsIn.js';
+} from '../../../src/compas/CompasExistsIn.js';
 
 @customElement('mock-compas-exists-in')
 export class MockSetter extends CompasExistsIn(LitElement) {}

@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/publisher/data-set-element-editor.js';
-import { DataSetElementEditor } from '../../../../../../src/editors/publisher/data-set-element-editor.js';
+import '../../../../src/editors/publisher/data-set-element-editor.js';
+import { DataSetElementEditor } from '../../../../src/editors/publisher/data-set-element-editor.js';
 
 describe('Editor for DataSet element', () => {
   let doc: XMLDocument;

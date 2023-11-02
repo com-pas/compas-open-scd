@@ -6,8 +6,8 @@ import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
 import '../../../mock-editor-logger.js';
 import { MockEditorLogger } from '../../../mock-editor-logger.js';
 
-import ImportingIedPlugin from '../../../../../../src/menu/ImportIEDs.js';
-import { Editing } from '../../../../../../src/Editing.js';
+import ImportingIedPlugin from '../../../../src/menu/ImportIEDs.js';
+import { Editing } from '../../../../src/Editing.js';
 
 class MockImportIed extends Editing(LitElement) {
   render(): TemplateResult {

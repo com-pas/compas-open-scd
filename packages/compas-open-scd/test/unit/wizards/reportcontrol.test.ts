@@ -14,8 +14,8 @@ import {
   isSimple,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+} from '../../../src/foundation.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   reportControlParentSelector,
   createReportControlWizard,
@@ -23,10 +23,10 @@ import {
   removeReportControlAction,
   selectReportControlWizard,
   reportControlCopyToIedSelector,
-} from '../../../../../src/wizards/reportcontrol.js';
+} from '../../../src/wizards/reportcontrol.js';
 import { inverseRegExp, regExp, regexString } from '../../foundation.js';
-import { FinderList } from '../../../../../src/finder-list.js';
-import { FilteredList } from '../../../../../src/filtered-list.js';
+import { FinderList } from '../../../src/finder-list.js';
+import { FilteredList } from '../../../src/filtered-list.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
 describe('Wizards for SCL ReportControl element', () => {

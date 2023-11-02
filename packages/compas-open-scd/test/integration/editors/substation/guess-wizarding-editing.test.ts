@@ -5,7 +5,7 @@ import { MockWizard } from '../../../mock-wizard.js';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import { guessVoltageLevel } from '../../../../../../src/editors/substation/guess-wizard.js';
+import { guessVoltageLevel } from '../../../../src/editors/substation/guess-wizard.js';
 
 describe('guess-wizard-integration', () => {
   let element: MockWizard;

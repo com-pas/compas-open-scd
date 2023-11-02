@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/process-editor.js';
-import { ProcessEditor } from '../../../../../../src/editors/substation/process-editor.js';
+import '../../../../src/editors/substation/process-editor.js';
+import { ProcessEditor } from '../../../../src/editors/substation/process-editor.js';
 
 describe('web component rendering Process element', () => {
   let element: ProcessEditor;

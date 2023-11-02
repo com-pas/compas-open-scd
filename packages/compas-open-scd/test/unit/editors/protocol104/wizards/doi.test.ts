@@ -5,12 +5,12 @@ import { MockWizard } from '../../../../mock-wizard.js';
 
 import '../../../../mock-wizard.js';
 
-import { ComplexAction, isSimple } from '../../../../../../../src/foundation.js';
+import { ComplexAction, isSimple } from '../../../../../src/foundation.js';
 
 import {
   remove104Private,
   showDOIInfoWizard,
-} from '../../../../../../../src/editors/protocol104/wizards/doi.js';
+} from '../../../../../src/editors/protocol104/wizards/doi.js';
 
 import { fetchDoc } from '../../../wizards/test-support.js';
 

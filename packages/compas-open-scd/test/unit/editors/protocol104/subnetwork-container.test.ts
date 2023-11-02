@@ -1,7 +1,7 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/protocol104/subnetwork-container.js'
-import { SubNetwork104Container } from '../../../../../../src/editors/protocol104/subnetwork-container.js';
+import '../../../../src/editors/protocol104/subnetwork-container.js'
+import { SubNetwork104Container } from '../../../../src/editors/protocol104/subnetwork-container.js';
 
 describe('subnetwork-104-container', () => {
   let element: SubNetwork104Container;

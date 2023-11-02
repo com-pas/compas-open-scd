@@ -4,7 +4,7 @@ import {
   COMMONS_NAMESPACE,
   getWebsocketUri,
   processErrorMessage,
-} from "../../../../../src/compas-services/foundation.js";
+} from "../../../src/compas-services/foundation.js";
 
 const errorBody =
 `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

@@ -3,9 +3,9 @@ import { fixture, html, expect } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import '../../../../../../src/editors/substation/powertransformer-editor.js';
-import { PowerTransformerEditor } from '../../../../../../src/editors/substation/powertransformer-editor.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import '../../../../src/editors/substation/powertransformer-editor.js';
+import { PowerTransformerEditor } from '../../../../src/editors/substation/powertransformer-editor.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base.js';
 import { MenuBase } from '@material/mwc-menu/mwc-menu-base.js';
 

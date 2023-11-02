@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import { isEmptyObject } from '../../../../../src/wizards/services.js';
+import { isEmptyObject } from '../../../src/wizards/services.js';
 
 describe('Wizards for SCL element Services', () => {
   it('Simple empty input object is empty', () => {

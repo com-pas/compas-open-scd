@@ -1,5 +1,5 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import SclHistoryPlugin from '../../../../../src/menu/SclHistory.js';
+import SclHistoryPlugin from '../../../src/menu/SclHistory.js';
 describe('testing sclHistory dialog', () => {
   if (customElements.get('scl-history') === undefined)
     customElements.define('scl-history', SclHistoryPlugin);

@@ -1,10 +1,10 @@
 'use strict';
 import { html, fixture, expect } from '@open-wc/testing';
 
-import { Editing } from '../../../../../../src/Editing.js';
-import { Wizarding } from '../../../../../../src/Wizarding.js';
+import { Editing } from '../../../../src/Editing.js';
+import { Wizarding } from '../../../../src/Wizarding.js';
 
-import { CleanupDatasets } from '../../../../../../src/editors/cleanup/datasets-container.js';
+import { CleanupDatasets } from '../../../../src/editors/cleanup/datasets-container.js';
 
 describe('Cleanup: Datasets Container', () => {
   customElements.define(

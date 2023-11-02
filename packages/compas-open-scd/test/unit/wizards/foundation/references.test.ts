@@ -7,7 +7,7 @@ import {
 import {
   deleteReferences,
   updateReferences
-} from '../../../../../../src/wizards/foundation/references.js';
+} from '../../../../src/wizards/foundation/references.js';
 import { expect } from '@open-wc/testing';
 
 describe('Update reference for ', () => {

@@ -10,8 +10,8 @@ import {
   isSimple,
   Replace,
   WizardInputElement,
-} from '../../../../../../src/foundation.js';
-import { editDaTypeWizard } from '../../../../../../src/editors/templates/datype-wizards.js';
+} from '../../../../src/foundation.js';
+import { editDaTypeWizard } from '../../../../src/editors/templates/datype-wizards.js';
 
 describe('wizards for DAType element', () => {
   let doc: XMLDocument;

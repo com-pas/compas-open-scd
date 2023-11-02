@@ -6,7 +6,7 @@ import { MockWizard } from '../../mock-wizard.js';
 
 import { Checkbox } from '@material/mwc-checkbox';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   ComplexAction,
   Delete,
@@ -15,8 +15,8 @@ import {
   isSimple,
   Create,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
-import { editConnectedApWizard } from '../../../../../src/wizards/connectedap.js';
+} from '../../../src/foundation.js';
+import { editConnectedApWizard } from '../../../src/wizards/connectedap.js';
 
 describe('Wizards for SCL element ConnectedAP', () => {
   let doc: XMLDocument;

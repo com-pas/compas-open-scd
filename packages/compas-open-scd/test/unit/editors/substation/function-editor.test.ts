@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/function-editor.js';
-import { FunctionEditor } from '../../../../../../src/editors/substation/function-editor.js';
+import '../../../../src/editors/substation/function-editor.js';
+import { FunctionEditor } from '../../../../src/editors/substation/function-editor.js';
 
 describe('web component rendering Function element', () => {
   let element: FunctionEditor;

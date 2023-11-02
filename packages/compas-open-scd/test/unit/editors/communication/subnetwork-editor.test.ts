@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/communication/subnetwork-editor.js';
-import { SubNetworkEditor } from '../../../../../../src/editors/communication/subnetwork-editor.js';
+import '../../../../src/editors/communication/subnetwork-editor.js';
+import { SubNetworkEditor } from '../../../../src/editors/communication/subnetwork-editor.js';
 
 describe('subnetwork-editor', () => {
   let doc: XMLDocument;

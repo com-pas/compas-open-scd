@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../src/compas/CompasLabelsField.js';
+import '../../../src/compas/CompasLabelsField.js';
 
-import { CompasLabelsFieldElement } from '../../../../../src/compas/CompasLabelsField.js';
+import { CompasLabelsFieldElement } from '../../../src/compas/CompasLabelsField.js';
 
 import { addLabel, removeLabel } from './test-support.js';
 

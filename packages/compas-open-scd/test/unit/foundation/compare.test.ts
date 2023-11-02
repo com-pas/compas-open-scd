@@ -9,7 +9,7 @@ import {
   identityForCompare,
   isSame,
   renderDiff,
-} from '../../../../../src/foundation/compare.js';
+} from '../../../src/foundation/compare.js';
 
 describe('compas-compare-dialog', () => {
   let oldSclElement: Element;

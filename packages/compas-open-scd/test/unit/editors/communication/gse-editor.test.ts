@@ -1,9 +1,9 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '../../../../../../src/editors/communication/gse-editor.js';
-import { GseEditor } from '../../../../../../src/editors/communication/gse-editor.js';
-import { isDelete } from '../../../../../../src/foundation.js';
+import '../../../../src/editors/communication/gse-editor.js';
+import { GseEditor } from '../../../../src/editors/communication/gse-editor.js';
+import { isDelete } from '../../../../src/foundation.js';
 
 describe('Editor web component for GSE element', () => {
   let element: GseEditor;

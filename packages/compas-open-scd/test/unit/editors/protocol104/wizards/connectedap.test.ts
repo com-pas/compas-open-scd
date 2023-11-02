@@ -4,10 +4,10 @@ import { SinonSpy, spy } from 'sinon';
 import '../../../../mock-wizard.js';
 
 import { Checkbox } from '@material/mwc-checkbox';
-import { createConnectedApWizard, editConnectedApWizard } from '../../../../../../../src/editors/protocol104/wizards/connectedap.js';
-import { ComplexAction, Create, Delete, isCreate, isDelete, WizardInputElement } from '../../../../../../../src/foundation.js';
+import { createConnectedApWizard, editConnectedApWizard } from '../../../../../src/editors/protocol104/wizards/connectedap.js';
+import { ComplexAction, Create, Delete, isCreate, isDelete, WizardInputElement } from '../../../../../src/foundation.js';
 import { MockWizard } from '../../../../mock-wizard.js';
-import { WizardTextField } from '../../../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../../../src/wizard-textfield.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
 describe('Wizards for SCL element ConnectedAP', () => {

@@ -1,7 +1,7 @@
 import { Button } from '@material/mwc-button';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
-import { CompasLabelsFieldElement } from '../../../../../src/compas/CompasLabelsField.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
+import { CompasLabelsFieldElement } from '../../../src/compas/CompasLabelsField.js';
 
 export async function addLabel(
   element: CompasLabelsFieldElement,

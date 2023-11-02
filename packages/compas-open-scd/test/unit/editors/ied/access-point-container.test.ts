@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/ied/access-point-container.js';
-import { AccessPointContainer } from '../../../../../../src/editors/ied/access-point-container.js';
+import '../../../../src/editors/ied/access-point-container.js';
+import { AccessPointContainer } from '../../../../src/editors/ied/access-point-container.js';
 
 import { getLNClasses } from './test-support.js';
 

@@ -10,12 +10,12 @@ import {
   isReplace,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   editSubEquipmentWizard,
   createSubEquipmentWizard,
-} from '../../../../../src/wizards/subequipment.js';
-import { WizardCheckbox } from '../../../../../src/wizard-checkbox.js';
+} from '../../../src/wizards/subequipment.js';
+import { WizardCheckbox } from '../../../src/wizard-checkbox.js';
 
 describe('Wizards for SCL SubEquipment element', () => {
   let doc: XMLDocument;

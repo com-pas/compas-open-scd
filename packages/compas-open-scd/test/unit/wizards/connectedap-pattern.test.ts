@@ -4,8 +4,8 @@ import fc, { integer, ipV4, nat } from 'fast-check';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import '../../../../../src/editors/communication/connectedap-editor.js';
-import { WizardInputElement } from '../../../../../src/foundation.js';
+import '../../../src/editors/communication/connectedap-editor.js';
+import { WizardInputElement } from '../../../src/foundation.js';
 
 import {
   ipV6,
@@ -14,8 +14,8 @@ import {
   regExp,
   regexString,
 } from '../../foundation.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
-import { editConnectedApWizard } from '../../../../../src/wizards/connectedap.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
+import { editConnectedApWizard } from '../../../src/wizards/connectedap.js';
 
 describe('Edit wizard for SCL element ConnectedAP', () => {
   let doc: XMLDocument;

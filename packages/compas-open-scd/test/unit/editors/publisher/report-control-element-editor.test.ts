@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/publisher/report-control-element-editor.js';
-import { ReportControlElementEditor } from '../../../../../../src/editors/publisher/report-control-element-editor.js';
+import '../../../../src/editors/publisher/report-control-element-editor.js';
+import { ReportControlElementEditor } from '../../../../src/editors/publisher/report-control-element-editor.js';
 
 describe('Editor for ReportControl element and its direct children', () => {
   let doc: XMLDocument;

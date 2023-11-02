@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import SMVSubscribeLaterBindingPlugin from '../../../../../src/editors/SMVSubscriberLaterBinding.js';
+import SMVSubscribeLaterBindingPlugin from '../../../src/editors/SMVSubscriberLaterBinding.js';
 
 describe('SMV Subscribe Later Binding Plugin', () => {
   customElements.define(

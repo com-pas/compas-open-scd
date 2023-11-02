@@ -4,7 +4,7 @@ import fc from 'fast-check';
 import '../../../mock-wizard.js';
 import { MockWizard } from '../../../mock-wizard.js';
 
-import '../../../../../../src/editors/communication/subnetwork-editor.js';
+import '../../../../src/editors/communication/subnetwork-editor.js';
 import { regexString, regExp, inverseRegExp } from '../../../foundation.js';
 
 describe('subnetwork-editor wizarding integration', () => {

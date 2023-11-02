@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import GooseSubscriberLaterBinding from '../../../../../src/editors/GooseSubscriberLaterBinding.js';
+import GooseSubscriberLaterBinding from '../../../src/editors/GooseSubscriberLaterBinding.js';
 
 describe('SMV Subscribe Later Binding Plugin', () => {
   customElements.define(

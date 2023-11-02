@@ -3,10 +3,10 @@ import { expect, fixture, html } from '@open-wc/testing';
 import {
   updateDocumentInOpenSCD,
   newUserInfoEvent,
-} from '../../../../../src/compas/foundation.js';
+} from '../../../src/compas/foundation.js';
 
-import { OpenSCD } from '../../../../../src/open-scd.js';
-import '../../../../../src/open-scd.js';
+import { OpenSCD } from '../../../src/open-scd.js';
+import '../../../src/open-scd.js';
 
 describe('compas-foundation', () => {
   let element: OpenSCD;

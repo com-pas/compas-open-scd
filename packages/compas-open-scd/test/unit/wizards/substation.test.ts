@@ -3,12 +3,12 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   ComplexAction,
   isSimple,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 
 import {
   executeWizardCreateAction,
@@ -18,12 +18,12 @@ import {
   fetchDoc,
   setWizardTextFieldValue,
 } from './test-support.js';
-import { updateNamingAttributeWithReferencesAction } from '../../../../../src/wizards/foundation/actions.js';
+import { updateNamingAttributeWithReferencesAction } from '../../../src/wizards/foundation/actions.js';
 import {
   createAction,
   createSubstationWizard,
   substationEditWizard,
-} from '../../../../../src/wizards/substation.js';
+} from '../../../src/wizards/substation.js';
 
 describe('Wizards for SCL element Substation', () => {
   let doc: XMLDocument;

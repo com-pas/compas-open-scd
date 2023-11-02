@@ -3,10 +3,10 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import '../../../../../../src/editors/substation/zeroline-pane.js';
-import { FilteredList } from '../../../../../../src/filtered-list.js';
-import { ZerolinePane } from '../../../../../../src/editors/substation/zeroline-pane.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import '../../../../src/editors/substation/zeroline-pane.js';
+import { FilteredList } from '../../../../src/filtered-list.js';
+import { ZerolinePane } from '../../../../src/editors/substation/zeroline-pane.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 

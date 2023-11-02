@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/publisher/sampled-value-control-element-editor.js';
-import { SampledValueControlElementEditor } from '../../../../../../src/editors/publisher/sampled-value-control-element-editor.js';
+import '../../../../src/editors/publisher/sampled-value-control-element-editor.js';
+import { SampledValueControlElementEditor } from '../../../../src/editors/publisher/sampled-value-control-element-editor.js';
 
 describe('Editor for SampledValueControl element its referenced elements', () => {
   let doc: XMLDocument;

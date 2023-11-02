@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import { existFcdaReference } from '../../../../../src/foundation/scl.js';
+import { existFcdaReference } from '../../../src/foundation/scl.js';
 
 describe('Global SCL related functions including', () => {
   let ied: Element;

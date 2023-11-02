@@ -6,7 +6,7 @@ import {
   findLogicaNodeElement,
   getInstanceDAElement,
   getValueElements,
-} from '../../../../../../src/editors/ied/foundation.js';
+} from '../../../../src/editors/ied/foundation.js';
 import { getAncestorsFromDA, getAncestorsFromDO } from './test-support.js';
 
 describe('ied-foundation', async () => {

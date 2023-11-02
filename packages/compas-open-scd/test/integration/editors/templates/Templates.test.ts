@@ -3,10 +3,10 @@ import { html, fixture, expect } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import TemplatesPlugin from '../../../../../../src/editors/Templates.js';
-import { Editing, EditingElement } from '../../../../../../src/Editing.js';
-import { Wizarding, WizardingElement } from '../../../../../../src/Wizarding.js';
-import { newWizardEvent } from '../../../../../../src/foundation.js';
+import TemplatesPlugin from '../../../../src/editors/Templates.js';
+import { Editing, EditingElement } from '../../../../src/Editing.js';
+import { Wizarding, WizardingElement } from '../../../../src/Wizarding.js';
+import { newWizardEvent } from '../../../../src/foundation.js';
 
 describe('Templates Plugin', () => {
   customElements.define(

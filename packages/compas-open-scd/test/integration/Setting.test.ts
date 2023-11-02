@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../mock-setter-logger.js';
 import { MockSetterLogger } from '../mock-setter-logger.js';
 
-import { newLoadNsdocEvent } from '../../../../src/Setting.js';
+import { newLoadNsdocEvent } from '../../src/Setting.js';
 
 describe('Setting', () => {
   let element: MockSetterLogger;

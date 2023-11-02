@@ -8,10 +8,10 @@ import {
   Create,
   isCreate,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 
 import { fetchDoc } from './test-support.js';
-import { createConductingEquipmentWizard } from '../../../../../src/wizards/conductingequipment.js';
+import { createConductingEquipmentWizard } from '../../../src/wizards/conductingequipment.js';
 
 describe('Wizards for SCL element ConductingEquipment', () => {
   let doc: XMLDocument;

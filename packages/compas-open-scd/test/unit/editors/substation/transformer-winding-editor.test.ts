@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/transformer-winding-editor.js';
-import { TransformerWindingEditor } from '../../../../../../src/editors/substation/transformer-winding-editor.js';
+import '../../../../src/editors/substation/transformer-winding-editor.js';
+import { TransformerWindingEditor } from '../../../../src/editors/substation/transformer-winding-editor.js';
 
 describe('transformer-winding-editor', () => {
   let element: TransformerWindingEditor;

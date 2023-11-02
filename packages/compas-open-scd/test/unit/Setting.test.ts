@@ -6,7 +6,7 @@ import './mock-setter.js';
 import { MockSetter } from './mock-setter.js';
 
 import { Button } from '@material/mwc-button';
-import { defaults } from '../../../../src/Setting.js';
+import { defaults } from '../../src/Setting.js';
 
 describe('SettingElement', () => {
   let element: MockSetter;

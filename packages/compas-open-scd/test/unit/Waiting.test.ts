@@ -3,7 +3,7 @@ import { html, fixture, expect } from '@open-wc/testing';
 import './mock-waiter.js';
 import { MockWaiter } from './mock-waiter.js';
 
-import { newPendingStateEvent } from '../../../../src/foundation.js';
+import { newPendingStateEvent } from '../../src/foundation.js';
 
 describe('WaitingElement', () => {
   let element: MockWaiter;

@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/general-equipment-editor.js';
-import { GeneralEquipmentEditor } from '../../../../../../src/editors/substation/general-equipment-editor.js';
+import '../../../../src/editors/substation/general-equipment-editor.js';
+import { GeneralEquipmentEditor } from '../../../../src/editors/substation/general-equipment-editor.js';
 
 describe('Editor web component for GeneralEquipment SCL element', () => {
   let element: GeneralEquipmentEditor;

@@ -1,7 +1,7 @@
 import {fixture, html, expect} from '@open-wc/testing';
 
-import {CompasLoadingElement} from "../../../../../src/compas/CompasLoading.js";
-import "../../../../../src/compas/CompasLoading.js";
+import {CompasLoadingElement} from "../../../src/compas/CompasLoading.js";
+import "../../../src/compas/CompasLoading.js";
 
 describe('compas-loading', () => {
   let element: CompasLoadingElement;

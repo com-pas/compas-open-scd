@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/ied/ied-container.js';
-import { IedContainer } from '../../../../../../src/editors/ied/ied-container.js';
+import '../../../../src/editors/ied/ied-container.js';
+import { IedContainer } from '../../../../src/editors/ied/ied-container.js';
 
 describe('ied-container', () => {
   let element: IedContainer;

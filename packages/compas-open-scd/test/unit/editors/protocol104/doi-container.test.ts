@@ -1,12 +1,12 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/protocol104/doi-container.js';
+import '../../../../src/editors/protocol104/doi-container.js';
 
 import {
   get104DetailsLine,
   getFullPath,
-} from '../../../../../../src/editors/protocol104/foundation/foundation.js';
-import { Doi104Container } from '../../../../../../src/editors/protocol104/doi-container.js';
+} from '../../../../src/editors/protocol104/foundation/foundation.js';
+import { Doi104Container } from '../../../../src/editors/protocol104/doi-container.js';
 
 describe('doi-104-container -', () => {
   let document: XMLDocument;

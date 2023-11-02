@@ -4,9 +4,9 @@ import sinon from "sinon";
 import { MockWizard } from '../../mock-wizard.js';
 import '../../mock-wizard.js';
 
-import {addVersionToCompasWizard, CompasUploadVersionElement} from "../../../../../src/compas/CompasUploadVersion.js";
-import {CompasExistsInElement} from "../../../../../src/compas/CompasExistsIn.js";
-import "../../../../../src/compas/CompasUploadVersion.js";
+import {addVersionToCompasWizard, CompasUploadVersionElement} from "../../../src/compas/CompasUploadVersion.js";
+import {CompasExistsInElement} from "../../../src/compas/CompasExistsIn.js";
+import "../../../src/compas/CompasUploadVersion.js";
 
 describe('compas-upload-version', () => {
   let element: CompasUploadVersionElement & CompasExistsInElement;

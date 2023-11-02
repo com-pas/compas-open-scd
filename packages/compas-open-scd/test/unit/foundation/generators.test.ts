@@ -2,7 +2,7 @@ import { expect } from '@open-wc/testing';
 import {
   appIdGenerator,
   mACAddressGenerator,
-} from '../../../../../src/foundation/generators.js';
+} from '../../../src/foundation/generators.js';
 
 describe('MAC-Address generator function', () => {
   let macGenerator: () => string;

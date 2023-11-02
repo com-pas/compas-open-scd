@@ -2,7 +2,7 @@ import { expect } from '@open-wc/testing';
 import {
   uniqueAppId,
   uniqueMacAddress,
-} from '../../../../../../src/wizards/foundation/scl.js';
+} from '../../../../src/wizards/foundation/scl.js';
 
 function incrementMac(oldMac: string): string {
   const mac = oldMac.split('-').join('');

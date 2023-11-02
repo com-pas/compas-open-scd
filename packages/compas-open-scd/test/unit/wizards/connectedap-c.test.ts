@@ -5,7 +5,7 @@ import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base.js';
 
-import { createConnectedApWizard } from '../../../../../src/wizards/connectedap.js';
+import { createConnectedApWizard } from '../../../src/wizards/connectedap.js';
 
 function isAllMacUnique(parent: Element, serviceType: 'GSE' | 'SMV'): boolean {
   const allMacs = Array.from(

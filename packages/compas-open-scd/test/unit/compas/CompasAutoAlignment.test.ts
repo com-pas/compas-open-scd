@@ -1,8 +1,8 @@
 import {expect, fixture, fixtureSync, html, waitUntil} from '@open-wc/testing';
 
-import CompasAutoAlignmentElement from "../../../../../src/compas/CompasAutoAlignment.js";
+import CompasAutoAlignmentElement from "../../../src/compas/CompasAutoAlignment.js";
 
-import "../../../../../src/compas/CompasAutoAlignment.js";
+import "../../../src/compas/CompasAutoAlignment.js";
 
 describe('compas-auto-alignment', () => {
   let element: CompasAutoAlignmentElement;

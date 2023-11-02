@@ -1,8 +1,8 @@
 import { expect, fixtureSync, html } from '@open-wc/testing';
 
-import CompasOpenElement from '../../../../../src/compas/CompasOpen.js';
+import CompasOpenElement from '../../../src/compas/CompasOpen.js';
 
-import '../../../../../src/compas/CompasOpen.js';
+import '../../../src/compas/CompasOpen.js';
 import { Button } from '@material/mwc-button';
 
 describe('compas-open', () => {

@@ -2,7 +2,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import { SinonSpy, spy } from 'sinon';
 
 import {
@@ -11,11 +11,11 @@ import {
   isReplace,
   Replace,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   createProcessWizard,
   editProcessWizard,
-} from '../../../../../src/wizards/process.js';
+} from '../../../src/wizards/process.js';
 
 describe('Wizards for SCL Process element', () => {
   let doc: XMLDocument;

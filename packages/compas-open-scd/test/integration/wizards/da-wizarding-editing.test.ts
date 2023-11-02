@@ -5,12 +5,12 @@ import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { FilteredList } from '../../../../../src/filtered-list.js';
+import { FilteredList } from '../../../src/filtered-list.js';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
-import TemplatesPlugin from '../../../../../src/editors/Templates.js';
-import { WizardSelect } from '../../../../../src/wizard-select.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
-import { WizardCheckbox } from '../../../../../src/wizard-checkbox.js';
+import TemplatesPlugin from '../../../src/editors/Templates.js';
+import { WizardSelect } from '../../../src/wizard-select.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
+import { WizardCheckbox } from '../../../src/wizard-checkbox.js';
 
 describe('DA wizarding editing integration', () => {
   if (customElements.get('templates-editor') === undefined)

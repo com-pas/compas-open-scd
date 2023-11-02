@@ -7,8 +7,8 @@ import {
   stubFetchResponseFunction,
   TYPE_ENTRY_ELEMENT_NAME
 } from "./CompasSclDataServiceResponses.js";
-import {CompasSclTypeList} from "../../../../../src/compas/CompasSclTypeList.js";
-import "../../../../../src/compas/CompasSclTypeList.js";
+import {CompasSclTypeList} from "../../../src/compas/CompasSclTypeList.js";
+import "../../../src/compas/CompasSclTypeList.js";
 
 describe('compas-scltype-list', () => {
   const FETCH_FUNCTION = 'fetchData';

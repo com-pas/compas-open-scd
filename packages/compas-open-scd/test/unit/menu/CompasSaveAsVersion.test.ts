@@ -1,13 +1,13 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import CompasSaveAsVersionMenuPlugin from '../../../../../src/menu/CompasSaveAsVersion.js';
+import CompasSaveAsVersionMenuPlugin from '../../../src/menu/CompasSaveAsVersion.js';
 import {
   COMPAS_SCL_PRIVATE_TYPE,
   getCompasSclFileType,
   getCompasSclName,
   getLabels,
   getPrivate,
-} from '../../../../../src/compas/private.js';
+} from '../../../src/compas/private.js';
 
 describe('compas-save-menu', () => {
   if (customElements.get('compare-save-as-version-menu') === undefined)

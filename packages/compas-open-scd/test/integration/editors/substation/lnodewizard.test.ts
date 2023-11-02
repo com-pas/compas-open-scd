@@ -6,7 +6,7 @@ import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { lNodeWizard } from '../../../../../../src/wizards/lnode.js';
+import { lNodeWizard } from '../../../../src/wizards/lnode.js';
 
 describe('lnodewizard', () => {
   let element: MockWizardEditor;

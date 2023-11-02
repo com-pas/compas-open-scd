@@ -4,14 +4,14 @@ import { SinonSpy, spy } from 'sinon';
 import '../../../../mock-wizard.js';
 import { MockWizard } from '../../../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../../../src/wizard-textfield.js';
 import {
   isCreate,
   WizardInputElement,
   Create,
   patterns,
-} from '../../../../../../../src/foundation.js';
-import { createSubNetworkWizard } from '../../../../../../../src/editors/protocol104/wizards/subnetwork.js';
+} from '../../../../../src/foundation.js';
+import { createSubNetworkWizard } from '../../../../../src/editors/protocol104/wizards/subnetwork.js';
 
 describe('SubNetwork 104 wizard', () => {
   let doc: XMLDocument;

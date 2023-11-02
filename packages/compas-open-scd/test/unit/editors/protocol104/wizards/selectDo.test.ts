@@ -7,7 +7,7 @@ import '../../../../mock-wizard.js';
 import {
   getDataChildren,
   selectDoWizard,
-} from '../../../../../../../src/editors/protocol104/wizards/selectDo.js';
+} from '../../../../../src/editors/protocol104/wizards/selectDo.js';
 
 describe('data model nodes child getter', () => {
   let doc: XMLDocument;

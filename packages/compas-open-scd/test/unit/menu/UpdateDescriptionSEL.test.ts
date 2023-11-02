@@ -4,8 +4,8 @@ import {SinonSpy, spy} from 'sinon';
 import '../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
-import { ComplexAction, isSimple, isReplace } from '../../../../../src/foundation.js';
-import UpdateDescriptionSel from '../../../../../src/menu/UpdateDescriptionSEL.js';
+import { ComplexAction, isSimple, isReplace } from '../../../src/foundation.js';
+import UpdateDescriptionSel from '../../../src/menu/UpdateDescriptionSEL.js';
 
 describe('Update method for desc attributes in SEL IEDs', () => {
   if (customElements.get('update-description-sel') === undefined)

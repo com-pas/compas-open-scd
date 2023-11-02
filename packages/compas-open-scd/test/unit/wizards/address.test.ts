@@ -3,8 +3,8 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardSelect } from '../../../../../src/wizard-select.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardSelect } from '../../../src/wizard-select.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   Create,
   Delete,
@@ -13,11 +13,11 @@ import {
   isDelete,
   Wizard,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   contentGseOrSmvWizard,
   updateAddress,
-} from '../../../../../src/wizards/address.js';
+} from '../../../src/wizards/address.js';
 
 function addressContent(
   inputs: WizardInputElement[]

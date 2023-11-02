@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/publisher/data-set-editor.js';
-import { DataSetEditor } from '../../../../../../src/editors/publisher/data-set-editor.js';
+import '../../../../src/editors/publisher/data-set-editor.js';
+import { DataSetEditor } from '../../../../src/editors/publisher/data-set-editor.js';
 import { cloneTestDoc } from './foundation.test.js';
 
 describe('Editor for DataSet element', () => {

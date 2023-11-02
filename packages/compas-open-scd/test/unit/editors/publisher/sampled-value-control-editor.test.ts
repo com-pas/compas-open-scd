@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/publisher/sampled-value-control-editor.js';
-import { SampledValueControlEditor } from '../../../../../../src/editors/publisher/sampled-value-control-editor.js';
+import '../../../../src/editors/publisher/sampled-value-control-editor.js';
+import { SampledValueControlEditor } from '../../../../src/editors/publisher/sampled-value-control-editor.js';
 import { cloneTestDoc } from './foundation.test.js';
 
 describe('Editor for SampledValueControl element', () => {

@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import CompasCompareIEDPlugin from '../../../../../src/menu/CompasCompareIED.js';
+import CompasCompareIEDPlugin from '../../../src/menu/CompasCompareIED.js';
 
 describe('Compas Compare IED Plugin', () => {
   if (customElements.get('compas-compare-ied') === undefined)

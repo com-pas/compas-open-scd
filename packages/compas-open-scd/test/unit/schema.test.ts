@@ -1,6 +1,6 @@
 import {expect} from "@open-wc/testing";
 
-import {isSCLNamespace, SCL_NAMESPACE} from "../../../../src/schemas.js";
+import {isSCLNamespace, SCL_NAMESPACE} from "../../src/schemas.js";
 
 describe('schema', () => {
   it('when element belongs to SCL Namespace, function should return true', () => {

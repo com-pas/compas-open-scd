@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { identitySort } from '../../../../../../src/editors/cleanup/foundation.js';
+import { identitySort } from '../../../../src/editors/cleanup/foundation.js';
 
 describe('Sorting items by their identity', () => {
   let doc: Document;

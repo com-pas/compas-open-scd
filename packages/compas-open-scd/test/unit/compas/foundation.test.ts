@@ -5,7 +5,7 @@ import {
   compareVersions,
   getTypeFromDocName,
   stripExtensionFromName,
-} from '../../../../../src/compas/foundation.js';
+} from '../../../src/compas/foundation.js';
 
 describe('compas-foundation', () => {
   describe('getTypeFromDocName', () => {

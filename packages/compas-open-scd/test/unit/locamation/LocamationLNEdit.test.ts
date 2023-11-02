@@ -2,15 +2,15 @@ import {expect, fixture, html} from "@open-wc/testing";
 
 import {MockWizard} from "../../mock-wizard.js";
 import {fetchDoc, setWizardTextFieldValue} from "../wizards/test-support.js";
-import {initializeNsdoc, Nsdoc} from "../../../../../src/foundation/nsdoc.js";
-import {WizardTextField} from "../../../../../src/wizard-textfield.js";
-import {ComplexAction, isSimple, isReplace, Replace, WizardAction} from "../../../../../src/foundation.js";
+import {initializeNsdoc, Nsdoc} from "../../../src/foundation/nsdoc.js";
+import {WizardTextField} from "../../../src/wizard-textfield.js";
+import {ComplexAction, isSimple, isReplace, Replace, WizardAction} from "../../../src/foundation.js";
 
 import "../../mock-wizard.js";
 
-import {LocamationVMUEditElement, locamationLNEditWizard} from "../../../../../src/locamation/LocamationLNEdit.js";
+import {LocamationVMUEditElement, locamationLNEditWizard} from "../../../src/locamation/LocamationLNEdit.js";
 
-import "../../../../../src/locamation/LocamationLNList.js";
+import "../../../src/locamation/LocamationLNList.js";
 
 describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', () => {
   let nsdoc: Nsdoc;

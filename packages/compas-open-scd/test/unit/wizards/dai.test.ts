@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   ComplexAction,
   Create,
@@ -11,7 +11,7 @@ import {
   Replace,
   WizardAction,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 
 import { fetchDoc, setWizardTextFieldValue } from './test-support.js';
 import {
@@ -19,7 +19,7 @@ import {
   createValue,
   editDAIWizard,
   updateValue,
-} from '../../../../../src/wizards/dai.js';
+} from '../../../src/wizards/dai.js';
 
 describe('Wizards for SCL element DAI', () => {
   let doc: XMLDocument;

@@ -3,7 +3,7 @@ import {
   createTemplateStructure,
   determineUninitializedStructure,
   initializeElements,
-} from '../../../../../src/foundation/dai.js';
+} from '../../../src/foundation/dai.js';
 
 describe('Global DAI related functions including', () => {
   let doc: Document;

@@ -3,7 +3,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import '../../mock-wizard.js';
 import { MockWizard } from '../../mock-wizard.js';
 
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   ComplexAction,
   Create,
@@ -15,12 +15,12 @@ import {
   Replace,
   Wizard,
   WizardInputElement,
-} from '../../../../../src/foundation.js';
+} from '../../../src/foundation.js';
 import {
   editGseWizard,
   getMTimeAction,
   updateGSEAction,
-} from '../../../../../src/wizards/gse.js';
+} from '../../../src/wizards/gse.js';
 
 describe('gse wizards', () => {
   let doc: XMLDocument;

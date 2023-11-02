@@ -15,7 +15,7 @@ import {
   getCompasSclName,
   getLabels,
   getPrivate,
-} from '../../../../../src/compas/private.js';
+} from '../../../src/compas/private.js';
 
 describe('Private Utility', () => {
   let doc: XMLDocument;

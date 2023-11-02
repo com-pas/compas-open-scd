@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/protocol104/values-container.js';
-import { Values104Container } from '../../../../../../src/editors/protocol104/values-container.js';
+import '../../../../src/editors/protocol104/values-container.js';
+import { Values104Container } from '../../../../src/editors/protocol104/values-container.js';
 
 describe('values-104-container', () => {
   let element: Values104Container;

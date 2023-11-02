@@ -1,11 +1,11 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/zeroline-pane.js';
-import { ZerolinePane } from '../../../../../../src/editors/substation/zeroline-pane.js';
+import '../../../../src/editors/substation/zeroline-pane.js';
+import { ZerolinePane } from '../../../../src/editors/substation/zeroline-pane.js';
 import {
   attachedIeds,
   getAttachedIeds,
-} from '../../../../../../src/editors/substation/foundation.js';
+} from '../../../../src/editors/substation/foundation.js';
 
 describe('zeroline-pane', () => {
   let doc: XMLDocument;

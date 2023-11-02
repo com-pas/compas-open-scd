@@ -1,9 +1,9 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '../../../../../../src/editors/communication/smv-editor.js';
-import { SmvEditor } from '../../../../../../src/editors/communication/smv-editor.js';
-import { isDelete } from '../../../../../../src/foundation.js';
+import '../../../../src/editors/communication/smv-editor.js';
+import { SmvEditor } from '../../../../src/editors/communication/smv-editor.js';
+import { isDelete } from '../../../../src/foundation.js';
 
 describe('Editor web component for SMV element', () => {
   let element: SmvEditor;

@@ -4,10 +4,10 @@ import '../../mock-wizard.js';
 
 import { ListItem } from '@material/mwc-list/mwc-list-item.js';
 
-import { Editing } from '../../../../../src/Editing.js';
-import { Wizarding } from '../../../../../src/Wizarding.js';
-import { Logging } from '../../../../../src/Logging.js';
-import GooseSubscriberMessageBindingPlugin from '../../../../../src/editors/GooseSubscriberMessageBinding.js';
+import { Editing } from '../../../src/Editing.js';
+import { Wizarding } from '../../../src/Wizarding.js';
+import { Logging } from '../../../src/Logging.js';
+import GooseSubscriberMessageBindingPlugin from '../../../src/editors/GooseSubscriberMessageBinding.js';
 
 describe('GOOSE subscriber plugin', () => {
   customElements.define(

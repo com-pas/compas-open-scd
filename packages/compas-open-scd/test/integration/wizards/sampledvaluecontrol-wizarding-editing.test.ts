@@ -5,14 +5,14 @@ import { MockWizardEditor } from '../../mock-wizard-editor.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { FilteredList } from '../../../../../src/filtered-list.js';
-import { WizardTextField } from '../../../../../src/wizard-textfield.js';
+import { FilteredList } from '../../../src/filtered-list.js';
+import { WizardTextField } from '../../../src/wizard-textfield.js';
 import {
   createSampledValueControlWizard,
   selectSampledValueControlWizard,
-} from '../../../../../src/wizards/sampledvaluecontrol.js';
-import { WizardCheckbox } from '../../../../../src/wizard-checkbox.js';
-import { FinderList } from '../../../../../src/finder-list.js';
+} from '../../../src/wizards/sampledvaluecontrol.js';
+import { WizardCheckbox } from '../../../src/wizard-checkbox.js';
+import { FinderList } from '../../../src/finder-list.js';
 
 describe('Wizards for SCL element SampledValueControl', () => {
   let doc: XMLDocument;

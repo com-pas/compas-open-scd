@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import { dAValidator } from '../../../../../../src/validators/templates/dabda.js';
+import { dAValidator } from '../../../../src/validators/templates/dabda.js';
 
 describe('da or bda validator', () => {
   let doc: XMLDocument;

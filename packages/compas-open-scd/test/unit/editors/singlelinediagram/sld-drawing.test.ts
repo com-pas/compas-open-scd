@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { SCL_COORDINATES_NAMESPACE } from '../../../../../../src/editors/singlelinediagram/foundation.js';
+import { SCL_COORDINATES_NAMESPACE } from '../../../../src/editors/singlelinediagram/foundation.js';
 import {
   createBayElement,
   createBusBarElement,
@@ -14,7 +14,7 @@ import {
   getDirections,
   getParentElementName,
   SVG_GRID_SIZE,
-} from '../../../../../../src/editors/singlelinediagram/sld-drawing.js';
+} from '../../../../src/editors/singlelinediagram/sld-drawing.js';
 
 function setCoordinates(element: Element, x: number, y: number): void {
   element.setAttributeNS(

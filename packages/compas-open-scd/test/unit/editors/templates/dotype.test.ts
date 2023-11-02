@@ -10,8 +10,8 @@ import {
   isSimple,
   Replace,
   WizardInputElement,
-} from '../../../../../../src/foundation.js';
-import { dOTypeWizard } from '../../../../../../src/editors/templates/dotype-wizards.js';
+} from '../../../../src/foundation.js';
+import { dOTypeWizard } from '../../../../src/editors/templates/dotype-wizards.js';
 
 describe('wizards for DOType element', () => {
   let doc: XMLDocument;

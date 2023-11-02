@@ -3,9 +3,9 @@ import { html, fixture, expect } from '@open-wc/testing';
 import '../../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
-import Communication from '../../../../../../src/editors/Communication.js'; 
+import Communication from '../../../../src/editors/Communication.js'; 
 import { Dialog } from '@material/mwc-dialog';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 
 describe('Communication Plugin', () => {
   customElements.define(
@@ -59,7 +59,7 @@ describe('Communication Plugin', () => {
       parent = <MockWizardEditor>(
         await fixture(
           html`<mock-wizard-editor
-            >${element}/mock-wizard-editor>`
+            >${element}</mock-wizard-editor>`
         )
       );
       await element.updateComplete;

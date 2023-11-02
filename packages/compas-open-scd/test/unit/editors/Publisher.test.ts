@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import Publisher from '../../../../../src/editors/Publisher.js';
+import Publisher from '../../../src/editors/Publisher.js';
 
 describe('Publisher plugin', () => {
   customElements.define('publisher-plugin', Publisher);

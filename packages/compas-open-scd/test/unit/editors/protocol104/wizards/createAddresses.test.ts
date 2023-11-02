@@ -8,14 +8,14 @@ import {
   isSimple,
   WizardAction,
   WizardInputElement,
-} from '../../../../../../../src/foundation.js';
+} from '../../../../../src/foundation.js';
 
 import '../../../../mock-wizard.js';
 
 import {
   createAddressesAction,
   createAddressesWizard,
-} from '../../../../../../../src/editors/protocol104/wizards/createAddresses.js';
+} from '../../../../../src/editors/protocol104/wizards/createAddresses.js';
 
 import { fetchDoc } from '../../../wizards/test-support.js';
 import { Switch } from '@material/mwc-switch';

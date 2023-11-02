@@ -1,9 +1,9 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import { Wizarding } from '../../../../../src/Wizarding.js';
-import { Editing } from '../../../../../src/Editing.js';
-import { initializeNsdoc } from '../../../../../src/foundation/nsdoc.js';
+import { Wizarding } from '../../../src/Wizarding.js';
+import { Editing } from '../../../src/Editing.js';
+import { initializeNsdoc } from '../../../src/foundation/nsdoc.js';
 
-import SMVSubscriberDataBinding from '../../../../../src/editors/SMVSubscriberDataBinding.js';
+import SMVSubscriberDataBinding from '../../../src/editors/SMVSubscriberDataBinding.js';
 
 import {
   getExtrefDataBindingList,
@@ -11,7 +11,7 @@ import {
   getSelectedSubItemValue,
   selectFCDAItem,
 } from './test-support.js';
-import { Logging } from '../../../../../src/Logging.js';
+import { Logging } from '../../../src/Logging.js';
 describe('SMV Subscribe Data Binding Plugin', async () => {
   customElements.define(
     'smv-subscriber-data-binding-plugin',

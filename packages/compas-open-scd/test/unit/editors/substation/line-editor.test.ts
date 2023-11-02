@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '../../../../../../src/editors/substation/line-editor.js';
-import { LineEditor } from '../../../../../../src/editors/substation/line-editor.js';
+import '../../../../src/editors/substation/line-editor.js';
+import { LineEditor } from '../../../../src/editors/substation/line-editor.js';
 
 describe('web component rendering Line element', () => {
   let element: LineEditor;

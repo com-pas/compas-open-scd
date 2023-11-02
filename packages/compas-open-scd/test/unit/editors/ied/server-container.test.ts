@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/ied/server-container.js';
-import { ServerContainer } from '../../../../../../src/editors/ied/server-container.js';
+import '../../../../src/editors/ied/server-container.js';
+import { ServerContainer } from '../../../../src/editors/ied/server-container.js';
 
 import { getLNClasses } from './test-support.js';
 

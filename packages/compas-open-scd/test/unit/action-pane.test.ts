@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../src/action-pane.js';
-import '../../../../src/editors/substation/bay-editor.js';
-import { ActionPane } from '../../../../src/action-pane.js';
+import '../../src/action-pane.js';
+import '../../src/editors/substation/bay-editor.js';
+import { ActionPane } from '../../src/action-pane.js';
 
 describe('action-pane', () => {
   let element: ActionPane;

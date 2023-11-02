@@ -1,9 +1,9 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '../../../../../../src/editors/protocol104/ied-container.js';
+import '../../../../src/editors/protocol104/ied-container.js';
 
-import { getFullPath } from '../../../../../../src/editors/protocol104/foundation/foundation.js';
-import { Ied104Container } from '../../../../../../src/editors/protocol104/ied-container.js';
+import { getFullPath } from '../../../../src/editors/protocol104/foundation/foundation.js';
+import { Ied104Container } from '../../../../src/editors/protocol104/ied-container.js';
 
 describe('ied-104-container -', () => {
   let document: XMLDocument;

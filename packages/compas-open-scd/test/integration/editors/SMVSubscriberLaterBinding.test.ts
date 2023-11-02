@@ -1,17 +1,17 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import { Wizarding } from '../../../../../src/Wizarding.js';
-import { Editing } from '../../../../../src/Editing.js';
-import { Logging } from '../../../../../src/Logging.js';
+import { Wizarding } from '../../../src/Wizarding.js';
+import { Editing } from '../../../src/Editing.js';
+import { Logging } from '../../../src/Logging.js';
 
-import SMVSubscribeLaterBindingPlugin from '../../../../../src/editors/SMVSubscriberLaterBinding.js';
+import SMVSubscribeLaterBindingPlugin from '../../../src/editors/SMVSubscriberLaterBinding.js';
 import {
   getExtrefLaterBindingList,
   getFCDABindingList,
   getSelectedSubItemValue,
   selectFCDAItem,
 } from './test-support.js';
-import { ExtRefLaterBindingList } from '../../../../../src/editors/subscription/later-binding/ext-ref-later-binding-list.js';
+import { ExtRefLaterBindingList } from '../../../src/editors/subscription/later-binding/ext-ref-later-binding-list.js';
 
 describe('SMV Subscribe Later Binding plugin', () => {
   customElements.define(

@@ -1,16 +1,16 @@
 import { expect } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import { Create } from '../../../../../../../src/foundation.js';
+import { Create } from '../../../../../src/foundation.js';
 
 import {
   cdcProcessings,
   SupportedCdcType,
-} from '../../../../../../../src/editors/protocol104/foundation/cdc.js';
+} from '../../../../../src/editors/protocol104/foundation/cdc.js';
 import {
   createActions,
   createCheckActions,
-} from '../../../../../../../src/editors/protocol104/foundation/actions.js';
+} from '../../../../../src/editors/protocol104/foundation/actions.js';
 
 describe('foundation', () => {
   let doc: XMLDocument;

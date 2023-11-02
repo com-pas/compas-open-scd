@@ -5,9 +5,9 @@ import { MockWizardEditor } from '../../../mock-wizard-editor.js';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '../../../../../../src/editors/substation/function-editor.js';
-import { FunctionEditor } from '../../../../../../src/editors/substation/function-editor.js';
-import { WizardTextField } from '../../../../../../src/wizard-textfield.js';
+import '../../../../src/editors/substation/function-editor.js';
+import { FunctionEditor } from '../../../../src/editors/substation/function-editor.js';
+import { WizardTextField } from '../../../../src/wizard-textfield.js';
 import { MenuBase } from '@material/mwc-menu/mwc-menu-base.js';
 
 const openAndCancelMenu: (
