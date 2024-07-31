@@ -62,7 +62,7 @@ export function newSetPluginsEvent(indices) {
   });
 }
 const pluginTags = new Map();
-function pluginTag(uri) {
+export function pluginTag(uri) {
   if (!pluginTags.has(uri)) {
     let h1 = 3735928559, h2 = 1103547991;
     for (let i = 0, ch; i < uri.length; i++) {
@@ -76,7 +76,7 @@ function pluginTag(uri) {
   }
   return pluginTags.get(uri);
 }
-function staticTagHtml(oldStrings, ...oldArgs) {
+export function staticTagHtml(oldStrings, ...oldArgs) {
   const args = [...oldArgs];
   const firstArg = args.shift();
   const lastArg = args.pop();
@@ -92,7 +92,7 @@ function staticTagHtml(oldStrings, ...oldArgs) {
   return html(strings, ...args);
 }
 export const menuPosition = ["top", "middle", "bottom"];
-function withoutContent(plugin) {
+export function withoutContent(plugin) {
   return {...plugin, content: void 0};
 }
 export const pluginIcons = {
@@ -103,7 +103,7 @@ export const pluginIcons = {
   middle: "play_circle",
   bottom: "play_circle"
 };
-const menuOrder = [
+export const menuOrder = [
   "editor",
   "top",
   "validator",
@@ -325,5 +325,5 @@ __decorate([
   property({type: Object})
 ], OpenSCD.prototype, "plugins", 2);
 OpenSCD = __decorate([
-  customElement("open-scd")
+  customElement("open-scd-stop")
 ], OpenSCD);

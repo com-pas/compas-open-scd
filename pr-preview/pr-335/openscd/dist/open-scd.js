@@ -52,7 +52,7 @@ const pluginTags = new Map();
  * https://github.com/bryc/code/blob/master/jshash/experimental/cyrb53.js .
  * @returns a valid customElement tagName containing the URI hash.
  */
-function pluginTag(uri) {
+export function pluginTag(uri) {
     if (!pluginTags.has(uri)) {
         let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
         for (let i = 0, ch; i < uri.length; i++) {
@@ -86,7 +86,7 @@ function pluginTag(uri) {
  * After upgrading to Lit 2 we can use their static HTML functions instead:
  * https://lit.dev/docs/api/static-html/
  */
-function staticTagHtml(oldStrings, ...oldArgs) {
+export function staticTagHtml(oldStrings, ...oldArgs) {
     const args = [...oldArgs];
     const firstArg = args.shift();
     const lastArg = args.pop();
@@ -102,7 +102,7 @@ function staticTagHtml(oldStrings, ...oldArgs) {
     return html(strings, ...args);
 }
 export const menuPosition = ['top', 'middle', 'bottom'];
-function withoutContent(plugin) {
+export function withoutContent(plugin) {
     return { ...plugin, content: undefined };
 }
 export const pluginIcons = {
@@ -113,7 +113,7 @@ export const pluginIcons = {
     middle: 'play_circle',
     bottom: 'play_circle',
 };
-const menuOrder = [
+export const menuOrder = [
     'editor',
     'top',
     'validator',
@@ -361,7 +361,7 @@ __decorate([
     property({ type: Object })
 ], OpenSCD.prototype, "plugins", void 0);
 OpenSCD = __decorate([
-    customElement('open-scd')
+    customElement('open-scd-stop')
 ], OpenSCD);
 export { OpenSCD };
 //# sourceMappingURL=open-scd.js.map
