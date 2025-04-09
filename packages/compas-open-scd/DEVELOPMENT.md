@@ -15,9 +15,11 @@ development setup.
 Once Node.js is installed on your system, you may get started by entering the following lines in your command prompt:
 
 ```
-git clone https://github.com/com-pas/compas-open-scd
+git clone --recurse-submodules https://github.com/com-pas/compas-open-scd
 cd compas-open-scd
 npm install
+npm run build
+cd packages/compas-open-scd
 npm start
 ```
 
