@@ -92,7 +92,7 @@ A Docker Image `compas_keycloak` is created that can be started using the follow
 
 ```shell
 docker run --rm --name compas_keycloak \
-   -p 8089:8080 
+   -p 8089:8080 \
    -d compas_keycloak:latest
 ```
 
@@ -101,11 +101,12 @@ There are now 3 users available to be used, `scl-data-editor`, `scl-data-reader`
 
 ### Postman
 
-To make a call to the CoMPAS Backend Service work in CoMPAS OpenSCD we need to import an environment and authorisation 
-collection. These files can be found in [CoMPAS Deployment Repository](https://github.com/com-pas/compas-deployment) 
-in the directory `postman` (`auth.collection.json` and `local.environment.json`).
+To make a call to the CoMPAS Backend Service work in CoMPAS OpenSCD we need to import an environment and authorisation collection. These files can be found in [CoMPAS Deployment Repository](https://github.com/com-pas/compas-deployment) in the directory `postman` (`auth.collection.json` and `local.environment.json`).
+1. Open Postman, click the Collections tab and and import `auth.collection.json`.
+2. Click the Environments tab and import `local.environment.json`.
+3. In the imported collection, Select the imported environment (local). 
 
-In the authorisation collection there are called for the 3 users known within the Demo KeyCloak instance.
+In the authorisation collection there are calls for the 3 users known within the Demo KeyCloak instance.
 If one of these calls are executed you can switch to the tab `Visualize`. There is a button to copy the bearer to the 
 clipboard. This will also be done automatically when switching to the tab (label becomes `Copied!`).
 The value of the clipboard can be copied in ModHeader Extension as Authorization Header. 
