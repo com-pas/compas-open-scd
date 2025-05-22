@@ -17,7 +17,7 @@ module.exports = {
   runtimeCaching: [
     {
       urlPattern: /package\.json\.proxy\.js$/,
-      handler: 'NetworkOnly',
+      handler: 'NetworkFirst',
     },
     {
       urlPattern: /\/(_snowpack|public|src)\/.*/,
