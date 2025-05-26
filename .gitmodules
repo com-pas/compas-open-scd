@@ -16,7 +16,7 @@
 	branch = deploy
 [submodule "packages/external-plugins/scl-template-update"]
 	path = packages/external-plugins/scl-template-update
-	url = https://github.com/OpenEnergyTools/scl-template-update
+	url = https://github.com/openscd/scl-template-update
 	branch = deploy
 [submodule "packages/external-plugins/oscd-designer"]
 	path = packages/external-plugins/oscd-designer
