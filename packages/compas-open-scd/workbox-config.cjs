@@ -7,6 +7,8 @@ module.exports = {
     '_snowpack/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
     'public/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
     'src/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
+    'plugins/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
+    'external-plugins/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
     '*.{md,json,ico,xml}',
     'package.json.proxy.js',
   ],
