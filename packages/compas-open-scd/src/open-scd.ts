@@ -41,6 +41,10 @@ import {
 } from '@openscd/open-scd/src/plugin.events.js';
 import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
 import packageJson from '../package.json';
+import { CompasSclDataService } from './compas-services/CompasSclDataService.js';
+import { createLogEvent } from './compas-services/foundation.js';
+
+const LNODE_LIB_DOC_ID = '3942f511-7d87-4482-bff9-056a98c6ce15';
 
 /** The `<open-scd>` custom element is the main entry point of the
  * Open Substation Configuration Designer. */
@@ -125,6 +129,18 @@ export class OpenSCD extends LitElement {
     this.dispatchEvent(newOpenDocEvent(doc, docName));
 
     if (src.startsWith('blob:')) URL.revokeObjectURL(src);
+  }
+
+  /** Loads the LNodeTypeDB.ssd document from the CompasSclDataService */
+  private async loadLNodeLib(e: CustomEvent): Promise<void> {
+    const doc = await CompasSclDataService()
+      .getSclDocument(this, 'SSD', LNODE_LIB_DOC_ID)
+      .catch(reason => createLogEvent(this, reason));
+    if (doc instanceof Document) {
+      e.detail.callback(doc);
+    } else {
+      e.detail.callback(undefined);
+    }
   }
 
   /**
@@ -434,6 +450,7 @@ export class OpenSCD extends LitElement {
               validator: plugin.kind === 'validator',
               editor: plugin.kind === 'editor',
             })}"
+            @request-libdoc=${(e: CustomEvent) => this.loadLNodeLib(e)}
           ></${tag}>`;
       },
     };
