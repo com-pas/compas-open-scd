@@ -141,9 +141,8 @@ export class OpenSCD extends LitElement {
     this.compasApi = {
       lNodeLibrary: {
         loadLNodeLibrary: async () => {
-          if (this._lNodeLibrary) return this._lNodeLibrary;
-          this._lNodeLibrary = await this.loadLNodeLibrary();
-          return this._lNodeLibrary;
+          const doc = await this.loadLNodeLibrary();
+          return doc;
         },
         lNodeLibrary: () => this._lNodeLibrary,
       },
@@ -153,7 +152,11 @@ export class OpenSCD extends LitElement {
   private async loadLNodeLibrary(): Promise<Document | null> {
     try {
       const doc = await CompasSclDataService().getSclDocument(this, 'SSD', LNODE_LIB_DOC_ID);
-      return doc instanceof Document ? doc : null;
+      if (doc instanceof Document) {
+        this._lNodeLibrary = doc;
+        return doc;
+      }
+      return null;
     } catch (reason) {
       createLogEvent(this, reason);
       return null;
