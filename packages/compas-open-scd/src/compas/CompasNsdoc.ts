@@ -4,9 +4,23 @@ import {
   createLogEvent,
   createNSDocLogEvent,
 } from '../compas-services/foundation.js';
-import { CompasSclValidatorService } from '../compas-services/CompasValidatorService.js';
 import { CompasNSDocFileService } from '../compas-services/CompasNSDocFileService.js';
 import { newLoadNsdocEvent } from '@openscd/core/foundation/deprecated/settings.js';
+
+interface NsdocFileResponse {
+  id: string;
+  nsdocId: string;
+  filename: string;
+  checksum: string;
+}
+
+interface NsdocListResponse {
+  files: NsdocFileResponse[];
+}
+
+interface NsdocContentResponse {
+  content: string;
+}
 
 /**
  * Load a single entry. Use the nsdocId to look in the Local Storage, if already loaded,
@@ -37,10 +51,8 @@ async function processNsdocFile(
     console.info(`Loading NSDoc File '${nsdocId}' with ID '${id}'.`);
     await CompasNSDocFileService()
       .getNsdocFile(id)
-      .then(document => {
-        const nsdocContent =
-          document.querySelectorAll('NsdocFile').item(0).textContent ?? '';
-        component.dispatchEvent(newLoadNsdocEvent(nsdocContent, filename));
+      .then((response: NsdocContentResponse) => {
+        component.dispatchEvent(newLoadNsdocEvent(response.content, filename));
         localStorage.setItem(checksumKey, checksum);
       })
       .catch(() => {
@@ -58,18 +70,11 @@ async function processNsdocFile(
 export async function loadNsdocFiles(component: Element): Promise<void> {
   await CompasNSDocFileService()
     .listNsdocFiles()
-    .then(response => {
-      Array.from(response.querySelectorAll('NsdocFile') ?? []).forEach(
-        nsdocFile => {
-          const id = nsdocFile.querySelector('Id')!.textContent ?? '';
-          const nsdocId = nsdocFile.querySelector('NsdocId')!.textContent ?? '';
-          const filename =
-            nsdocFile.querySelector('Filename')!.textContent ?? '';
-          const checksum =
-            nsdocFile.querySelector('Checksum')!.textContent ?? '';
-          processNsdocFile(component, id, nsdocId, filename, checksum);
-        }
-      );
+    .then((response: NsdocListResponse) => {
+      response.files.forEach(nsdocFile => {
+        const { id, nsdocId, filename, checksum } = nsdocFile;
+        processNsdocFile(component, id, nsdocId, filename, checksum);
+      });
     })
     .catch(reason => {
       createLogEvent(component, reason);
