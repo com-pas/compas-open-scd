@@ -1,4 +1,4 @@
-FROM public.ecr.aws/nginx/nginx:1.29.2
+FROM public.ecr.aws/nginx/nginx:1.29.3
 
 COPY ./nginx/default.conf.template /etc/nginx/templates/default.conf.template
 COPY build/. /usr/share/nginx/html
