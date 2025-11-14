@@ -1,18 +1,32 @@
-import {expect, fixture, html} from "@open-wc/testing";
+import { expect, fixture, html } from '@open-wc/testing';
 
-import {MockWizardEditor} from "@openscd/open-scd/test/mock-wizard-editor.js";
-import {fetchDoc, setWizardTextFieldValue} from "@openscd/plugins/test/unit/wizards/test-support.js";
-import {initializeNsdoc, Nsdoc} from "@openscd/open-scd/src/foundation/nsdoc.js";
-import {WizardTextField} from "@openscd/open-scd/src/wizard-textfield.js";
-import {WizardAction} from "@openscd/open-scd/src/foundation.js";
-import {ComplexAction, isSimple, isReplace, Replace} from "@openscd/core/foundation/deprecated/editor.js";
+import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import {
+  fetchDoc,
+  setWizardTextFieldValue,
+} from '@openscd/plugins/test/unit/wizards/test-support.js';
+import {
+  initializeNsdoc,
+  Nsdoc,
+} from '@openscd/open-scd/src/foundation/nsdoc.js';
+import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardAction } from '@openscd/open-scd/src/foundation.js';
+import {
+  ComplexAction,
+  isSimple,
+  isReplace,
+  Replace,
+} from '@compas-oscd/core/foundation/deprecated/editor.js';
 
-import "@openscd/open-scd/test/mock-wizard-editor.js";
+import '@openscd/open-scd/test/mock-wizard-editor.js';
 import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 
-import {LocamationVMUEditElement, locamationLNEditWizard} from "../../../src/locamation/LocamationLNEdit.js";
+import {
+  LocamationVMUEditElement,
+  locamationLNEditWizard,
+} from '../../../src/locamation/LocamationLNEdit.js';
 
-import "../../../src/locamation/LocamationLNList.js";
+import '../../../src/locamation/LocamationLNList.js';
 
 describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', () => {
   let nsdoc: Nsdoc;
@@ -28,7 +42,7 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     let element: MockWizardEditor;
 
     beforeEach(async () => {
-      logicalNode = doc.querySelector('LN[prefix="I01A"][lnClass="TCTR"]')!
+      logicalNode = doc.querySelector('LN[prefix="I01A"][lnClass="TCTR"]')!;
 
       element = await fixture(html`<mock-wizard-editor></mock-wizard-editor>`);
       const wizard = locamationLNEditWizard(logicalNode, nsdoc);
@@ -47,7 +61,12 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     beforeEach(async () => {
       logicalNode = doc.querySelector('LN[prefix="I01A"][lnClass="TCTR"]')!;
 
-      element = await fixture(html`<locamation-ln-edit .logicalNode="${logicalNode}" .nsdoc="${nsdoc}"></locamation-ln-edit>`);
+      element = await fixture(
+        html`<locamation-ln-edit
+          .logicalNode="${logicalNode}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-edit>`
+      );
       await element.requestUpdate();
     });
 
@@ -57,7 +76,10 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the identifier with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[4], '10.10.8');
+      await setWizardTextFieldValue(
+        <WizardTextField>element.inputs[4],
+        '10.10.8'
+      );
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('10.12.14');
@@ -65,7 +87,10 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the identifier with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[4], '10.10.AA');
+      await setWizardTextFieldValue(
+        <WizardTextField>element.inputs[4],
+        '10.10.AA'
+      );
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
@@ -108,7 +133,12 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     beforeEach(async () => {
       logicalNode = doc.querySelector('LN[prefix="I01A"][lnClass="TCTR"]')!;
 
-      element = await fixture(html`<locamation-ln-edit .logicalNode="${logicalNode}" .nsdoc="${nsdoc}"></locamation-ln-edit>`);
+      element = await fixture(
+        html`<locamation-ln-edit
+          .logicalNode="${logicalNode}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-edit>`
+      );
       await element.requestUpdate();
     });
 
@@ -138,12 +168,20 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     beforeEach(async () => {
       logicalNode = doc.querySelector('LN[prefix="I01N"][lnClass="TCTR"]')!;
 
-      element = await fixture(html`<locamation-ln-edit .logicalNode="${logicalNode}" .nsdoc="${nsdoc}"></locamation-ln-edit>`);
+      element = await fixture(
+        html`<locamation-ln-edit
+          .logicalNode="${logicalNode}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-edit>`
+      );
       await element.requestUpdate();
     });
 
     it('when saving and updating the sum with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '3,4,5');
+      await setWizardTextFieldValue(
+        <WizardTextField>element.inputs[5],
+        '3,4,5'
+      );
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('0,1,2');
@@ -151,7 +189,10 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the sum with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '6,7,8');
+      await setWizardTextFieldValue(
+        <WizardTextField>element.inputs[5],
+        '6,7,8'
+      );
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
@@ -168,7 +209,12 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     beforeEach(async () => {
       logicalNode = doc.querySelector('LN[prefix="V01A"][lnClass="TVTR"]')!;
 
-      element = await fixture(html`<locamation-ln-edit .logicalNode="${logicalNode}" .nsdoc="${nsdoc}"></locamation-ln-edit>`);
+      element = await fixture(
+        html`<locamation-ln-edit
+          .logicalNode="${logicalNode}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-edit>`
+      );
       await element.requestUpdate();
     });
 
@@ -198,12 +244,20 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     beforeEach(async () => {
       logicalNode = doc.querySelector('LN[prefix="V01N"][lnClass="TVTR"]')!;
 
-      element = await fixture(html`<locamation-ln-edit .logicalNode="${logicalNode}" .nsdoc="${nsdoc}"></locamation-ln-edit>`);
+      element = await fixture(
+        html`<locamation-ln-edit
+          .logicalNode="${logicalNode}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-edit>`
+      );
       await element.requestUpdate();
     });
 
     it('when saving and updating the sum with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '2,1,0');
+      await setWizardTextFieldValue(
+        <WizardTextField>element.inputs[5],
+        '2,1,0'
+      );
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('0,1,2');
@@ -211,7 +265,10 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the sum with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '3,4,5');
+      await setWizardTextFieldValue(
+        <WizardTextField>element.inputs[5],
+        '3,4,5'
+      );
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
@@ -223,7 +280,9 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
   });
 });
 
-function validateAndRetrieveReplaceAction(complexActions: WizardAction[]): Replace {
+function validateAndRetrieveReplaceAction(
+  complexActions: WizardAction[]
+): Replace {
   expect(complexActions.length).to.be.equal(1);
   expect(complexActions[0]).to.not.satisfy(isSimple);
 

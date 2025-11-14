@@ -1,9 +1,7 @@
 import { LitElement, property } from 'lit-element';
-import {
-  newActionEvent,
-} from '@openscd/core/foundation/deprecated/editor.js';
+import { newActionEvent } from '@compas-oscd/core/foundation/deprecated/editor.js';
 import { createElement } from '@compas-oscd/xml';
-import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
+import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
 import { get } from 'lit-translate';
 
 let cbNum = 1;

@@ -1,8 +1,4 @@
-import {
-  html,
-  TemplateResult,
-  customElement,
-} from 'lit-element';
+import { html, TemplateResult, customElement } from 'lit-element';
 
 import '@material/mwc-button';
 import '@material/mwc-dialog';
@@ -15,11 +11,12 @@ import '@material/mwc-snackbar';
 
 import '@openscd/open-scd/src/filtered-list.js';
 
-import {
-  IssueDetail,
-} from '@openscd/core/foundation/deprecated/history.js';
+import { IssueDetail } from '@compas-oscd/core/foundation/deprecated/history.js';
 
-import { HistoryUIDetail, OscdHistory } from '@openscd/open-scd/src/addons/History.js';
+import {
+  HistoryUIDetail,
+  OscdHistory,
+} from '@openscd/open-scd/src/addons/History.js';
 import { wizards } from '@openscd/plugins/src/wizards/wizard-library';
 import { newWizardEvent, SCLTag } from '@openscd/open-scd/src/foundation';
 import { nothing } from 'lit-html';
@@ -100,16 +97,15 @@ export class CompasHistory extends OscdHistory {
         <span> ${issue.title}</span>
         <span slot="secondary">${issue.message}</span>
         ${this.hasEditWizard(issue.element)
-            ? html` <span slot="meta">
-                <mwc-icon-button
-                  icon="edit"
-                  @click=${() => this.openEditWizard(issue.element)}
-                ></mwc-icon-button>
-              </span>`
-            : nothing}
+          ? html` <span slot="meta">
+              <mwc-icon-button
+                icon="edit"
+                @click=${() => this.openEditWizard(issue.element)}
+              ></mwc-icon-button>
+            </span>`
+          : nothing}
       </mwc-list-item>
-    </abbr
-    >`;
+    </abbr>`;
   }
 }
 

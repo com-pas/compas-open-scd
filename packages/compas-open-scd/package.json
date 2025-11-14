@@ -18,6 +18,8 @@
   "module": "open-scd.js",
   "type": "module",
   "dependencies": {
+    "@compas-oscd/core": "^0.1.4",
+    "@compas-oscd/xml": "^0.0.1",
     "@material/mwc-dialog": "0.22.1",
     "@material/mwc-drawer": "0.22.1",
     "@material/mwc-fab": "0.22.1",
@@ -36,17 +38,16 @@
     "@material/mwc-textarea": "0.22.1",
     "@material/mwc-textfield": "0.22.1",
     "@material/mwc-top-app-bar-fixed": "0.22.1",
+    "@openscd/addons": "*",
+    "@openscd/open-scd": "*",
+    "@openscd/plugins": "*",
     "ace-custom-element": "^1.6.5",
     "csv-stringify": "^6.2.0",
     "lit-element": "2.5.1",
     "lit-html": "1.4.1",
     "lit-translate": "^1.2.1",
     "marked": "^4.0.10",
-    "panzoom": "^9.4.2",
-    "@compas-oscd/xml": "^0.0.1",
-    "@openscd/open-scd": "*",
-    "@openscd/plugins": "*",
-    "@openscd/addons": "*"
+    "panzoom": "^9.4.2"
   },
   "scripts": {
     "lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
@@ -106,7 +107,7 @@
     "tslib": "^2.3.1",
     "typedoc": "^0.21.10",
     "typedoc-plugin-markdown": "3.10.4",
-    "typescript": "4.3.5",
+    "typescript": "4.9.5",
     "web-component-analyzer": "^1.1.6",
     "workbox-cli": "^6.2.4"
   },

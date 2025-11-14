@@ -2,7 +2,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 
 import '@openscd/open-scd/test/unit/mock-logger.js';
 
-import { newIssueEvent } from '@openscd/core/foundation/deprecated/history.js';
+import { newIssueEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
 
 import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
 import { OscdHistory } from '@openscd/open-scd//src/addons/History.js';

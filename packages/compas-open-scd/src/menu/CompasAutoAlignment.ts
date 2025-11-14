@@ -1,7 +1,7 @@
 import { html, LitElement, property } from 'lit-element';
 import { get } from 'lit-translate';
 
-import { newPendingStateEvent } from '@openscd/core/foundation/deprecated/waiter.js';
+import { newPendingStateEvent } from '@compas-oscd/core/foundation/deprecated/waiter.js';
 import {
   newWizardEvent,
   Wizard,

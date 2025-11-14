@@ -12,8 +12,8 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-check-list-item';
 
 import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
-import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
-import { newOpenDocEvent } from '@openscd/core/foundation/deprecated/open-event.js';
+import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
+import { newOpenDocEvent } from '@compas-oscd/core/foundation/deprecated/open-event.js';
 
 import { CompasSclAutoAlignmentService } from '../compas-services/CompasSclAutoAlignmentService.js';
 import { createLogEvent } from '../compas-services/foundation.js';
