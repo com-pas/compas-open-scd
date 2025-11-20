@@ -1,14 +1,14 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd/addons/Wizards.js';
+import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import { WizardInputElement } from '@openscd/open-scd/src/foundation.js';
-import { 
-  Create, 
-  Replace, 
+import { WizardTextField } from '@compas-oscd/open-scd/wizard-textfield.js';
+import { WizardInputElement } from '@compas-oscd/open-scd/foundation.js';
+import {
+  Create,
+  Replace,
   isCreate,
   isReplace,
 } from '@openscd/core/foundation/deprecated/editor.js';
@@ -16,7 +16,7 @@ import {
   createTapChangerWizard,
   editTapChangerWizard,
 } from '../../../src/wizards/tapchanger.js';
-import { WizardCheckbox } from '@openscd/open-scd/src/wizard-checkbox.js';
+import { WizardCheckbox } from '@compas-oscd/open-scd/wizard-checkbox.js';
 
 describe('Wizards for SCL TapChanger element', () => {
   let doc: XMLDocument;

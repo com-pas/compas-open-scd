@@ -2,7 +2,7 @@ import {
   getValue,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 
 import { cloneElement } from '@openscd/xml';
 

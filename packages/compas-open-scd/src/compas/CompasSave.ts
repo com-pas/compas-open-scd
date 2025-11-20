@@ -17,7 +17,7 @@ import '@material/mwc-button';
 import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
 import { saveDocumentToFile } from '../file.js';
 
-import '@openscd/open-scd/src/WizardDivider.js';
+import '@compas-oscd/open-scd/WizardDivider.js';
 
 import { CompasExistsIn } from './CompasExistsIn.js';
 import { CompasChangeSetRadiogroup } from './CompasChangeSetRadiogroup.js';

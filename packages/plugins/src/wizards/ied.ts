@@ -4,7 +4,7 @@ import { get } from 'lit-translate';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   identity,
   isPublic,
@@ -14,7 +14,7 @@ import {
   WizardActor,
   WizardInputElement,
   WizardMenuActor,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 import {
   ComplexAction,
   Delete,
@@ -25,7 +25,7 @@ import { patterns } from './foundation/limits.js';
 
 import { updateNamingAttributeWithReferencesAction } from './foundation/actions.js';
 import { deleteReferences } from './foundation/references.js';
-import { emptyInputsDeleteActions } from '@openscd/open-scd/src/foundation/ied.js';
+import { emptyInputsDeleteActions } from '@compas-oscd/open-scd/foundation/ied.js';
 
 const iedNamePattern =
   '[A-Za-z][0-9A-Za-z_]{0,2}|' +

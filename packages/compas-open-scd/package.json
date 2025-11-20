@@ -19,6 +19,7 @@
   "type": "module",
   "dependencies": {
     "@compas-oscd/core": "^0.1.7",
+    "@compas-oscd/open-scd": "^0.34.30",
     "@compas-oscd/xml": "^0.0.1",
     "@material/mwc-dialog": "0.22.1",
     "@material/mwc-drawer": "0.22.1",
@@ -39,7 +40,6 @@
     "@material/mwc-textfield": "0.22.1",
     "@material/mwc-top-app-bar-fixed": "0.22.1",
     "@openscd/addons": "*",
-    "@openscd/open-scd": "*",
     "@openscd/plugins": "*",
     "ace-custom-element": "^1.6.5",
     "csv-stringify": "^6.2.0",

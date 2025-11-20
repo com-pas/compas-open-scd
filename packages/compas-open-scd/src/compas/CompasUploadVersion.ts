@@ -9,11 +9,11 @@ import {
   newWizardEvent,
   Wizard,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
 import { newPendingStateEvent } from '@compas-oscd/core/foundation/deprecated/waiter.js';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 
 import { CompasExistsIn } from './CompasExistsIn.js';
 import { CompasSclDataService } from '../compas-services/CompasSclDataService.js';

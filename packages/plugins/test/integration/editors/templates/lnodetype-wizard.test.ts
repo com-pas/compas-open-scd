@@ -6,11 +6,11 @@ import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Select } from '@material/mwc-select';
 
-import { FilteredList } from '@openscd/open-scd/src/filtered-list.js';
+import { FilteredList } from '@compas-oscd/open-scd/filtered-list.js';
 import TemplatesPlugin from '../../../../src/editors/Templates.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import { WizardCheckbox } from '@openscd/open-scd/src/wizard-checkbox.js';
-import { patterns } from '@openscd/open-scd/src/foundation.js';
+import { WizardTextField } from '@compas-oscd/open-scd/wizard-textfield.js';
+import { WizardCheckbox } from '@compas-oscd/open-scd/wizard-checkbox.js';
+import { patterns } from '@compas-oscd/open-scd/foundation.js';
 
 describe('LNodeType wizards', () => {
   if (customElements.get('templates-editor') === undefined)

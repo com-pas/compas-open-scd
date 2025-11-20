@@ -1,6 +1,6 @@
 import { LitElement } from 'lit-element';
 import { get } from 'lit-translate';
-import { getVersion } from '@openscd/open-scd/src/foundation.js';
+import { getVersion } from '@compas-oscd/open-scd/foundation.js';
 
 import { createElement } from '@openscd/xml';
 

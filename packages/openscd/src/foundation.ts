@@ -360,7 +360,9 @@ function lNodeSelector(tagName: SCLTag, identity: string): string {
     return crossProduct(
       parentSelectors,
       ['>'],
-      [`${tagName}[iedName="None"][lnClass="${lnClass}"][lnType="${lnType}"][lnInst="${lnInst}"]`]
+      [
+        `${tagName}[iedName="None"][lnClass="${lnClass}"][lnType="${lnType}"][lnInst="${lnInst}"]`,
+      ]
     )
       .map(strings => strings.join(''))
       .join(',');
@@ -2530,10 +2532,4 @@ export function minAvailableLogicalNodeInstance(
 ): string | undefined {
   const lnInsts = new Set(lnElements.map(ln => ln.getAttribute('inst') || ''));
   return lnInstRange.find(lnInst => !lnInsts.has(lnInst));
-}
-
-declare global {
-  interface ElementEventMap {
-    ['wizard']: WizardEvent;
-  }
 }

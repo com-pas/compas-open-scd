@@ -5,10 +5,10 @@ import {
   queryAssignedNodes,
   query,
 } from 'lit-element';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
-import { WizardFactory } from '@openscd/open-scd/src/foundation.js';
+import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
+import { WizardFactory } from '@compas-oscd/open-scd/foundation.js';
 import { OpenSCD } from '../src/open-scd.js';
-import { WizardDialog } from '@openscd/open-scd/src/wizard-dialog.js';
+import { WizardDialog } from '@compas-oscd/open-scd/wizard-dialog.js';
 
 import { CompasHistory } from '../src/addons/CompasHistory.js';
 import { CompasLayout } from '../src/addons/CompasLayout.js';

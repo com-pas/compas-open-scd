@@ -1,16 +1,13 @@
 import { get } from 'lit-translate';
 
-import { identity } from '@openscd/open-scd/src/foundation.js';
+import { identity } from '@compas-oscd/open-scd/foundation.js';
 import { LogDetailBase } from '@openscd/core/foundation/deprecated/history.js';
-import {
-  getAdjacentClass,
-  validateChildren,
-} from './foundation.js';
+import { getAdjacentClass, validateChildren } from './foundation.js';
 import {
   iec6185073,
   iec6185074,
   iec6185081,
-} from '@openscd/open-scd/src/foundation/nsd.js';
+} from '@compas-oscd/open-scd/foundation/nsd.js';
 
 async function getSpecificDataObject(
   lnClass: string | null | undefined,

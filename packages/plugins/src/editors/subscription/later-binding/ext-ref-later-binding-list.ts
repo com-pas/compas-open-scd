@@ -13,11 +13,9 @@ import { get } from 'lit-translate';
 import {
   getDescriptionAttribute,
   identity,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 
-import {
-  cloneElement,
-} from '@openscd/xml';
+import { cloneElement } from '@openscd/xml';
 
 import {
   ComplexAction,

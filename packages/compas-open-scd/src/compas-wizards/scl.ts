@@ -6,11 +6,14 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 
 import { cloneElement } from '@compas-oscd/xml';
 
-import { ComplexAction, EditorAction } from "@compas-oscd/core/foundation/deprecated/editor.js";
+import {
+  ComplexAction,
+  EditorAction,
+} from '@compas-oscd/core/foundation/deprecated/editor.js';
 
 import '../compas/CompasLabelsField.js';
 

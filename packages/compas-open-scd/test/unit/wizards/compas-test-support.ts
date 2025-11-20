@@ -7,7 +7,7 @@ import {
 import {
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 
 export function executeWizardComplexAction(
   wizardActor: WizardActor,

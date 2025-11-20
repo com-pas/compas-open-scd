@@ -9,7 +9,7 @@ import {
   WizardAction,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 import { ComplexAction } from '@openscd/core/foundation/deprecated/editor.js';
 import { contentGseOrSmvWizard, updateAddress } from './address.js';
 

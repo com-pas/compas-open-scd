@@ -1,15 +1,9 @@
-import {
-  customElement,
-  html,
-  property,
-  TemplateResult,
-} from 'lit-element';
+import { customElement, html, property, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
 import type { UserInfoEvent } from '../compas/foundation';
 
-import { OscdLayout } from '@openscd/open-scd/src/addons/Layout.js';
-
+import { OscdLayout } from '@compas-oscd/open-scd/addons/Layout.js';
 
 @customElement('compas-layout')
 export class CompasLayout extends OscdLayout {
@@ -29,16 +23,16 @@ export class CompasLayout extends OscdLayout {
   protected renderActionItems(): TemplateResult {
     return html`
       ${this.username != undefined
-                ? html`<span
-                    id="userField"
-                    slot="actionItems"
-                    style="font-family:Roboto"
-                    >${get('userinfo.loggedInAs', {
-                      name: this.username,
-                    })}</span
-                  >`
-                : ``}
-        ${this.menu.map(this.renderActionItem)}
+        ? html`<span
+            id="userField"
+            slot="actionItems"
+            style="font-family:Roboto"
+            >${get('userinfo.loggedInAs', {
+              name: this.username,
+            })}</span
+          >`
+        : ``}
+      ${this.menu.map(this.renderActionItem)}
     `;
   }
 }

@@ -6,7 +6,7 @@ import '@material/mwc-icon';
 import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 import {
   find,
   identity,
@@ -15,13 +15,11 @@ import {
   WizardAction,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 
-import {
-  createElement,
-} from '@openscd/xml';
+import { createElement } from '@openscd/xml';
 
-import { clientIcon } from '@openscd/open-scd/src/icons/icons.js';
+import { clientIcon } from '@compas-oscd/open-scd/icons/icons.js';
 import { openCommunicationMappingWizard } from './commmap-wizards.js';
 
 function getPath(identity: string | number): string {

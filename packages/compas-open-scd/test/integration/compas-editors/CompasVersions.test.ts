@@ -1,9 +1,8 @@
 import { expect, fixtureSync, html, waitUntil } from '@open-wc/testing';
 import sinon, { SinonSpy, spy, SinonStub } from 'sinon';
 
-import { Wizarding } from '@openscd/open-scd/src/Wizarding.js';
-import '@openscd/open-scd/test/mock-editor-logger.js';
-import { MockEditorLogger } from '@openscd/open-scd/test/mock-editor-logger.js';
+import { Wizarding } from '@compas-oscd/open-scd/Wizarding.js';
+import '../../mock-editor-logger.js';
 
 import {
   BASIC_VERSIONS_LIST_RESPONSE,
@@ -157,7 +156,11 @@ describe('compas-versions-plugin', () => {
     });
 
     it('dispatches a wizard event when edit button is clicked', () => {
-      (element.shadowRoot!.querySelector('mwc-icon-button[icon="edit"]')! as IconButton).click()
+      (
+        element.shadowRoot!.querySelector(
+          'mwc-icon-button[icon="edit"]'
+        )! as IconButton
+      ).click();
       expect(wizardEvent).to.have.been.calledOnce;
       expect(wizardEvent.args[0][0].detail.wizard()[0].title).to.contain(
         'compas.scl.wizardTitle'

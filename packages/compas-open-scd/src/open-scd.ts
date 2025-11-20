@@ -14,22 +14,22 @@ import './addons/CompasSession.js';
 import './addons/CompasHistory.js';
 import './addons/CompasLayout.js';
 
-import '@openscd/open-scd/src/addons/Waiter.js';
-import '@openscd/open-scd/src/addons/Settings.js';
+import '@compas-oscd/open-scd/addons/Waiter.js';
+import '@compas-oscd/open-scd/addons/Settings.js';
 import {
   HistoryState,
   historyStateEvent,
-} from '@openscd/open-scd/src/addons/History.js';
+} from '@compas-oscd/open-scd/addons/History.js';
 import {
   initializeNsdoc,
   Nsdoc,
-} from '@openscd/open-scd/src/foundation/nsdoc.js';
+} from '@compas-oscd/open-scd/foundation/nsdoc.js';
 import {
   InstalledOfficialPlugin,
   Plugin,
   MenuPosition,
   PluginKind,
-} from '@openscd/open-scd/src/plugin.js';
+} from '@compas-oscd/open-scd/plugin.js';
 import { ActionDetail } from '@material/mwc-list';
 
 import { officialPlugins as builtinPlugins } from '../public/js/plugins.js';
@@ -39,9 +39,9 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import {
   newConfigurePluginEvent,
   ConfigurePluginEvent,
-} from '@openscd/open-scd/src/plugin.events.js';
+} from '@compas-oscd/open-scd/plugin.events.js';
 import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
-import { pluginTag } from '@openscd/open-scd/src/plugin-tag.js';
+import { pluginTag } from '@compas-oscd/open-scd/plugin-tag.js';
 import packageJson from '../package.json';
 import { CompasSclDataService } from './compas-services/CompasSclDataService.js';
 import { createLogEvent } from './compas-services/foundation.js';
@@ -159,7 +159,11 @@ export class OpenSCD extends LitElement {
 
   private async loadLNodeLibrary(): Promise<Document | null> {
     try {
-      const doc = await CompasSclDataService().getSclDocument(this, 'SSD', LNODE_LIB_DOC_ID);
+      const doc = await CompasSclDataService().getSclDocument(
+        this,
+        'SSD',
+        LNODE_LIB_DOC_ID
+      );
       if (doc instanceof Document) {
         this._lNodeLibrary = doc;
         return doc;
@@ -576,7 +580,6 @@ export function newSetPluginsEvent(selectedPlugins: Plugin[]): SetPluginsEvent {
     detail: { selectedPlugins },
   });
 }
-
 
 export interface CompasApi {
   lNodeLibrary: {

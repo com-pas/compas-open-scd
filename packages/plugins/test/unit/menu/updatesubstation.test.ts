@@ -1,7 +1,7 @@
 import { expect } from '@open-wc/testing';
 
 import { isValidReference } from '../../../src/menu/UpdateSubstation.js';
-import { identity } from '@openscd/open-scd/src/foundation.js';
+import { identity } from '@compas-oscd/open-scd/foundation.js';
 
 describe('isValidReference', () => {
   let ours: XMLDocument;

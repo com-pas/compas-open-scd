@@ -1,10 +1,13 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd/addons/Wizards.js';
+import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
 
-import { isSimple, ComplexAction } from '@openscd/core/foundation/deprecated/editor.js';
+import {
+  isSimple,
+  ComplexAction,
+} from '@openscd/core/foundation/deprecated/editor.js';
 
 import {
   remove104Private,

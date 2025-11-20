@@ -1,4 +1,4 @@
-import { getSclSchemaVersion } from '@openscd/open-scd/src/foundation.js';
+import { getSclSchemaVersion } from '@compas-oscd/open-scd/foundation.js';
 import { serviceTypes } from '../foundation.js';
 
 function dataAttributeSpecification(
@@ -184,12 +184,13 @@ function checkEditionSpecificRequirements(
       lnElement,
       'prefix'
     ) &&
-    (canIgnoreSrcLNClass || sameAttributeValueDiffName(
-      extRefElement,
-      'srcLNClass',
-      lnElement,
-      'lnClass'
-    )) &&
+    (canIgnoreSrcLNClass ||
+      sameAttributeValueDiffName(
+        extRefElement,
+        'srcLNClass',
+        lnElement,
+        'lnClass'
+      )) &&
     sameAttributeValueDiffName(extRefElement, 'srcLNInst', lnElement, 'inst') &&
     sameAttributeValueDiffName(
       extRefElement,

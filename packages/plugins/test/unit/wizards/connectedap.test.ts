@@ -1,22 +1,20 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd/addons/Wizards.js';
+import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
 
 import { Checkbox } from '@material/mwc-checkbox';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd/wizard-textfield.js';
+import { WizardInputElement } from '@compas-oscd/open-scd/foundation.js';
 import {
-  WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
-import { 
   isCreate,
   isDelete,
   isSimple,
-  ComplexAction, 
-  Delete, 
-  Create
+  ComplexAction,
+  Delete,
+  Create,
 } from '@openscd/core/foundation/deprecated/editor.js';
 import { editConnectedApWizard } from '../../../src/wizards/connectedap.js';
 

@@ -14,14 +14,14 @@ import {
   getDescriptionAttribute,
   getNameAttribute,
   newWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
-import { accessPointIcon } from '@openscd/open-scd/src/icons/ied-icons.js';
+} from '@compas-oscd/open-scd/foundation.js';
+import { accessPointIcon } from '@compas-oscd/open-scd/icons/ied-icons.js';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { wizards } from '../../wizards/wizard-library.js';
 import { editServicesWizard } from '../../wizards/services.js';
 import { removeAccessPointWizard } from '../../wizards/accesspoint.js';
 
-import '@openscd/open-scd/src/action-pane.js';
+import '@compas-oscd/open-scd/action-pane.js';
 import './server-container.js';
 
 import { Container } from './foundation.js';

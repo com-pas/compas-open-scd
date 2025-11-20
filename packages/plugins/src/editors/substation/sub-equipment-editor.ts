@@ -17,15 +17,15 @@ import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Menu } from '@material/mwc-menu';
 
-import '@openscd/open-scd/src/action-icon.js';
-import '@openscd/open-scd/src/action-pane.js';
+import '@compas-oscd/open-scd/action-icon.js';
+import '@compas-oscd/open-scd/action-pane.js';
 import './l-node-editor.js';
 import './eq-function-editor.js';
 import {
   newWizardEvent,
   SCLTag,
   tags,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 
 import { getChildElementsByTagName } from '@openscd/xml';
 

@@ -17,14 +17,14 @@ import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Menu } from '@material/mwc-menu';
 
-import '@openscd/open-scd/src/action-pane.js';
+import '@compas-oscd/open-scd/action-pane.js';
 import './sub-function-editor.js';
 import './general-equipment-editor.js';
 import {
   newWizardEvent,
   SCLTag,
   tags,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 
 import { getChildElementsByTagName } from '@openscd/xml';
 

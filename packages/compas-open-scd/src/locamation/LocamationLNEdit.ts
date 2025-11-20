@@ -1,18 +1,25 @@
-import {css, customElement, html, LitElement, property, TemplateResult} from 'lit-element';
-import {get, translate} from "lit-translate";
+import {
+  css,
+  customElement,
+  html,
+  LitElement,
+  property,
+  TemplateResult,
+} from 'lit-element';
+import { get, translate } from 'lit-translate';
 
-import { patterns } from "@openscd/open-scd/src/foundation.js";
-import { ComplexAction } from "@compas-oscd/core/foundation/deprecated/editor.js";
+import { patterns } from '@compas-oscd/open-scd/foundation.js';
+import { ComplexAction } from '@compas-oscd/core/foundation/deprecated/editor.js';
 import {
   checkValidity,
   Wizard,
   WizardAction,
   WizardInputElement,
-  wizardInputSelector
-} from '@openscd/open-scd/src/foundation.js';
-import {Nsdoc} from "@openscd/open-scd/src/foundation/nsdoc.js";
+  wizardInputSelector,
+} from '@compas-oscd/open-scd/foundation.js';
+import { Nsdoc } from '@compas-oscd/open-scd/foundation/nsdoc.js';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 
 import {
   createEditorAction,
@@ -24,11 +31,11 @@ import {
   inputFieldChanged,
   lDeviceHeader,
   lnHeader,
-} from "./foundation.js";
+} from './foundation.js';
 
 @customElement('locamation-ln-edit')
 export class LocamationVMUEditElement extends LitElement {
-  @property({type: Element})
+  @property({ type: Element })
   logicalNode!: Element;
   @property()
   nsdoc!: Nsdoc;
@@ -40,39 +47,89 @@ export class LocamationVMUEditElement extends LitElement {
   save(): WizardAction[] {
     const locamationPrivate = getPrivate(this.logicalNode);
 
-    if (!this.fieldsChanged(locamationPrivate, this.inputs) || !this.checkValidityInputs(this.inputs)) {
+    if (
+      !this.fieldsChanged(locamationPrivate, this.inputs) ||
+      !this.checkValidityInputs(this.inputs)
+    ) {
       return [];
     }
 
     const complexAction: ComplexAction = {
       actions: [],
-      title: get('locamation.vmu.updateAction', {lnName: lnHeader(this.logicalNode, this.nsdoc)}),
+      title: get('locamation.vmu.updateAction', {
+        lnName: lnHeader(this.logicalNode, this.nsdoc),
+      }),
     };
 
-    complexAction.actions.push(...createEditorAction(locamationPrivate, 'IDENTIFIER', getInputFieldValue(this.inputs, 'identifier')));
+    complexAction.actions.push(
+      ...createEditorAction(
+        locamationPrivate,
+        'IDENTIFIER',
+        getInputFieldValue(this.inputs, 'identifier')
+      )
+    );
     if (hasPrivateElement(this.logicalNode, 'SUM')) {
-      complexAction.actions.push(...createEditorAction(locamationPrivate, 'SUM', getInputFieldValue(this.inputs, 'sum')));
+      complexAction.actions.push(
+        ...createEditorAction(
+          locamationPrivate,
+          'SUM',
+          getInputFieldValue(this.inputs, 'sum')
+        )
+      );
     } else {
-      complexAction.actions.push(...createEditorAction(locamationPrivate, 'CHANNEL', getInputFieldValue(this.inputs, 'channel')));
+      complexAction.actions.push(
+        ...createEditorAction(
+          locamationPrivate,
+          'CHANNEL',
+          getInputFieldValue(this.inputs, 'channel')
+        )
+      );
     }
-    complexAction.actions.push(...createEditorAction(locamationPrivate, 'TRANSFORM-PRIMARY', getInputFieldValue(this.inputs, 'transformPrimary')));
-    complexAction.actions.push(...createEditorAction(locamationPrivate, 'TRANSFORM-SECONDARY', getInputFieldValue(this.inputs, 'transformSecondary')));
+    complexAction.actions.push(
+      ...createEditorAction(
+        locamationPrivate,
+        'TRANSFORM-PRIMARY',
+        getInputFieldValue(this.inputs, 'transformPrimary')
+      )
+    );
+    complexAction.actions.push(
+      ...createEditorAction(
+        locamationPrivate,
+        'TRANSFORM-SECONDARY',
+        getInputFieldValue(this.inputs, 'transformSecondary')
+      )
+    );
 
     return complexAction.actions.length ? [complexAction] : [];
   }
 
-  private fieldsChanged(locamationPrivate: Element | null, inputs: WizardInputElement[]): boolean {
-    const oldIdentifier= getPrivateTextValue(locamationPrivate, 'IDENTIFIER');
+  private fieldsChanged(
+    locamationPrivate: Element | null,
+    inputs: WizardInputElement[]
+  ): boolean {
+    const oldIdentifier = getPrivateTextValue(locamationPrivate, 'IDENTIFIER');
     const oldChannel = getPrivateTextValue(locamationPrivate, 'CHANNEL');
     const oldSum = getPrivateTextValue(locamationPrivate, 'SUM');
-    const oldTransformPrimary = getPrivateTextValue(locamationPrivate, 'TRANSFORM-PRIMARY');
-    const oldTransformSecondary = getPrivateTextValue(locamationPrivate, 'TRANSFORM-SECONDARY');
+    const oldTransformPrimary = getPrivateTextValue(
+      locamationPrivate,
+      'TRANSFORM-PRIMARY'
+    );
+    const oldTransformSecondary = getPrivateTextValue(
+      locamationPrivate,
+      'TRANSFORM-SECONDARY'
+    );
 
-    return inputFieldChanged(inputs, 'identifier', oldIdentifier)
-      || (hasPrivateElement(locamationPrivate, 'SUM') ? inputFieldChanged(inputs, 'sum', oldSum) : false)
-      || (hasPrivateElement(locamationPrivate, 'CHANNEL') ? inputFieldChanged(inputs, 'channel', oldChannel) : false)
-      || inputFieldChanged(inputs, 'transformPrimary', oldTransformPrimary)
-      || inputFieldChanged(inputs, 'transformSecondary', oldTransformSecondary);
+    return (
+      inputFieldChanged(inputs, 'identifier', oldIdentifier) ||
+      (hasPrivateElement(locamationPrivate, 'SUM')
+        ? inputFieldChanged(inputs, 'sum', oldSum)
+        : false) ||
+      (hasPrivateElement(locamationPrivate, 'CHANNEL')
+        ? inputFieldChanged(inputs, 'channel', oldChannel)
+        : false) ||
+      inputFieldChanged(inputs, 'transformPrimary', oldTransformPrimary) ||
+      inputFieldChanged(inputs, 'transformSecondary', oldTransformSecondary)
+    );
   }
 
   private checkValidityInputs(inputs: WizardInputElement[]): boolean {
@@ -92,68 +149,92 @@ export class LocamationVMUEditElement extends LitElement {
       sumPattern = '[0-2],[0-2],[0-2]';
     }
 
-    return html `
-      <wizard-textfield label="${translate('locamation.vmu.ied.name')}"
-                        .maybeValue=${iedHeader(ied)}
-                        disabled>
+    return html`
+      <wizard-textfield
+        label="${translate('locamation.vmu.ied.name')}"
+        .maybeValue=${iedHeader(ied)}
+        disabled
+      >
       </wizard-textfield>
-      <wizard-textfield label="${translate('locamation.vmu.ldevice.name')}"
-                        .maybeValue=${lDeviceHeader(lDevice)}
-                        disabled>
+      <wizard-textfield
+        label="${translate('locamation.vmu.ldevice.name')}"
+        .maybeValue=${lDeviceHeader(lDevice)}
+        disabled
+      >
       </wizard-textfield>
-      <wizard-textfield label="${translate('locamation.vmu.ln.name')}"
-                        .maybeValue=${lnHeader(this.logicalNode, this.nsdoc)}
-                        disabled>
-      </wizard-textfield>
-
-      <wizard-textfield label="${translate('locamation.vmu.version')}"
-                        .maybeValue=${getPrivateTextValue(locamationPrivate, 'VERSION')}
-                        disabled>
-      </wizard-textfield>
-
-      <wizard-textfield id="identifier"
-                        label="${translate('locamation.vmu.identifier')}"
-                        .maybeValue=${getPrivateTextValue(locamationPrivate, 'IDENTIFIER')}
-                        helper="${translate('locamation.vmu.identifierHelper')}"
-                        placeholder="134.12.213"
-                        pattern="^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){3}$"
-                        required
-                        dialogInitialFocus>
+      <wizard-textfield
+        label="${translate('locamation.vmu.ln.name')}"
+        .maybeValue=${lnHeader(this.logicalNode, this.nsdoc)}
+        disabled
+      >
       </wizard-textfield>
 
-      ${hasPrivateElement(locamationPrivate, 'SUM') ?
-        html `<wizard-textfield id="sum"
-                                label="${translate('locamation.vmu.sum')}"
-                                .maybeValue=${getPrivateTextValue(locamationPrivate, 'SUM')}
-                                helper="${translate('locamation.vmu.sumHelper')}"
-                                placeholder="0,1,2"
-                                pattern="${sumPattern}"
-                                required>
-              </wizard-textfield>` : html ``
-      }
-      ${hasPrivateElement(locamationPrivate, 'CHANNEL') ?
-        html `<wizard-textfield id="channel"
-                                label="${translate('locamation.vmu.channel')}"
-                                .maybeValue=${getPrivateTextValue(locamationPrivate, 'CHANNEL')}
-                                helper="${translate('locamation.vmu.channelHelper')}"
-                                pattern="${channelPattern}"
-                                required>
-        </wizard-textfield>` : html ``
-      }
-
-      <wizard-textfield id="transformPrimary"
-                        label="${translate('locamation.vmu.transformPrimary')}"
-                        .maybeValue=${getPrivateTextValue(locamationPrivate, 'TRANSFORM-PRIMARY')}
-                        helper="${translate('locamation.vmu.transformPrimaryHelper')}"
-                        pattern="${patterns.unsigned}"
-                        required>
+      <wizard-textfield
+        label="${translate('locamation.vmu.version')}"
+        .maybeValue=${getPrivateTextValue(locamationPrivate, 'VERSION')}
+        disabled
+      >
       </wizard-textfield>
-      <wizard-textfield id="transformSecondary"
-                        label="${translate('locamation.vmu.transformSecondary')}"
-                        .maybeValue=${getPrivateTextValue(locamationPrivate, 'TRANSFORM-SECONDARY')}
-                        helper="${translate('locamation.vmu.transformSecondaryHelper')}"
-                        pattern="${patterns.unsigned}"
-                        required>
+
+      <wizard-textfield
+        id="identifier"
+        label="${translate('locamation.vmu.identifier')}"
+        .maybeValue=${getPrivateTextValue(locamationPrivate, 'IDENTIFIER')}
+        helper="${translate('locamation.vmu.identifierHelper')}"
+        placeholder="134.12.213"
+        pattern="^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){3}$"
+        required
+        dialogInitialFocus
+      >
+      </wizard-textfield>
+
+      ${hasPrivateElement(locamationPrivate, 'SUM')
+        ? html`<wizard-textfield
+            id="sum"
+            label="${translate('locamation.vmu.sum')}"
+            .maybeValue=${getPrivateTextValue(locamationPrivate, 'SUM')}
+            helper="${translate('locamation.vmu.sumHelper')}"
+            placeholder="0,1,2"
+            pattern="${sumPattern}"
+            required
+          >
+          </wizard-textfield>`
+        : html``}
+      ${hasPrivateElement(locamationPrivate, 'CHANNEL')
+        ? html`<wizard-textfield
+            id="channel"
+            label="${translate('locamation.vmu.channel')}"
+            .maybeValue=${getPrivateTextValue(locamationPrivate, 'CHANNEL')}
+            helper="${translate('locamation.vmu.channelHelper')}"
+            pattern="${channelPattern}"
+            required
+          >
+          </wizard-textfield>`
+        : html``}
+
+      <wizard-textfield
+        id="transformPrimary"
+        label="${translate('locamation.vmu.transformPrimary')}"
+        .maybeValue=${getPrivateTextValue(
+          locamationPrivate,
+          'TRANSFORM-PRIMARY'
+        )}
+        helper="${translate('locamation.vmu.transformPrimaryHelper')}"
+        pattern="${patterns.unsigned}"
+        required
+      >
+      </wizard-textfield>
+      <wizard-textfield
+        id="transformSecondary"
+        label="${translate('locamation.vmu.transformSecondary')}"
+        .maybeValue=${getPrivateTextValue(
+          locamationPrivate,
+          'TRANSFORM-SECONDARY'
+        )}
+        helper="${translate('locamation.vmu.transformSecondaryHelper')}"
+        pattern="${patterns.unsigned}"
+        required
+      >
       </wizard-textfield>
     `;
   }
@@ -167,13 +248,21 @@ export class LocamationVMUEditElement extends LitElement {
       display: block;
       margin-top: 16px;
     }
-  `
+  `;
 }
 
-export function locamationLNEditWizard(logicalNode: Element, nsdoc: Nsdoc): Wizard {
+export function locamationLNEditWizard(
+  logicalNode: Element,
+  nsdoc: Nsdoc
+): Wizard {
   function save() {
-    return function (inputs: WizardInputElement[], wizard: Element): WizardAction[] {
-      const locamationVMUEditElement = <LocamationVMUEditElement>wizard.shadowRoot!.querySelector('locamation-ln-edit')
+    return function (
+      inputs: WizardInputElement[],
+      wizard: Element
+    ): WizardAction[] {
+      const locamationVMUEditElement = <LocamationVMUEditElement>(
+        wizard.shadowRoot!.querySelector('locamation-ln-edit')
+      );
       return locamationVMUEditElement.save();
     };
   }
@@ -187,9 +276,11 @@ export function locamationLNEditWizard(logicalNode: Element, nsdoc: Nsdoc): Wiza
         action: save(),
       },
       content: [
-        html`<locamation-ln-edit .logicalNode="${logicalNode}" .nsdoc="${nsdoc}"></locamation-ln-edit>`,
+        html`<locamation-ln-edit
+          .logicalNode="${logicalNode}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-edit>`,
       ],
     },
   ];
 }
-

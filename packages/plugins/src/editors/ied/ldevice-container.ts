@@ -15,14 +15,14 @@ import { IconButtonToggle } from '@material/mwc-icon-button-toggle';
 
 import { newEditEventV2 } from '@openscd/core';
 import { createElement } from '@openscd/xml';
-import { logicalDeviceIcon } from '@openscd/open-scd/src/icons/ied-icons.js';
+import { logicalDeviceIcon } from '@compas-oscd/open-scd/icons/ied-icons.js';
 import {
   getDescriptionAttribute,
   getInstanceAttribute,
   getNameAttribute,
   getLdNameAttribute,
   newWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 
 import { wizards } from '../../wizards/wizard-library.js';
@@ -30,7 +30,7 @@ import { Container } from './foundation.js';
 import { lnInstGenerator } from '@openenergytools/scl-lib/dist/generator/lnInstGenerator.js';
 import { AddLnDialog, LNData } from './add-ln-dialog.js';
 
-import '@openscd/open-scd/src/action-pane.js';
+import '@compas-oscd/open-scd/action-pane.js';
 import './ln-container.js';
 import './add-ln-dialog.js';
 

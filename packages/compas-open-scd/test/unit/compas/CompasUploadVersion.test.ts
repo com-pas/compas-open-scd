@@ -1,13 +1,22 @@
-import {expect, fixture, fixtureSync, html, waitUntil} from '@open-wc/testing';
-import sinon from "sinon";
+import {
+  expect,
+  fixture,
+  fixtureSync,
+  html,
+  waitUntil,
+} from '@open-wc/testing';
+import sinon from 'sinon';
 
-import {MockWizardEditor} from "@openscd/open-scd/test/mock-wizard-editor.js";
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { MockWizardEditor } from '../../mock-wizard-editor.js';
+import '../../mock-wizard-editor.js';
+import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
 
-import {addVersionToCompasWizard, CompasUploadVersionElement} from "../../../src/compas/CompasUploadVersion.js";
-import {CompasExistsInElement} from "../../../src/compas/CompasExistsIn.js";
-import "../../../src/compas/CompasUploadVersion.js";
+import {
+  addVersionToCompasWizard,
+  CompasUploadVersionElement,
+} from '../../../src/compas/CompasUploadVersion.js';
+import { CompasExistsInElement } from '../../../src/compas/CompasExistsIn.js';
+import '../../../src/compas/CompasUploadVersion.js';
 
 describe('compas-upload-version', () => {
   let element: CompasUploadVersionElement & CompasExistsInElement;
@@ -17,7 +26,10 @@ describe('compas-upload-version', () => {
   describe('still determining if document exists in CoMPAS', () => {
     beforeEach(async () => {
       element = fixtureSync(
-        html `<compas-upload-version .docName="${docName}" .docId="${docId}"></compas-upload-version>`
+        html`<compas-upload-version
+          .docName="${docName}"
+          .docId="${docId}"
+        ></compas-upload-version>`
       );
 
       sinon.stub(element, 'checkExistInCompas').callsFake(() => {
@@ -35,7 +47,10 @@ describe('compas-upload-version', () => {
   describe('no document in compas (anymore)', () => {
     beforeEach(async () => {
       element = fixtureSync(
-        html `<compas-upload-version .docName="${docName}" .docId="${docId}"></compas-upload-version>`
+        html`<compas-upload-version
+          .docName="${docName}"
+          .docId="${docId}"
+        ></compas-upload-version>`
       );
 
       sinon.stub(element, 'checkExistInCompas').callsFake(() => {
@@ -54,7 +69,10 @@ describe('compas-upload-version', () => {
   describe('existing document in compas', () => {
     beforeEach(async () => {
       element = fixtureSync(
-        html `<compas-upload-version .docName="${docName}" .docId="${docId}"></compas-upload-version>`
+        html`<compas-upload-version
+          .docName="${docName}"
+          .docId="${docId}"
+        ></compas-upload-version>`
       );
 
       sinon.stub(element, 'checkExistInCompas').callsFake(() => {
@@ -68,19 +86,25 @@ describe('compas-upload-version', () => {
     it('looks like the latest snapshot', async () => {
       await expect(element).shadowDom.to.equalSnapshot();
     });
-  })
+  });
 
   describe('existing document in compas through wizard', () => {
     let wizardElement: MockWizardEditor;
 
     beforeEach(async () => {
-      wizardElement = await fixture(html `<mock-wizard-editor></mock-wizard-editor>`);
-      const wizard = addVersionToCompasWizard({docId: docId, docName: docName});
+      wizardElement = await fixture(
+        html`<mock-wizard-editor></mock-wizard-editor>`
+      );
+      const wizard = addVersionToCompasWizard({
+        docId: docId,
+        docName: docName,
+      });
       wizardElement.dispatchEvent(newWizardEvent(wizard));
       await wizardElement.requestUpdate();
 
-      element = wizardElement.wizardUI.dialog!
-        .querySelector<CompasUploadVersionElement & CompasExistsInElement>('compas-upload-version')!;
+      element = wizardElement.wizardUI.dialog!.querySelector<
+        CompasUploadVersionElement & CompasExistsInElement
+      >('compas-upload-version')!;
 
       sinon.stub(element, 'checkExistInCompas').callsFake(() => {
         element.existInCompas = true;
@@ -93,7 +117,7 @@ describe('compas-upload-version', () => {
     it('looks like the latest snapshot', async () => {
       await expect(wizardElement.wizardUI.dialog).to.equalSnapshot();
     });
-  })
+  });
 
   afterEach(() => {
     sinon.restore();

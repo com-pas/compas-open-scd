@@ -29,8 +29,8 @@ import {
   getNameAttribute,
   identity,
   newWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
-import { gooseIcon, smvIcon } from '@openscd/open-scd/src/icons/icons.js';
+} from '@compas-oscd/open-scd/foundation.js';
+import { gooseIcon, smvIcon } from '@compas-oscd/open-scd/icons/icons.js';
 import { wizards } from '../../wizards/wizard-library.js';
 
 import {

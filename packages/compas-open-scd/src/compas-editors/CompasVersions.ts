@@ -21,15 +21,12 @@ import '@material/mwc-list/mwc-check-list-item';
 import { Dialog } from '@material/mwc-dialog';
 import { MultiSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@openscd/open-scd/src/plain-compare-list.js';
+import '@compas-oscd/open-scd/plain-compare-list.js';
 
-import { newLogEvent } from "@compas-oscd/core/foundation/deprecated/history.js";
-import { newOpenDocEvent } from "@compas-oscd/core/foundation/deprecated/open-event.js";
+import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
+import { newOpenDocEvent } from '@compas-oscd/core/foundation/deprecated/open-event.js';
 
-import {
-  newWizardEvent,
-  Wizard,
-} from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/foundation.js';
 
 import {
   CompasSclDataService,
@@ -43,7 +40,7 @@ import {
 } from '../compas/foundation.js';
 import { addVersionToCompasWizard } from '../compas/CompasUploadVersion.js';
 import { getElementByName, styles } from './foundation.js';
-import { editCompasSCLWizard } from "../compas-wizards/scl.js";
+import { editCompasSCLWizard } from '../compas-wizards/scl.js';
 
 /** An editor [[`plugin`]] for selecting the `Substation` section. */
 export default class CompasVersionsPlugin extends LitElement {

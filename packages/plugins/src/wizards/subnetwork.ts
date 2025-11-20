@@ -3,7 +3,7 @@ import { get } from 'lit-translate';
 
 import { cloneElement, createElement } from '@openscd/xml';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   getMultiplier,
   getValue,
@@ -11,7 +11,7 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor';
 
 /** Initial attribute values suggested for `SubNetwork` creation */

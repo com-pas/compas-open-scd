@@ -1,11 +1,14 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd/addons/Wizards.js';
+import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
 
-import { WizardCheckbox } from '@openscd/open-scd/src/wizard-checkbox.js';
-import { Replace, isReplace } from '@openscd/core/foundation/deprecated/editor.js';
+import { WizardCheckbox } from '@compas-oscd/open-scd/wizard-checkbox.js';
+import {
+  Replace,
+  isReplace,
+} from '@openscd/core/foundation/deprecated/editor.js';
 import { editSmvOptsWizard } from '../../../src/wizards/smvopts.js';
 
 describe('Wizards for SCL SmvOpts element', () => {

@@ -1,27 +1,26 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import {MockWizardEditor} from "@openscd/open-scd/test/mock-wizard-editor.js";
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
-
-import {WizardTextField} from "@openscd/open-scd/src/wizard-textfield.js";
+import '../../mock-wizard-editor.js';
+import { MockWizardEditor } from '../../mock-wizard-editor.js';
+import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
+import { WizardTextField } from '@compas-oscd/open-scd/dist/wizard-textfield.js';
 import {
   Create,
   isCreate,
   isDelete,
   isReplace,
   Replace,
-} from "@compas-oscd/core/foundation/deprecated/editor.js";
+} from '@compas-oscd/core/foundation/deprecated/editor.js';
 
 import {
   Wizard,
   WizardInputElement,
-} from "@openscd/open-scd/src/foundation.js";
+} from '@compas-oscd/open-scd/foundation.js';
 
 import {
   fetchDoc,
   setWizardTextFieldValue,
-} from "@openscd/plugins/test/unit/wizards/test-support.js";
+} from '@openscd/plugins/test/unit/wizards/test-support.js';
 import { executeWizardComplexAction } from '../wizards/compas-test-support.js';
 import {
   editCompasSCLWizard,

@@ -1,11 +1,14 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd/addons/Wizards.js';
+import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import { WizardInputElement } from '@openscd/open-scd/src/foundation.js';
-import { isSimple, ComplexAction } from '@openscd/core/foundation/deprecated/editor.js';
+import { WizardTextField } from '@compas-oscd/open-scd/wizard-textfield.js';
+import { WizardInputElement } from '@compas-oscd/open-scd/foundation.js';
+import {
+  isSimple,
+  ComplexAction,
+} from '@openscd/core/foundation/deprecated/editor.js';
 import {
   editIEDWizard,
   removeIEDAndReferences,

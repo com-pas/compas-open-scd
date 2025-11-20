@@ -9,9 +9,9 @@ import '@material/mwc-formfield';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-switch';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
-import '@openscd/open-scd/src/WizardDivider.js';
-import { WizardSelect } from '@openscd/open-scd/src/wizard-select.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/WizardDivider.js';
+import { WizardSelect } from '@compas-oscd/open-scd/wizard-select.js';
 
 import {
   getNameAttribute,
@@ -20,7 +20,7 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd/foundation.js';
 import {
   ComplexAction,
   EditorAction,
