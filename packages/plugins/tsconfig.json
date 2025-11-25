@@ -16,15 +16,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "resolveJsonModule": true,
-    "rootDir": "./src",
-    "paths": {
-      "@compas-oscd/open-scd": [
-        "../../node_modules/@compas-oscd/open-scd/dist/open-scd.d.ts"
-      ],
-      "@compas-oscd/open-scd/*": [
-        "../../node_modules/@compas-oscd/open-scd/dist/*"
-      ]
-    }
+    "rootDir": "./src"
   },
   "include": ["src/**/*.ts"]
 }

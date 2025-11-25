@@ -5,7 +5,7 @@ import {
   newWizardEvent,
   Wizard,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import { CompasSettingsElement } from '../compas/CompasSettings.js';
 

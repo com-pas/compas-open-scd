@@ -2,7 +2,7 @@ import { customElement, html, LitElement, TemplateResult } from 'lit-element';
 
 import '@material/mwc-list/mwc-list-item';
 
-import { newWizardEvent } from '@compas-oscd/open-scd/src/foundation.js';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 import { newOpenDocEvent } from '@compas-oscd/core';
 import { newPendingStateEvent } from '@compas-oscd/core';
 

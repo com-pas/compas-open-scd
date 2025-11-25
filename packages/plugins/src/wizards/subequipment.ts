@@ -12,10 +12,10 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 import { SimpleAction } from '@openscd/core/foundation/deprecated/editor';
-import '@compas-oscd/open-scd/wizard-textfield.js';
-import '@compas-oscd/open-scd/wizard-select.js';
+import '@openscd/open-scd/src/wizard-textfield.js';
+import '@openscd/open-scd/src/wizard-select.js';
 
 interface ContentOptions {
   name: string | null;

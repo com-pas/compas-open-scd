@@ -11,15 +11,12 @@ import '@material/mwc-snackbar';
 
 import '@compas-oscd/open-scd/filtered-list.js';
 
-import { IssueDetail } from '@compas-oscd/core/foundation/deprecated/history.js';
+import { IssueDetail } from '@compas-oscd/core';
 
-import {
-  HistoryUIDetail,
-  OscdHistory,
-} from '@compas-oscd/open-scd/addons/History.js';
+import { HistoryUIDetail, OscdHistory } from '@compas-oscd/open-scd';
 
 import { wizards } from '@openscd/plugins/src/wizards/wizard-library';
-import { newWizardEvent, SCLTag } from '@compas-oscd/open-scd/foundation';
+import { newWizardEvent, SCLTag } from '@compas-oscd/open-scd';
 import { nothing } from 'lit-html';
 
 export enum HistoryUIKind {

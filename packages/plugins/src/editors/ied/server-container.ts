@@ -10,8 +10,8 @@ import {
 import { nothing } from 'lit-html';
 import { translate } from 'lit-translate';
 
-import { serverIcon } from '@compas-oscd/open-scd/icons/ied-icons.js';
-import { getDescriptionAttribute } from '@compas-oscd/open-scd/foundation.js';
+import { serverIcon } from '@openscd/open-scd/src/icons/ied-icons.js';
+import { getDescriptionAttribute } from '@openscd/open-scd/src/foundation.js';
 import { createElement } from '@openscd/xml';
 import { newEditEventV2 } from '@openscd/core';
 
@@ -22,7 +22,7 @@ import {
 } from './foundation.js';
 import { AddLDeviceDialog, LDeviceData } from './add-ldevice-dialog.js';
 
-import '@compas-oscd/open-scd/action-pane.js';
+import '@openscd/open-scd/src/action-pane.js';
 import './ldevice-container.js';
 import './add-ldevice-dialog.js';
 

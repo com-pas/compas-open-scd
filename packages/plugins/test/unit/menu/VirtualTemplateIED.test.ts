@@ -7,7 +7,7 @@ import {
 } from '@openscd/core/foundation/deprecated/editor.js';
 import VirtualTemplateIED from '../../../src/menu/VirtualTemplateIED.js';
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
-import { WizardTextField } from '@compas-oscd/open-scd/wizard-textfield.js';
+import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
 
 describe('Plugin that creates with some user input a virtual template IED - SPECIFICATION', () => {
   if (customElements.get('virtual-template-i-e-d') === undefined)

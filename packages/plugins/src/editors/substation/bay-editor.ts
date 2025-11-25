@@ -18,7 +18,7 @@ import { Menu } from '@material/mwc-menu';
 import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd/action-pane.js';
+import '@openscd/open-scd/src/action-pane.js';
 import './ied-editor.js';
 import './conducting-equipment-editor.js';
 import './general-equipment-editor.js';
@@ -28,15 +28,17 @@ import {
   newWizardEvent,
   SCLTag,
   tags,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 
-import { getChildElementsByTagName } from '@openscd/xml';
+import {
+  getChildElementsByTagName,
+} from '@openscd/xml';
 
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import {
   bayIcon,
   voltageLevelIcon,
-} from '@compas-oscd/open-scd/icons/icons.js';
+} from '@openscd/open-scd/src/icons/icons.js';
 import { emptyWizard, wizards } from '../../wizards/wizard-library.js';
 import {
   cloneSubstationElement,

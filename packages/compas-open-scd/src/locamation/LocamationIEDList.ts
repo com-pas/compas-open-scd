@@ -16,9 +16,9 @@ import {
   newWizardEvent,
   Wizard,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
-import { isSCLNamespace } from '@compas-oscd/open-scd/schemas.js';
-import { Nsdoc } from '@compas-oscd/open-scd/foundation/nsdoc.js';
+} from '@compas-oscd/open-scd';
+import { isSCLNamespace } from '@compas-oscd/open-scd';
+import { Nsdoc } from '@compas-oscd/open-scd';
 
 import {
   iedHeader,

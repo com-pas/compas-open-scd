@@ -6,7 +6,7 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import { cloneElement } from '@compas-oscd/xml';
 

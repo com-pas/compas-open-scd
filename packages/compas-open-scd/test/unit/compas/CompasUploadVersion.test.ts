@@ -9,7 +9,7 @@ import sinon from 'sinon';
 
 import { MockWizardEditor } from '../../mock-wizard-editor.js';
 import '../../mock-wizard-editor.js';
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 
 import {
   addVersionToCompasWizard,

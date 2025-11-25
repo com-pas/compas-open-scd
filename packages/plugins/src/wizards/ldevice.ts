@@ -4,13 +4,13 @@ import { get } from 'lit-translate';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@openscd/open-scd/src/wizard-textfield.js';
 import {
   getValue,
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 
 import { cloneElement } from '@openscd/xml';
 

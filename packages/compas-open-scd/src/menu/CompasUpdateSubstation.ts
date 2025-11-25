@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit-element';
 import { get } from 'lit-translate';
 
-import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/foundation.js';
+import { newWizardEvent, Wizard } from '@compas-oscd/open-scd';
 
 import { DocRetrievedEvent } from '../compas/CompasOpen.js';
 import { mergeSubstation } from '@openscd/plugins/src/menu/UpdateSubstation.js';

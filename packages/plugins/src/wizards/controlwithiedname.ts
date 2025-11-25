@@ -6,7 +6,7 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-check-list-item';
 import { List } from '@material/mwc-list';
 
-import '@compas-oscd/open-scd/filtered-list.js';
+import '@openscd/open-scd/src/filtered-list.js';
 import {
   findControlBlocks,
   identity,
@@ -14,12 +14,12 @@ import {
   WizardAction,
   WizardActor,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 
 import { createElement } from '@openscd/xml';
 
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
-import { inputIcon } from '@compas-oscd/open-scd/icons/icons.js';
+import { inputIcon } from '@openscd/open-scd/src/icons/icons.js';
 import {
   getSourceReferences,
   openCommunicationMappingWizard,

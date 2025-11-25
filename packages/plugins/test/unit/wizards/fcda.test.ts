@@ -1,12 +1,12 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@compas-oscd/open-scd/addons/Wizards.js';
-import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
+import '@openscd/open-scd/src/addons/Wizards.js';
+import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
 
 import { createFCDAsWizard } from '../../../src/wizards/fcda.js';
 import { isCreate } from '@openscd/core/foundation/deprecated/editor.js';
-import { FinderList } from '@compas-oscd/open-scd/finder-list.js';
+import { FinderList } from '@openscd/open-scd/src/finder-list.js';
 
 describe('create wizard for FCDA element', () => {
   let doc: XMLDocument;

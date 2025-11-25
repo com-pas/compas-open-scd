@@ -18,7 +18,7 @@ import { Dialog } from '@material/mwc-dialog';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { List } from '@material/mwc-list';
 
-import '@compas-oscd/open-scd/plain-compare-list.js';
+import '@openscd/open-scd/src/plain-compare-list.js';
 
 import {
   compareNames,
@@ -26,9 +26,9 @@ import {
   getNameAttribute,
   identity,
   isPublic,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 import { newPendingStateEvent } from '@openscd/core/foundation/deprecated/waiter.js';
-import { DiffFilter } from '@compas-oscd/open-scd/foundation/compare.js';
+import { DiffFilter } from '@openscd/open-scd/src/foundation/compare.js';
 
 const tctrClass = `LN[lnClass='TCTR']`;
 const tvtrClass = `LN[lnClass='TVTR']`;

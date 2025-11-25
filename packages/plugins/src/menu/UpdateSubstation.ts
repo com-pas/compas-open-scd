@@ -8,8 +8,8 @@ import {
   newWizardEvent,
   SCLTag,
   tags,
-} from '@compas-oscd/open-scd/foundation.js';
-import { Diff, mergeWizard } from '@compas-oscd/open-scd/wizards.js';
+} from '@openscd/open-scd/src/foundation.js';
+import { Diff, mergeWizard } from '@openscd/open-scd/src/wizards.js';
 
 export function isValidReference(
   doc: XMLDocument,

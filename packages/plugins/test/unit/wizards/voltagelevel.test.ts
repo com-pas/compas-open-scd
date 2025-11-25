@@ -1,17 +1,17 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@openscd/open-scd/src/wizard-textfield.js';
 import {
   WizardInputElement,
   WizardActor,
-} from '@compas-oscd/open-scd/foundation.js';
-import {
+} from '@openscd/open-scd/src/foundation.js';
+import { 
   ComplexAction,
   isCreate,
   isReplace,
   isDelete,
   isSimple,
-} from '@openscd/core/foundation/deprecated/editor.js';
+ } from '@openscd/core/foundation/deprecated/editor.js';
 import {
   createAction,
   updateAction,
@@ -33,7 +33,9 @@ describe('VoltageLevelEditor', () => {
       ['name', 'desc', 'nomFreq', 'numPhases', 'Voltage'].map(
         label =>
           <Promise<WizardInputElement>>(
-            fixture(html`<wizard-textfield label=${label}></wizard-textfield>`)
+            fixture(
+              html`<wizard-textfield label=${label}></wizard-textfield>`
+            )
           )
       )
     );
@@ -163,6 +165,7 @@ describe('VoltageLevelEditor', () => {
   });
 
   describe('with nulled properties', () => {
+
     describe('has an updateAction that', () => {
       describe('with present child element Voltage', () => {
         let element: Element;

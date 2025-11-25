@@ -26,7 +26,7 @@ import '@compas-oscd/open-scd/plain-compare-list.js';
 import { newLogEvent } from '@compas-oscd/core';
 import { newOpenDocEvent } from '@compas-oscd/core';
 
-import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/foundation.js';
+import { newWizardEvent, Wizard } from '@compas-oscd/open-scd';
 
 import {
   CompasSclDataService,

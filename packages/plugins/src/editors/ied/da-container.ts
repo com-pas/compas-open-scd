@@ -12,11 +12,11 @@ import { get } from 'lit-translate';
 import '@material/mwc-icon-button-toggle';
 import { IconButtonToggle } from '@material/mwc-icon-button-toggle';
 
-import '@compas-oscd/open-scd/action-pane.js';
+import '@openscd/open-scd/src/action-pane.js';
 import {
   getNameAttribute,
   newWizardEvent,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 import { wizards } from '../../wizards/wizard-library.js';
 import {
   DaiFieldTypes,
@@ -32,7 +32,7 @@ import { createDAIWizard } from '../../wizards/dai.js';
 import {
   determineUninitializedStructure,
   initializeElements,
-} from '@compas-oscd/open-scd/foundation/dai.js';
+} from '@openscd/open-scd/src/foundation/dai.js';
 
 /** [[`IED`]] plugin subeditor for editing `(B)DA` element. */
 @customElement('da-container')

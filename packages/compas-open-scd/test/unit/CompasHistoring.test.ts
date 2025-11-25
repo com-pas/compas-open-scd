@@ -4,7 +4,7 @@ import '@openscd/open-scd/test/unit/mock-logger.js';
 
 import { newIssueEvent } from '@compas-oscd/core';
 
-import { OscdHistory } from '@compas-oscd/open-scd/addons/History.js';
+import { OscdHistory } from '@compas-oscd/open-scd';
 import { MockOpenSCD } from '../mock-open-scd';
 
 describe('HistoringElement', () => {

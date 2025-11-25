@@ -1,8 +1,8 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import fc from 'fast-check';
 
-import '@compas-oscd/open-scd/addons/Wizards.js';
-import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
+import '@openscd/open-scd/src/addons/Wizards.js';
+import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
 
 import '../../../../src/editors/substation/substation-editor.js';
 import { regExp, regexString } from '../../../foundation.js';

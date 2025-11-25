@@ -15,7 +15,7 @@ import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-icon';
 import '@material/mwc-icon-button';
 
-import { WizardTextField } from '@compas-oscd/open-scd/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 
 import '@compas-oscd/open-scd/wizard-textfield.js';
 

@@ -5,10 +5,12 @@ import {
   queryAssignedNodes,
   query,
 } from 'lit-element';
-import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
-import { WizardFactory } from '@compas-oscd/open-scd/foundation.js';
+import {
+  OscdWizards,
+  WizardFactory,
+  WizardDialog,
+} from '@compas-oscd/open-scd';
 import { OpenSCD } from '../src/open-scd.js';
-import { WizardDialog } from '@compas-oscd/open-scd/wizard-dialog.js';
 
 import { CompasHistory } from '../src/addons/CompasHistory.js';
 import { CompasLayout } from '../src/addons/CompasLayout.js';
@@ -32,9 +34,7 @@ export class MockCompasOpenSCD extends OpenSCD {
   }
 
   render(): TemplateResult {
-    return html`
-    ${this.renderHosting()}
-    ${super.render()}`;
+    return html` ${this.renderHosting()} ${super.render()}`;
   }
 
   getPlugin<T extends HTMLElement>(name: string): T | undefined {

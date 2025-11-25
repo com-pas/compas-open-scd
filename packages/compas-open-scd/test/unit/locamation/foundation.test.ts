@@ -1,7 +1,7 @@
 import { expect } from '@open-wc/testing';
 
 import { Create, isCreate, isReplace, Replace } from '@compas-oscd/core';
-import { initializeNsdoc } from '@compas-oscd/open-scd/foundation/nsdoc.js';
+import { initializeNsdoc } from '@compas-oscd/open-scd';
 
 import {
   addPrefixAndNamespaceToDocument,

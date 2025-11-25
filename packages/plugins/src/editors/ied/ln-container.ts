@@ -7,11 +7,11 @@ import {
   getInstanceAttribute,
   getNameAttribute,
   newWizardEvent,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { IconButtonToggle } from '@material/mwc-icon-button-toggle';
 
-import '@compas-oscd/open-scd/action-pane.js';
+import '@openscd/open-scd/src/action-pane.js';
 import './do-container.js';
 
 import { Container } from './foundation.js';

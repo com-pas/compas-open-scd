@@ -11,7 +11,7 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 import { SimpleAction } from '@openscd/core/foundation/deprecated/editor';
 import { contentFunctionWizard } from './function.js';
 

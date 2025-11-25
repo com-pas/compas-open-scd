@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 import { get } from 'lit-translate';
 
-import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@openscd/open-scd/src/wizard-textfield.js';
 import { pTypesLogicLink104 } from '../foundation/p-types.js';
 import {
   getValue,
@@ -10,7 +10,7 @@ import {
   WizardActor,
   WizardInputElement,
   WizardMenuActor,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 
 import { cloneElement, createElement } from '@openscd/xml';
 

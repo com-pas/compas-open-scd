@@ -4,8 +4,8 @@ import { get } from 'lit-translate';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-select';
 
-import '@compas-oscd/open-scd/wizard-textfield.js';
-import { Wizard } from '@compas-oscd/open-scd/foundation.js';
+import '@openscd/open-scd/src/wizard-textfield.js';
+import { Wizard } from '@openscd/open-scd/src/foundation.js';
 import {
   getDescAttribute,
   getNameAttribute,

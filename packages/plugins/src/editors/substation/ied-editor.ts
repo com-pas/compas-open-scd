@@ -11,10 +11,10 @@ import '@material/mwc-fab';
 import '@material/mwc-icon';
 import { Fab } from '@material/mwc-fab';
 
-import '@compas-oscd/open-scd/action-icon.js';
+import '@openscd/open-scd/src/action-icon.js';
 import { createClientLnWizard } from '../../wizards/clientln.js';
 import { wizards } from '../../wizards/wizard-library.js';
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
+import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { selectGseControlWizard } from '../../wizards/gsecontrol.js';
 import { selectSampledValueControlWizard } from '../../wizards/sampledvaluecontrol.js';
@@ -108,6 +108,7 @@ export class IedEditor extends LitElement {
         @click="${() => this.openCommunicationMapping()}"
         icon="add_link"
       ></mwc-fab
-    ></action-icon> `;
+      ></action-icon
+    > `;
   }
 }

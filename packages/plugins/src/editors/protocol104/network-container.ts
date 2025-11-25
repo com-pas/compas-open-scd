@@ -5,7 +5,7 @@ import './subnetwork-container.js';
 import {
   compareNames,
   newWizardEvent,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 
 import { createElement } from '@openscd/xml';
 

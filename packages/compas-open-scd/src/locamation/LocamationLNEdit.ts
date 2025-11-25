@@ -8,7 +8,7 @@ import {
 } from 'lit-element';
 import { get, translate } from 'lit-translate';
 
-import { patterns } from '@compas-oscd/open-scd/foundation.js';
+import { patterns } from '@compas-oscd/open-scd';
 import { ComplexAction } from '@compas-oscd/core';
 import {
   checkValidity,
@@ -16,8 +16,8 @@ import {
   WizardAction,
   WizardInputElement,
   wizardInputSelector,
-} from '@compas-oscd/open-scd/foundation.js';
-import { Nsdoc } from '@compas-oscd/open-scd/foundation/nsdoc.js';
+} from '@compas-oscd/open-scd';
+import { Nsdoc } from '@compas-oscd/open-scd';
 
 import '@compas-oscd/open-scd/wizard-textfield.js';
 

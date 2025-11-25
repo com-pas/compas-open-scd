@@ -3,7 +3,7 @@ import { get } from 'lit-translate';
 
 import type { UserInfoEvent } from '../compas/foundation';
 
-import { OscdLayout } from '@compas-oscd/open-scd/addons/Layout.js';
+import { OscdLayout } from '@compas-oscd/open-scd';
 
 @customElement('compas-layout')
 export class CompasLayout extends OscdLayout {

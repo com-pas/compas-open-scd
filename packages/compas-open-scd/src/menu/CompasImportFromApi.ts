@@ -3,7 +3,7 @@ import { get } from 'lit-translate';
 
 import '@compas-oscd/open-scd/filtered-list.js';
 import '@compas-oscd/open-scd/wizard-textfield.js';
-import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/foundation.js';
+import { newWizardEvent, Wizard } from '@compas-oscd/open-scd';
 
 import '../compas/CompasImportFromApi.js';
 

@@ -14,7 +14,7 @@ import {
   ValidationResult,
   Validator,
   WorkerMessage,
-} from '@compas-oscd/open-scd/schemas.js';
+} from '@openscd/open-scd/src/schemas.js';
 
 const validators: Partial<Record<string, Validator>> = {};
 

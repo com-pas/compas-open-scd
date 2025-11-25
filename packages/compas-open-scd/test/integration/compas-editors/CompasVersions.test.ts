@@ -1,7 +1,7 @@
 import { expect, fixtureSync, html, waitUntil } from '@open-wc/testing';
 import sinon, { SinonSpy, spy, SinonStub } from 'sinon';
 
-import { Wizarding } from '@compas-oscd/open-scd/Wizarding.js';
+import { Wizarding } from '@compas-oscd/open-scd';
 import '../../mock-editor-logger.js';
 
 import {

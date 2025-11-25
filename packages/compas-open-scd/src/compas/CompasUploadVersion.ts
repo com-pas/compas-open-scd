@@ -9,7 +9,7 @@ import {
   newWizardEvent,
   Wizard,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@compas-oscd/open-scd';
 import { newLogEvent } from '@compas-oscd/core';
 import { newPendingStateEvent } from '@compas-oscd/core';
 

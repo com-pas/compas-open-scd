@@ -1,8 +1,8 @@
 import { Strings } from 'lit-translate';
 import { de as compasDe } from './de.js';
 import { en as compasEn } from './en.js';
-import { de as oscdDe } from '@compas-oscd/open-scd/translations/de.js';
-import { en as oscdEn } from '@compas-oscd/open-scd/translations/en.js';
+import { de as oscdDe } from '@compas-oscd/open-scd';
+import { en as oscdEn } from '@compas-oscd/open-scd';
 
 export type Language = 'en' | 'de';
 export const languages = {

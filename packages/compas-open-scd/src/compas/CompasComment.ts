@@ -5,7 +5,7 @@ import {
   LitElement,
   TemplateResult,
 } from 'lit-element';
-import { WizardTextField } from '@compas-oscd/open-scd/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import { translate } from 'lit-translate';
 
 import '@compas-oscd/open-scd/wizard-textfield.js';

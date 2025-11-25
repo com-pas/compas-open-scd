@@ -16,27 +16,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "resolveJsonModule": true,
-    "rootDir": "./",
-    "paths": {
-      "@compas-oscd/core": [
-        "../../node_modules/@compas-oscd/core/dist/foundation.d.ts"
-      ],
-      "@compas-oscd/core/*": ["../../node_modules/@compas-oscd/core/dist/*"],
-      "@openscd/core": [
-        "../../node_modules/@compas-oscd/core/dist/foundation.d.ts"
-      ],
-      "@openscd/core/*": ["../../node_modules/@compas-oscd/core/dist/*"],
-      "@compas-oscd/open-scd": [
-        "../../node_modules/@compas-oscd/open-scd/dist/open-scd.d.ts"
-      ],
-      "@openscd/open-scd": [
-        "../../node_modules/@compas-oscd/open-scd/dist/open-scd.d.ts"
-      ],
-      "@compas-oscd/open-scd/*": [
-        "../../node_modules/@compas-oscd/open-scd/dist/*"
-      ],
-      "@openscd/open-scd/*": ["../../node_modules/@compas-oscd/open-scd/dist/*"]
-    }
+    "rootDir": "./"
   },
   "include": ["**/*.ts"]
 }

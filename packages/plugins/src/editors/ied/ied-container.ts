@@ -9,7 +9,7 @@ import {
 import { nothing } from 'lit-html';
 import { translate } from 'lit-translate';
 
-import '@compas-oscd/open-scd/action-pane.js';
+import '@openscd/open-scd/src/action-pane.js';
 import './access-point-container.js';
 import './add-access-point-dialog.js';
 
@@ -19,7 +19,7 @@ import {
   getDescriptionAttribute,
   getNameAttribute,
   newWizardEvent,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { newEditEventV2, InsertV2 } from '@openscd/core';
 import { removeIEDWizard } from '../../wizards/ied.js';

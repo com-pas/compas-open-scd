@@ -1,10 +1,7 @@
 import { expect } from '@open-wc/testing';
 
 import { ComplexAction, isSimple } from '@compas-oscd/core';
-import {
-  WizardActor,
-  WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+import { WizardActor, WizardInputElement } from '@compas-oscd/open-scd';
 
 export function executeWizardComplexAction(
   wizardActor: WizardActor,

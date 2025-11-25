@@ -1,13 +1,13 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd/addons/Wizards.js';
-import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
+import '@openscd/open-scd/src/addons/Wizards.js';
+import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
 
 import '@openscd/open-scd/test/mock-wizard-editor.js';
 import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
 
 import { guessVoltageLevel } from '../../../../src/editors/substation/guess-wizard.js';
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
+import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item.js';
 
 describe('guess-wizard-integration', () => {

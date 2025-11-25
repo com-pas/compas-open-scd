@@ -16,20 +16,14 @@ import './addons/CompasLayout.js';
 
 import '@compas-oscd/open-scd/addons/Waiter.js';
 import '@compas-oscd/open-scd/addons/Settings.js';
-import {
-  HistoryState,
-  historyStateEvent,
-} from '@compas-oscd/open-scd/addons/History.js';
-import {
-  initializeNsdoc,
-  Nsdoc,
-} from '@compas-oscd/open-scd/foundation/nsdoc.js';
+import { HistoryState, historyStateEvent } from '@compas-oscd/open-scd';
+import { initializeNsdoc, Nsdoc } from '@compas-oscd/open-scd';
 import {
   InstalledOfficialPlugin,
   Plugin,
   MenuPosition,
   PluginKind,
-} from '@compas-oscd/open-scd/plugin.js';
+} from '@compas-oscd/open-scd';
 import { ActionDetail } from '@material/mwc-list';
 
 import { officialPlugins as builtinPlugins } from '../public/js/plugins.js';
@@ -39,8 +33,8 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import {
   newConfigurePluginEvent,
   ConfigurePluginEvent,
-} from '@compas-oscd/open-scd/plugin.events.js';
-import { pluginTag } from '@compas-oscd/open-scd/plugin-tag.js';
+} from '@compas-oscd/open-scd';
+import { pluginTag } from '@compas-oscd/open-scd';
 import { newLogEvent } from '@compas-oscd/core';
 import packageJson from '../package.json';
 import { CompasSclDataService } from './compas-services/CompasSclDataService.js';
@@ -222,7 +216,8 @@ export class OpenSCD extends LitElement {
 
     // TODO: let Lit handle the event listeners, move to render()
     this.addEventListener('reset-plugins', this.resetPlugins);
-    this.addEventListener(historyStateEvent, (e: CustomEvent<HistoryState>) => {
+    this.addEventListener(historyStateEvent, (event: Event) => {
+      const e = event as CustomEvent<HistoryState>;
       this.historyState = e.detail;
       this.requestUpdate();
     });

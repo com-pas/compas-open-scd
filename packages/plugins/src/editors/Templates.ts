@@ -6,8 +6,8 @@ import '@material/mwc-icon-button';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd/filtered-list.js';
-import { identity, newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
+import '@openscd/open-scd/src/filtered-list.js';
+import { identity, newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 
 import { createElement } from '@openscd/xml';
 

@@ -1,6 +1,11 @@
-import { identity } from '@compas-oscd/open-scd/foundation.js';
+import {
+  identity,
+} from '@openscd/open-scd/src/foundation.js';
 
-import { createElement, getChildElementsByTagName } from '@openscd/xml';
+import {
+  createElement,
+  getChildElementsByTagName,
+} from '@openscd/xml';
 
 const functionTypeElementTags = [
   'Function',

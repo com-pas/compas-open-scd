@@ -11,7 +11,7 @@ import { get, translate } from 'lit-translate';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-check-list-item';
 
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 import { newLogEvent } from '@compas-oscd/core';
 import { newOpenDocEvent } from '@compas-oscd/core';
 

@@ -8,8 +8,8 @@ import {
 
 import '@material/mwc-fab';
 
-import '@compas-oscd/open-scd/action-icon.js';
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
+import '@openscd/open-scd/src/action-icon.js';
+import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { editConnectedApWizard } from '../../wizards/connectedap.js';
 

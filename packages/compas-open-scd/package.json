@@ -19,7 +19,7 @@
   "type": "module",
   "dependencies": {
     "@compas-oscd/core": "^0.1.21",
-    "@compas-oscd/open-scd": "^0.34.32",
+    "@compas-oscd/open-scd": "^0.34.34",
     "@compas-oscd/xml": "^0.0.1",
     "@material/mwc-dialog": "0.22.1",
     "@material/mwc-drawer": "0.22.1",

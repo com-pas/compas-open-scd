@@ -2,8 +2,12 @@ import { expect, fixture, html } from '@open-wc/testing';
 
 import '../../mock-wizard-editor.js';
 import { MockWizardEditor } from '../../mock-wizard-editor.js';
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
-import { WizardTextField } from '@compas-oscd/open-scd/dist/wizard-textfield.js';
+import {
+  newWizardEvent,
+  WizardTextField,
+  Wizard,
+  WizardInputElement,
+} from '@compas-oscd/open-scd';
 import {
   Create,
   isCreate,
@@ -11,11 +15,6 @@ import {
   isReplace,
   Replace,
 } from '@compas-oscd/core';
-
-import {
-  Wizard,
-  WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
 
 import {
   fetchDoc,
@@ -68,7 +67,8 @@ describe('Wizards for SCL element (CoMPAS)', () => {
     });
 
     it('update SCL Name should be updated in document', async function () {
-      await setWizardTextFieldValue(<WizardTextField>inputs[0], 'updated');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>inputs[0], 'updated');
 
       const complexAction = executeWizardComplexAction(
         updateSCL(scl),
@@ -112,7 +112,8 @@ describe('Wizards for SCL element (CoMPAS)', () => {
     });
 
     it('update SCL Name should be updated in document', async function () {
-      await setWizardTextFieldValue(<WizardTextField>inputs[0], 'updated');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>inputs[0], 'updated');
 
       const complexAction = executeWizardComplexAction(
         updateSCL(scl),
@@ -143,7 +144,8 @@ describe('Wizards for SCL element (CoMPAS)', () => {
     });
 
     it('update SCL Name should be updated in document', async function () {
-      await setWizardTextFieldValue(<WizardTextField>inputs[0], 'updated');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>inputs[0], 'updated');
 
       const complexAction = executeWizardComplexAction(
         updateSCL(scl),

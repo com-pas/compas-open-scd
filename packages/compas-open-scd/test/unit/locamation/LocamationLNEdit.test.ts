@@ -8,13 +8,13 @@ import {
 import {
   initializeNsdoc,
   Nsdoc,
-} from '@compas-oscd/open-scd/foundation/nsdoc.js';
-import { WizardTextField } from '@compas-oscd/open-scd/dist/wizard-textfield.js';
-import { WizardAction } from '@compas-oscd/open-scd/foundation.js';
+  WizardTextField,
+  WizardAction,
+  newWizardEvent,
+} from '@compas-oscd/open-scd';
 import { ComplexAction, isSimple, isReplace, Replace } from '@compas-oscd/core';
 
 import '../../mock-wizard-editor.js';
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
 
 import {
   LocamationVMUEditElement,
@@ -71,10 +71,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the identifier with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(
-        <WizardTextField>element.inputs[4],
-        '10.10.8'
-      );
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[4], '10.10.8');
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('10.12.14');
@@ -82,17 +80,16 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the identifier with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(
-        <WizardTextField>element.inputs[4],
-        '10.10.AA'
-      );
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[4], '10.10.AA');
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
     });
 
     it('when saving and updating the transform first with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[6], '2000');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[6], '2000');
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('1000');
@@ -100,14 +97,16 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the transform first with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[6], 'AAAA');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[6], 'AAAA');
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
     });
 
     it('when saving and updating the transform second with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[7], '40');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[7], '40');
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('20');
@@ -115,7 +114,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the transform second with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[7], 'AA');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[7], 'AA');
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
@@ -138,7 +138,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the channel with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '3');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '3');
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('0');
@@ -146,7 +147,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the channel with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '6');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '6');
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
@@ -173,10 +175,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the sum with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(
-        <WizardTextField>element.inputs[5],
-        '3,4,5'
-      );
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '3,4,5');
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('0,1,2');
@@ -184,10 +184,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the sum with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(
-        <WizardTextField>element.inputs[5],
-        '6,7,8'
-      );
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '6,7,8');
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
@@ -214,7 +212,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the channel with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '2');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '2');
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('0');
@@ -222,7 +221,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the channel with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(<WizardTextField>element.inputs[5], '3');
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '3');
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;
@@ -249,10 +249,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the sum with valid value returns a update action', async () => {
-      await setWizardTextFieldValue(
-        <WizardTextField>element.inputs[5],
-        '2,1,0'
-      );
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '2,1,0');
 
       const replaceAction = validateAndRetrieveReplaceAction(element.save());
       expect(replaceAction.old.element).to.have.text('0,1,2');
@@ -260,10 +258,8 @@ describe('Wizards for Locamation Plugin to edit the selected Logical Node - ', (
     });
 
     it('when saving and updating the sum with invalid value returns a update action', async () => {
-      await setWizardTextFieldValue(
-        <WizardTextField>element.inputs[5],
-        '3,4,5'
-      );
+      // TODO: Re-add WizardTextField cast after packages/openscd is removed
+      await setWizardTextFieldValue(<any>element.inputs[5], '3,4,5');
 
       const complexActions = element.save();
       expect(complexActions).to.be.empty;

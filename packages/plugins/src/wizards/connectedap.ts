@@ -11,8 +11,8 @@ import { Checkbox } from '@material/mwc-checkbox';
 import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '@compas-oscd/open-scd/wizard-textfield.js';
-import '@compas-oscd/open-scd/filtered-list.js';
+import '@openscd/open-scd/src/wizard-textfield.js';
+import '@openscd/open-scd/src/filtered-list.js';
 import {
   Wizard,
   WizardActor,
@@ -21,9 +21,11 @@ import {
   getValue,
   isPublic,
   identity,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 
-import { createElement } from '@openscd/xml';
+import {
+  createElement,
+} from '@openscd/xml';
 
 import {
   EditorAction,
@@ -39,7 +41,7 @@ import {
 import {
   mACAddressGenerator,
   appIdGenerator,
-} from '@compas-oscd/open-scd/foundation/generators.js';
+} from '@openscd/open-scd/src/foundation/generators.js';
 
 interface AccessPointDescription {
   element: Element;

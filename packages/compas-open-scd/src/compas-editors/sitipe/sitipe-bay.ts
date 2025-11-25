@@ -17,7 +17,7 @@ import '@material/mwc-icon-button';
 
 import { IconButton } from '@material/mwc-icon-button';
 
-import { isPublic } from '@compas-oscd/open-scd/foundation.js';
+import { isPublic } from '@compas-oscd/open-scd';
 import { newActionEvent } from '@compas-oscd/core';
 import { createElement } from '@compas-oscd/xml';
 import { newLogEvent } from '@compas-oscd/core';

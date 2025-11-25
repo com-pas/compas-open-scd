@@ -1,15 +1,17 @@
 import { html, TemplateResult } from 'lit-html';
 import { get } from 'lit-translate';
 
-import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@openscd/open-scd/src/wizard-textfield.js';
 import {
   getValue,
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 
-import { createElement } from '@openscd/xml';
+import {
+  createElement,
+} from '@openscd/xml';
 
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
 import { replaceNamingAttributeWithReferencesAction } from './foundation/actions.js';

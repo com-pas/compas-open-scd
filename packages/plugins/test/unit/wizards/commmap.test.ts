@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd/addons/Wizards.js';
+import '@openscd/open-scd/src/addons/Wizards.js';
 
 import '../../../src/editors/substation/zeroline-pane.js';
 import {
@@ -10,6 +10,7 @@ import {
 
 describe('communication mapping wizard', () => {
   let doc: Document;
+
 
   beforeEach(async () => {
     doc = await fetch('/test/testfiles/comm-map.scd')

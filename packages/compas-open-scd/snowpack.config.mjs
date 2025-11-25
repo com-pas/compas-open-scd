@@ -36,11 +36,13 @@ export default {
   ],
   workspaceRoot: '../../',
   mount: {
+    '../openscd/': '/openscd/',
     '../plugins/': '/plugins/',
     '../external-plugins/': '/external-plugins/',
     './': '/',
   },
   alias: {
+    '@openscd/open-scd': '../openscd/',
     '@openscd/plugins': '../plugins/',
   },
   buildOptions: {

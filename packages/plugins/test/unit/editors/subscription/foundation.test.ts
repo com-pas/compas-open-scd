@@ -10,7 +10,7 @@ import {
   updateExtRefElement,
 } from '../../../../src/editors/subscription/foundation.js';
 
-import { identity } from '@compas-oscd/open-scd/foundation.js';
+import { identity } from '@openscd/open-scd/src/foundation.js';
 
 describe('foundation', () => {
   let doc: XMLDocument;
@@ -312,7 +312,7 @@ describe('foundation', () => {
 
       const extRef = getExtRef(inputs, fcda, controlBlock);
 
-      expect(extRef).to.equal(expectedExtRef);
+      expect(extRef).to.equal(expectedExtRef)
     });
 
     it('should correctly fetch ExtRef without srcLNClass attribute', () => {
@@ -332,24 +332,20 @@ describe('foundation', () => {
 
       const extRef = getExtRef(inputs, fcda, controlBlock);
 
-      expect(extRef).to.equal(expectedExtRef);
+      expect(extRef).to.equal(expectedExtRef)
     });
   });
 
   describe('regression test for bugfix 1711', () => {
     beforeEach(async () => {
-      doc = await fetch(
-        '/test/testfiles/editors/bugfix1711-can-create-extref.scd'
-      )
+      doc = await fetch('/test/testfiles/editors/bugfix1711-can-create-extref.scd')
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, 'application/xml'));
     });
 
     it('should return true for canCreateValidExtRef on FCDA without lnInst for LN0', () => {
       const fcda = doc.querySelector('FCDA')!;
-      const controlBlock = doc.querySelector(
-        'IED[name="IED1"] GSEControl[name="gseControl"]'
-      )!;
+      const controlBlock = doc.querySelector('IED[name="IED1"] GSEControl[name="gseControl"]')!;
 
       const canCreateExtRef = canCreateValidExtRef(fcda, controlBlock);
 

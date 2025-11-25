@@ -2,7 +2,7 @@ import { css } from 'lit-element';
 
 import '@material/mwc-list/mwc-list-item';
 
-import { isPublic } from '@compas-oscd/open-scd/foundation.js';
+import { isPublic } from '@openscd/open-scd/src/foundation.js';
 import { Create } from '@openscd/core/foundation/deprecated/editor';
 
 export interface UpdateOptions {

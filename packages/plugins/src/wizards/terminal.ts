@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
-import { isPublic, Wizard } from '@compas-oscd/open-scd/foundation.js';
+import { isPublic, Wizard } from '@openscd/open-scd/src/foundation.js';
 
 function render(
   name: string | null,

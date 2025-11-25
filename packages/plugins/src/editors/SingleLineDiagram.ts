@@ -18,7 +18,7 @@ import {
   identity,
   newWizardEvent,
   SCLTag,
-} from '@compas-oscd/open-scd/foundation.js';
+} from '@openscd/open-scd/src/foundation.js';
 import {
   addLabelToBay,
   addLabelToBusBar,
@@ -44,7 +44,7 @@ import {
   getConnectedTerminals,
   isBusBar,
 } from './singlelinediagram/foundation.js';
-import { isSCLNamespace } from '@compas-oscd/open-scd/schemas.js';
+import { isSCLNamespace } from '@openscd/open-scd/src/schemas.js';
 import { wizards } from './singlelinediagram/wizards/wizard-library.js';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 import { get } from 'lit-translate';

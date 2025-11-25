@@ -1,14 +1,13 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@compas-oscd/open-scd/addons/Wizards.js';
-import { OscdWizards } from '@compas-oscd/open-scd/addons/Wizards.js';
+import '@openscd/open-scd/src/addons/Wizards.js';
+import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
 
-import { WizardInputElement } from '@compas-oscd/open-scd/foundation.js';
 import {
-  Create,
-  isCreate,
-} from '@openscd/core/foundation/deprecated/editor.js';
+  WizardInputElement,
+} from '@openscd/open-scd/src/foundation.js';
+import { Create, isCreate } from '@openscd/core/foundation/deprecated/editor.js';
 import { fetchDoc } from './test-support.js';
 import { createConductingEquipmentWizard } from '../../../src/wizards/conductingequipment.js';
 
