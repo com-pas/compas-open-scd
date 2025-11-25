@@ -1,11 +1,9 @@
-
-
 import {
   createLogEvent,
   createNSDocLogEvent,
 } from '../compas-services/foundation.js';
 import { CompasNSDocFileService } from '../compas-services/CompasNSDocFileService.js';
-import { newLoadNsdocEvent } from '@compas-oscd/core/foundation/deprecated/settings.js';
+import { newLoadNsdocEvent } from '@compas-oscd/core';
 
 interface NsdocFileResponse {
   id: string;

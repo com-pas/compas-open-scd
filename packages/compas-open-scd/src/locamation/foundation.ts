@@ -8,7 +8,7 @@ import {
   WizardInputElement,
 } from '@compas-oscd/open-scd/foundation.js';
 import { cloneElement } from '@compas-oscd/xml';
-import { SimpleAction } from '@compas-oscd/core/foundation/deprecated/editor.js';
+import { SimpleAction } from '@compas-oscd/core';
 
 export const LOCAMATION_MANUFACTURER = 'Locamation B.V.';
 export const LOCAMATION_PRIVATE = 'LCMTN_VMU_SENSOR';

@@ -81,7 +81,7 @@ export function stubFetchResponseFunction(
   listElementName: string,
   callback: (result: Element[]) => any
 ): SinonStub<any[], void> {
-  return sinon.stub(element, functionName).callsFake((...args: any[]): void => {
+  const stub = sinon.stub(element, functionName).callsFake((): void => {
     if (response) {
       const parser = new DOMParser();
       const document = parser.parseFromString(response, 'text/xml');
@@ -89,5 +89,7 @@ export function stubFetchResponseFunction(
     } else {
       callback([]);
     }
-  }) as SinonStub<any[], void>;
+    return;
+  });
+  return stub as SinonStub<any[], void>;
 }

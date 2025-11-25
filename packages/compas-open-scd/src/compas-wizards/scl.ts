@@ -10,10 +10,7 @@ import {
 
 import { cloneElement } from '@compas-oscd/xml';
 
-import {
-  ComplexAction,
-  EditorAction,
-} from '@compas-oscd/core/foundation/deprecated/editor.js';
+import { ComplexAction, EditorAction } from '@compas-oscd/core';
 
 import '../compas/CompasLabelsField.js';
 

@@ -11,12 +11,7 @@ import {
 } from '@compas-oscd/open-scd/foundation/nsdoc.js';
 import { WizardTextField } from '@compas-oscd/open-scd/dist/wizard-textfield.js';
 import { WizardAction } from '@compas-oscd/open-scd/foundation.js';
-import {
-  ComplexAction,
-  isSimple,
-  isReplace,
-  Replace,
-} from '@compas-oscd/core/foundation/deprecated/editor.js';
+import { ComplexAction, isSimple, isReplace, Replace } from '@compas-oscd/core';
 
 import '../../mock-wizard-editor.js';
 import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';

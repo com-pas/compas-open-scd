@@ -1,5 +1,5 @@
 import { get } from 'lit-translate';
-import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
+import { newLogEvent } from '@compas-oscd/core';
 
 export const NOT_FOUND_ERROR = 'NotFoundError';
 export const APPLICATION_ERROR = 'ApplicationError';

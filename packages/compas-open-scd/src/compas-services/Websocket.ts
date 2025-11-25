@@ -1,4 +1,4 @@
-import { newPendingStateEvent } from '@compas-oscd/core/foundation/deprecated/waiter.js';
+import { newPendingStateEvent } from '@compas-oscd/core';
 import {
   APPLICATION_ERROR,
   extractErrorMessage,

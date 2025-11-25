@@ -7,8 +7,8 @@ import {
   TemplateResult,
 } from 'lit-element';
 
-import { newOpenDocEvent } from '@compas-oscd/core/foundation/deprecated/open-event.js';
-import { newPendingStateEvent } from '@compas-oscd/core/foundation/deprecated/waiter.js';
+import { newOpenDocEvent } from '@compas-oscd/core';
+import { newPendingStateEvent } from '@compas-oscd/core';
 
 import './addons/CompasSession.js';
 import './addons/CompasHistory.js';
@@ -40,8 +40,8 @@ import {
   newConfigurePluginEvent,
   ConfigurePluginEvent,
 } from '@compas-oscd/open-scd/plugin.events.js';
-import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
 import { pluginTag } from '@compas-oscd/open-scd/plugin-tag.js';
+import { newLogEvent } from '@compas-oscd/core';
 import packageJson from '../package.json';
 import { CompasSclDataService } from './compas-services/CompasSclDataService.js';
 import { createLogEvent } from './compas-services/foundation.js';

@@ -18,14 +18,11 @@ import '@material/mwc-icon-button';
 import { IconButton } from '@material/mwc-icon-button';
 
 import { isPublic } from '@compas-oscd/open-scd/foundation.js';
-import { newActionEvent } from '@compas-oscd/core/foundation/deprecated/editor.js';
+import { newActionEvent } from '@compas-oscd/core';
 import { createElement } from '@compas-oscd/xml';
-import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
+import { newLogEvent } from '@compas-oscd/core';
 
-import {
-  ComplexAction,
-  SimpleAction,
-} from '@compas-oscd/core/foundation/deprecated/editor.js';
+import { ComplexAction, SimpleAction } from '@compas-oscd/core';
 
 import '@compas-oscd/open-scd/action-pane.js';
 import '@compas-oscd/open-scd/action-icon.js';

@@ -1,9 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import {
-  ComplexAction,
-  isSimple
-} from '@compas-oscd/core/foundation/deprecated/editor.js';
+import { ComplexAction, isSimple } from '@compas-oscd/core';
 import {
   WizardActor,
   WizardInputElement,

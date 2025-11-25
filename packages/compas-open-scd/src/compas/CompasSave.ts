@@ -14,7 +14,7 @@ import { TextFieldBase } from '@material/mwc-textfield/mwc-textfield-base';
 import '@material/mwc-textfield';
 import '@material/mwc-button';
 
-import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
+import { newLogEvent } from '@compas-oscd/core';
 import { saveDocumentToFile } from '../file.js';
 
 import '@compas-oscd/open-scd/WizardDivider.js';

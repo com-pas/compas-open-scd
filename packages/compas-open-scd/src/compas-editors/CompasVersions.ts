@@ -23,8 +23,8 @@ import { MultiSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
 import '@compas-oscd/open-scd/plain-compare-list.js';
 
-import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
-import { newOpenDocEvent } from '@compas-oscd/core/foundation/deprecated/open-event.js';
+import { newLogEvent } from '@compas-oscd/core';
+import { newOpenDocEvent } from '@compas-oscd/core';
 
 import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/foundation.js';
 

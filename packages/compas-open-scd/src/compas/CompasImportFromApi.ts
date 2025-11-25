@@ -2,9 +2,9 @@ import { customElement, html, LitElement, TemplateResult } from 'lit-element';
 
 import '@material/mwc-list/mwc-list-item';
 
-import { newWizardEvent } from '@compas-oscd/open-scd/foundation.js';
-import { newOpenDocEvent } from '@compas-oscd/core/foundation/deprecated/open-event.js';
-import { newPendingStateEvent } from '@compas-oscd/core/foundation/deprecated/waiter.js';
+import { newWizardEvent } from '@compas-oscd/open-scd/src/foundation.js';
+import { newOpenDocEvent } from '@compas-oscd/core';
+import { newPendingStateEvent } from '@compas-oscd/core';
 
 import '@compas-oscd/open-scd/filtered-list.js';
 

@@ -9,7 +9,7 @@ import {
 import { get, translate } from 'lit-translate';
 
 import { patterns } from '@compas-oscd/open-scd/foundation.js';
-import { ComplexAction } from '@compas-oscd/core/foundation/deprecated/editor.js';
+import { ComplexAction } from '@compas-oscd/core';
 import {
   checkValidity,
   Wizard,

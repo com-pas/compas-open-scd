@@ -1,8 +1,8 @@
 import { css, html, LitElement, query, TemplateResult } from 'lit-element';
 
-import { newLogEvent } from '@compas-oscd/core/foundation/deprecated/history.js';
-import { newOpenDocEvent } from '@compas-oscd/core/foundation/deprecated/open-event.js';
-import { newPendingStateEvent } from '@compas-oscd/core/foundation/deprecated/waiter.js';
+import { newLogEvent } from '@compas-oscd/core';
+import { newOpenDocEvent } from '@compas-oscd/core';
+import { newPendingStateEvent } from '@compas-oscd/core';
 import { stripExtensionFromName } from '../compas/foundation.js';
 
 import {

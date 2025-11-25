@@ -10,7 +10,7 @@ import {
   isDelete,
   isReplace,
   Replace,
-} from '@compas-oscd/core/foundation/deprecated/editor.js';
+} from '@compas-oscd/core';
 
 import {
   Wizard,
