@@ -8,8 +8,6 @@ export default {
       'crypto',
       '@openscd/open-scd-core',
       '@openscd/oscd-scl',
-      '@compas-oscd/core',
-      '@compas-oscd/open-scd',
     ],
   },
   exclude: [

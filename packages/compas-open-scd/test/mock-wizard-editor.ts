@@ -7,11 +7,11 @@ import {
   property,
 } from 'lit-element';
 
-import '@compas-oscd/open-scd/dist/addons/Wizards.js';
+import '@compas-oscd/open-scd/addons/Wizards.js';
 
-import '@compas-oscd/open-scd/dist/addons/Editor.js';
+import '@compas-oscd/open-scd/addons/Editor.js';
 
-import { OscdWizards } from '@compas-oscd/open-scd/dist/addons/Wizards.js';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
 @customElement('mock-wizard-editor')
 export class MockWizardEditor extends LitElement {

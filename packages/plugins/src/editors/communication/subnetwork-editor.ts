@@ -17,14 +17,14 @@ import type { Dialog } from '@material/mwc-dialog';
 import './connectedap-editor.js';
 import './gse-editor.js';
 import './smv-editor.js';
-import {
-  newWizardEvent,
-  compareNames,
-} from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent, compareNames } from '@compas-oscd/open-scd';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { createConnectedApWizard } from '../../wizards/connectedap.js';
 import { wizards } from '../../wizards/wizard-library.js';
-import { canMoveCommunicationElementToConnectedAP, getAllConnectedAPsOfSameIED } from './foundation.js';
+import {
+  canMoveCommunicationElementToConnectedAP,
+  getAllConnectedAPsOfSameIED,
+} from './foundation.js';
 
 /** [[`Communication`]] subeditor for a `SubNetwork` element. */
 @customElement('subnetwork-editor')
@@ -201,11 +201,13 @@ export class SubNetworkEditor extends LitElement {
       this.doc
     );
 
-    const validTargetConnectedAPs = allConnectedAPs.filter(cap => canMoveCommunicationElementToConnectedAP(
-      this.moveTargetElement!,
-      cap,
-      this.doc
-    ));
+    const validTargetConnectedAPs = allConnectedAPs.filter(cap =>
+      canMoveCommunicationElementToConnectedAP(
+        this.moveTargetElement!,
+        cap,
+        this.doc
+      )
+    );
 
     return html`
       <mwc-dialog

@@ -5,35 +5,30 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-radio-list-item';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd';
 import {
   newWizardEvent,
   Wizard,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 import { newOpenDocEvent } from '@openscd/core/foundation/deprecated/open-event.js';
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
 import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
-import {
-  newEmptySCD,
-  SupportedVersion,
-} from '@openscd/open-scd/src/schemas.js';
+import { newEmptySCD, SupportedVersion } from '@compas-oscd/open-scd';
 
 export default class NewProjectPlugin extends LitElement {
-
   private createNewProject(
     inputs: WizardInputElement[],
     wizard: Element
   ): EditorAction[] {
+    let docName = inputs[0].value ?? '';
 
-    let docName = inputs[0].value ?? ''
-
-    const acceptedFileExtension = ['.ssd', '.scd','.fsd'];
-    const isValidFileFormat = acceptedFileExtension.some((extension) => {
+    const acceptedFileExtension = ['.ssd', '.scd', '.fsd'];
+    const isValidFileFormat = acceptedFileExtension.some(extension => {
       return inputs[0].value?.endsWith(extension);
-    })
+    });
 
-    if(!isValidFileFormat) {
+    if (!isValidFileFormat) {
       docName = docName + '.scd';
     }
 

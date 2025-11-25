@@ -1,7 +1,4 @@
-import {
-  getNameAttribute,
-  isPublic,
-} from '@openscd/open-scd/src/foundation.js';
+import { getNameAttribute, isPublic } from '@compas-oscd/open-scd';
 import { Delete, Replace } from '@openscd/core/foundation/deprecated/editor';
 const referenceInfoTags = [
   'IED',

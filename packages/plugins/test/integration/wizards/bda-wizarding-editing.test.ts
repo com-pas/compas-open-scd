@@ -1,16 +1,16 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-open-scd.js';
-import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
+import '@compas-oscd/open-scd';
+import { MockOpenSCD } from '@compas-oscd/open-scd';
 
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { FilteredList } from '@openscd/open-scd/src/filtered-list.js';
-import { WizardSelect } from '@openscd/open-scd/src/wizard-select.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { FilteredList } from '@compas-oscd/open-scd';
+import { WizardSelect } from '@compas-oscd/open-scd';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import TemplatesPlugin from '../../../src/editors/Templates.js';
-import { WizardCheckbox } from '@openscd/open-scd/src/wizard-checkbox.js';
+import { WizardCheckbox } from '@compas-oscd/open-scd';
 
 describe('BDA wizarding editing integration', () => {
   if (customElements.get('templates-editor') === undefined)

@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/test/mock-open-scd.js';
-import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
+import '@compas-oscd/open-scd';
+import { MockOpenSCD } from '@compas-oscd/open-scd';
 
 import ValidateTemplates from '../../../src/validators/ValidateTemplates.js';
 

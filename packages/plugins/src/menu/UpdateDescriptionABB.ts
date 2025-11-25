@@ -5,7 +5,7 @@ import '@material/mwc-list/mwc-check-list-item';
 import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd';
 import {
   find,
   identity,
@@ -16,7 +16,7 @@ import {
   WizardAction,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import { cloneElement } from '@openscd/xml';
 

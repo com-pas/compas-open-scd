@@ -16,7 +16,7 @@ import { Menu } from '@material/mwc-menu';
 import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 
-import '@openscd/open-scd/src/action-pane.js';
+import '@compas-oscd/open-scd';
 import './bay-editor.js';
 import './general-equipment-editor.js';
 import './ied-editor.js';
@@ -29,18 +29,12 @@ import {
   renderGeneralEquipment,
   redirectDialog,
 } from './foundation.js';
-import {
-  newWizardEvent,
-  SCLTag,
-  tags,
-} from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent, SCLTag, tags } from '@compas-oscd/open-scd';
 
-import {
-  getChildElementsByTagName,
-} from '@openscd/xml';
+import { getChildElementsByTagName } from '@openscd/xml';
 
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
-import { voltageLevelIcon } from '@openscd/open-scd/src/icons/icons.js';
+import { voltageLevelIcon } from '@compas-oscd/open-scd';
 import { SubstationEditor } from './substation-editor.js';
 import { emptyWizard, wizards } from '../../wizards/wizard-library.js';
 import { Dialog } from '@material/mwc-dialog';

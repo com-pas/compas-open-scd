@@ -1,11 +1,11 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/substation/zeroline-pane.js';
 import { ZerolinePane } from '../../../../src/editors/substation/zeroline-pane.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 

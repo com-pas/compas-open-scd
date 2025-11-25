@@ -1,7 +1,5 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/unit/mock-logger.js';
-
 import { newIssueEvent } from '@compas-oscd/core';
 
 import { OscdHistory } from '@compas-oscd/open-scd';

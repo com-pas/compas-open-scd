@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import { List } from '@material/mwc-list';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
@@ -170,4 +170,4 @@ describe('clientln wizards', () => {
       expect(reportCbs[1]).to.have.attribute('disabled');
     });
   }).timeout(5000);
-  });
+});

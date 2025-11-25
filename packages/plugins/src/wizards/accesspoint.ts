@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd';
 import {
   newWizardEvent,
   Wizard,
@@ -9,7 +9,7 @@ import {
   WizardActor,
   isPublic,
   identity,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 import {
   Delete,
   ComplexAction,

@@ -1,10 +1,10 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
-import { WizardInputElement } from '@openscd/open-scd/src/foundation.js';
+import { WizardInputElement } from '@compas-oscd/open-scd';
 import {
   isCreate,
   isDelete,
@@ -23,9 +23,9 @@ import {
 } from '../../../src/wizards/sampledvaluecontrol.js';
 import fc, { integer } from 'fast-check';
 import { inverseRegExp, regExp, regexString } from '../../foundation.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import { WizardCheckbox } from '@openscd/open-scd/src/wizard-checkbox.js';
-import { FinderList } from '@openscd/open-scd/src/finder-list.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
+import { WizardCheckbox } from '@compas-oscd/open-scd';
+import { FinderList } from '@compas-oscd/open-scd';
 
 describe('Wizards for SCL element SampledValueControl', () => {
   let doc: XMLDocument;

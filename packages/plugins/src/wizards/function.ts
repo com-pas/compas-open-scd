@@ -6,12 +6,12 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import {
   cloneElement,
   createElement,
-  getChildElementsByTagName
+  getChildElementsByTagName,
 } from '@openscd/xml';
 
 import { SimpleAction } from '@openscd/core/foundation/deprecated/editor.js';

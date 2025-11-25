@@ -1,10 +1,10 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import { initializeNsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
+import { initializeNsdoc } from '@compas-oscd/open-scd';
 import SMVSubscriberMessageBindingPlugin from '../../../src/editors/SMVSubscriberMessageBinding.js';
 
 import { ListItem } from '@material/mwc-list/mwc-list-item.js';
-import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
-import '@openscd/open-scd/test/mock-open-scd.js';
+import { MockOpenSCD } from '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd';
 import { TemplateResult, customElement, query } from 'lit-element';
 
 customElements.define('smv-plugin', SMVSubscriberMessageBindingPlugin);

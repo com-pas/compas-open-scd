@@ -5,7 +5,7 @@ import '@material/mwc-icon';
 import '@material/mwc-list/mwc-list-item';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd';
 import {
   find,
   findControlBlocks,
@@ -14,10 +14,10 @@ import {
   newWizardEvent,
   Wizard,
   WizardActor,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 import { selectClientLNsWizard } from './clientln.js';
 import { selectExtRefsWizard } from './controlwithiedname.js';
-import { controlBlockIcons } from '@openscd/open-scd/src/icons/icons.js';
+import { controlBlockIcons } from '@compas-oscd/open-scd';
 
 export function openCommunicationMappingWizard(
   root: XMLDocument | Element

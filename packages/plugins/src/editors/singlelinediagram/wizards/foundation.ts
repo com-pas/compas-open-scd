@@ -5,11 +5,9 @@ import {
   getValue,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
-import {
-  cloneElement
-} from '@openscd/xml';
+import { cloneElement } from '@openscd/xml';
 
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
 import { SCL_COORDINATES_NAMESPACE } from '../foundation.js';

@@ -1,7 +1,4 @@
-import {
-  getNameAttribute,
-  getPathNameAttribute,
-} from '@openscd/open-scd/src/foundation.js';
+import { getNameAttribute, getPathNameAttribute } from '@compas-oscd/open-scd';
 
 /**
  * A point is a position containing a x and a y within a SCL file.

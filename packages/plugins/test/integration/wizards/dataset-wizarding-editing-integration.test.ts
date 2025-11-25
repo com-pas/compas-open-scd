@@ -1,11 +1,11 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import { editDataSetWizard } from '../../../src/wizards/dataset.js';
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 
 describe('dataset wizards', () => {
   let doc: XMLDocument;

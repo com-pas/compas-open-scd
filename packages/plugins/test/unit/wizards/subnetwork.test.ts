@@ -1,14 +1,11 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import {
-  WizardInputElement,
-  patterns,
-} from '@openscd/open-scd/src/foundation.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
+import { WizardInputElement, patterns } from '@compas-oscd/open-scd';
 import {
   isCreate,
   isDelete,

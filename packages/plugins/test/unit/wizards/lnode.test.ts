@@ -2,16 +2,13 @@ import { expect, fixture, html } from '@open-wc/testing';
 import fc from 'fast-check';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import {
-  newWizardEvent,
-  WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
+import { newWizardEvent, WizardInputElement } from '@compas-oscd/open-scd';
 import {
   isCreate,
   Create,

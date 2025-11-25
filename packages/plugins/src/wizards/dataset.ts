@@ -5,8 +5,8 @@ import { get } from 'lit-translate';
 import '@material/mwc-button';
 import '@material/mwc-list/mwc-check-list-item';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd';
 import {
   find,
   getValue,
@@ -17,7 +17,7 @@ import {
   WizardInputElement,
   WizardMenuActor,
   newSubWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import { cloneElement } from '@openscd/xml';
 

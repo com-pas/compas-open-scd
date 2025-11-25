@@ -1,10 +1,10 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import { WizardInputElement } from '@openscd/open-scd/src/foundation.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
+import { WizardInputElement } from '@compas-oscd/open-scd';
 import {
   isSimple,
   ComplexAction,

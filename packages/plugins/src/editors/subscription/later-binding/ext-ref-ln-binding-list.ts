@@ -10,20 +10,16 @@ import {
 import { nothing } from 'lit-html';
 import { get } from 'lit-translate';
 
-import {
-  identity,
-} from '@openscd/open-scd/src/foundation.js';
+import { identity } from '@compas-oscd/open-scd';
 
-import {
-  createElement,
-} from '@openscd/xml';
+import { createElement } from '@openscd/xml';
 
 import {
   ComplexAction,
   Delete,
   newActionEvent,
 } from '@openscd/core/foundation/deprecated/editor.js';
-import { Nsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
+import { Nsdoc } from '@compas-oscd/open-scd';
 
 import {
   canCreateValidExtRef,
@@ -39,7 +35,7 @@ import {
   canRemoveSubscriptionSupervision,
 } from '../foundation.js';
 import { getSubscribedExtRefElements } from './foundation.js';
-import { emptyInputsDeleteActions } from '@openscd/open-scd/src/foundation/ied.js';
+import { emptyInputsDeleteActions } from '@compas-oscd/open-scd';
 
 /**
  * A sub element for showing all Ext Refs from a FCDA Element.

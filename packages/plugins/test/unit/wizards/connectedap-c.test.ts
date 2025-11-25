@@ -1,12 +1,12 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base.js';
 
 import { createConnectedApWizard } from '../../../src/wizards/connectedap.js';
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 
 function isAllMacUnique(parent: Element, serviceType: 'GSE' | 'SMV'): boolean {
   const allMacs = Array.from(
@@ -66,7 +66,9 @@ describe('regression for bug 1700', () => {
       await fixture(html`<mock-wizard-editor></mock-wizard-editor>`)
     );
 
-    doc = await fetch('/test/testfiles/wizards/bugfix_1700_connected_ap_wizard.scd')
+    doc = await fetch(
+      '/test/testfiles/wizards/bugfix_1700_connected_ap_wizard.scd'
+    )
       .then(response => response.text())
       .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 
@@ -79,7 +81,9 @@ describe('regression for bug 1700', () => {
   it('creates GSE and SMV in correct order', async () => {
     await clickListItem(element, ['IED1>S1']);
 
-    const connectedAP = parent.querySelector('ConnectedAP[iedName="IED1"][apName="S1"]');
+    const connectedAP = parent.querySelector(
+      'ConnectedAP[iedName="IED1"][apName="S1"]'
+    );
     expect(connectedAP).to.exist;
     const children = Array.from(connectedAP!.children);
     const firstSMVIndex = children.findIndex(e => e.tagName === 'SMV');

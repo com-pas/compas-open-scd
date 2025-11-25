@@ -1,13 +1,13 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
 import '../../../../src/editors/communication/subnetwork-editor.js';
 import { SubNetworkEditor } from '../../../../src/editors/communication/subnetwork-editor.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 
 describe('subnetwork-editor wizarding editing integration', () => {
   describe('edit wizard', () => {

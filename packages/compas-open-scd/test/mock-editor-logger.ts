@@ -8,10 +8,10 @@ import {
   TemplateResult,
 } from 'lit-element';
 
-import '@compas-oscd/open-scd/dist/addons/Editor.js';
-import '@compas-oscd/open-scd/dist/addons/History.js';
+import '@compas-oscd/open-scd/addons/Editor.js';
+import '@compas-oscd/open-scd/addons/History.js';
 import { OscdEditor } from '@compas-oscd/open-scd/dist/addons/Editor.js';
-import { OscdHistory } from '@compas-oscd/open-scd/dist/addons/History.js';
+import { OscdHistory } from '@compas-oscd/open-scd';
 
 @customElement('mock-editor-logger')
 export class MockEditorLogger extends LitElement {

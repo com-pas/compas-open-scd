@@ -18,21 +18,15 @@ import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Menu } from '@material/mwc-menu';
 
-import '@openscd/open-scd/src/action-pane.js';
+import '@compas-oscd/open-scd';
 import './eq-function-editor.js';
 import './l-node-editor.js';
 import './sub-equipment-editor.js';
 
 import { styles } from './foundation.js';
-import {
-  newWizardEvent,
-  SCLTag,
-  tags,
-} from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent, SCLTag, tags } from '@compas-oscd/open-scd';
 
-import {
-  getChildElementsByTagName,
-} from '@openscd/xml';
+import { getChildElementsByTagName } from '@openscd/xml';
 
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { emptyWizard, wizards } from '../../wizards/wizard-library.js';

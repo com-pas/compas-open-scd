@@ -1,11 +1,11 @@
 import { fixture, html, expect, waitUntil } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/communication/gse-editor.js';
 import { GseEditor } from '../../../../src/editors/communication/gse-editor.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 
 describe('gse-editor wizarding editing integration', () => {
   describe('edit wizard', () => {

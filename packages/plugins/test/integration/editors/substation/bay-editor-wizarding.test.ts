@@ -1,8 +1,8 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import fc from 'fast-check';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/substation/bay-editor.js';
 import { regExp, regexString } from '../../../foundation.js';
@@ -17,10 +17,9 @@ describe('bay-editor wizarding integration', () => {
       .then(str => new DOMParser().parseFromString(str, 'application/xml'));
 
     parent = await fixture(
-      html`
-        <oscd-wizards .host=${document}>
-          <bay-editor .element=${doc.querySelector('Bay')}></bay-editor>
-        </oscd-wizards>`
+      html` <oscd-wizards .host=${document}>
+        <bay-editor .element=${doc.querySelector('Bay')}></bay-editor>
+      </oscd-wizards>`
     );
 
     (<HTMLElement>(
@@ -64,5 +63,4 @@ describe('bay-editor wizarding integration', () => {
       );
     });
   });
-
 });

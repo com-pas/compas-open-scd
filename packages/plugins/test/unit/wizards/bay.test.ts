@@ -1,16 +1,13 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
+import { WizardInputElement, WizardActor } from '@compas-oscd/open-scd';
 import {
-  WizardInputElement,
-  WizardActor,
-} from '@openscd/open-scd/src/foundation.js';
-import { 
   isCreate,
   isReplace,
   isSimple,
-  ComplexAction 
+  ComplexAction,
 } from '@openscd/core/foundation/deprecated/editor.js';
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd';
 import { createAction } from '../../../src/wizards/bay.js';
 import { replaceNamingAttributeWithReferencesAction } from '../../../src/wizards/foundation/actions.js';
 
@@ -68,13 +65,19 @@ describe('BayEditor', () => {
     });
 
     it('returns a WizardAction which retruns one EditorAction', () => {
-      const wizardAction = replaceNamingAttributeWithReferencesAction(element, 'bay.action.updateBay');
+      const wizardAction = replaceNamingAttributeWithReferencesAction(
+        element,
+        'bay.action.updateBay'
+      );
       const complexAction = getAndValidComplexAction(wizardAction);
       expect(complexAction.actions.length).to.equal(1);
     });
 
     it('returns a WizardAction which returns an Update EditorAction', () => {
-      const wizardAction = replaceNamingAttributeWithReferencesAction(element, 'bay.action.updateBay');
+      const wizardAction = replaceNamingAttributeWithReferencesAction(
+        element,
+        'bay.action.updateBay'
+      );
       const complexAction = getAndValidComplexAction(wizardAction);
       expect(complexAction.actions[0]).to.satisfy(isReplace);
     });
@@ -90,7 +93,10 @@ describe('BayEditor', () => {
       });
 
       it('returns a WizardAction which returns empty EditorAction array', () => {
-        const wizardAction = replaceNamingAttributeWithReferencesAction(element, 'bay.action.updateBay');
+        const wizardAction = replaceNamingAttributeWithReferencesAction(
+          element,
+          'bay.action.updateBay'
+        );
         expect(wizardAction(inputs, newWizard()).length).to.equal(0);
       });
     });

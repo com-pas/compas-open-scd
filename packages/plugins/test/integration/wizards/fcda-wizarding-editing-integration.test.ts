@@ -1,11 +1,11 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import { createFCDAsWizard } from '../../../src/wizards/fcda.js';
-import { FinderList } from '@openscd/open-scd/src/finder-list.js';
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { FinderList } from '@compas-oscd/open-scd';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 
 describe('FCDA editing wizarding integration', () => {
   let doc: XMLDocument;

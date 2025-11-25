@@ -5,16 +5,13 @@ import {
   getSclSchemaVersion,
   isPublic,
   minAvailableLogicalNodeInstance,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
-import {
-  cloneElement,
-  createElement,
-} from '@openscd/xml';
+import { cloneElement, createElement } from '@openscd/xml';
 
 import { Create, Delete } from '@openscd/core/foundation/deprecated/editor.js';
-import { getFcdaReferences } from '@openscd/open-scd/src/foundation/ied.js';
-import { SCL_NAMESPACE } from '@openscd/open-scd/src/schemas.js';
+import { getFcdaReferences } from '@compas-oscd/open-scd';
+import { SCL_NAMESPACE } from '@compas-oscd/open-scd';
 
 export enum View {
   PUBLISHER,
@@ -134,7 +131,8 @@ export function getExtRef(
   function createCriteria(attributeName: string, value: string | null): string {
     // For ExtRef the attribute 'srcLNClass' is optional and defaults to 'LLN0', here we ignore 'srcLNClass' completely for 'LLN0'
     // because otherwise we would have to extend the querySelector to multiple selector groups checking for 'LLN0' or missing 'srcLNClass'
-    const shouldIgnoreCriteria = attributeName === 'srcLNClass' && value === 'LLN0';
+    const shouldIgnoreCriteria =
+      attributeName === 'srcLNClass' && value === 'LLN0';
     if (shouldIgnoreCriteria) {
       return '';
     }

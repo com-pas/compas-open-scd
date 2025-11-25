@@ -1,11 +1,11 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/substation/substation-editor.js';
 import { SubstationEditor } from '../../../../src/editors/substation/substation-editor.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import { MenuBase } from '@material/mwc-menu/mwc-menu-base.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base.js';
 

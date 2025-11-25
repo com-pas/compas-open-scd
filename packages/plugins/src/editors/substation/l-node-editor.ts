@@ -7,16 +7,14 @@ import {
   state,
 } from 'lit-element';
 
-import '@openscd/open-scd/src/action-icon.js';
+import '@compas-oscd/open-scd';
 import {
   identity,
   newLnInstGenerator,
   newWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
-import {
-  cloneElement,
-} from '@openscd/xml';
+import { cloneElement } from '@openscd/xml';
 
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import {
@@ -36,7 +34,7 @@ import {
   switchgearLogicalNode,
   systemLogicalNode,
   transformerLogicalNode,
-} from '@openscd/open-scd/src/icons/lnode.js';
+} from '@compas-oscd/open-scd';
 import { wizards } from '../../wizards/wizard-library.js';
 
 export function getLNodeIcon(lNode: Element): TemplateResult {

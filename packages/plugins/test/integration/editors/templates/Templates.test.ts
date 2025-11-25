@@ -1,11 +1,11 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-open-scd.js';
-import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
+import '@compas-oscd/open-scd';
+import { MockOpenSCD } from '@compas-oscd/open-scd';
 
 import TemplatesPlugin from '../../../../src/editors/Templates.js';
 
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 
 describe('Templates Plugin', () => {
   customElements.define('templates-plugin', TemplatesPlugin);

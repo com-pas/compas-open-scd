@@ -1,14 +1,14 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-open-scd.js';
-import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
+import '@compas-oscd/open-scd';
+import { MockOpenSCD } from '@compas-oscd/open-scd';
 
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Select } from '@material/mwc-select';
 
-import { FilteredList } from '@openscd/open-scd/src/filtered-list.js';
+import { FilteredList } from '@compas-oscd/open-scd';
 import TemplatesPlugin from '../../../../src/editors/Templates.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
 import { patterns } from '../../../../src/wizards/foundation/limits.js';

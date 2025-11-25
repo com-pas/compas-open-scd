@@ -9,7 +9,7 @@ import { ListBase } from '@material/mwc-list/mwc-list-base';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { MultiSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd';
 import {
   find,
   getValue,
@@ -22,7 +22,7 @@ import {
   WizardInputElement,
   WizardMenuActor,
   newLnInstGenerator,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import {
   cloneElement,

@@ -1,21 +1,21 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { MockWizardEditor } from '@openscd/open-scd/test/mock-wizard-editor.js';
+import '@compas-oscd/open-scd';
+import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import { FilteredList } from '@openscd/open-scd/src/filtered-list.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { FilteredList } from '@compas-oscd/open-scd';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import {
   createReportControlWizard,
   reportControlCopyToIedSelector,
   reportControlParentSelector,
   selectReportControlWizard,
 } from '../../../src/wizards/reportcontrol.js';
-import { FinderList } from '@openscd/open-scd/src/finder-list.js';
+import { FinderList } from '@compas-oscd/open-scd';
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent } from '@compas-oscd/open-scd';
 
 describe('Wizards for SCL element ReportControl', () => {
   let doc: XMLDocument;

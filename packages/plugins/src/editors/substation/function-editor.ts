@@ -9,14 +9,10 @@ import {
   query,
 } from 'lit-element';
 
-import '@openscd/open-scd/src/action-pane.js';
+import '@compas-oscd/open-scd';
 import './sub-function-editor.js';
 import './general-equipment-editor.js';
-import {
-  newWizardEvent,
-  SCLTag,
-  tags,
-} from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent, SCLTag, tags } from '@compas-oscd/open-scd';
 
 import { getChildElementsByTagName } from '@openscd/xml';
 

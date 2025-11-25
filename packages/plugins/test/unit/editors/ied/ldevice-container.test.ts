@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import { initializeNsdoc, Nsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
+import { initializeNsdoc, Nsdoc } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/ied/ldevice-container.js';
 

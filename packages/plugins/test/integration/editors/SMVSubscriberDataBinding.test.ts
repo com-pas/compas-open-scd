@@ -1,5 +1,5 @@
 import { expect, fixture } from '@open-wc/testing';
-import { initializeNsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
+import { initializeNsdoc } from '@compas-oscd/open-scd';
 
 import SMVSubscriberDataBinding from '../../../src/editors/SMVSubscriberDataBinding.js';
 
@@ -10,8 +10,8 @@ import {
   selectFCDAItem,
 } from './test-support.js';
 
-import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
-import '@openscd/open-scd/test/mock-open-scd.js';
+import { MockOpenSCD } from '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd';
 
 import { customElement, query, TemplateResult, html } from 'lit-element';
 

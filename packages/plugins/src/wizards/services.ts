@@ -1,8 +1,8 @@
 import { html, TemplateResult } from 'lit-html';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
-import '@openscd/open-scd/src/wizard-select.js';
-import { Wizard, WizardInput } from '@openscd/open-scd/src/foundation.js';
+import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd';
+import { Wizard, WizardInput } from '@compas-oscd/open-scd';
 import { createLogSettingsGroupServicesWizardPage } from './service-log-settingsgroup.js';
 import { createReportConfigurationsWizardPage } from './service-report-configurations.js';
 import { createGSEControlWizardPage } from './service-GSEControl.js';

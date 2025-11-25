@@ -2,17 +2,14 @@ import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 import fc from 'fast-check';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@compas-oscd/open-scd';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
-import {
-  identity,
-  WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+import { identity, WizardInputElement } from '@compas-oscd/open-scd';
 import {
   ComplexAction,
   Replace,
-  isSimple
+  isSimple,
 } from '@openscd/core/foundation/deprecated/editor.js';
 import { lNodeTypeWizard } from '../../../../src/editors/templates/lnodetype-wizard.js';
 import { regExp, regexString } from '../../../foundation.js';

@@ -2,10 +2,7 @@ import { html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { get } from 'lit-translate';
-import {
-  getInstanceAttribute,
-  getNameAttribute,
-} from '@openscd/open-scd/src/foundation.js';
+import { getInstanceAttribute, getNameAttribute } from '@compas-oscd/open-scd';
 import { typeMaxLength } from '../../../wizards/foundation/p-types.js';
 import { typeDescriptiveNameKeys, typePattern } from './p-types.js';
 
