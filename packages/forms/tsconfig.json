@@ -9,16 +9,15 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true,
     "declaration": true,
     "importHelpers": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "sourceMap": true,
     "inlineSources": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "tsBuildInfoFile": ".tsbuildinfo",
-    "incremental": true
+    "incremental": true,
+    "skipLibCheck": true
   },
-  "include": ["**/*.ts"],
-  "exclude": ["**/*.test.ts"]
+  "include": ["src/**/*.ts"]
 }

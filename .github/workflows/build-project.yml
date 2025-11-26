@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.0
         with:
           submodules: 'true'
 
@@ -35,10 +35,10 @@ jobs:
         id: buildx
         if: ${{ github.event_name == 'pull_request' }}
         uses: docker/setup-buildx-action@v3
-      - name: Use Node.js 18.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v6
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: Test application with npm
         timeout-minutes: 45

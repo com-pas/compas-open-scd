@@ -16,7 +16,6 @@ import './addons/CompasLayout.js';
 
 import '@compas-oscd/open-scd/addons/Waiter.js';
 import '@compas-oscd/open-scd/addons/Settings.js';
-import { HistoryState, historyStateEvent } from '@compas-oscd/open-scd';
 import { initializeNsdoc, Nsdoc } from '@compas-oscd/open-scd';
 import {
   InstalledOfficialPlugin,
@@ -28,7 +27,7 @@ import { ActionDetail } from '@material/mwc-list';
 
 import { officialPlugins as builtinPlugins } from '../public/js/plugins.js';
 import type { PluginSet, Plugin as CorePlugin } from '@compas-oscd/core';
-import { OscdApi } from '@compas-oscd/core';
+import { OscdApi, XMLEditor } from '@compas-oscd/core';
 import { classMap } from 'lit-html/directives/class-map.js';
 import {
   newConfigurePluginEvent,
@@ -42,6 +41,18 @@ import { createLogEvent } from './compas-services/foundation.js';
 import { languages, loader } from './translations/loader.js';
 
 const LNODE_LIB_DOC_ID = 'fc55c46d-c109-4ccd-bf66-9f1d0e135689';
+
+interface MenuPluginConfig
+  extends Omit<Plugin, 'position' | 'kind' | 'active'> {
+  position?: MenuPosition | number;
+  active?: boolean;
+}
+
+interface EditorPluginConfig
+  extends Omit<Plugin, 'position' | 'kind' | 'active'> {
+  position?: undefined;
+  active?: boolean;
+}
 
 /** The `<open-scd>` custom element is the main entry point of the
  * Open Substation Configuration Designer. */
@@ -57,17 +68,14 @@ export class OpenSCD extends LitElement {
           .languageConfig=${this.languageConfig}
         >
           <oscd-wizards .host=${this}>
-            <compas-history
-              .host=${this}
-              .editCount=${this.historyState.editCount}
-            >
+            <compas-history .host=${this} .editor=${this.editor}>
               <oscd-editor
                 .doc=${this.doc}
                 .docName=${this.docName}
                 .docId=${this.docId}
                 .host=${this}
-                .editCount=${this.historyState.editCount}
-                .compasApi=${this.compasApi}
+                .editCount=${this.editCount}
+                .editor=${this.editor}
               >
                 <compas-layout
                   @add-external-plugin=${this.handleAddExternalPlugin}
@@ -77,9 +85,9 @@ export class OpenSCD extends LitElement {
                   .host=${this}
                   .doc=${this.doc}
                   .docName=${this.docName}
-                  .editCount=${this.historyState.editCount}
-                  .historyState=${this.historyState}
+                  .editCount=${this.editCount}
                   .plugins=${this.storedPlugins}
+                  .editor=${this.editor}
                   .compasApi=${this.compasApi}
                 >
                 </compas-layout>
@@ -98,12 +106,7 @@ export class OpenSCD extends LitElement {
   /** The UUID of the current [[`doc`]] */
   @property({ type: String }) docId = '';
 
-  @state()
-  historyState: HistoryState = {
-    editCount: -1,
-    canRedo: false,
-    canUndo: false,
-  };
+  editor = new XMLEditor();
 
   /** Object containing all *.nsdoc files and a function extracting element's label form them*/
   @property({ attribute: false })
@@ -121,6 +124,10 @@ export class OpenSCD extends LitElement {
   }
 
   @state() private storedPlugins: Plugin[] = [];
+
+  @state() private editCount = -1;
+
+  private unsubscribers: (() => any)[] = [];
 
   /** Loads and parses an `XMLDocument` after [[`src`]] has changed. */
   private async loadDoc(src: string): Promise<void> {
@@ -214,13 +221,17 @@ export class OpenSCD extends LitElement {
     this.checkAppVersion();
     this.loadPlugins();
 
+    this.unsubscribers.push(
+      this.editor.subscribe(e => this.editCount++),
+      this.editor.subscribeUndoRedo(e => this.editCount++)
+    );
+
     // TODO: let Lit handle the event listeners, move to render()
     this.addEventListener('reset-plugins', this.resetPlugins);
-    this.addEventListener(historyStateEvent, (event: Event) => {
-      const e = event as CustomEvent<HistoryState>;
-      this.historyState = e.detail;
-      this.requestUpdate();
-    });
+  }
+
+  disconnectedCallback(): void {
+    this.unsubscribers.forEach(u => u());
   }
 
   /**
@@ -300,22 +311,26 @@ export class OpenSCD extends LitElement {
   @property({ type: Object }) plugins: PluginSet = { menu: [], editor: [] };
 
   get parsedPlugins(): Plugin[] {
-    const menuPlugins: Plugin[] = this.plugins.menu.map(plugin => {
-      let newPosition: MenuPosition | undefined =
-        plugin.position as MenuPosition;
-      if (typeof plugin.position === 'number') {
-        newPosition = undefined;
+    const menuPlugins: Plugin[] = (this.plugins.menu as MenuPluginConfig[]).map(
+      (plugin: MenuPluginConfig): Plugin => {
+        let newPosition: MenuPosition | undefined =
+          plugin.position as MenuPosition;
+        if (typeof plugin.position === 'number') {
+          newPosition = undefined;
+        }
+
+        return {
+          ...plugin,
+          position: newPosition,
+          kind: 'menu' as PluginKind,
+          active: plugin.active ?? false,
+        };
       }
+    );
 
-      return {
-        ...plugin,
-        position: newPosition,
-        kind: 'menu' as PluginKind,
-        active: plugin.active ?? false,
-      };
-    });
-
-    const editorPlugins: Plugin[] = this.plugins.editor.map(plugin => {
+    const editorPlugins: Plugin[] = (
+      this.plugins.editor as EditorPluginConfig[]
+    ).map((plugin: EditorPluginConfig): Plugin => {
       const editorPlugin: Plugin = {
         ...plugin,
         position: undefined,
@@ -464,7 +479,7 @@ export class OpenSCD extends LitElement {
         return staticTagHtml`<${tag}
             .doc=${this.doc}
             .docName=${this.docName}
-            .editCount=${this.historyState.editCount}
+            .editCount=${this.editCount}
             .plugins=${this.storedPlugins}
             .docId=${this.docId}
             .pluginId=${plugin.src}
@@ -472,6 +487,7 @@ export class OpenSCD extends LitElement {
             .docs=${this.docs}
             .locale=${this.locale}
             .oscdApi=${new OscdApi(tag)}
+            .editor=${this.editor}
             .compasApi=${this.compasApi}
             class="${classMap({
               plugin: true,
