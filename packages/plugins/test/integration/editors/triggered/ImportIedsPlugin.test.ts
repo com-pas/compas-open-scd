@@ -3,8 +3,8 @@ import { LitElement, TemplateResult } from 'lit-element';
 
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
 
-import '@compas-oscd/open-scd';
-import { MockOpenSCD } from '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
+import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
 
 import ImportingIedPlugin from '../../../../src/menu/ImportIEDs.js';
 

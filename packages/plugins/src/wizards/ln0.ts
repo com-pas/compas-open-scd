@@ -2,8 +2,8 @@ import { html, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
 import '@material/mwc-list/mwc-list-item';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-select.js';
 import {
   getValue,
   Wizard,
@@ -14,7 +14,6 @@ import {
 import { cloneElement } from '@openscd/xml';
 
 import { SimpleAction } from '@openscd/core/foundation/deprecated/editor.js';
-import { patterns } from './foundation/limits.js';
 
 function getLNodeTypeOptions(element: Element): string[] {
   const doc = element.ownerDocument;
@@ -32,34 +31,34 @@ export function renderLN0Wizard(
   inst: string | null
 ): TemplateResult[] {
   return [
-    html`<wizard-select
+    html`<wizard-select-openscd
       label="lnType"
       .maybeValue=${lnType}
       required
       helper="${get('ln0.wizard.lnTypeHelper')}"
       >${lnodeTypeIds.map(
         id => html`<mwc-list-item value="${id}">${id}</mwc-list-item>`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('ln0.wizard.descHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="lnClass"
       readonly
       required
       .maybeValue=${lnClass}
       helper="${get('ln0.wizard.lnClassHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="inst"
       .maybeValue=${inst}
       readonly
       helper="${get('ln0.wizard.instHelper')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

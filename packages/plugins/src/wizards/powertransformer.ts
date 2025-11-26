@@ -45,7 +45,7 @@ export function renderPowerTransformerWizard(
   reservedNames: string[]
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('powertransformer.wizard.nameHelper')}"
@@ -53,19 +53,19 @@ export function renderPowerTransformerWizard(
       validationMessage="${get('textfield.required')}"
       dialogInitialFocus
       .reservedValues=${reservedNames}
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('powertransformer.wizard.descHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${type}
       disabled
       helper="${get('powertransformer.wizard.typeHelper')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

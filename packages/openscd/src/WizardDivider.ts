@@ -7,7 +7,7 @@ import {
   TemplateResult,
 } from 'lit-element';
 
-@customElement('wizard-divider')
+@customElement('wizard-divider-openscd')
 export class WizardDividerElement extends LitElement {
   @property({
     type: String,

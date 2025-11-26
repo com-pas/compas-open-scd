@@ -7,10 +7,10 @@ import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/filtered-list.js';
+import '@compas-oscd/open-scd/wizard-checkbox.js';
+import '@compas-oscd/open-scd/wizard-select.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   find,
   getValue,
@@ -143,7 +143,7 @@ function contentSampledValueControlWizard(
   options: ContentOptions
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${options.name}
       helper="${get('scl.name')}"
@@ -152,30 +152,30 @@ function contentSampledValueControlWizard(
       pattern="${patterns.asciName}"
       maxLength="${maxLength.cbName}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${options.desc}
       nullable
       pattern="${patterns.normalizedString}"
       helper="${get('scl.desc')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
     options.multicast === 'true'
       ? html``
-      : html`<wizard-checkbox
+      : html`<wizard-checkbox-openscd
           label="multicast"
           .maybeValue=${options.multicast}
           helper="${get('scl.multicast')}"
           disabled
-        ></wizard-checkbox>`,
-    html`<wizard-textfield
+        ></wizard-checkbox-openscd>`,
+    html`<wizard-textfield-openscd
       label="smvID"
       .maybeValue=${options.smvID}
       helper="${get('scl.id')}"
       required
       validationMessage="${get('textfield.nonempty')}"
-    ></wizard-textfield>`,
-    html`<wizard-select
+    ></wizard-textfield-openscd>`,
+    html`<wizard-select-openscd
       label="smpMod"
       .maybeValue=${options.smpMod}
       nullable
@@ -184,25 +184,25 @@ function contentSampledValueControlWizard(
       >${smpModEnum.map(
         option =>
           html`<mwc-list-item value="${option}">${option}</mwc-list-item>`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="smpRate"
       .maybeValue=${options.smpRate}
       helper="${get('scl.smpRate')}"
       required
       type="number"
       min="0"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="nofASDU"
       .maybeValue=${options.nofASDU}
       helper="${get('scl.nofASDU')}"
       required
       type="number"
       min="0"
-    ></wizard-textfield>`,
-    html`<wizard-select
+    ></wizard-textfield-openscd>`,
+    html`<wizard-select-openscd
       label="securityEnabled"
       .maybeValue=${options.securityEnabled}
       nullable
@@ -211,7 +211,7 @@ function contentSampledValueControlWizard(
       >${securityEnabledEnum.map(
         option =>
           html`<mwc-list-item value="${option}">${option}</mwc-list-item>`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
   ];
 }

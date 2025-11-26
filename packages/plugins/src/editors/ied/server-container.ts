@@ -22,7 +22,7 @@ import {
 } from './foundation.js';
 import { AddLDeviceDialog, LDeviceData } from './add-ldevice-dialog.js';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-pane.js';
 import './ldevice-container.js';
 import './add-ldevice-dialog.js';
 

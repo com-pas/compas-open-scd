@@ -4,7 +4,7 @@ import { get } from 'lit-translate';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   identity,
   isPublic,
@@ -47,7 +47,7 @@ export function renderIEDWizard(
   reservedNames: string[]
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('ied.wizard.nameHelper')}"
@@ -56,50 +56,50 @@ export function renderIEDWizard(
       dialogInitialFocus
       .reservedValues=${reservedNames}
       pattern="${iedNamePattern}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('ied.wizard.descHelper')}"
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${type || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="manufacturer"
       .maybeValue=${manufacturer}
       helper="${get('ied.wizard.manufacturerHelper')}"
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="configVersion"
       .maybeValue=${configVersion || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="originalSclVersion"
       .maybeValue=${originalSclVersion || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="engRight"
       .maybeValue=${engRight || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="owner"
       .maybeValue=${owner || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

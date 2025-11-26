@@ -132,13 +132,13 @@ export function editAddressWizard(
 
     // Add the basic fields to the list.
     const fields: TemplateResult[] = [
-      html`<wizard-textfield
+      html`<wizard-textfield-openscd
         label="IED"
         .maybeValue="${getNameAttribute(iedElement)}"
         disabled
         readonly
       >
-      </wizard-textfield>`,
+      </wizard-textfield-openscd>`,
       html`<mwc-textarea
         label="DOI"
         value="${getFullPath(doiElement, 'IED')}"
@@ -148,7 +148,7 @@ export function editAddressWizard(
         disabled
       >
       </mwc-textarea>`,
-      html`<wizard-textfield
+      html`<wizard-textfield-openscd
         label="cdc"
         .maybeValue="${cdc}"
         .helper="${reqCmvMapping
@@ -158,7 +158,7 @@ export function editAddressWizard(
         disabled
         readonly
       >
-      </wizard-textfield>`,
+      </wizard-textfield-openscd>`,
       html`<mwc-textarea
         label="DAI"
         value="${getFullPath(daiElement!, 'DOI')}"
@@ -168,7 +168,7 @@ export function editAddressWizard(
         disabled
       >
       </mwc-textarea>`,
-      html`<wizard-textfield
+      html`<wizard-textfield-openscd
         label="casdu"
         @change="${(evt: Event) => {
           casdu = (<WizardInputElement>evt.target).value ?? '';
@@ -177,26 +177,26 @@ export function editAddressWizard(
         helper="${get('protocol104.wizard.casduHelper')}"
         required
       >
-      </wizard-textfield>`,
-      html`<wizard-textfield
+      </wizard-textfield-openscd>`,
+      html`<wizard-textfield-openscd
         .validityTransform="${validateIOA}"
         label="ioa"
         .maybeValue="${live(addressElement.getAttribute('ioa') ?? '')}"
         helper="${get('protocol104.wizard.ioaHelper')}"
         required
       >
-      </wizard-textfield>`,
-      html`<wizard-textfield
+      </wizard-textfield-openscd>`,
+      html`<wizard-textfield-openscd
         label="ti"
         .maybeValue=${ti + ' (' + getSignalName(ti) + ')'}
         disabled
         readonly
       >
-      </wizard-textfield>`,
+      </wizard-textfield-openscd>`,
     ];
 
     if (hasUnitMultiplierField(cdc, ti)) {
-      fields.push(html`<wizard-select
+      fields.push(html`<wizard-select-openscd
         label="unitMultiplier"
         .maybeValue="${addressElement.getAttribute('unitMultiplier')}"
         helper="${get('protocol104.wizard.unitMultiplierHelper')}"
@@ -209,65 +209,65 @@ export function editAddressWizard(
               <span>${multiplier}</span>
             </mwc-list-item>`
         )}
-      </wizard-select>`);
+      </wizard-select-openscd>`);
     }
 
     if (hasScaleFields(cdc, ti)) {
-      fields.push(html`<wizard-textfield
+      fields.push(html`<wizard-textfield-openscd
         label="scaleMultiplier"
         .maybeValue="${addressElement.getAttribute('scaleMultiplier')}"
         helper="${get('protocol104.wizard.scaleMultiplierHelper')}"
         pattern="${patterns.decimal}"
         nullable
       >
-      </wizard-textfield>`);
+      </wizard-textfield-openscd>`);
 
-      fields.push(html`<wizard-textfield
+      fields.push(html`<wizard-textfield-openscd
         label="scaleOffset"
         .maybeValue="${addressElement.getAttribute('scaleOffset')}"
         helper="${get('protocol104.wizard.scaleOffsetHelper')}"
         pattern="${patterns.decimal}"
         nullable
       >
-      </wizard-textfield>`);
+      </wizard-textfield-openscd>`);
     }
 
     const expectedValue = addressElement.getAttribute('expectedValue');
     if (expectedValue) {
-      fields.push(html`<wizard-textfield
+      fields.push(html`<wizard-textfield-openscd
         label="expectedValue"
         .maybeValue="${expectedValue}"
         disabled
         readonly
       >
-      </wizard-textfield>`);
-      fields.push(html`<wizard-textfield
+      </wizard-textfield-openscd>`);
+      fields.push(html`<wizard-textfield-openscd
         label="enumValue"
         .maybeValue="${getEnumVal(daiElement, expectedValue)}"
         disabled
         readonly
       >
-      </wizard-textfield>`);
+      </wizard-textfield-openscd>`);
     }
 
     if (addressElement.hasAttribute('inverted')) {
-      fields.push(html`<wizard-textfield
+      fields.push(html`<wizard-textfield-openscd
         label="inverted"
         .maybeValue="${addressElement.getAttribute('inverted')}"
         disabled
         readonly
       >
-      </wizard-textfield>`);
+      </wizard-textfield-openscd>`);
     }
 
     if (addressElement.hasAttribute('check')) {
-      fields.push(html`<wizard-textfield
+      fields.push(html`<wizard-textfield-openscd
         label="check"
         .maybeValue="${addressElement.getAttribute('check')}"
         disabled
         readonly
       >
-      </wizard-textfield>`);
+      </wizard-textfield-openscd>`);
     }
 
     return fields;

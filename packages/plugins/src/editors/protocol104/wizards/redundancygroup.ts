@@ -60,13 +60,13 @@ export function editRedundancyGroupWizard(
         action: editRedundancyGroupAction(parent, rGNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel'
             )}"
             .maybeValue=${rGNumber}
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesRedundancyGroup104.map(
             pType =>
               html`${createNetworkTextField(
@@ -129,13 +129,13 @@ export function createRedundancyGroupWizard(
         action: addRedundancyGroupAction(parent, rGNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel'
             )}"
             value="${rGNumber}"
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesRedundancyGroup104.map(
             pType => html`${createNetworkTextField(pType)}`
           )}`,

@@ -9,7 +9,7 @@ import { ListBase } from '@material/mwc-list/mwc-list-base';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { MultiSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/filtered-list.js';
 import {
   find,
   getValue,
@@ -480,22 +480,22 @@ function contentLNodeWizard(options: ContentOptions): TemplateResult[] {
   const isIedRef = options.iedName !== 'None';
 
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="iedName"
       .maybeValue=${options.iedName}
       helper="${get('scl.iedName')}"
       helperPersistent
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="ldInst"
       .maybeValue=${options.ldInst}
       helper="${get('scl.ldInst')}"
       helperPersistent
       nullable
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="prefix"
       .maybeValue=${options.prefix}
       helper="${get('scl.prefix')}"
@@ -504,15 +504,15 @@ function contentLNodeWizard(options: ContentOptions): TemplateResult[] {
       helperPersistent
       nullable
       ?disabled=${isIedRef}
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="lnClass"
       .maybeValue=${options.lnClass}
       helper="${get('scl.lnClass')}"
       helperPersistent
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="lnInst"
       .maybeValue=${options.lnInst}
       helper="${get('scl.lnInst')}"
@@ -522,7 +522,7 @@ function contentLNodeWizard(options: ContentOptions): TemplateResult[] {
       max="99"
       .reservedValues=${options.reservedLnInst}
       ?disabled=${isIedRef}
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

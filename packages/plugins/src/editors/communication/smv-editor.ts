@@ -10,7 +10,7 @@ import {
 
 import '@material/mwc-icon';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-icon.js';
 import { sizableSmvIcon } from '@compas-oscd/open-scd';
 import { newWizardEvent } from '@compas-oscd/open-scd';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';

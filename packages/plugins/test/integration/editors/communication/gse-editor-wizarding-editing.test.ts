@@ -1,6 +1,6 @@
 import { fixture, html, expect, waitUntil } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/communication/gse-editor.js';

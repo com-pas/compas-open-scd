@@ -65,7 +65,7 @@ export function contentProcessWizard(
   content: ContentOptions
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${content.name}
       helper="${get('scl.name')}"
@@ -73,19 +73,19 @@ export function contentProcessWizard(
       validationMessage="${get('textfield.required')}"
       .reservedValues=${content.reservedNames}
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${content.desc}
       nullable
       helper="${get('scl.desc')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${content.type}
       nullable
       helper="${get('scl.type')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

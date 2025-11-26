@@ -376,11 +376,11 @@ export function redirectDialog(cloneEntity: Element): TemplateResult {
     stacked
     heading="${get('substation.clone.redirect')}"
   >
-    <wizard-textfield
+    <wizard-textfield-openscd
       label="${get('substation.clone.newname')}"
       value="${newName}"
       .reservedValues="${entitySiblings}"
-    ></wizard-textfield>
+    ></wizard-textfield-openscd>
     ${Array.from(referencedIEDs(cloneEntity)).map(ied => {
       const validOtherIEDs = validUnreferencedIEDs(ied, cloneEntity).map(
         ied => ied.getAttribute('name')!

@@ -11,7 +11,7 @@ import '@material/mwc-fab';
 import '@material/mwc-icon';
 import { Fab } from '@material/mwc-fab';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-icon.js';
 import { createClientLnWizard } from '../../wizards/clientln.js';
 import { wizards } from '../../wizards/wizard-library.js';
 import { newWizardEvent } from '@compas-oscd/open-scd';

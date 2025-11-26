@@ -15,7 +15,7 @@ import { WizardCheckbox } from './wizard-checkbox.js';
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
 
 export const wizardInputSelector =
-  'wizard-textfield, mwc-textfield, ace-editor, mwc-select, wizard-select, wizard-checkbox';
+  'wizard-textfield-openscd, mwc-textfield, ace-editor, mwc-select, wizard-select-openscd, wizard-checkbox-openscd';
 export type WizardInputElement =
   | WizardTextField
   | TextField

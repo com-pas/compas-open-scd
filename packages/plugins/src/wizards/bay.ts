@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-html';
 import { get } from 'lit-translate';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   getValue,
   Wizard,
@@ -19,20 +19,20 @@ export function renderBayWizard(
   desc: string | null
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('bay.wizard.nameHelper')}"
       required
       validationMessage="${get('textfield.required')}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('bay.wizard.descHelper')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

@@ -13,7 +13,7 @@ import { nothing } from 'lit-html';
 import '@material/mwc-list/mwc-check-list-item';
 import '@material/mwc-list/mwc-radio-list-item';
 import '@material/mwc-button';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/oscd-filter-button.js';
 
 import './ied/ied-container.js';
 import './ied/element-path.js';

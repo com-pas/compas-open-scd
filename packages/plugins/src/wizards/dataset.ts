@@ -5,8 +5,8 @@ import { get } from 'lit-translate';
 import '@material/mwc-button';
 import '@material/mwc-list/mwc-check-list-item';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 import {
   find,
   getValue,
@@ -104,22 +104,22 @@ export function editDataSetWizard(element: Element): Wizard {
         },
       ],
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="name"
           .maybeValue=${name}
           helper="${get('scl.name')}"
           required
           disabled="true"
         >
-        </wizard-textfield>`,
-        html`<wizard-textfield
+        </wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="desc"
           .maybeValue=${desc}
           helper="${get('scl.desc')}"
           nullable
           required
         >
-        </wizard-textfield>`,
+        </wizard-textfield-openscd>`,
         html`<filtered-list multi
           >${Array.from(element.querySelectorAll('FCDA')).map(
             fcda =>

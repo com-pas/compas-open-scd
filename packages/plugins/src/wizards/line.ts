@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-html';
 import { get } from 'lit-translate';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   getValue,
   patterns,
@@ -29,27 +29,27 @@ function render(
   numPhases: string | null
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('line.wizard.nameHelper')}"
       required
       validationMessage="${get('textfield.required')}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('line.wizard.descHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${type}
       nullable
       helper="${get('line.wizard.typeHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="nomFreq"
       .maybeValue=${nomFreq}
       nullable
@@ -57,8 +57,8 @@ function render(
       suffix="Hz"
       validationMessage="${get('textfield.nonempty')}"
       pattern="${patterns.unsigned}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="numPhases"
       .maybeValue=${numPhases}
       nullable
@@ -68,7 +68,7 @@ function render(
       type="number"
       min="1"
       max="255"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 function createLineAction(parent: Element): WizardActor {

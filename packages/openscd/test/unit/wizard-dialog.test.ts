@@ -19,7 +19,9 @@ import {
 describe('wizard-dialog', () => {
   let element: WizardDialog;
   beforeEach(async () => {
-    element = await fixture(html`<wizard-dialog></wizard-dialog>`);
+    element = await fixture(
+      html`<wizard-dialog-openscd></wizard-dialog-openscd>`
+    );
   });
 
   describe('with user defined menu actions set', () => {
@@ -64,19 +66,19 @@ describe('wizard-dialog', () => {
         {
           title: 'Page 1',
           content: [
-            html`<wizard-textfield
+            html`<wizard-textfield-openscd
               label="Test textfield 1"
-            ></wizard-textfield>`,
+            ></wizard-textfield-openscd>`,
           ],
           secondary: { icon: 'add', action: () => [], label: 'Test secondary' },
         },
         {
           title: 'Page 2',
           content: [
-            html`<wizard-textfield
+            html`<wizard-textfield-openscd
               type="email"
               label="Test textfield 2"
-            ></wizard-textfield>`,
+            ></wizard-textfield-openscd>`,
           ],
         },
         {
@@ -233,7 +235,9 @@ describe('wizard-dialog', () => {
       let host: Element;
 
       beforeEach(async () => {
-        element = await fixture(html`<wizard-dialog></wizard-dialog>`);
+        element = await fixture(
+          html`<wizard-dialog-openscd></wizard-dialog-openscd>`
+        );
         localStorage.setItem('mode', 'pro');
         element.requestUpdate();
         await element.updateComplete;

@@ -26,13 +26,13 @@ import { PROTOCOL_104_PRIVATE } from '../foundation/private.js';
 
 function renderTiOverview(foundTis: string[], label: string): TemplateResult {
   if (foundTis.length > 0) {
-    return html` <wizard-textfield
+    return html` <wizard-textfield-openscd
       label="${label}"
       .maybeValue=${foundTis.join(', ')}
       disabled
       readonly
     >
-    </wizard-textfield>`;
+    </wizard-textfield-openscd>`;
   }
   return html``;
 }
@@ -45,13 +45,13 @@ export function renderDOIWizard(doiElement: Element): TemplateResult[] {
 
   // Add the basic fields to the list.
   const fields: TemplateResult[] = [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="IED"
       .maybeValue=${getNameAttribute(iedElement!)}
       disabled
       readonly
     >
-    </wizard-textfield>`,
+    </wizard-textfield-openscd>`,
     html`<mwc-textarea
       label="DOI"
       value="${fullpath}"
@@ -61,13 +61,13 @@ export function renderDOIWizard(doiElement: Element): TemplateResult[] {
       disabled
     >
     </mwc-textarea>`,
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="Common Data Class"
       .maybeValue=${cdc}
       disabled
       readonly
     >
-    </wizard-textfield>`,
+    </wizard-textfield-openscd>`,
   ];
 
   const lnElement = doiElement.closest('LN0, LN');
@@ -77,13 +77,13 @@ export function renderDOIWizard(doiElement: Element): TemplateResult[] {
     if (doElement) {
       const ctlModel = getCtlModel(lnElement, doElement);
       if (ctlModel !== null) {
-        fields.push(html` <wizard-textfield
+        fields.push(html` <wizard-textfield-openscd
           label="ctlModel"
           .maybeValue=${ctlModel}
           disabled
           readonly
         >
-        </wizard-textfield>`);
+        </wizard-textfield-openscd>`);
       }
     }
   }
@@ -91,13 +91,13 @@ export function renderDOIWizard(doiElement: Element): TemplateResult[] {
   let monitorTis: string[] = [];
   let controlTis: string[] = [];
   const cdcProcessing = cdcProcessings[<SupportedCdcType>cdc];
-  fields.push(html`<wizard-textfield
+  fields.push(html`<wizard-textfield-openscd
     label="104 Configuration available"
     .maybeValue=${cdcProcessing !== undefined}
     disabled
     readonly
   >
-  </wizard-textfield>`);
+  </wizard-textfield-openscd>`);
   if (cdcProcessing) {
     monitorTis = Object.keys(cdcProcessing.monitor);
     controlTis = Object.keys(cdcProcessing.control);

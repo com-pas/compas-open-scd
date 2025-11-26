@@ -7,7 +7,7 @@ import {
   isSimple,
   ComplexAction,
 } from '@openscd/core/foundation/deprecated/editor.js';
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { createAction } from '../../../src/wizards/bay.js';
 import { replaceNamingAttributeWithReferencesAction } from '../../../src/wizards/foundation/actions.js';
 
@@ -27,7 +27,11 @@ describe('BayEditor', () => {
       ['name', 'desc'].map(
         label =>
           <Promise<WizardInputElement>>(
-            fixture(html`<wizard-textfield label=${label}></wizard-textfield>`)
+            fixture(
+              html`<wizard-textfield-openscd
+                label=${label}
+              ></wizard-textfield-openscd>`
+            )
           )
       )
     );

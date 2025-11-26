@@ -1,6 +1,6 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { WizardInputElement, WizardActor } from '@compas-oscd/open-scd';
 import {
   ComplexAction,
@@ -30,7 +30,11 @@ describe('VoltageLevelEditor', () => {
       ['name', 'desc', 'nomFreq', 'numPhases', 'Voltage'].map(
         label =>
           <Promise<WizardInputElement>>(
-            fixture(html`<wizard-textfield label=${label}></wizard-textfield>`)
+            fixture(
+              html`<wizard-textfield-openscd
+                label=${label}
+              ></wizard-textfield-openscd>`
+            )
           )
       )
     );
@@ -171,14 +175,14 @@ describe('VoltageLevelEditor', () => {
             'application/xml'
           ).documentElement;
 
-          inputs[4] = await fixture(html`<wizard-textfield
+          inputs[4] = await fixture(html`<wizard-textfield-openscd
             label="Voltage"
             nullable
             .maybeValue="${null}"
             unit="V"
             .multipliers=${[null, 'G', 'M', 'k', '', 'm']}
             multiplier="k"
-          ></wizard-textfield>`);
+          ></wizard-textfield-openscd>`);
         });
 
         it('returns a WizardAction which returns two EditorActions', () => {

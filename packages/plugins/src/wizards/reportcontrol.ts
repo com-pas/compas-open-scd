@@ -8,10 +8,10 @@ import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-checkbox.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-select.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 import {
   find,
   getReference,
@@ -63,7 +63,7 @@ interface ContentOptions {
 
 function contentReportControlWizard(options: ContentOptions): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${options.name}
       helper="${get('scl.name')}"
@@ -72,40 +72,40 @@ function contentReportControlWizard(options: ContentOptions): TemplateResult[] {
       pattern="${patterns.asciName}"
       maxLength="${maxLength.cbName}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${options.desc}
       nullable
       helper="${get('scl.desc')}"
-    ></wizard-textfield>`,
-    html`<wizard-checkbox
+    ></wizard-textfield-openscd>`,
+    html`<wizard-checkbox-openscd
       label="buffered"
       .maybeValue=${options.buffered}
       helper="${get('scl.buffered')}"
-    ></wizard-checkbox>`,
-    html`<wizard-textfield
+    ></wizard-checkbox-openscd>`,
+    html`<wizard-textfield-openscd
       label="rptID"
       .maybeValue=${options.rptID}
       nullable
       required
       helper="${get('report.rptID')}"
-    ></wizard-textfield>`,
-    html`<wizard-checkbox
+    ></wizard-textfield-openscd>`,
+    html`<wizard-checkbox-openscd
       label="indexed"
       .maybeValue=${options.indexed}
       nullable
       helper="${get('scl.indexed')}"
-    ></wizard-checkbox>`,
-    html`<wizard-textfield
+    ></wizard-checkbox-openscd>`,
+    html`<wizard-textfield-openscd
       label="max Clients"
       .maybeValue=${options.max}
       helper="${get('scl.maxReport')}"
       nullable
       type="number"
       suffix="#"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="bufTime"
       .maybeValue=${options.bufTime}
       helper="${get('scl.bufTime')}"
@@ -114,8 +114,8 @@ function contentReportControlWizard(options: ContentOptions): TemplateResult[] {
       type="number"
       min="0"
       suffix="ms"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="intgPd"
       .maybeValue=${options.intgPd}
       helper="${get('scl.intgPd')}"
@@ -124,7 +124,7 @@ function contentReportControlWizard(options: ContentOptions): TemplateResult[] {
       type="number"
       min="0"
       suffix="ms"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

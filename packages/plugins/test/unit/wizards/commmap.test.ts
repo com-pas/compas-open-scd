@@ -1,6 +1,6 @@
 import { expect } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 
 import '../../../src/editors/substation/zeroline-pane.js';
 import {

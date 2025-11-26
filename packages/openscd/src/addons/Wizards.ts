@@ -55,6 +55,8 @@ export class OscdWizards extends LitElement {
 
   render(): TemplateResult {
     return html`<slot></slot>
-      <wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
+      <wizard-dialog-openscd
+        .wizard=${this.workflow[0]?.() ?? []}
+      ></wizard-dialog-openscd>`;
   }
 }

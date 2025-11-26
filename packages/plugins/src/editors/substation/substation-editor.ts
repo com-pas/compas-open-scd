@@ -17,7 +17,7 @@ import { Menu } from '@material/mwc-menu';
 import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-pane.js';
 import './ied-editor.js';
 import './powertransformer-editor.js';
 import './voltage-level-editor.js';

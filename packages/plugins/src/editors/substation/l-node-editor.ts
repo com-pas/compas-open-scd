@@ -7,7 +7,7 @@ import {
   state,
 } from 'lit-element';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-icon.js';
 import {
   identity,
   newLnInstGenerator,

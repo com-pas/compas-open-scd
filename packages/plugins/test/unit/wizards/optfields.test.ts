@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { OscdWizards } from '@compas-oscd/open-scd';
 
 import { WizardSelect } from '@compas-oscd/open-scd';

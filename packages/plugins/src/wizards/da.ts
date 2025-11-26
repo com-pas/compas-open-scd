@@ -4,8 +4,8 @@ import { get } from 'lit-translate';
 import '@material/mwc-button';
 import '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-checkbox.js';
+import '@compas-oscd/open-scd/wizard-select.js';
 import {
   getValue,
   isPublic,
@@ -41,7 +41,7 @@ export function renderDa(
   dupd: string | null
 ): TemplateResult[] {
   return [
-    html`<wizard-select
+    html`<wizard-select-openscd
       label="fc"
       .maybeValue=${fc}
       helper="${get('scl.fc')}"
@@ -50,26 +50,26 @@ export function renderDa(
       >${functionalConstraintEnum.map(
         fcOption =>
           html`<mwc-list-item value="${fcOption}">${fcOption}</mwc-list-item>`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-checkbox
+    html`<wizard-checkbox-openscd
       label="dchg"
       .maybeValue=${dchg}
       helper="${get('scl.dchg')}"
       nullable
-    ></wizard-checkbox>`,
-    html`<wizard-checkbox
+    ></wizard-checkbox-openscd>`,
+    html`<wizard-checkbox-openscd
       label="qchg"
       .maybeValue=${qchg}
       helper="${get('scl.qchg')}"
       nullable
-    ></wizard-checkbox>`,
-    html`<wizard-checkbox
+    ></wizard-checkbox-openscd>`,
+    html`<wizard-checkbox-openscd
       label="dupd"
       .maybeValue=${dupd}
       helper="${get('scl.dupd')}"
       nullable
-    ></wizard-checkbox>`,
+    ></wizard-checkbox-openscd>`,
   ];
 }
 

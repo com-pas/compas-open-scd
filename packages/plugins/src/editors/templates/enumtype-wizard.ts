@@ -10,7 +10,7 @@ import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 import { Select } from '@material/mwc-select';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   find,
   getValue,
@@ -144,28 +144,28 @@ function eNumValWizard(options: WizardOptions): Wizard {
       },
       menuActions,
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="ord"
           helper="${get('scl.ord')}"
           .maybeValue=${ord}
           required
           type="number"
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="value"
           helper="${get('scl.value')}"
           .maybeValue=${value}
           pattern="${patterns.normalizedString}"
           dialogInitialFocus
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           id="evDesc"
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${desc}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
       ],
     },
   ];
@@ -232,7 +232,7 @@ export function createEnumTypeWizard(
               </mwc-list-item>`
           )}
         </mwc-select>`,
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="id"
           helper="${get('scl.id')}"
           .maybeValue=${''}
@@ -241,14 +241,14 @@ export function createEnumTypeWizard(
           minlength="1"
           pattern="${patterns.nmToken}"
           dialogInitialFocus
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${null}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
       ],
     },
   ];
@@ -321,7 +321,7 @@ export function eNumTypeEditWizard(
         },
       ],
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="id"
           helper="${get('scl.id')}"
           .maybeValue=${enumtype.getAttribute('id')}
@@ -330,14 +330,14 @@ export function eNumTypeEditWizard(
           minlength="1"
           pattern="${patterns.nmToken}"
           dialogInitialFocus
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${enumtype.getAttribute('desc')}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
         html`<mwc-list
           style="margin-top: 0px;"
           @selected=${(e: SingleSelectedEvent) => {

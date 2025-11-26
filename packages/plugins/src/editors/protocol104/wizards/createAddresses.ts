@@ -239,13 +239,13 @@ export function createAddressesWizard(
 
     // Add the basic fields to the list.
     const fields = [
-      html`<wizard-textfield
+      html`<wizard-textfield-openscd
         label="IED"
         .maybeValue="${getNameAttribute(iedElement!)}"
         disabled
         readonly
       >
-      </wizard-textfield>`,
+      </wizard-textfield-openscd>`,
       html`<mwc-textarea
         label="LN(0)"
         value="${fullPath}"
@@ -255,14 +255,14 @@ export function createAddressesWizard(
         disabled
       >
       </mwc-textarea>`,
-      html`<wizard-textfield
+      html`<wizard-textfield-openscd
         label="DO"
         .maybeValue="${doName}"
         disabled
         readonly
       >
-      </wizard-textfield>`,
-      html`<wizard-textfield
+      </wizard-textfield-openscd>`,
+      html`<wizard-textfield-openscd
         label="Common Data Class"
         .maybeValue="${cdc}"
         .helper="${reqCmvMapping
@@ -272,15 +272,15 @@ export function createAddressesWizard(
         disabled
         readonly
       >
-      </wizard-textfield>`,
+      </wizard-textfield-openscd>`,
     ];
 
     if (monitorTis.length > 0) {
-      fields.push(html`<wizard-divider></wizard-divider>`);
+      fields.push(html`<wizard-divider-openscd></wizard-divider-openscd>`);
       let disabledSwitchByDefault = true;
       if (monitorTis.length > 1) {
         fields.push(
-          html`<wizard-select
+          html`<wizard-select-openscd
             label="monitorTi"
             helper="${get('protocol104.wizard.monitorTiHelper')}"
             fixedMenuPosition
@@ -298,7 +298,7 @@ export function createAddressesWizard(
                   >
                 </mwc-list-item>`
             )}
-          </wizard-select>`
+          </wizard-select-openscd>`
         );
       } else {
         disabledSwitchByDefault = disableMonitorInvertedSwitch(
@@ -306,14 +306,14 @@ export function createAddressesWizard(
           monitorTis[0]
         );
         fields.push(
-          html`<wizard-textfield
+          html`<wizard-textfield-openscd
             label="monitorTi"
             .maybeValue=${monitorTis[0]
               ? monitorTis[0] + ' (' + getSignalName(monitorTis[0]) + ')'
               : ''}
             disabled
           >
-          </wizard-textfield>`
+          </wizard-textfield-openscd>`
         );
       }
       fields.push(
@@ -339,23 +339,23 @@ export function createAddressesWizard(
     }
 
     if (controlTis.length > 0) {
-      fields.push(html` <wizard-divider></wizard-divider>`);
+      fields.push(html` <wizard-divider-openscd></wizard-divider-openscd>`);
 
       const ctlModel = getCtlModel(lnElement, doElement);
       if (ctlModel !== null) {
-        fields.push(html` <wizard-textfield
+        fields.push(html` <wizard-textfield-openscd
           label="ctlModel"
           .maybeValue=${ctlModel}
           disabled
           readonly
         >
-        </wizard-textfield>`);
+        </wizard-textfield-openscd>`);
       }
 
       if (ctlModel !== null && ctlModel !== 'status-only') {
         if (controlTis.length > 1) {
           fields.push(
-            html` <wizard-select
+            html` <wizard-select-openscd
               label="controlTi"
               helper="${get('protocol104.wizard.controlTiHelper')}"
               fixedMenuPosition
@@ -375,18 +375,18 @@ export function createAddressesWizard(
                     >
                   </mwc-list-item>`
               )}
-            </wizard-select>`
+            </wizard-select-openscd>`
           );
         } else {
           fields.push(
-            html` <wizard-textfield
+            html` <wizard-textfield-openscd
               label="controlTi"
               .maybeValue=${controlTis[0]
                 ? controlTis[0] + ' (' + getSignalName(controlTis[0]) + ')'
                 : ''}
               disabled
             >
-            </wizard-textfield>`
+            </wizard-textfield-openscd>`
           );
         }
         fields.push(

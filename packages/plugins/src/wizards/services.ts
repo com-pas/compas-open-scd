@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-html';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-select.js';
 import { Wizard, WizardInput } from '@compas-oscd/open-scd';
 import { createLogSettingsGroupServicesWizardPage } from './service-log-settingsgroup.js';
 import { createReportConfigurationsWizardPage } from './service-report-configurations.js';
@@ -33,7 +33,7 @@ export function createFormElementFromInput(input: WizardInput): TemplateResult {
   switch (input.kind) {
     case 'TextField':
     default:
-      templateResult = html`<wizard-textfield
+      templateResult = html`<wizard-textfield-openscd
         label=${input.label}
         .maybeValue=${input.maybeValue}
         .helper=${input.helper || ''}
@@ -44,10 +44,10 @@ export function createFormElementFromInput(input: WizardInput): TemplateResult {
         ?dialogInitialFocus=${input.dialogInitialFocus}
         ?nullable=${input.nullable}
         disabled
-      ></wizard-textfield>`;
+      ></wizard-textfield-openscd>`;
       break;
     case 'Checkbox':
-      templateResult = html`<wizard-checkbox
+      templateResult = html`<wizard-checkbox-openscd
         label=${input.label}
         .maybeValue=${input.maybeValue}
         .helper=${input.helper || ''}
@@ -55,10 +55,10 @@ export function createFormElementFromInput(input: WizardInput): TemplateResult {
         ?dialogInitialFocus=${input.dialogInitialFocus}
         ?nullable=${input.nullable}
         disabled
-      ></wizard-checkbox>`;
+      ></wizard-checkbox-openscd>`;
       break;
     case 'Select':
-      templateResult = html`<wizard-select
+      templateResult = html`<wizard-select-openscd
         label=${input.label}
         .maybeValue=${input.maybeValue}
         .validationMessage=${input.valadationMessage || ''}
@@ -72,7 +72,7 @@ export function createFormElementFromInput(input: WizardInput): TemplateResult {
             ${value}
           </mwc-list-item>`;
         })}
-      </wizard-select>`;
+      </wizard-select-openscd>`;
       break;
   }
 
@@ -86,7 +86,9 @@ export function createFormElementsFromInputs(
 }
 
 export function createFormDivider(header?: string): TemplateResult {
-  return html`<wizard-divider .header=${header}></wizard-divider>`;
+  return html`<wizard-divider-openscd
+    .header=${header}
+  ></wizard-divider-openscd>`;
 }
 
 export function editServicesWizard(services: Element): Wizard {

@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   getValue,
   Wizard,
@@ -22,40 +22,40 @@ export function renderLNWizard(
   reservedInst: string[]
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="lnType"
       .maybeValue=${lnType}
       readonly
       required
       helper="${get('ln.wizard.lnTypeHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('ln.wizard.descHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="prefix"
       nullable
       .maybeValue=${prefix}
       helper="${get('ln.wizard.prefixHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="lnClass"
       readonly
       required
       .maybeValue=${lnClass}
       helper="${get('ln.wizard.lnClassHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="inst"
       .maybeValue=${inst}
       helper="${get('ln.wizard.instHelper')}"
       pattern="[0-9]{1,12}"
       required
       .reservedValues=${reservedInst}
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

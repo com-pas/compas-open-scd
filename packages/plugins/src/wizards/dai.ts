@@ -4,7 +4,7 @@ import { get } from 'lit-translate';
 
 import { DaiFieldTypes, getCustomField } from './foundation/dai-field-type.js';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 
 import { Wizard, WizardActor, WizardInputElement } from '@compas-oscd/open-scd';
 import {
@@ -99,14 +99,14 @@ export function renderDAIWizard(
       numberOfmultipleSettings
     )}
     ${daValue
-      ? html`<wizard-textfield
+      ? html`<wizard-textfield-openscd
           id="daVal"
           label="DA Template Value"
           .maybeValue=${daValue}
           readonly
           disabled
         >
-        </wizard-textfield>`
+        </wizard-textfield-openscd>`
       : nothing}`,
   ];
 }

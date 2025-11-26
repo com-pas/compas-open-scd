@@ -1,5 +1,5 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { OscdWizards } from '@compas-oscd/open-scd';
 
 import { editLN0Wizard } from '../../../src/wizards/ln0.js';

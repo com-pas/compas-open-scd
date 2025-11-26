@@ -8,10 +8,10 @@ import { List } from '@material/mwc-list';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/filtered-list.js';
+import '@compas-oscd/open-scd/wizard-checkbox.js';
+import '@compas-oscd/open-scd/wizard-select.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   find,
   getValue,
@@ -81,7 +81,7 @@ export function contentGseControlWizard(
   content: ContentOptions
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${content.name}
       helper="${get('scl.name')}"
@@ -90,14 +90,14 @@ export function contentGseControlWizard(
       pattern="${patterns.asciName}"
       maxLength="${maxLength.cbName}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${content.desc}
       nullable
       helper="${get('scl.desc')}"
-    ></wizard-textfield>`,
-    html`<wizard-select
+    ></wizard-textfield-openscd>`,
+    html`<wizard-select-openscd
       label="type"
       .maybeValue=${content.type}
       helper="${get('scl.type')}"
@@ -105,22 +105,22 @@ export function contentGseControlWizard(
       required
       >${['GOOSE', 'GSSE'].map(
         type => html`<mwc-list-item value="${type}">${type}</mwc-list-item>`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="appID"
       .maybeValue=${content.appID}
       helper="${get('scl.id')}"
       required
       validationMessage="${get('textfield.nonempty')}"
-    ></wizard-textfield>`,
-    html`<wizard-checkbox
+    ></wizard-textfield-openscd>`,
+    html`<wizard-checkbox-openscd
       label="fixedOffs"
       .maybeValue=${content.fixedOffs}
       nullable
       helper="${get('scl.fixedOffs')}"
-    ></wizard-checkbox>`,
-    html`<wizard-select
+    ></wizard-checkbox-openscd>`,
+    html`<wizard-select-openscd
       label="securityEnabled"
       .maybeValue=${content.securityEnabled}
       nullable
@@ -128,7 +128,7 @@ export function contentGseControlWizard(
       helper="${get('scl.securityEnable')}"
       >${securityEnabledEnum.map(
         type => html`<mwc-list-item value="${type}">${type}</mwc-list-item>`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
   ];
 }
@@ -269,20 +269,20 @@ export function createGseControlWizard(ln0OrLn: Element): Wizard {
           title: get('wizard.title.add', { tagName: 'GSE' }),
           content: [
             ...contentGseOrSmvWizard({ hasInstType, attributes }),
-            html`<wizard-textfield
+            html`<wizard-textfield-openscd
               label="MinTime"
               .maybeValue=${minTime}
               nullable
               suffix="ms"
               type="number"
-            ></wizard-textfield>`,
-            html`<wizard-textfield
+            ></wizard-textfield-openscd>`,
+            html`<wizard-textfield-openscd
               label="MaxTime"
               .maybeValue=${maxTime}
               nullable
               suffix="ms"
               type="number"
-            ></wizard-textfield>`,
+            ></wizard-textfield-openscd>`,
           ],
         },
         {

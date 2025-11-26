@@ -1,9 +1,9 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 
 import Protocol104 from '../../../src/editors/Protocol104.js';
-import { MockOpenSCD } from '@compas-oscd/open-scd';
+import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
 
 describe('Protocol 104 Plugin', () => {
   customElements.define('protocol104-plugin', Protocol104);

@@ -14,7 +14,7 @@ import { Select } from '@material/mwc-select';
 /** A potentially `nullable` `Select`.
  *
  * NB: Use `maybeValue: string | null` instead of `value` if `nullable`!*/
-@customElement('wizard-select')
+@customElement('wizard-select-openscd')
 export class WizardSelect extends Select {
   /** Whether [[`maybeValue`]] may be `null` */
   @property({ type: Boolean })

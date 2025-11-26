@@ -2,7 +2,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import { newWizardEvent, Wizard } from '@compas-oscd/open-scd';
 import { editServicesWizard } from '../../../src/wizards/services.js';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { MockWizardEditor } from '@compas-oscd/open-scd';
 import { WizardDialog } from '@compas-oscd/open-scd';
 

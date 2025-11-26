@@ -84,17 +84,17 @@ export function renderXYCoordinateFields(
   yCoordinate: string | null
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="xCoordinate"
       nullable
       .maybeValue=${xCoordinate}
       helper="${get('sld.wizard.xCoordinateHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="yCoordinate"
       .maybeValue=${yCoordinate}
       nullable
       helper="${get('sld.wizard.yCoordinateHelper')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }

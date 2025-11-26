@@ -6,7 +6,7 @@ import '@material/mwc-formfield';
 
 import { createElement } from '@openscd/xml';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   getValue,
   Wizard,
@@ -23,20 +23,20 @@ function render(
   guessable: boolean
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('substation.wizard.nameHelper')}"
       required
       validationMessage="${get('textfield.required')}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('substation.wizard.descHelper')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
     guessable
       ? html`<mwc-formfield label="${get('guess.wizard.primary')}">
           <mwc-checkbox></mwc-checkbox>

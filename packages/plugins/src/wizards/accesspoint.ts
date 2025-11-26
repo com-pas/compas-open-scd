@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   newWizardEvent,
   Wizard,
@@ -25,7 +25,7 @@ export function renderAccessPointWizard(
   reservedNames: string[]
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('accesspoint.wizard.nameHelper')}"
@@ -34,15 +34,15 @@ export function renderAccessPointWizard(
       dialogInitialFocus
       .reservedValues=${reservedNames}
     >
-    </wizard-textfield>`,
-    html`<wizard-textfield
+    </wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('accesspoint.wizard.descHelper')}"
       pattern="${patterns.normalizedString}"
     >
-    </wizard-textfield>`,
+    </wizard-textfield-openscd>`,
   ];
 }
 export function removeAccessPointWizard(element: Element): Wizard | null {

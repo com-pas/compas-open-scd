@@ -2,14 +2,14 @@ import { expect, fixture, html } from '@open-wc/testing';
 import { initializeNsdoc } from '@compas-oscd/open-scd';
 
 import GooseSubscriberDataBinding from '../../../src/editors/GooseSubscriberDataBinding.js';
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import {
   getExtrefDataBindingList,
   getFCDABindingList,
   getSelectedSubItemValue,
   selectFCDAItem,
 } from './test-support.js';
-import { MockOpenSCD } from '@compas-oscd/open-scd';
+import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
 
 import { TemplateResult } from 'lit-html';
 import { customElement, query } from 'lit-element';

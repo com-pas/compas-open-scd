@@ -9,7 +9,7 @@ import {
   query,
 } from 'lit-element';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-pane.js';
 import './sub-function-editor.js';
 import './general-equipment-editor.js';
 import { newWizardEvent, SCLTag, tags } from '@compas-oscd/open-scd';

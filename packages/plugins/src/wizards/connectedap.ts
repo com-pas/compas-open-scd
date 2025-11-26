@@ -11,8 +11,8 @@ import { Checkbox } from '@material/mwc-checkbox';
 import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 import {
   Wizard,
   WizardActor,
@@ -327,7 +327,7 @@ export function createPTextField(
   element: Element,
   pType: string
 ): TemplateResult {
-  return html`<wizard-textfield
+  return html`<wizard-textfield-openscd
     required
     label="${pType}"
     pattern="${ifDefined(typePattern[pType])}"
@@ -335,7 +335,7 @@ export function createPTextField(
     .maybeValue=${element.querySelector(`:scope > Address > P[type="${pType}"]`)
       ?.innerHTML ?? null}
     maxLength="${ifDefined(typeMaxLength[pType])}"
-  ></wizard-textfield>`;
+  ></wizard-textfield-openscd>`;
 }
 
 /** @returns single page  [[`Wizard`]] for creating SCL element ConnectedAP. */

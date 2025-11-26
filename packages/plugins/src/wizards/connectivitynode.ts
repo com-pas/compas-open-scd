@@ -9,7 +9,7 @@ function render(
   reservedNames: string[]
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('connectivitynode.wizard.nameHelper')}"
@@ -18,15 +18,15 @@ function render(
       dialogInitialFocus
       .reservedValues=${reservedNames}
       readonly
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="pathName"
       .maybeValue=${pathName}
       helper="${get('connectivitynode.wizard.pathNameHelper')}"
       required
       validationMessage="${get('textfield.required')}"
       readonly
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

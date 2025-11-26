@@ -476,14 +476,14 @@ export function createNetworkTextField(
   pType: string,
   maybeValue?: string
 ): TemplateResult {
-  return html`<wizard-textfield
+  return html`<wizard-textfield-openscd
     required
     label="${pType}"
     pattern="${ifDefined(typePattern[pType])}"
     .maybeValue=${maybeValue ?? null}
     maxLength="${ifDefined(typeMaxLength[pType])}"
     helper="${get(typeDescriptiveNameKeys[pType])}"
-  ></wizard-textfield>`;
+  ></wizard-textfield-openscd>`;
 }
 
 /**

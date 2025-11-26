@@ -2,7 +2,7 @@ import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 import fc from 'fast-check';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { OscdWizards } from '@compas-oscd/open-scd';
 
 import { WizardTextField } from '@compas-oscd/open-scd';

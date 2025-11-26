@@ -19,7 +19,7 @@ import { Dialog } from '@material/mwc-dialog';
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
 import { Select } from '@material/mwc-select';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/filtered-list.js';
 import { find, identity } from '@compas-oscd/open-scd';
 import { getChildElementsByTagName } from '@openscd/xml';
 
@@ -262,23 +262,23 @@ export default class VirtualTemplateIED extends LitElement {
       heading="Create SPECIFICATION type IED"
       @closed=${this.onClosed}
       ><div>
-        <wizard-textfield
+        <wizard-textfield-openscd
           label="manufacturer"
           .maybeValue=${''}
           required
           @keypress=${() => this.requestUpdate()}
-        ></wizard-textfield>
-        <wizard-textfield
+        ></wizard-textfield-openscd>
+        <wizard-textfield-openscd
           label="desc"
           .maybeValue=${null}
           nullable
-        ></wizard-textfield>
-        <wizard-textfield
+        ></wizard-textfield-openscd>
+        <wizard-textfield-openscd
           label="AccessPoint name"
           .maybeValue=${''}
           required
           @keypress=${() => this.requestUpdate()}
-        ></wizard-textfield>
+        ></wizard-textfield-openscd>
         <filtered-list multi @selected=${() => this.requestUpdate()}
           >${Object.entries(functionElementDescriptions).flatMap(
             ([id, functionDescription]) => [

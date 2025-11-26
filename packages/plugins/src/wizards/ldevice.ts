@@ -4,7 +4,7 @@ import { get } from 'lit-translate';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   getValue,
   Wizard,
@@ -34,15 +34,15 @@ export function renderLdeviceWizard(
 ): TemplateResult[] {
   return [
     readOnly
-      ? html`<wizard-textfield
+      ? html`<wizard-textfield-openscd
           label="ldName"
           .maybeValue=${ldName}
           helper="${get('ldevice.wizard.noNameSupportHelper')}"
           helperPersistent
           readOnly
           disabled
-        ></wizard-textfield>`
-      : html`<wizard-textfield
+        ></wizard-textfield-openscd>`
+      : html`<wizard-textfield-openscd
           label="ldName"
           .maybeValue=${ldName}
           nullable
@@ -50,15 +50,15 @@ export function renderLdeviceWizard(
           validationMessage="${get('textfield.required')}"
           dialogInitialFocus
           pattern="${lDeviceNamePattern}"
-        ></wizard-textfield>`,
-    html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('ldevice.wizard.descHelper')}"
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="inst"
       .maybeValue=${inst}
       required
@@ -66,7 +66,7 @@ export function renderLdeviceWizard(
       validationMessage="${get('textfield.required')}"
       pattern="${patterns.normalizedString}"
       .reservedValues=${reservedInst}
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

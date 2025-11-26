@@ -10,7 +10,7 @@ import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Select } from '@material/mwc-select';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   find,
   getValue,
@@ -120,7 +120,7 @@ export function editDaTypeWizard(
         },
       ],
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="id"
           helper="${get('scl.id')}"
           .maybeValue=${id}
@@ -129,14 +129,14 @@ export function editDaTypeWizard(
           minlength="1"
           pattern="${patterns.nmToken}"
           dialogInitialFocus
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${desc}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
         html`<mwc-list
           style="margin-top: 0px;"
           @selected=${(e: SingleSelectedEvent) => {
@@ -245,7 +245,7 @@ export function createDATypeWizard(
               </mwc-list-item>`
           )}
         </mwc-select>`,
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="id"
           helper="${get('scl.id')}"
           .maybeValue=${''}
@@ -254,14 +254,14 @@ export function createDATypeWizard(
           minlength="1"
           pattern="${patterns.nmToken}"
           dialogInitialFocus
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${null}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
       ],
     },
   ];

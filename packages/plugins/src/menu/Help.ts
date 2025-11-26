@@ -4,7 +4,7 @@ import * as marked from 'marked';
 
 import '@material/mwc-icon';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/finder-list.js';
 import { newWizardEvent, Wizard } from '@compas-oscd/open-scd';
 import { openSCDIcon } from '@compas-oscd/open-scd';
 import { Directory } from '@compas-oscd/open-scd';

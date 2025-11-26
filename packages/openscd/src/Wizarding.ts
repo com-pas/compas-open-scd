@@ -50,7 +50,9 @@ export function Wizarding<TBase extends LitElementConstructor>(Base: TBase) {
 
     render(): TemplateResult {
       return html`${ifImplemented(super.render())}
-        <wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
+        <wizard-dialog-openscd
+          .wizard=${this.workflow[0]?.() ?? []}
+        ></wizard-dialog-openscd>`;
     }
   }
 

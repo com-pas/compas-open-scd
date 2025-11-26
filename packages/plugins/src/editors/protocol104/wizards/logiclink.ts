@@ -43,13 +43,13 @@ export function editLogicLinkWizard(
         action: editLogicLinkAction(parent, rGNumber, lLNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.logicLink.wizard.logicLinkNumberLabel'
             )}"
             .maybeValue=${lLNumber}
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesLogicLink104.map(
             pType =>
               html`${createNetworkTextField(
@@ -84,13 +84,13 @@ export function createLogicLinkWizard(
         action: addLogicLinkAction(parent, rGNumber, lLNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.logicLink.wizard.logicLinkNumberLabel'
             )}"
             value="${lLNumber}"
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesLogicLink104.map(
             pType => html`${createNetworkTextField(pType)}`
           )}`,

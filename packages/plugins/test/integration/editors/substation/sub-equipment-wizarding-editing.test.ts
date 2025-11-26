@@ -1,6 +1,6 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { MockWizardEditor } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/substation/sub-equipment-editor.js';

@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/finder-list.js';
 import { Directory } from '@compas-oscd/open-scd';
 import { find, identity, isPublic } from '@compas-oscd/open-scd';
 

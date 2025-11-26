@@ -6,7 +6,9 @@ import { WizardTextField } from '../../src/wizard-textfield.js';
 describe('wizard-textfield', () => {
   let element: WizardTextField;
   beforeEach(async () => {
-    element = await fixture(html`<wizard-textfield></wizard-textfield>`);
+    element = await fixture(
+      html`<wizard-textfield-openscd></wizard-textfield-openscd>`
+    );
   });
 
   it('does not render a null value switch', () =>
@@ -202,14 +204,14 @@ describe('wizard-textfield', () => {
 
   describe('disabled', () => {
     beforeEach(async () => {
-      element = await fixture(html`<wizard-textfield
+      element = await fixture(html`<wizard-textfield-openscd
         .maybeValue=${'someValue'}
         .multipliers=${[null, 'G', 'M', 'k', '', 'm']}
         .multiplier=${'k'}
         .unit=${'V'}
         nullable
         disabled
-      ></wizard-textfield>`);
+      ></wizard-textfield-openscd>`);
 
       await element.updateComplete;
     });

@@ -10,9 +10,9 @@ import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Select } from '@material/mwc-select';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-checkbox.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-select.js';
 import {
   find,
   getValue,
@@ -186,7 +186,7 @@ function dOWizard(options: WizardOptions): Wizard | undefined {
       primary: { icon: '', label: get('save'), action },
       menuActions,
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="name"
           .maybeValue=${name}
           helper="${get('scl.name')}"
@@ -194,15 +194,15 @@ function dOWizard(options: WizardOptions): Wizard | undefined {
           pattern="${patterns.alphanumericFirstUpperCase}"
           dialogInitialFocus
         >
-          ></wizard-textfield
+          ></wizard-textfield-openscd
         >`,
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${desc}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
         html`<mwc-select
           fixedMenuPosition
           label="type"
@@ -217,19 +217,19 @@ function dOWizard(options: WizardOptions): Wizard | undefined {
               >`
           )}</mwc-select
         >`,
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="accessControl"
           helper="${get('scl.accessControl')}"
           .maybeValue=${accessControl}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
-        html`<wizard-checkbox
+        ></wizard-textfield-openscd>`,
+        html`<wizard-checkbox-openscd
           label="transient"
           .maybeValue="${transient}"
           helper="${get('scl.transient')}"
           nullable
-        ></wizard-checkbox>`,
+        ></wizard-checkbox-openscd>`,
       ],
     },
   ];
@@ -354,7 +354,7 @@ function createLNodeTypeHelperWizard(
             .querySelectorAll(`DOType[cdc="${DO.getAttribute('type')}"]`)
         ).sort(doComparator(name));
 
-        return html`<wizard-select
+        return html`<wizard-select-openscd
           fixedMenuPosition
           naturalMenuWidth
           label="${name}"
@@ -366,7 +366,7 @@ function createLNodeTypeHelperWizard(
               html`<mwc-list-item value="${doType.getAttribute('id')!}"
                 >${doType.getAttribute('id')}</mwc-list-item
               >`
-          )}</wizard-select
+          )}</wizard-select-openscd
         >`;
       }),
     },
@@ -544,7 +544,7 @@ export function createLNodeTypeWizard(
             }
           )}
         </mwc-select>`,
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="id"
           helper="${get('scl.id')}"
           .maybeValue=${''}
@@ -552,14 +552,14 @@ export function createLNodeTypeWizard(
           maxlength="127"
           minlength="1"
           pattern="${patterns.nmToken}"
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${null}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
       ],
     },
   ];
@@ -630,7 +630,7 @@ export function lNodeTypeWizard(
         },
       ],
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="id"
           helper="${get('scl.id')}"
           .maybeValue=${lnodetype.getAttribute('id')}
@@ -639,21 +639,21 @@ export function lNodeTypeWizard(
           minlength="1"
           pattern="${patterns.nmToken}"
           dialogInitialFocus
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="desc"
           helper="${get('scl.desc')}"
           .maybeValue=${lnodetype.getAttribute('desc')}
           nullable
           pattern="${patterns.normalizedString}"
-        ></wizard-textfield>`,
-        html`<wizard-textfield
+        ></wizard-textfield-openscd>`,
+        html`<wizard-textfield-openscd
           label="lnClass"
           helper="${get('scl.lnClass')}"
           .maybeValue=${lnodetype.getAttribute('lnClass')}
           required
           pattern="${patterns.lnClass}"
-        ></wizard-textfield>`,
+        ></wizard-textfield-openscd>`,
         html`
           <mwc-list
             style="margin-top: 0px;"

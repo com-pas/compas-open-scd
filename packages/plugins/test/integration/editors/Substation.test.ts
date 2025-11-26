@@ -1,9 +1,9 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 
 import Substation from '../../../src/editors/Substation.js';
-import { MockOpenSCD } from '@compas-oscd/open-scd';
+import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
 
 describe('Substation Plugin', () => {
   customElements.define('substation-plugin', Substation);

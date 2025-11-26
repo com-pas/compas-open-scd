@@ -17,8 +17,8 @@ import { IconButton } from '@material/mwc-icon-button';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Menu } from '@material/mwc-menu';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-icon.js';
+import '@compas-oscd/open-scd/action-pane.js';
 import './sub-equipment-editor.js';
 import './eq-function-editor.js';
 import './transformer-winding-editor.js';

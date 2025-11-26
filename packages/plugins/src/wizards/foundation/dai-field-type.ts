@@ -3,8 +3,8 @@ import { get } from 'lit-translate';
 
 import '@material/mwc-list/mwc-list-item';
 
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-select.js';
 
 import { getValue, WizardInputElement } from '@compas-oscd/open-scd';
 
@@ -86,7 +86,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
       ) => {
         // If numOfSGs is -1, then it is a single value, otherwise it is treated as a group of values
         return (numOfSGs ? [...Array(numOfSGs)] : [numOfSGs]).map((item, i) => {
-          return html`<wizard-select
+          return html`<wizard-select-openscd
             id="Val${emptyIfNull(item, `${i + 1}`)}"
             label="Val${emptyIfNull(item, ` for sGroup ${i + 1}`)}"
             .maybeValue=${getInstanceValue(instanceElement)}
@@ -94,7 +94,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
           >
             <mwc-list-item value="true">true</mwc-list-item>
             <mwc-list-item value="false">false</mwc-list-item>
-          </wizard-select>`;
+          </wizard-select-openscd>`;
         });
       },
       value: (inputs: WizardInputElement[], sGroup: number | null) => {
@@ -114,7 +114,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
       ) => {
         // If numOfSGs is -1, then it is a single value, otherwise it is treated as a group of values
         return (numOfSGs ? [...Array(numOfSGs)] : [numOfSGs]).map((item, i) => {
-          return html`<wizard-select
+          return html`<wizard-select-openscd
             id="Val${emptyIfNull(item, `${i + 1}`)}"
             label="Val${emptyIfNull(item, ` for sGroup ${i + 1}`)}"
             .maybeValue=${getInstanceValue(instanceElement)}
@@ -125,7 +125,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
                 >${enumValue}</mwc-list-item
               >`;
             })}
-          </wizard-select>`;
+          </wizard-select-openscd>`;
         });
       },
       value: (inputs: WizardInputElement[], sGroup: number | null) => {
@@ -145,7 +145,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
       ) => {
         // If numOfSGs is -1, then it is a single value, otherwise it is treated as a group of values
         return (numOfSGs ? [...Array(numOfSGs)] : [numOfSGs]).map((item, i) => {
-          return html`<wizard-textfield
+          return html`<wizard-textfield-openscd
             id="Val${emptyIfNull(item, `${i + 1}`)}"
             label="Val${emptyIfNull(item, ` for sGroup ${i + 1}`)}"
             .maybeValue=${getInstanceValue(instanceElement)}
@@ -155,7 +155,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
             max=${max}
             step="0.1"
           >
-          </wizard-textfield>`;
+          </wizard-textfield-openscd>`;
         });
       },
       value: (inputs: WizardInputElement[], sGroup: number | null) => {
@@ -175,7 +175,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
       ) => {
         // If numOfSGs is -1, then it is a single value, otherwise it is treated as a group of values
         return (numOfSGs ? [...Array(numOfSGs)] : [numOfSGs]).map((item, i) => {
-          return html`<wizard-textfield
+          return html`<wizard-textfield-openscd
             id="Val${emptyIfNull(item, `${i + 1}`)}"
             label="Val${emptyIfNull(item, ` for sGroup ${i + 1}`)}"
             .maybeValue=${getInstanceValue(instanceElement)}
@@ -184,7 +184,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
             min=${min}
             max=${max}
           >
-          </wizard-textfield>`;
+          </wizard-textfield-openscd>`;
         });
       },
       value: (inputs: WizardInputElement[], sGroup: number | null) => {
@@ -207,21 +207,21 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
         return (numOfSGs ? [...Array(numOfSGs)] : [numOfSGs]).reduce(
           (acc: TemplateResult[], item, i) => {
             return acc.concat([
-              html`<wizard-textfield
+              html`<wizard-textfield-openscd
                 id="ValDate${emptyIfNull(item, `${i + 1}`)}"
                 label="Val (Date)${emptyIfNull(item, ` for sGroup ${i + 1}`)}"
                 .maybeValue=${getDateValueFromTimestamp(value)}
                 type="date"
               >
-              </wizard-textfield>`,
-              html`<wizard-textfield
+              </wizard-textfield-openscd>`,
+              html`<wizard-textfield-openscd
                 id="ValTime${emptyIfNull(item, `${i + 1}`)}"
                 label="Val (Time)${emptyIfNull(item, ` for sGroup ${i + 1}`)}"
                 .maybeValue=${getTimeValueFromTimestamp(value)}
                 type="time"
                 step="1"
               >
-              </wizard-textfield>`,
+              </wizard-textfield-openscd>`,
             ]);
           },
           []
@@ -249,7 +249,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
       ) => {
         // If numOfSGs is -1, then it is a single value, otherwise it is treated as a group of values
         return (numOfSGs ? [...Array(numOfSGs)] : [numOfSGs]).map((item, i) => {
-          return html`<wizard-textfield
+          return html`<wizard-textfield-openscd
             id="Val${emptyIfNull(item, ` ${i + 1}`)}"
             label="Val${emptyIfNull(item, ` for sGroup ${i + 1}`)}"
             .maybeValue=${getInstanceValue(instanceElement)}
@@ -257,7 +257,7 @@ export function getCustomField(): Record<DaiFieldTypes, CustomField> {
             maxLength=${maxNrOfCharacters}
             type="text"
           >
-          </wizard-textfield>`;
+          </wizard-textfield-openscd>`;
         });
       },
       value: (inputs: WizardInputElement[], sGroup: number | null) => {

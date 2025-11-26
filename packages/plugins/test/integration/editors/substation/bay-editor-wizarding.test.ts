@@ -1,7 +1,7 @@
 import { fixture, html, expect } from '@open-wc/testing';
 import fc from 'fast-check';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { OscdWizards } from '@compas-oscd/open-scd';
 
 import '../../../../src/editors/substation/bay-editor.js';

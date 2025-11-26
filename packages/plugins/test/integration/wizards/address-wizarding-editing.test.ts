@@ -1,6 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@compas-oscd/open-scd';
+import '@openscd/open-scd/test/mock-open-scd.js';
 import { MockWizardEditor } from '@compas-oscd/open-scd';
 import { editGseWizard } from '../../../src/wizards/gse.js';
 import { WizardTextField } from '@compas-oscd/open-scd';

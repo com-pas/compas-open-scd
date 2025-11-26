@@ -5,7 +5,7 @@ import { get } from 'lit-translate';
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import { createElement } from '@openscd/xml';
 import { Create, Delete } from '@openscd/core/foundation/deprecated/editor.js';
 import { typeNullable, typePattern } from './foundation/p-types.js';
@@ -27,13 +27,13 @@ export function contentGseOrSmvWizard(
     </mwc-formfield>`,
     html`${Object.entries(content.attributes).map(
       ([key, value]) =>
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
           label="${key}"
           ?nullable=${typeNullable[key]}
           .maybeValue=${value}
           pattern="${ifDefined(typePattern[key])}"
           required
-        ></wizard-textfield>`
+        ></wizard-textfield-openscd>`
     )}`,
   ];
 }

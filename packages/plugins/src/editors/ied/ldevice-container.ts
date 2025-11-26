@@ -30,7 +30,7 @@ import { Container } from './foundation.js';
 import { lnInstGenerator } from '@openenergytools/scl-lib/dist/generator/lnInstGenerator.js';
 import { AddLnDialog, LNData } from './add-ln-dialog.js';
 
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/action-pane.js';
 import './ln-container.js';
 import './add-ln-dialog.js';
 

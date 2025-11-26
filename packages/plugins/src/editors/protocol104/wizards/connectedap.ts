@@ -223,9 +223,9 @@ export function editConnectedApWizard(
               }}
             ></mwc-switch>
           </mwc-formfield>
-          <wizard-divider></wizard-divider>
+          <wizard-divider-openscd></wizard-divider-openscd>
           ${createTypeRestrictionCheckbox(parent)}
-          <wizard-select
+          <wizard-select-openscd
             label="StationType"
             .maybeValue=${parent.querySelector(
               `Address > P[type="StationType"]`
@@ -238,7 +238,7 @@ export function editConnectedApWizard(
               option =>
                 html`<mwc-list-item value="${option}">${option}</mwc-list-item>`
             )}
-          </wizard-select>
+          </wizard-select-openscd>
           ${redundancy
             ? html`<h3>
                   ${get(
@@ -380,13 +380,13 @@ function getRedundancyGroupNumbers(parent: Element): number[] {
  * @returns - A Text Field created for a specific type for the Edit wizard.
  */
 function createEditTextField(parent: Element, pType: string): TemplateResult {
-  return html`<wizard-textfield
+  return html`<wizard-textfield-openscd
     required
     label="${pType}"
     pattern="${ifDefined(typePattern[pType])}"
     .maybeValue=${parent.querySelector(`Address > P[type="${pType}"]`)
       ?.innerHTML ?? null}
-  ></wizard-textfield>`;
+  ></wizard-textfield-openscd>`;
 }
 
 function createTypeRestrictionCheckbox(element: Element): TemplateResult {

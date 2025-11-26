@@ -14,8 +14,8 @@ import {
   WizardInputElement,
 } from '@compas-oscd/open-scd';
 import { SimpleAction } from '@openscd/core/foundation/deprecated/editor';
-import '@compas-oscd/open-scd';
-import '@compas-oscd/open-scd';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-select.js';
 
 interface ContentOptions {
   name: string | null;
@@ -29,7 +29,7 @@ export function contentSubEquipmentWizard(
   content: ContentOptions
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${content.name}
       .reservedValues=${content.reservedNames}
@@ -37,14 +37,14 @@ export function contentSubEquipmentWizard(
       required
       validationMessage="${get('textfield.required')}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${content.desc}
       nullable
       helper="${get('scl.desc')}"
-    ></wizard-textfield>`,
-    html`<wizard-select
+    ></wizard-textfield-openscd>`,
+    html`<wizard-select-openscd
       label="phase"
       fixedMenuPosition
       .maybeValue=${content.phase}
@@ -57,13 +57,13 @@ export function contentSubEquipmentWizard(
             ${value.charAt(0).toUpperCase() + value.slice(1)}
           </mwc-list-item>`
       )}
-    </wizard-select> `,
-    html`<wizard-checkbox
+    </wizard-select-openscd> `,
+    html`<wizard-checkbox-openscd
       label="virtual"
       .maybeValue=${content.virtual}
       nullable
       helper="${get('scl.virtual')}"
-    ></wizard-checkbox>`,
+    ></wizard-checkbox-openscd>`,
   ];
 }
 
