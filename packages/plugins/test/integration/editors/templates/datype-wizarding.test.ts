@@ -5,10 +5,10 @@ import '@openscd/open-scd/test/mock-open-scd.js';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { Select } from '@material/mwc-select';
 
-import { FilteredList } from '@openscd/open-scd/src/filtered-list.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { FilteredList } from '@compas-oscd/open-scd';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import TemplatesPlugin from '../../../../src/editors/Templates.js';
-import { patterns } from '@openscd/open-scd/src/foundation.js';
+import { patterns } from '@compas-oscd/open-scd';
 import { MockOpenSCD } from '@openscd/open-scd/test/mock-open-scd.js';
 
 describe('DAType wizards', () => {

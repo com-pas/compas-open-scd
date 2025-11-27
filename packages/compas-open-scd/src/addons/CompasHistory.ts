@@ -9,16 +9,14 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-snackbar';
 
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 
 import { IssueDetail } from '@compas-oscd/core';
 
-import {
-  HistoryUIDetail,
-  OscdHistory,
-} from '@openscd/open-scd/src/addons/History.js';
+import { HistoryUIDetail, OscdHistory } from '@compas-oscd/open-scd';
+
 import { wizards } from '@openscd/plugins/src/wizards/wizard-library';
-import { newWizardEvent, SCLTag } from '@openscd/open-scd/src/foundation';
+import { newWizardEvent, SCLTag } from '@compas-oscd/open-scd';
 import { nothing } from 'lit-html';
 
 export enum HistoryUIKind {

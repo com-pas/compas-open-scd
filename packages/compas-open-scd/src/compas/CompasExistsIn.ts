@@ -1,6 +1,6 @@
 import { property, PropertyValues, state } from 'lit-element';
 
-import { LitElementConstructor, Mixin } from '@openscd/open-scd/src/foundation.js';
+import { LitElementConstructor, Mixin } from '@compas-oscd/open-scd';
 
 import { getTypeFromDocName } from './foundation.js';
 import { CompasSclDataService } from '../compas-services/CompasSclDataService.js';

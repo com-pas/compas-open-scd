@@ -40,7 +40,9 @@ export function Wizarding<TBase extends LitElementConstructor>(Base: TBase) {
     constructor(...args: any[]) {
       super(...args);
 
-      this.addEventListener('wizard', this.onWizard);
+      this.addEventListener('wizard', (evt: Event) =>
+        this.onWizard(evt as WizardEvent)
+      );
       this.addEventListener('editor-action', () =>
         this.wizardUI.requestUpdate()
       );
@@ -48,7 +50,9 @@ export function Wizarding<TBase extends LitElementConstructor>(Base: TBase) {
 
     render(): TemplateResult {
       return html`${ifImplemented(super.render())}
-        <wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
+        <wizard-dialog-openscd
+          .wizard=${this.workflow[0]?.() ?? []}
+        ></wizard-dialog-openscd>`;
     }
   }
 

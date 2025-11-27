@@ -1,17 +1,14 @@
 import { fixture, html, expect } from '@open-wc/testing';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@openscd/open-scd/test/mock-open-scd.js';
+import { WizardInputElement, WizardActor } from '@compas-oscd/open-scd';
 import {
-  WizardInputElement,
-  WizardActor,
-} from '@openscd/open-scd/src/foundation.js';
-import { 
   ComplexAction,
   isCreate,
   isReplace,
   isDelete,
   isSimple,
- } from '@openscd/core/foundation/deprecated/editor.js';
+} from '@openscd/core/foundation/deprecated/editor.js';
 import {
   createAction,
   updateAction,
@@ -34,7 +31,9 @@ describe('VoltageLevelEditor', () => {
         label =>
           <Promise<WizardInputElement>>(
             fixture(
-              html`<wizard-textfield label=${label}></wizard-textfield>`
+              html`<wizard-textfield-openscd
+                label=${label}
+              ></wizard-textfield-openscd>`
             )
           )
       )
@@ -165,7 +164,6 @@ describe('VoltageLevelEditor', () => {
   });
 
   describe('with nulled properties', () => {
-
     describe('has an updateAction that', () => {
       describe('with present child element Voltage', () => {
         let element: Element;
@@ -177,14 +175,14 @@ describe('VoltageLevelEditor', () => {
             'application/xml'
           ).documentElement;
 
-          inputs[4] = await fixture(html`<wizard-textfield
+          inputs[4] = await fixture(html`<wizard-textfield-openscd
             label="Voltage"
             nullable
             .maybeValue="${null}"
             unit="V"
             .multipliers=${[null, 'G', 'M', 'k', '', 'm']}
             multiplier="k"
-          ></wizard-textfield>`);
+          ></wizard-textfield-openscd>`);
         });
 
         it('returns a WizardAction which returns two EditorActions', () => {

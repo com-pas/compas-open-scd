@@ -22,7 +22,7 @@ import { TextField } from '@material/mwc-textfield';
  * `multiplier` if an SI `unit` is given.
  *
  * NB: Use `maybeValue: string | null` instead of `value` if `nullable`!*/
-@customElement('wizard-textfield')
+@customElement('wizard-textfield-openscd')
 export class WizardTextField extends TextField {
   /** Whether [[`maybeValue`]] may be `null` */
   @property({ type: Boolean })

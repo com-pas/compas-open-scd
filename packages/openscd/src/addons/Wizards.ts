@@ -45,7 +45,9 @@ export class OscdWizards extends LitElement {
   connectedCallback() {
     super.connectedCallback();
 
-    this.host.addEventListener('wizard', this.onWizard.bind(this));
+    this.host.addEventListener('wizard', (evt: Event) =>
+      this.onWizard(evt as WizardEvent)
+    );
     this.host.addEventListener('editor-action', () =>
       this.wizardUI.requestUpdate()
     );
@@ -53,6 +55,8 @@ export class OscdWizards extends LitElement {
 
   render(): TemplateResult {
     return html`<slot></slot>
-      <wizard-dialog .wizard=${this.workflow[0]?.() ?? []}></wizard-dialog>`;
+      <wizard-dialog-openscd
+        .wizard=${this.workflow[0]?.() ?? []}
+      ></wizard-dialog-openscd>`;
   }
 }

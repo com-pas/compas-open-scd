@@ -9,7 +9,7 @@ import {
   WizardAction,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 interface ContentOptions {
   refreshTime: string | null;
@@ -22,12 +22,12 @@ interface ContentOptions {
 export function contentSmvOptsWizard(option: ContentOptions): TemplateResult[] {
   return Object.entries(option).map(
     ([key, value]) =>
-      html`<wizard-checkbox
+      html`<wizard-checkbox-openscd
         label="${key}"
         .maybeValue=${value}
         nullable
         helper="${get(`scl.${key}`)}"
-      ></wizard-checkbox>`
+      ></wizard-checkbox-openscd>`
   );
 }
 

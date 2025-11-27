@@ -4,7 +4,7 @@ import { get } from 'lit-translate';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-select';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   crossProduct,
   getValue,
@@ -12,11 +12,9 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
-import {
-  createElement,
-} from '@openscd/xml';
+import { createElement } from '@openscd/xml';
 
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
 import { replaceNamingAction } from './foundation/actions.js';
@@ -221,7 +219,7 @@ export function renderConductingEquipmentWizard(
 ): TemplateResult[] {
   return [
     renderTypeSelector(option, type),
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('conductingequipment.wizard.nameHelper')}"
@@ -229,13 +227,13 @@ export function renderConductingEquipmentWizard(
       validationMessage="${get('textfield.required')}"
       dialogInitialFocus
       .reservedValues=${reservedNames}
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('conductingequipment.wizard.descHelper')}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

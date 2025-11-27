@@ -3,8 +3,8 @@ import { get } from 'lit-translate';
 
 import '@material/mwc-list/mwc-list-item';
 
-import '@openscd/open-scd/src/wizard-checkbox.js';
-import '@openscd/open-scd/src/wizard-select.js';
+import '@compas-oscd/open-scd/wizard-checkbox.js';
+import '@compas-oscd/open-scd/wizard-select.js';
 
 import { cloneElement } from '@openscd/xml';
 
@@ -14,7 +14,7 @@ import {
   WizardAction,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 interface ContentOptions {
   dchg: string | null;
@@ -27,12 +27,12 @@ interface ContentOptions {
 export function contentTrgOpsWizard(option: ContentOptions): TemplateResult[] {
   return Object.entries(option).map(
     ([key, value]) =>
-      html`<wizard-checkbox
+      html`<wizard-checkbox-openscd
         label="${key}"
         .maybeValue=${value}
         nullable
         helper="${get(`scl.${key}`)}"
-      ></wizard-checkbox>`
+      ></wizard-checkbox-openscd>`
   );
 }
 

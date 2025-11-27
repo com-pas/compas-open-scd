@@ -15,7 +15,7 @@ import { Checkbox } from '@material/mwc-checkbox';
 import { Switch } from '@material/mwc-switch';
 
 /** A potentially `nullable` labelled checkbox. */
-@customElement('wizard-checkbox')
+@customElement('wizard-checkbox-openscd')
 export class WizardCheckbox extends LitElement {
   @property({ type: String })
   label = '';

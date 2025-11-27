@@ -14,18 +14,15 @@ import './addons/CompasSession.js';
 import './addons/CompasHistory.js';
 import './addons/CompasLayout.js';
 
-import '@openscd/open-scd/src/addons/Waiter.js';
-import '@openscd/open-scd/src/addons/Settings.js';
-import {
-  initializeNsdoc,
-  Nsdoc,
-} from '@openscd/open-scd/src/foundation/nsdoc.js';
+import '@compas-oscd/open-scd/addons/Waiter.js';
+import '@compas-oscd/open-scd/addons/Settings.js';
+import { initializeNsdoc, Nsdoc } from '@compas-oscd/open-scd';
 import {
   InstalledOfficialPlugin,
   Plugin,
   MenuPosition,
   PluginKind,
-} from '@openscd/open-scd/src/plugin.js';
+} from '@compas-oscd/open-scd';
 import { ActionDetail } from '@material/mwc-list';
 
 import { officialPlugins as builtinPlugins } from '../public/js/plugins.js';
@@ -35,9 +32,9 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import {
   newConfigurePluginEvent,
   ConfigurePluginEvent,
-} from '@openscd/open-scd/src/plugin.events.js';
+} from '@compas-oscd/open-scd';
+import { pluginTag } from '@compas-oscd/open-scd';
 import { newLogEvent } from '@compas-oscd/core';
-import { pluginTag } from '@openscd/open-scd/src/plugin-tag.js';
 import packageJson from '../package.json';
 import { CompasSclDataService } from './compas-services/CompasSclDataService.js';
 import { createLogEvent } from './compas-services/foundation.js';

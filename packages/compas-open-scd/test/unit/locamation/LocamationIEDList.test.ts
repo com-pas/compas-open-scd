@@ -1,11 +1,10 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import {MockWizardEditor} from "@openscd/open-scd/test/mock-wizard-editor.js";
-import {fetchDoc} from "@openscd/plugins/test/unit/wizards/test-support.js";
-import {initializeNsdoc, Nsdoc} from "@openscd/open-scd/src/foundation/nsdoc.js"
+import { MockWizardEditor } from '../../mock-wizard-editor.js';
+import { fetchDoc } from '@openscd/plugins/test/unit/wizards/test-support.js';
+import { initializeNsdoc, Nsdoc, newWizardEvent } from '@compas-oscd/open-scd';
 
-import '@openscd/open-scd/test/mock-wizard-editor.js';
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import '../../mock-wizard-editor.js';
 
 import {
   LocamationIEDListElement,

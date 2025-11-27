@@ -7,7 +7,13 @@ import {
   LitElement,
   css,
 } from 'lit-element';
-import { get, translate, registerTranslateConfig, Strings, use } from 'lit-translate';
+import {
+  get,
+  translate,
+  registerTranslateConfig,
+  Strings,
+  use,
+} from 'lit-translate';
 
 import '@material/mwc-button';
 import '@material/mwc-dialog';
@@ -23,14 +29,14 @@ import { Switch } from '@material/mwc-switch';
 import { getTheme } from '../themes.js';
 
 import { newLogEvent } from '@openscd/core/foundation/deprecated/history.js';
-import { 
-  Settings, 
-  SettingsUIEvent, 
+import {
+  Settings,
+  SettingsUIEvent,
   Language,
   NsdVersions,
   NsdVersion,
   LoadNsdocEvent,
-  newLoadNsdocEvent
+  newLoadNsdocEvent,
 } from '@openscd/core/foundation/deprecated/settings.js';
 import { Languages, languages, loader } from '../translations/loader.js';
 
@@ -344,7 +350,10 @@ export class OscdSettings extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    registerTranslateConfig({ loader: this.languageConfig.loader, empty: key => key });
+    registerTranslateConfig({
+      loader: this.languageConfig.loader,
+      empty: key => key,
+    });
     use(this.settings.language);
 
     if (this.host) {
@@ -399,7 +408,7 @@ export class OscdSettings extends LitElement {
             ></mwc-switch>
           </mwc-formfield>
         </form>
-        <wizard-divider></wizard-divider>
+        <wizard-divider-openscd></wizard-divider-openscd>
         ${this.nsdUploadButton
           ? html`<section id="shownsdbutton">
               <h3>${translate('settings.loadNsdTranslations')}</h3>

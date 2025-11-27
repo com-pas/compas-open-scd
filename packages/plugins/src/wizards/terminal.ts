@@ -1,7 +1,7 @@
 import { html, TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
-import { isPublic, Wizard } from '@openscd/open-scd/src/foundation.js';
+import { isPublic, Wizard } from '@compas-oscd/open-scd';
 
 function render(
   name: string | null,
@@ -10,7 +10,7 @@ function render(
   reservedNames: string[]
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('terminal.wizard.nameHelper')}"
@@ -19,23 +19,23 @@ function render(
       dialogInitialFocus
       .reservedValues=${reservedNames}
       readonly
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="connectivityNode"
       .maybeValue=${connectivityNode}
       helper="${get('terminal.wizard.connectivityNodeHelper')}"
       required
       validationMessage="${get('textfield.required')}"
       readonly
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="cNodeName"
       .maybeValue=${cNodeName}
       helper="${get('terminal.wizard.cNodeNameHelper')}"
       required
       validationMessage="${get('textfield.required')}"
       readonly
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

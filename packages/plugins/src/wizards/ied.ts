@@ -4,7 +4,7 @@ import { get } from 'lit-translate';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   identity,
   isPublic,
@@ -14,7 +14,7 @@ import {
   WizardActor,
   WizardInputElement,
   WizardMenuActor,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 import {
   ComplexAction,
   Delete,
@@ -25,7 +25,7 @@ import { patterns } from './foundation/limits.js';
 
 import { updateNamingAttributeWithReferencesAction } from './foundation/actions.js';
 import { deleteReferences } from './foundation/references.js';
-import { emptyInputsDeleteActions } from '@openscd/open-scd/src/foundation/ied.js';
+import { emptyInputsDeleteActions } from '@compas-oscd/open-scd';
 
 const iedNamePattern =
   '[A-Za-z][0-9A-Za-z_]{0,2}|' +
@@ -47,7 +47,7 @@ export function renderIEDWizard(
   reservedNames: string[]
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('ied.wizard.nameHelper')}"
@@ -56,50 +56,50 @@ export function renderIEDWizard(
       dialogInitialFocus
       .reservedValues=${reservedNames}
       pattern="${iedNamePattern}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${desc}
       nullable
       helper="${get('ied.wizard.descHelper')}"
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${type || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="manufacturer"
       .maybeValue=${manufacturer}
       helper="${get('ied.wizard.manufacturerHelper')}"
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="configVersion"
       .maybeValue=${configVersion || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="originalSclVersion"
       .maybeValue=${originalSclVersion || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="engRight"
       .maybeValue=${engRight || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="owner"
       .maybeValue=${owner || '-'}
       readOnly
       disabled
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

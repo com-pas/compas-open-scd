@@ -14,8 +14,8 @@ import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 
 import {
   pTypes104,
@@ -34,7 +34,7 @@ import {
   WizardActor,
   WizardInputElement,
   WizardMenuActor,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import { cloneElement, createElement } from '@openscd/xml';
 
@@ -223,9 +223,9 @@ export function editConnectedApWizard(
               }}
             ></mwc-switch>
           </mwc-formfield>
-          <wizard-divider></wizard-divider>
+          <wizard-divider-openscd></wizard-divider-openscd>
           ${createTypeRestrictionCheckbox(parent)}
-          <wizard-select
+          <wizard-select-openscd
             label="StationType"
             .maybeValue=${parent.querySelector(
               `Address > P[type="StationType"]`
@@ -238,7 +238,7 @@ export function editConnectedApWizard(
               option =>
                 html`<mwc-list-item value="${option}">${option}</mwc-list-item>`
             )}
-          </wizard-select>
+          </wizard-select-openscd>
           ${redundancy
             ? html`<h3>
                   ${get(
@@ -380,13 +380,13 @@ function getRedundancyGroupNumbers(parent: Element): number[] {
  * @returns - A Text Field created for a specific type for the Edit wizard.
  */
 function createEditTextField(parent: Element, pType: string): TemplateResult {
-  return html`<wizard-textfield
+  return html`<wizard-textfield-openscd
     required
     label="${pType}"
     pattern="${ifDefined(typePattern[pType])}"
     .maybeValue=${parent.querySelector(`Address > P[type="${pType}"]`)
       ?.innerHTML ?? null}
-  ></wizard-textfield>`;
+  ></wizard-textfield-openscd>`;
 }
 
 function createTypeRestrictionCheckbox(element: Element): TemplateResult {

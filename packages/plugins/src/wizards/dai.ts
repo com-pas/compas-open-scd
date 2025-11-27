@@ -4,15 +4,14 @@ import { get } from 'lit-translate';
 
 import { DaiFieldTypes, getCustomField } from './foundation/dai-field-type.js';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 
+import { Wizard, WizardActor, WizardInputElement } from '@compas-oscd/open-scd';
 import {
-  Wizard,
-  WizardActor,
-  WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
-import { EditorAction, ComplexAction } from '@openscd/core/foundation/deprecated/editor.js';
-import { SCL_NAMESPACE } from '@openscd/open-scd/src/schemas.js';
+  EditorAction,
+  ComplexAction,
+} from '@openscd/core/foundation/deprecated/editor.js';
+import { SCL_NAMESPACE } from '@compas-oscd/open-scd';
 
 export function updateValue(element: Element, val: Element): WizardActor {
   return (inputs: WizardInputElement[]): EditorAction[] => {
@@ -100,14 +99,14 @@ export function renderDAIWizard(
       numberOfmultipleSettings
     )}
     ${daValue
-      ? html`<wizard-textfield
+      ? html`<wizard-textfield-openscd
           id="daVal"
           label="DA Template Value"
           .maybeValue=${daValue}
           readonly
           disabled
         >
-        </wizard-textfield>`
+        </wizard-textfield-openscd>`
       : nothing}`,
   ];
 }

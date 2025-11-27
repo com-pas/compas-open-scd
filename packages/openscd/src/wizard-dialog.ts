@@ -55,17 +55,17 @@ function renderWizardInput(
   if (input instanceof TemplateResult) return input;
 
   if (input.kind === 'Checkbox')
-    return html`<wizard-checkbox
+    return html`<wizard-checkbox-openscd
       ?nullable=${input.nullable}
       ?defaultChecked=${input.default}
       ?dialogInitialFocus=${input.dialogInitialFocus}
       label="${input.label}"
       helper="${ifDefined(input.helper)}"
       .maybeValue=${input.maybeValue}
-    ></wizard-checkbox>`;
+    ></wizard-checkbox-openscd>`;
 
   if (input.kind === 'Select')
-    return html`<wizard-select
+    return html`<wizard-select-openscd
       ?nullable=${input.nullable}
       ?dialogInitialFocus=${input.dialogInitialFocus}
       label="${input.label}"
@@ -75,10 +75,10 @@ function renderWizardInput(
       .maybeValue=${input.maybeValue}
       >${input.values.map(
         value => html`<mwc-list-item value="${value}">${value}</mwc-list-item>`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`;
 
-  return html`<wizard-textfield
+  return html`<wizard-textfield-openscd
     ?nullable=${input.nullable}
     ?required=${input.required}
     ?disabled=${input.disabled}
@@ -98,7 +98,7 @@ function renderWizardInput(
     type="${ifDefined(input.type)}"
     min="${ifDefined(input.min)}"
     max="${ifDefined(input.max)}"
-  ></wizard-textfield>`;
+  ></wizard-textfield-openscd>`;
 }
 
 function dialogInputs(dialog?: Dialog): WizardInputElement[] {
@@ -143,7 +143,7 @@ function codeAction(element: Element): WizardActor {
 
 /** A wizard style dialog consisting of several pages commiting some
  * [[`EditorAction`]] on completion and aborting on dismissal. */
-@customElement('wizard-dialog')
+@customElement('wizard-dialog-openscd')
 export class WizardDialog extends LitElement {
   /** The [[`Wizard`]] implemented by this dialog. */
   @property({ type: Array })
@@ -296,18 +296,17 @@ export class WizardDialog extends LitElement {
   renderPage(page: WizardPage, index: number): TemplateResult {
     const isProMode = localStorage.getItem('mode') === 'pro';
     const hasPageElement = Boolean(page.element);
-    const showCodeToggleButton = hasPageElement && isProMode
+    const showCodeToggleButton = hasPageElement && isProMode;
 
     let extraWidth = 0;
 
-    if(showCodeToggleButton && page.menuActions){
+    if (showCodeToggleButton && page.menuActions) {
       extraWidth = 96;
-    }else if(showCodeToggleButton || page.menuActions){
+    } else if (showCodeToggleButton || page.menuActions) {
       extraWidth = 48;
-    }else{
+    } else {
       extraWidth = 0;
     }
-
 
     return html`<mwc-dialog
       defaultAction="next"

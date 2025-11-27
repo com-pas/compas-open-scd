@@ -1,4 +1,4 @@
-import { SCLTag, Wizard } from '@openscd/open-scd/src/foundation.js';
+import { SCLTag, Wizard } from '@compas-oscd/open-scd';
 import { emptyWizard } from '../../../wizards/wizard-library.js';
 
 import { editConnectivityNodeWizard } from '../../../wizards/connectivitynode.js';

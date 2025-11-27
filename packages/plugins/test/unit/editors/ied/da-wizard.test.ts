@@ -1,9 +1,9 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@openscd/open-scd/test/mock-open-scd.js';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
-import { initializeNsdoc } from '@openscd/open-scd/src/foundation/nsdoc.js';
+import { initializeNsdoc } from '@compas-oscd/open-scd';
 import { createDaInfoWizard } from '../../../../src/editors/ied/da-wizard.js';
 import { getAncestorsFromDA } from './test-support.js';
 

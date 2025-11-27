@@ -2,10 +2,7 @@ import { html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { get } from 'lit-translate';
-import {
-  getInstanceAttribute,
-  getNameAttribute,
-} from '@openscd/open-scd/src/foundation.js';
+import { getInstanceAttribute, getNameAttribute } from '@compas-oscd/open-scd';
 import { typeMaxLength } from '../../../wizards/foundation/p-types.js';
 import { typeDescriptiveNameKeys, typePattern } from './p-types.js';
 
@@ -479,14 +476,14 @@ export function createNetworkTextField(
   pType: string,
   maybeValue?: string
 ): TemplateResult {
-  return html`<wizard-textfield
+  return html`<wizard-textfield-openscd
     required
     label="${pType}"
     pattern="${ifDefined(typePattern[pType])}"
     .maybeValue=${maybeValue ?? null}
     maxLength="${ifDefined(typeMaxLength[pType])}"
     helper="${get(typeDescriptiveNameKeys[pType])}"
-  ></wizard-textfield>`;
+  ></wizard-textfield-openscd>`;
 }
 
 /**

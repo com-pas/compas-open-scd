@@ -1,6 +1,6 @@
 import { TemplateResult } from 'lit-html';
 import { get } from 'lit-translate';
-import { WizardPage } from '@openscd/open-scd/src/foundation.js';
+import { WizardPage } from '@compas-oscd/open-scd';
 
 import {
   createFormDivider,

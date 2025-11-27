@@ -1,9 +1,9 @@
 import { TemplateResult } from 'lit-element';
 import { get } from 'lit-translate';
 
-import { Wizard } from '@openscd/open-scd/src/foundation.js';
+import { Wizard } from '@compas-oscd/open-scd';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   reservedNamesPowerTransformer,
   renderPowerTransformerWizard,

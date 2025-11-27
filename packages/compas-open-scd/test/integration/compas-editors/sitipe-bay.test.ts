@@ -2,8 +2,8 @@ import { expect, fixture, html } from '@open-wc/testing';
 import { stub } from 'sinon';
 
 import { SitipeBay } from '../../../src/compas-editors/sitipe/sitipe-bay.js';
-import '@openscd/open-scd/test/mock-editor-logger.js';
-import { MockEditorLogger } from '@openscd/open-scd/test/mock-editor-logger.js';
+import '../../mock-editor-logger.js';
+import { MockEditorLogger } from '../../mock-editor-logger.js';
 
 describe('sitipe-bay-integration', () => {
   if (customElements.get('sitipe-bay') === undefined) {

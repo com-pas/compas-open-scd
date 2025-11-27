@@ -22,15 +22,11 @@ import { Button } from '@material/mwc-button';
 import { List, MWCListIndex } from '@material/mwc-list';
 import { ListItem } from '@material/mwc-list/mwc-list-item.js';
 
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 
 import { editDataSetWizard } from '../../wizards/dataset.js';
 import { styles } from '../templates/foundation.js';
-import {
-  identity,
-  isPublic,
-  newSubWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
+import { identity, isPublic, newSubWizardEvent } from '@compas-oscd/open-scd';
 import { newActionEvent } from '@openscd/core/foundation/deprecated/editor.js';
 import { cleanSCLItems, identitySort } from './foundation.js';
 

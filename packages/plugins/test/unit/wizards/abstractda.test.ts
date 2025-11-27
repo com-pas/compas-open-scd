@@ -1,18 +1,18 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import fc from 'fast-check';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@openscd/open-scd/test/mock-open-scd.js';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
-import { WizardSelect } from '@openscd/open-scd/src/wizard-select.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
-import { 
+import { WizardSelect } from '@compas-oscd/open-scd';
+import { WizardTextField } from '@compas-oscd/open-scd';
+import {
   isCreate,
   isDelete,
   isReplace,
-  Create, 
-  Replace
- } from '@openscd/core/foundation/deprecated/editor.js';
+  Create,
+  Replace,
+} from '@openscd/core/foundation/deprecated/editor.js';
 import {
   getValAction,
   wizardContent,

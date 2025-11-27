@@ -6,12 +6,12 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import {
   cloneElement,
   createElement,
-  getChildElementsByTagName
+  getChildElementsByTagName,
 } from '@openscd/xml';
 
 import { SimpleAction } from '@openscd/core/foundation/deprecated/editor.js';
@@ -27,7 +27,7 @@ export function contentFunctionWizard(
   content: ContentOptions
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${content.name}
       helper="${get('scl.name')}"
@@ -35,19 +35,19 @@ export function contentFunctionWizard(
       validationMessage="${get('textfield.required')}"
       .reservedValues=${content.reservedNames}
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${content.desc}
       nullable
       helper="${get('scl.desc')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${content.type}
       helper="${get('scl.type')}"
       nullable
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

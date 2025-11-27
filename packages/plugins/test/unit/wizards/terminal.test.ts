@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@openscd/open-scd/test/mock-open-scd.js';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
 import { editTerminalWizard } from '../../../src/wizards/terminal.js';
 

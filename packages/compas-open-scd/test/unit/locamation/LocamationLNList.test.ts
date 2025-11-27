@@ -1,15 +1,17 @@
-import {expect, fixture, html} from "@open-wc/testing";
+import { expect, fixture, html } from '@open-wc/testing';
 
-import {MockWizardEditor} from "@openscd/open-scd/test/mock-wizard-editor.js";
-import {fetchDoc} from "@openscd/plugins/test/unit/wizards/test-support.js";
-import {initializeNsdoc, Nsdoc} from "@openscd/open-scd/src/foundation/nsdoc.js";
+import { MockWizardEditor } from '../../mock-wizard-editor.js';
+import { fetchDoc } from '@openscd/plugins/test/unit/wizards/test-support.js';
+import { initializeNsdoc, Nsdoc, newWizardEvent } from '@compas-oscd/open-scd';
 
-import "@openscd/open-scd/test/mock-wizard-editor.js";
-import { newWizardEvent } from '@openscd/open-scd/src/foundation.js';
+import '../../mock-wizard-editor.js';
 
-import {LocamationLNodeListElement, locamationLNListWizard} from "../../../src/locamation/LocamationLNList.js";
+import {
+  LocamationLNodeListElement,
+  locamationLNListWizard,
+} from '../../../src/locamation/LocamationLNList.js';
 
-import "../../../src/locamation/LocamationLNList.js";
+import '../../../src/locamation/LocamationLNList.js';
 
 describe('Wizards for Locamation Plugin to select the Logical Node - ', () => {
   let nsdoc: Nsdoc;
@@ -25,7 +27,7 @@ describe('Wizards for Locamation Plugin to select the Logical Node - ', () => {
     let element: MockWizardEditor;
 
     beforeEach(async () => {
-      lDevice = doc.querySelector('LDevice[inst="MU01"]')!
+      lDevice = doc.querySelector('LDevice[inst="MU01"]')!;
 
       element = await fixture(html`<mock-wizard-editor></mock-wizard-editor>`);
       const wizard = locamationLNListWizard(lDevice, nsdoc);
@@ -44,7 +46,12 @@ describe('Wizards for Locamation Plugin to select the Logical Node - ', () => {
     beforeEach(async () => {
       lDevice = doc.querySelector('LDevice[inst="MU01"]')!;
 
-      element = await fixture(html`<locamation-ln-list .lDevice="${lDevice}" .nsdoc="${nsdoc}"></locamation-ln-list>`);
+      element = await fixture(
+        html`<locamation-ln-list
+          .lDevice="${lDevice}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-list>`
+      );
       await element.requestUpdate();
     });
 
@@ -59,7 +66,12 @@ describe('Wizards for Locamation Plugin to select the Logical Node - ', () => {
     beforeEach(async () => {
       lDevice = doc.querySelector('LDevice[inst="MU02"]')!;
 
-      element = await fixture(html`<locamation-ln-list .lDevice="${lDevice}" .nsdoc="${nsdoc}"></locamation-ln-list>`);
+      element = await fixture(
+        html`<locamation-ln-list
+          .lDevice="${lDevice}"
+          .nsdoc="${nsdoc}"
+        ></locamation-ln-list>`
+      );
       await element.requestUpdate();
     });
 

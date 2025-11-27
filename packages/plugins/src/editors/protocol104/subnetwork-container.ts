@@ -10,10 +10,7 @@ import '@material/mwc-icon-button';
 
 import './connectedap-editor.js';
 
-import {
-  compareNames,
-  newWizardEvent,
-} from '@openscd/open-scd/src/foundation.js';
+import { compareNames, newWizardEvent } from '@compas-oscd/open-scd';
 import { get } from 'lit-translate';
 import { createConnectedApWizard } from './wizards/connectedap.js';
 import { Base104Container } from './base-container.js';

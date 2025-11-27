@@ -1,15 +1,15 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { SinonSpy, spy } from 'sinon';
 
-import '@openscd/open-scd/src/addons/Wizards.js';
-import { OscdWizards } from '@openscd/open-scd/src/addons/Wizards.js';
+import '@openscd/open-scd/test/mock-open-scd.js';
+import { OscdWizards } from '@compas-oscd/open-scd';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
+import { WizardInputElement, patterns } from '@compas-oscd/open-scd';
 import {
-  WizardInputElement,
-  patterns,
-} from '@openscd/open-scd/src/foundation.js';
-import { isCreate, Create } from '@openscd/core/foundation/deprecated/editor.js';
+  isCreate,
+  Create,
+} from '@openscd/core/foundation/deprecated/editor.js';
 import { createSubNetworkWizard } from '../../../../../src/editors/protocol104/wizards/subnetwork.js';
 
 describe('SubNetwork 104 wizard', () => {

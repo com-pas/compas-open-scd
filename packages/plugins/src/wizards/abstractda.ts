@@ -6,15 +6,13 @@ import { ListItem } from '@material/mwc-list/mwc-list-item';
 import { SelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 import { Select } from '@material/mwc-select';
 
-import '@openscd/open-scd/src/wizard-checkbox.js';
-import '@openscd/open-scd/src/wizard-select.js';
-import '@openscd/open-scd/src/wizard-textfield.js';
-import {
-  createElement,
-} from '@openscd/xml';
+import '@compas-oscd/open-scd/wizard-checkbox.js';
+import '@compas-oscd/open-scd/wizard-select.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import { createElement } from '@openscd/xml';
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
-import { WizardSelect } from '@openscd/open-scd/src/wizard-select.js';
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardSelect } from '@compas-oscd/open-scd';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import { maxLength, patterns } from './foundation/limits.js';
 import { predefinedBasicTypeEnum, valKindEnum } from './foundation/enums.js';
 
@@ -111,7 +109,7 @@ export function wizardContent(
   data: Element
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${name}
       helper="${get('scl.name')}"
@@ -120,16 +118,16 @@ export function wizardContent(
       maxLength="${maxLength.abstracDaName}"
       dialogInitialFocus
     >
-      ></wizard-textfield
+      ></wizard-textfield-openscd
     >`,
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="desc"
       helper="${get('scl.desc')}"
       .maybeValue=${desc}
       nullable
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-select
+    ></wizard-textfield-openscd>`,
+    html`<wizard-select-openscd
       fixedMenuPosition
       label="bType"
       .value=${bType}
@@ -141,9 +139,9 @@ export function wizardContent(
           html`<mwc-list-item value="${redefinedBType}"
             >${redefinedBType}</mwc-list-item
           >`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-select
+    html`<wizard-select-openscd
       label="type"
       .maybeValue=${type}
       helper="${get('scl.type')}"
@@ -156,16 +154,16 @@ export function wizardContent(
             value=${dataType.id}
             >${dataType.id}</mwc-list-item
           >`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="sAddr"
       .maybeValue=${sAddr}
       helper="${get('scl.sAddr')}"
       nullable
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-select
+    ></wizard-textfield-openscd>`,
+    html`<wizard-select-openscd
       label="valKind"
       .maybeValue=${valKind}
       helper="${get('scl.valKind')}"
@@ -177,16 +175,16 @@ export function wizardContent(
           html`<mwc-list-item value="${valKindOption}"
             >${valKindOption}</mwc-list-item
           >`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-checkbox
+    html`<wizard-checkbox-openscd
       label="valImport"
       .maybeValue=${valImport}
       helper="${get('scl.valImport')}"
       nullable
       required
-    ></wizard-checkbox>`,
-    html`<wizard-select
+    ></wizard-checkbox-openscd>`,
+    html`<wizard-select-openscd
       label="Val"
       .maybeValue=${Val}
       helper="${get('scl.Val')}"
@@ -198,14 +196,14 @@ export function wizardContent(
           html`<mwc-list-item value="${enumVal.textContent?.trim() ?? ''}"
             >${enumVal.textContent?.trim()}</mwc-list-item
           >`
-      )}</wizard-select
+      )}</wizard-select-openscd
     >`,
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="Val"
       .maybeValue=${Val}
       helper="${get('scl.Val')}"
       nullable
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

@@ -5,11 +5,8 @@ import { LitElement } from 'lit-element';
 import '@openscd/open-scd/test/mock-open-scd.js';
 import '../../../src/editors/IED.js';
 
-import {
-  initializeNsdoc,
-  Nsdoc,
-} from '@openscd/open-scd/src/foundation/nsdoc.js';
-import { FilterButton } from '@openscd/open-scd/src/oscd-filter-button.js';
+import { initializeNsdoc, Nsdoc } from '@compas-oscd/open-scd';
+import { FilterButton } from '@compas-oscd/open-scd';
 
 import IED from '../../../src/editors/IED.js';
 import { LDeviceContainer } from '../../../src/editors/ied/ldevice-container.js';

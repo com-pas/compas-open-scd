@@ -12,7 +12,7 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 import { SimpleAction } from '@openscd/core/foundation/deprecated/editor';
 
 function createTransformerWindingAction(parent: Element): WizardActor {
@@ -104,7 +104,7 @@ export function contentTransformerWindingWizard(
   content: ContentOptions
 ): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${content.name}
       helper="${get('scl.name')}"
@@ -112,25 +112,25 @@ export function contentTransformerWindingWizard(
       validationMessage="${get('textfield.required')}"
       .reservedValues=${content.reservedNames}
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${content.desc}
       nullable
       helper="${get('scl.desc')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${content.type}
       disabled
       helper="${get('scl.type')}"
-    ></wizard-textfield>`,
-    html`<wizard-checkbox
+    ></wizard-textfield-openscd>`,
+    html`<wizard-checkbox-openscd
       label="virtual"
       .maybeValue=${content.virtual}
       helper="${get('scl.virtual')}"
       nullable
-    ></wizard-checkbox>`,
+    ></wizard-checkbox-openscd>`,
   ];
 }
 

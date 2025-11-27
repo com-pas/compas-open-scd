@@ -408,7 +408,9 @@ describe('ImportIedsPlugin', () => {
       element.prepareImport(importDoc, 'invalid.iid');
 
       expect(parent.historyAddon.log[0].kind).to.equal('error');
-      expect(parent.historyAddon.log[0].title).to.equal('No IED element in the file');
+      expect(parent.historyAddon.log[0].title).to.equal(
+        'No IED element in the file'
+      );
     });
 
     it('throws duplicate ied name error', async () => {

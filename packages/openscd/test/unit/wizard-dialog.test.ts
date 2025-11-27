@@ -9,12 +9,19 @@ import { checkValidity, WizardInputElement } from '../../src/foundation.js';
 import { WizardCheckbox } from '../../src/wizard-checkbox.js';
 import { WizardSelect } from '../../src/wizard-select.js';
 import { WizardTextField } from '../../src/wizard-textfield.js';
-import { ComplexAction, Create, Delete, EditorAction } from '@openscd/core/foundation/deprecated/editor.js';
+import {
+  ComplexAction,
+  Create,
+  Delete,
+  EditorAction,
+} from '@openscd/core/foundation/deprecated/editor.js';
 
 describe('wizard-dialog', () => {
   let element: WizardDialog;
   beforeEach(async () => {
-    element = await fixture(html`<wizard-dialog></wizard-dialog>`);
+    element = await fixture(
+      html`<wizard-dialog-openscd></wizard-dialog-openscd>`
+    );
   });
 
   describe('with user defined menu actions set', () => {
@@ -59,19 +66,19 @@ describe('wizard-dialog', () => {
         {
           title: 'Page 1',
           content: [
-            html`<wizard-textfield
+            html`<wizard-textfield-openscd
               label="Test textfield 1"
-            ></wizard-textfield>`,
+            ></wizard-textfield-openscd>`,
           ],
           secondary: { icon: 'add', action: () => [], label: 'Test secondary' },
         },
         {
           title: 'Page 2',
           content: [
-            html`<wizard-textfield
+            html`<wizard-textfield-openscd
               type="email"
               label="Test textfield 2"
-            ></wizard-textfield>`,
+            ></wizard-textfield-openscd>`,
           ],
         },
         {
@@ -228,7 +235,9 @@ describe('wizard-dialog', () => {
       let host: Element;
 
       beforeEach(async () => {
-        element = await fixture(html`<wizard-dialog></wizard-dialog>`);
+        element = await fixture(
+          html`<wizard-dialog-openscd></wizard-dialog-openscd>`
+        );
         localStorage.setItem('mode', 'pro');
         element.requestUpdate();
         await element.updateComplete;
@@ -271,7 +280,10 @@ describe('wizard-dialog', () => {
 
         it('commits the code action on primary button click', async () => {
           let editorAction: ComplexAction;
-          element.addEventListener('editor-action', (action) => editorAction = action.detail.action as ComplexAction);
+          element.addEventListener(
+            'editor-action',
+            action => (editorAction = action.detail.action as ComplexAction)
+          );
 
           element.dialog
             ?.querySelector('ace-editor')
@@ -295,8 +307,12 @@ describe('wizard-dialog', () => {
             },
           };
 
-          expect((deleteAction as Delete).old).to.deep.equal(expectedDeleteAction.old);
-          expect(((createAction as Create).new.element as Element).tagName).to.equal('success')
+          expect((deleteAction as Delete).old).to.deep.equal(
+            expectedDeleteAction.old
+          );
+          expect(
+            ((createAction as Create).new.element as Element).tagName
+          ).to.equal('success');
         });
       });
 

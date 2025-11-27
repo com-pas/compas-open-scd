@@ -3,7 +3,7 @@ import { get } from 'lit-translate';
 
 import { cloneElement, createElement } from '@openscd/xml';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import {
   getMultiplier,
   getValue,
@@ -11,7 +11,7 @@ import {
   Wizard,
   WizardActor,
   WizardInputElement,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 import { EditorAction } from '@openscd/core/foundation/deprecated/editor';
 
 /** Initial attribute values suggested for `SubNetwork` creation */
@@ -31,28 +31,28 @@ interface ContentOptions {
 
 function contentSubNetwork(options: ContentOptions): TemplateResult[] {
   return [
-    html`<wizard-textfield
+    html`<wizard-textfield-openscd
       label="name"
       .maybeValue=${options.name}
       helper="${get('subnetwork.wizard.nameHelper')}"
       required
       validationMessage="${get('textfield.required')}"
       dialogInitialFocus
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="desc"
       .maybeValue=${options.desc}
       nullable
       helper="${get('subnetwork.wizard.descHelper')}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="type"
       .maybeValue=${options.type}
       nullable
       helper="${get('subnetwork.wizard.typeHelper')}"
       pattern="${patterns.normalizedString}"
-    ></wizard-textfield>`,
-    html`<wizard-textfield
+    ></wizard-textfield-openscd>`,
+    html`<wizard-textfield-openscd
       label="BitRate"
       .maybeValue=${options.BitRate}
       nullable
@@ -63,7 +63,7 @@ function contentSubNetwork(options: ContentOptions): TemplateResult[] {
       required
       validationMessage="${get('textfield.nonempty')}"
       pattern="${patterns.decimal}"
-    ></wizard-textfield>`,
+    ></wizard-textfield-openscd>`,
   ];
 }
 

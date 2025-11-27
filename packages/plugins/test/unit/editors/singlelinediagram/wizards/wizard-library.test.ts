@@ -1,6 +1,6 @@
 import {expect} from "@open-wc/testing";
 
-import {SCLTag} from "@openscd/open-scd/src/foundation.js";
+import {SCLTag} from "@compas-oscd/open-scd';
 import {emptyWizard} from "../../../../../src/wizards/wizard-library.js";
 import {wizards} from "../../../../../src/editors/singlelinediagram/wizards/wizard-library.js";
 

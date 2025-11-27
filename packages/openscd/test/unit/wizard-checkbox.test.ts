@@ -6,7 +6,9 @@ import { WizardCheckbox } from '../../src/wizard-checkbox.js';
 describe('wizard-checkbox', () => {
   let element: WizardCheckbox;
   beforeEach(async () => {
-    element = await fixture(html`<wizard-checkbox></wizard-checkbox>`);
+    element = await fixture(
+      html`<wizard-checkbox-openscd></wizard-checkbox-openscd>`
+    );
   });
 
   describe('with no attribute set', () => {
@@ -104,11 +106,11 @@ describe('wizard-checkbox', () => {
   describe('disabled', () => {
     beforeEach(async () => {
       element = await fixture(
-        html`<wizard-checkbox
+        html`<wizard-checkbox-openscd
           value=${'true'}
           nullable
           disabled
-        ></wizard-checkbox>`
+        ></wizard-checkbox-openscd>`
       );
 
       await element.updateComplete;

@@ -17,6 +17,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
+    "@compas-oscd/open-scd": "^0.34.42",
     "@material/mwc-dialog": "0.22.1",
     "@material/mwc-fab": "0.22.1",
     "@material/mwc-formfield": "0.22.1",

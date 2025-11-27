@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 import { get } from 'lit-translate';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import { pTypesLogicLink104 } from '../foundation/p-types.js';
 import {
   getValue,
@@ -10,7 +10,7 @@ import {
   WizardActor,
   WizardInputElement,
   WizardMenuActor,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
 import { cloneElement, createElement } from '@openscd/xml';
 
@@ -43,13 +43,13 @@ export function editLogicLinkWizard(
         action: editLogicLinkAction(parent, rGNumber, lLNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.logicLink.wizard.logicLinkNumberLabel'
             )}"
             .maybeValue=${lLNumber}
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesLogicLink104.map(
             pType =>
               html`${createNetworkTextField(
@@ -84,13 +84,13 @@ export function createLogicLinkWizard(
         action: addLogicLinkAction(parent, rGNumber, lLNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.logicLink.wizard.logicLinkNumberLabel'
             )}"
             value="${lLNumber}"
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesLogicLink104.map(
             pType => html`${createNetworkTextField(pType)}`
           )}`,

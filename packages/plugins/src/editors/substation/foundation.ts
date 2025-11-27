@@ -3,7 +3,7 @@ import { classMap } from 'lit-html/directives/class-map.js';
 
 import './function-editor.js';
 
-import { identity, isPublic } from '@openscd/open-scd/src/foundation.js';
+import { identity, isPublic } from '@compas-oscd/open-scd';
 
 import { getChildElementsByTagName } from '@openscd/xml';
 
@@ -15,11 +15,11 @@ import {
   voltageTransformerIcon,
   earthSwitchIcon,
   generalConductingEquipmentIcon,
-} from '@openscd/open-scd/src/icons/icons.js';
+} from '@compas-oscd/open-scd';
 import { typeStr } from '../../wizards/conductingequipment.js';
 import { Select } from '@material/mwc-select';
 
-import { WizardTextField } from '@openscd/open-scd/src/wizard-textfield.js';
+import { WizardTextField } from '@compas-oscd/open-scd';
 import { get } from 'lit-translate';
 
 import { BayEditor } from './bay-editor.js';
@@ -376,11 +376,11 @@ export function redirectDialog(cloneEntity: Element): TemplateResult {
     stacked
     heading="${get('substation.clone.redirect')}"
   >
-    <wizard-textfield
+    <wizard-textfield-openscd
       label="${get('substation.clone.newname')}"
       value="${newName}"
       .reservedValues="${entitySiblings}"
-    ></wizard-textfield>
+    ></wizard-textfield-openscd>
     ${Array.from(referencedIEDs(cloneEntity)).map(ied => {
       const validOtherIEDs = validUnreferencedIEDs(ied, cloneEntity).map(
         ied => ied.getAttribute('name')!

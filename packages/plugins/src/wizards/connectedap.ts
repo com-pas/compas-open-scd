@@ -11,8 +11,8 @@ import { Checkbox } from '@material/mwc-checkbox';
 import { List } from '@material/mwc-list';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
-import '@openscd/open-scd/src/filtered-list.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
+import '@compas-oscd/open-scd/filtered-list.js';
 import {
   Wizard,
   WizardActor,
@@ -21,11 +21,9 @@ import {
   getValue,
   isPublic,
   identity,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
-import {
-  createElement,
-} from '@openscd/xml';
+import { createElement } from '@openscd/xml';
 
 import {
   EditorAction,
@@ -38,10 +36,7 @@ import {
   typeNullable,
   typePattern,
 } from './foundation/p-types.js';
-import {
-  mACAddressGenerator,
-  appIdGenerator,
-} from '@openscd/open-scd/src/foundation/generators.js';
+import { mACAddressGenerator, appIdGenerator } from '@compas-oscd/open-scd';
 
 interface AccessPointDescription {
   element: Element;
@@ -332,7 +327,7 @@ export function createPTextField(
   element: Element,
   pType: string
 ): TemplateResult {
-  return html`<wizard-textfield
+  return html`<wizard-textfield-openscd
     required
     label="${pType}"
     pattern="${ifDefined(typePattern[pType])}"
@@ -340,7 +335,7 @@ export function createPTextField(
     .maybeValue=${element.querySelector(`:scope > Address > P[type="${pType}"]`)
       ?.innerHTML ?? null}
     maxLength="${ifDefined(typeMaxLength[pType])}"
-  ></wizard-textfield>`;
+  ></wizard-textfield-openscd>`;
 }
 
 /** @returns single page  [[`Wizard`]] for creating SCL element ConnectedAP. */

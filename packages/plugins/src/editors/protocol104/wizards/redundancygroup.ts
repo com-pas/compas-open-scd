@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 import { get } from 'lit-translate';
 
-import '@openscd/open-scd/src/wizard-textfield.js';
+import '@compas-oscd/open-scd/wizard-textfield.js';
 import { pTypesRedundancyGroup104 } from '../foundation/p-types.js';
 import {
   getValue,
@@ -11,18 +11,15 @@ import {
   WizardActor,
   WizardInputElement,
   WizardMenuActor,
-} from '@openscd/open-scd/src/foundation.js';
+} from '@compas-oscd/open-scd';
 
-import {
-  cloneElement,
-  createElement,
-} from '@openscd/xml';
+import { cloneElement, createElement } from '@openscd/xml';
 
 import {
   ComplexAction,
   EditorAction,
   newActionEvent,
-  SimpleAction
+  SimpleAction,
 } from '@openscd/core/foundation/deprecated/editor.js';
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 import { createLogicLinkWizard, editLogicLinkWizard } from './logiclink.js';
@@ -63,13 +60,13 @@ export function editRedundancyGroupWizard(
         action: editRedundancyGroupAction(parent, rGNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel'
             )}"
             .maybeValue=${rGNumber}
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesRedundancyGroup104.map(
             pType =>
               html`${createNetworkTextField(
@@ -132,13 +129,13 @@ export function createRedundancyGroupWizard(
         action: addRedundancyGroupAction(parent, rGNumber),
       },
       content: [
-        html`<wizard-textfield
+        html`<wizard-textfield-openscd
             readOnly
             label="${get(
               'protocol104.network.redundancyGroup.wizard.redundancyGroupNumberLabel'
             )}"
             value="${rGNumber}"
-          ></wizard-textfield>
+          ></wizard-textfield-openscd>
           ${pTypesRedundancyGroup104.map(
             pType => html`${createNetworkTextField(pType)}`
           )}`,

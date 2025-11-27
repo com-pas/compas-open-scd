@@ -10,10 +10,10 @@ describe('wizard-select', () => {
   const items = ['one', 'two', 'three'];
   beforeEach(async () => {
     element = await fixture(
-      html`<wizard-select
+      html`<wizard-select-openscd
         >${items.map(
           item => html`<mwc-list-item value="${item}">${item}</mwc-list-item>`
-        )}</wizard-select
+        )}</wizard-select-openscd
       >`
     );
   });
@@ -83,13 +83,13 @@ describe('wizard-select', () => {
 
   describe('disabled', () => {
     beforeEach(async () => {
-      element = await fixture(html`<wizard-select
+      element = await fixture(html`<wizard-select-openscd
         .maybeValue=${'three'}
         nullable
         disabled
         >${items.map(
           item => html`<mwc-list-item value="${item}">${item}</mwc-list-item>`
-        )}</wizard-select
+        )}</wizard-select-openscd
       >`);
 
       await element.updateComplete;
