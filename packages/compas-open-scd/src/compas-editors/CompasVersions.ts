@@ -21,12 +21,12 @@ import '@material/mwc-list/mwc-check-list-item';
 import { Dialog } from '@material/mwc-dialog';
 import { MultiSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
-import '@openscd/open-scd/src/plain-compare-list.js';
+import '@compas-oscd/open-scd/dist/plain-compare-list.js';
 
 import { newLogEvent } from '@compas-oscd/core';
 import { newOpenDocEvent } from '@compas-oscd/core';
 
-import { newWizardEvent, Wizard } from '@openscd/open-scd/src/foundation.js';
+import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/dist/foundation.js';
 
 import {
   CompasSclDataService,

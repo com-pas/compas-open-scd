@@ -8,12 +8,12 @@ import { get } from 'lit-translate';
 
 import type { UserInfoEvent } from '../compas/foundation';
 
-import { OscdLayout } from '@openscd/open-scd/src/addons/Layout.js';
+import { OscdLayout } from '@compas-oscd/open-scd/dist/addons/Layout.js';
 
 
 @customElement('compas-layout')
 export class CompasLayout extends OscdLayout {
-  @property({ type: String }) username: string | undefined;
+  @property({ type: String }) username: string | undefined = 'God Emperor Testus';
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -27,9 +27,9 @@ export class CompasLayout extends OscdLayout {
   }
 
   protected renderActionItems(): TemplateResult {
-    return html`
+    return this.componentHtml`
       ${this.username != undefined
-                ? html`<span
+                ? this.componentHtml`<span
                     id="userField"
                     slot="actionItems"
                     style="font-family:Roboto"

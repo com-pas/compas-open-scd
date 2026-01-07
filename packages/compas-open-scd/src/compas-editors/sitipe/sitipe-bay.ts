@@ -17,15 +17,15 @@ import '@material/mwc-icon-button';
 
 import { IconButton } from '@material/mwc-icon-button';
 
-import { isPublic } from '@openscd/open-scd/src/foundation.js';
+import { isPublic } from '@compas-oscd/open-scd/dist/foundation.js';
 import { newActionEvent } from '@compas-oscd/core';
 import { createElement } from '@compas-oscd/xml';
 import { newLogEvent } from '@compas-oscd/core';
 
 import { ComplexAction, SimpleAction } from '@compas-oscd/core';
 
-import '@openscd/open-scd/src/action-pane.js';
-import '@openscd/open-scd/src/action-icon.js';
+import '@compas-oscd/open-scd/dist/action-pane.js';
+import '@compas-oscd/open-scd/dist/action-icon.js';
 
 import {
   SIEMENS_SITIPE_IED_REF,
