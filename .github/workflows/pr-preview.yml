@@ -27,12 +27,17 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: Install and Build compas-open-scd
+      - name: Install dependencies
         if: github.event.action != 'closed'
         run: |
           npm i @nx/nx-linux-x64-gnu
           npm clean-install
+
+      - name: Build compas-open-scd
+        if: github.event.action != 'closed'
+        run: |
           cd packages/compas-open-scd
+          npm run build
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
