@@ -44,6 +44,7 @@ export default {
     "@openscd/plugins": "../plugins/"
   },
   buildOptions: {
-    htmlFragments: true
+    htmlFragments: true,
+    baseUrl: process.env.PUBLIC_URL || "/"
   }
 };
