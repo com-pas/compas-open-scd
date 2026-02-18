@@ -36,12 +36,7 @@ jobs:
       - name: Build compas-open-scd
         if: github.event.action != 'closed'
         run: |
-          npm run build
-
-      - name: Rewrite absolute paths for PR preview
-        if: github.event.action != 'closed'
-        run: |
-          sed -i 's|src="/|src="|g; s|href="/|href="|g' packages/compas-open-scd/build/index.html
+          PUBLIC_URL=compas-open-scd/pr-preview/pr-$PR_NUMBER npm run-script build
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

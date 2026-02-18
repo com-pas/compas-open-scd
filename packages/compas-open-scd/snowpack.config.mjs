@@ -45,6 +45,6 @@ export default ({
   },
   buildOptions: {
     htmlFragments: true,
-  }
+    baseUrl: process.env.PUBLIC_URL || '/',
+  },
 });
-
