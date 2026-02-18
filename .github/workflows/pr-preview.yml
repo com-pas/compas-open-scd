@@ -36,7 +36,6 @@ jobs:
       - name: Build compas-open-scd
         if: github.event.action != 'closed'
         run: |
-          cd packages/compas-open-scd
           npm run build
 
       - name: Deploy preview
