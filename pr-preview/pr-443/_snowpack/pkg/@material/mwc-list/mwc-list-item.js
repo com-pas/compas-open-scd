@@ -1,0 +1,27 @@
+import { _ as __decorate } from '../../common/tslib.es6-272d455c.js';
+import { a as customElement } from '../../common/lit-element-5ba57723.js';
+import { L as ListItemBase, s as styles } from '../../common/mwc-list-item.css-a9f8123e.js';
+import '../../common/lit-html-c4cc555c.js';
+import '../../common/render-a1d0e246.js';
+import '../../common/ripple-handlers-ce7fbbd4.js';
+import '../../common/ponyfill-44e20603.js';
+import '../../common/base-element-22e47ec1.js';
+import '../../common/foundation-794fc3ac.js';
+import '../../common/foundation-7cea7f4a.js';
+import '../../common/class-map-360a3edc.js';
+import '../../common/style-map-46da9e52.js';
+import '../../common/observer-6d1a3681.js';
+
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+let ListItem = class ListItem extends ListItemBase {
+};
+ListItem.styles = [styles];
+ListItem = __decorate([
+    customElement('mwc-list-item')
+], ListItem);
+
+export { ListItem };

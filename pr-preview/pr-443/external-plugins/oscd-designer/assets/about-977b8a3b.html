@@ -1,0 +1,71 @@
+<p>The editor is based around a pick and place palette.</p>
+<p>It is designed to stay as close as possible to IEC 61850-6, but requires its own extension namespace, <code>https://transpower.co.nz/SCL/SSD/SLD/v0</code> for storing graphical properties of elements and the geometric routing of connectivity nodes (within a <code>Private</code> element).</p>
+<p>It allows drawing of multiple Substations. This can be used together with other plugins to add logical nodes and enhanced functionality.</p>
+<p>When drawing an SLD, keep the following modelling requirements in mind:</p>
+<ul>
+<li>Voltage Levels are generally the first item which must be drawn</li>
+<li>Bays must be within Voltage Levels</li>
+<li>Transformers can be placed within Substations, Voltage Levels or Bays (within the SCL file, this is based on their center of rotation)</li>
+<li>Primary system busbars are modelled as a Bay with a single Connectivity Node</li>
+</ul>
+<p>There is also a restriction in the SCL schema which means a Substation without a Voltage Level or a Voltage Level a Bay is not valid -- this means there is often a schema error noticed after initialising a Substation or placing a Voltage Level.</p>
+<h2>Actions</h2>
+<p>Pressing <code>Esc</code> on the keyboard or clicking <code>x</code> on the palette will cancel an ongoing action.</p>
+<h3>Context Menus</h3>
+<p>Most features are also available by right-clicking on an item or its label which brings up a context menu.
+Directly opening the SCL wizard for the specific element can be done by middle-clicking on the item.
+This is especially useful for renaming items quickly.
+For Tap Changers and Transformer Windings, this must be done by using the context menu.</p>
+<h3>Placing</h3>
+<p>After clicking on the palette, items can be placed.
+During and after placing, a middle click will rotate equipment and transformers.</p>
+<h3>Earthing</h3>
+<p>To earth a terminal, right-click on it.</p>
+<h3>Rotating and Mirroring</h3>
+<p>To rotate a piece of Conducting Equipment or a transformer, middle-click on it.</p>
+<p>To mirror, right-click and select the &quot;Mirror&quot; option.
+Mirroring only works in the vertical dimension as pictured on the palette.</p>
+<h3>Connecting</h3>
+<p>Connection points where a <code>Terminal</code> can be created are indicated by red dots.
+Connection points where a <code>NeutralPoint</code> can be created (on transformers) are indicated by blue dots.
+Connection points that can be earthed (by right clicking them) are circled in yellow. At the default zoom level, this may make red dots appear orange and blue dots appear green.</p>
+<p>Connections are made by clicking on the connection point and then clicking for each corner in an orthogonal path.
+Connections for Power Transformers must be made from the Power Transformer to the Conducting Equipment.</p>
+<p>Generally it is best to connect the main &quot;power flow&quot; path first and then connect single terminal items (Earthing Switches, Voltage Transformers) subsequently otherwise it is possible to not have any red terminals left to connect to.</p>
+<p>While connecting, valid target connection points are shown with a red triangle.
+In the initial implementation, Power Transformers cannot be directly connected directly to other Power Transformers (in order to avoid data model problems).</p>
+<h3>Moving</h3>
+<p>When moving an item, its connections are removed and reconnection is required. Sometimes this can affect a large number of connections (especially on Busbars).
+It can be helpful to use undo (Ctrl+Z) and redo (Ctrl+Y) to see these connections.</p>
+<p>Labels and <code>Text</code> can be moved by left-clicking on them.</p>
+<p>Immediately adjacent items can be connected by clicking on the connection point and then the red triangle.</p>
+<h3>Copying</h3>
+<p>Copy a Voltage Level, Bay, Transformer, or Conducting Equipment by holding <code>Shift</code> while clicking it or by selecting &quot;copy&quot; from the context menu.</p>
+<p>It can be useful to scroll horizontally by holding down <code>Shift</code> on the keyboard while using the mouse wheel.</p>
+<p>Copying Voltage Levels or Bays results in the removal of any connectivity which reaches outside of the copied element.</p>
+<h3>Deleting</h3>
+<p>When an item is deleted, any unnecessary Connectivity Nodes are removed.</p>
+<h2>Other Features</h2>
+<h3>Hide Labels</h3>
+<p>A &quot;Hide Labels&quot; toggle button on the palette (adjacent to the &quot;Zoom In&quot; button) is available to turn labels on and off to allow display of only the SLD symbols.</p>
+<p>This also affects the SVG export.</p>
+<h3>SVG Export</h3>
+<p>A &quot;Download&quot; button is available for an SVG 1.1 export which can be readily used in other software. Bay and Voltage Level borders and labels are not exported.</p>
+<h3>Transformers</h3>
+<p>The tool currently supports a subset of possible transformers:</p>
+<ul>
+<li>earthing transformers with one or two windings</li>
+<li>auto-transformers with or without a tertiary</li>
+<li>two and three winding transformers</li>
+</ul>
+<h2>Help</h2>
+<h2>Issues and Limitations</h2>
+<p>Feel free to <a href="https://github.com/OMICRONEnergy/oscd-designer/issues">file an issue</a> if you would like to see a feature developed or discuss a problem that you&#39;ve identified.</p>
+<p>If you have a question about using the plugin or want to discuss potential for improvement, <a href="https://github.com/OMICRONEnergy/oscd-designer/discussions">start a discussion</a> on our GitHub repository!</p>
+<p>Current limitations are:</p>
+<ul>
+<li>Power Transformers cannot be connected directly to other Power Transformers</li>
+<li>Resizing or moving busbars results in a loss of other Conducting Equipment connections</li>
+<li>Copying Voltage Levels and Bays results in a loss of connections of the same Connectivity Node</li>
+<li>Only 3 phase functionality is provided (no single phase modelling)</li>
+</ul>
