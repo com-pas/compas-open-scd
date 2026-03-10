@@ -1,0 +1,1 @@
+export { OscdEditorIED as default } from './oscd-editor-ied/oscd-editor-ied.js'

@@ -8,6 +8,7 @@ export default ({
       'crypto',
       '@openscd/open-scd-core',
       '@openscd/oscd-scl',
+      '@open-wc/scoped-elements',
     ],
   },
   exclude: [
