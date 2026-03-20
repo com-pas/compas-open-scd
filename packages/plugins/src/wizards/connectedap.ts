@@ -329,18 +329,36 @@ export function createTypeRestrictionCheckbox(
   </mwc-formfield>`;
 }
 
+function getIpsInSubnetwork(element: Element): string[] {
+  const subnetwork = element.closest('SubNetwork');
+  if (!subnetwork) return [];
+
+  return Array.from(subnetwork.querySelectorAll('ConnectedAP > Address > P[type="IP"]'))
+    .map(p => p.textContent?.trim() ?? '')
+    .filter(ip => ip !== '');
+}
+
 export function createPTextField(
   element: Element,
   pType: string
 ): TemplateResult {
+    const currentValue =
+      element.querySelector(`:scope > Address > P[type="${pType}"]`)?.innerHTML ??
+      null;
+
+    let reservedIPs: string[] = [];
+    if (pType === 'IP') {
+      reservedIPs = getIpsInSubnetwork(element).filter(ip => ip !== currentValue);
+    }
+
   return oscdHtml`<wizard-textfield
     required
     label="${pType}"
     pattern="${ifDefined(typePattern[pType])}"
     ?nullable=${typeNullable[pType]}
-    .maybeValue=${element.querySelector(`:scope > Address > P[type="${pType}"]`)
-      ?.innerHTML ?? null}
+    .maybeValue=${currentValue}
     maxLength="${ifDefined(typeMaxLength[pType])}"
+    .reservedValues=${reservedIPs}
   ></wizard-textfield>`;
 }
 
