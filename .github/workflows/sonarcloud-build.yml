@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2026 Alliander N.V.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: SonarCloud Build
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "main"
+      - "develop"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+          submodules: "true"
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: "20.x"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run-script build
+
+      - name: Run tests with coverage
+        run: |
+          cd packages/compas-open-scd
+          npm run-script test
+
+      - name: Save PR number to file
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: echo "$PR_NUMBER" > PR_NUMBER.txt
+
+      - name: Archive PR number
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: PR_NUMBER
+          path: PR_NUMBER.txt
+
+      - name: Archive coverage report
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: coverage
+          path: packages/compas-open-scd/coverage/

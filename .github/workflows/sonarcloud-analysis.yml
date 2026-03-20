@@ -1,0 +1,115 @@
+# SPDX-FileCopyrightText: 2026 Alliander N.V.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: SonarCloud Analysis
+
+on:
+  workflow_run:
+    workflows: [SonarCloud Build]
+    types: [completed]
+
+jobs:
+  sonar-check:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    steps:
+      - name: Download PR number artifact
+        if: github.event.workflow_run.event == 'pull_request'
+        uses: dawidd6/action-download-artifact@5c98f0b039f36ef966fdb7dfa9779262785ecb05 # v14
+        with:
+          workflow: SonarCloud Build
+          run_id: ${{ github.event.workflow_run.id }}
+          name: PR_NUMBER
+
+      - name: Read PR_NUMBER.txt
+        if: github.event.workflow_run.event == 'pull_request'
+        id: pr_number
+        uses: juliangruber/read-file-action@b549046febe0fe86f8cb4f93c24e284433f9ab58 # v1
+        with:
+          path: ./PR_NUMBER.txt
+
+      - name: Request GitHub API for PR data
+        if: github.event.workflow_run.event == 'pull_request'
+        uses: octokit/request-action@dad4362715b7fb2ddedf9772c8670824af564f0d # v2.4.0
+        id: get_pr_data
+        with:
+          route: GET /repos/${{ github.event.repository.full_name }}/pulls/${{ steps.pr_number.outputs.content }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          repository: ${{ github.event.repository.full_name }}
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+          submodules: "true"
+
+      - name: Checkout base branch
+        if: github.event.workflow_run.event == 'pull_request'
+        env:
+          CLONE_URL: ${{ github.event.repository.clone_url }}
+          BASE_REF: ${{ fromJson(steps.get_pr_data.outputs.data).base.ref }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          git remote add upstream "$CLONE_URL"
+          git fetch upstream
+          git checkout -B "$BASE_REF" "upstream/$BASE_REF"
+          git checkout "$HEAD_BRANCH"
+          git clean -ffdx && git reset --hard HEAD
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Download coverage artifact
+        uses: dawidd6/action-download-artifact@5c98f0b039f36ef966fdb7dfa9779262785ecb05 # v14
+        with:
+          workflow: SonarCloud Build
+          run_id: ${{ github.event.workflow_run.id }}
+          name: coverage
+          path: packages/compas-open-scd/coverage/
+
+      - name: Analyze (Pull Request)
+        if: ${{ github.event.workflow_run.event == 'pull_request' }}
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.organization=com-pas
+            -Dsonar.projectKey=com-pas_compas-open-scd
+            -Dsonar.sources=packages/compas-open-scd/src
+            -Dsonar.tests=packages/compas-open-scd/test
+            -Dsonar.javascript.lcov.reportPaths=packages/compas-open-scd/coverage/lcov.info
+            -Dsonar.pullrequest.branch=${{ fromJson(steps.get_pr_data.outputs.data).head.ref }}
+            -Dsonar.pullrequest.key=${{ fromJson(steps.get_pr_data.outputs.data).number }}
+            -Dsonar.pullrequest.base=${{ fromJson(steps.get_pr_data.outputs.data).base.ref }}
+            -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
+
+      - name: Analyze (Push)
+        if: ${{ github.event.workflow_run.event == 'push' }}
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.organization=com-pas
+            -Dsonar.projectKey=com-pas_compas-open-scd
+            -Dsonar.sources=packages/compas-open-scd/src
+            -Dsonar.tests=packages/compas-open-scd/test
+            -Dsonar.javascript.lcov.reportPaths=packages/compas-open-scd/coverage/lcov.info
+            -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
+            -Dsonar.branch.name=${{ github.event.workflow_run.head_branch }}
