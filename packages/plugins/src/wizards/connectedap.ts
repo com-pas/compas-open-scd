@@ -330,7 +330,7 @@ export function createTypeRestrictionCheckbox(
 }
 
 function getIpsInSubnetwork(element: Element): string[] {
-  const subnetwork = element.closest('SubNetwork');
+  const subnetwork = element.parentElement; // SubNetwork is the parent of ConnectedAP
   if (!subnetwork) return [];
 
   return Array.from(subnetwork.querySelectorAll(':scope > ConnectedAP > Address > P[type="IP"]'))
