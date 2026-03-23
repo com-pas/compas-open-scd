@@ -333,7 +333,7 @@ function getIpsInSubnetwork(element: Element): string[] {
   const subnetwork = element.closest('SubNetwork');
   if (!subnetwork) return [];
 
-  return Array.from(subnetwork.querySelectorAll('ConnectedAP > Address > P[type="IP"]'))
+  return Array.from(subnetwork.querySelectorAll(':scope > ConnectedAP > Address > P[type="IP"]'))
     .map(p => p.textContent?.trim() ?? '')
     .filter(ip => ip !== '');
 }
@@ -343,7 +343,7 @@ export function createPTextField(
   pType: string
 ): TemplateResult {
     const currentValue =
-      element.querySelector(`:scope > Address > P[type="${pType}"]`)?.innerHTML ??
+      element.querySelector(`:scope > Address > P[type="${pType}"]`)?.textContent?.trim() ??
       null;
 
     let reservedIPs: string[] = [];
