@@ -43,6 +43,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Extract PR base ref
+        if: github.event.workflow_run.event == 'pull_request'
+        id: extract_base_ref
+        run: |
+          echo '${{ steps.get_pr_data.outputs.data }}' | jq -r '.base.ref' > base_ref.txt
+          echo "BASE_REF=$(cat base_ref.txt)" >> $GITHUB_ENV
+        shell: bash
+
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           repository: ${{ github.event.repository.full_name }}
@@ -54,7 +62,7 @@ jobs:
         if: github.event.workflow_run.event == 'pull_request'
         env:
           CLONE_URL: ${{ github.event.repository.clone_url }}
-          BASE_REF: ${{ fromJson(steps.get_pr_data.outputs.data).base.ref }}
+          BASE_REF: ${{ env.BASE_REF }}
           HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
         run: |
           git remote add upstream "$CLONE_URL"
@@ -85,9 +93,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.pullrequest.branch=${{ fromJson(steps.get_pr_data.outputs.data).head.ref }}
-            -Dsonar.pullrequest.key=${{ fromJson(steps.get_pr_data.outputs.data).number }}
-            -Dsonar.pullrequest.base=${{ fromJson(steps.get_pr_data.outputs.data).base.ref }}
+            -Dsonar.pullrequest.branch=${{ github.event.workflow_run.head_branch }}
+            -Dsonar.pullrequest.key=${{ steps.pr_number.outputs.content }}
+            -Dsonar.pullrequest.base=${{ env.BASE_REF }}
             -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
 
       - name: Analyze (Push)
