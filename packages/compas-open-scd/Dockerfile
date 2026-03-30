@@ -1,4 +1,4 @@
-FROM public.ecr.aws/nginx/nginx:1.29.5
+FROM public.ecr.aws/nginx/nginx:1.29.7
 
 # Upgrade OpenSSL packages to fix critical vulnerabilities
 RUN apt-get update && \
