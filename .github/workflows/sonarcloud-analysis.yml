@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Download PR number artifact
         if: github.event.workflow_run.event == 'pull_request'
-        uses: dawidd6/action-download-artifact@5c98f0b039f36ef966fdb7dfa9779262785ecb05 # v14
+        uses: dawidd6/action-download-artifact@8305c0f1062bb0d184d09ef4493ecb9288447732 # v20
         with:
           workflow: SonarCloud Build
           run_id: ${{ github.event.workflow_run.id }}
@@ -81,7 +81,7 @@ jobs:
           restore-keys: ${{ runner.os }}-sonar
 
       - name: Download coverage artifact
-        uses: dawidd6/action-download-artifact@5c98f0b039f36ef966fdb7dfa9779262785ecb05 # v14
+        uses: dawidd6/action-download-artifact@8305c0f1062bb0d184d09ef4493ecb9288447732 # v20
         with:
           workflow: SonarCloud Build
           run_id: ${{ github.event.workflow_run.id }}
