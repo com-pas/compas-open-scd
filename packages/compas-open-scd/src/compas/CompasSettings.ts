@@ -233,7 +233,7 @@ export class CompasSettingsElement extends LitElement {
       </mwc-button>`;
   }
 
-  static styles = css`
+  static readonly styles = css`
     :host {
       width: 20vw;
     }

@@ -4,9 +4,9 @@ export function formatXml(xml: string, tab?: string): string {
 
   if (!tab) tab = '\t';
   xml.split(/>\s*</).forEach(function (node) {
-    if (node.match(/^\/\w/)) indent = indent.substring(tab!.length);
+    if (/^\/\w/.exec(node)) indent = indent.substring(tab!.length);
     formatted += indent + '<' + node + '>\r\n';
-    if (node.match(/^<?\w[^>]*[^/]$/)) indent += tab;
+    if (/^<?\w[^>]*[^/]$/.exec(node)) indent += tab;
   });
   return formatted.substring(1, formatted.length - 3);
 }
@@ -27,7 +27,7 @@ export function saveDocumentToFile(doc: Document | null, docName: string) {
     a.style.display = 'none';
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
+    a.remove();
     setTimeout(function () {
       URL.revokeObjectURL(a.href);
     }, 5000);

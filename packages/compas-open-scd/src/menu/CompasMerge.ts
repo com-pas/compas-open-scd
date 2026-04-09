@@ -1,13 +1,15 @@
-import { html, LitElement } from 'lit-element';
+import { LitElement } from 'lit-element';
 import { get } from 'lit-translate';
 
-import { oscdHtml } from '@compas-oscd/open-scd/dist/foundation.js';
-import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/dist/foundation.js';
+import {
+  newWizardEvent,
+  oscdHtml,
+  Wizard,
+} from '@compas-oscd/open-scd/dist/foundation.js';
 import { mergeWizard } from '@compas-oscd/open-scd/dist/wizards.js';
 
-import { DocRetrievedEvent } from '../compas/CompasOpen.js';
-
 import '../compas/CompasOpen.js';
+import type { DocRetrievedEvent } from '../compas/CompasOpen.js';
 
 export default class CompasMergeMenuPlugin extends LitElement {
   doc!: XMLDocument;

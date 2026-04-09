@@ -18,11 +18,19 @@ export default class SitipePlugin extends LitElement {
     return 'Sitipe';
   }
 
+  private renderMissingSubstationMessage(): TemplateResult {
+    return html`<h1>
+      <span style="color: var(--base1)"
+        >${translate('substation.missing')}</span
+      >
+    </h1>`;
+  }
+
   private renderSubstations(): TemplateResult {
     return html`${this.doc?.querySelector(':root > Substation')
       ? html`<section>
           ${Array.from(this.doc.querySelectorAll('Substation') ?? [])
-            .filter(isPublic)
+            .filter(el => isPublic(el))
             .map(
               substation =>
                 html`<sitipe-substation
@@ -32,18 +40,14 @@ export default class SitipePlugin extends LitElement {
                 ></sitipe-substation>`
             )}
         </section>`
-      : html`<h1>
-          <span style="color: var(--base1)"
-            >${translate('substation.missing')}</span
-          >
-        </h1>`}`;
+      : this.renderMissingSubstationMessage()}`;
   }
 
   render(): TemplateResult {
     return html`<div class="container">${this.renderSubstations()}</div>`;
   }
 
-  static styles = css`
+  static readonly styles = css`
     :host {
       width: 100vw;
       padding: 16px;

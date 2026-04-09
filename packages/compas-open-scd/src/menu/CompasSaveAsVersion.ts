@@ -11,15 +11,9 @@ import { translate } from 'lit-translate';
 
 import '@material/mwc-button';
 import '@material/mwc-dialog';
-import { Dialog } from '@material/mwc-dialog';
 
 import { newPendingStateEvent } from '@compas-oscd/core';
 
-import CompasSaveElement from '../compas/CompasSave.js';
-import { DocRetrievedEvent } from '../compas/CompasOpen.js';
-
-import '../compas/CompasOpen.js';
-import '../compas/CompasSave.js';
 import {
   COMPAS_SCL_PRIVATE_TYPE,
   copyCompasLabels,
@@ -27,6 +21,13 @@ import {
   copyCompasSclName,
   getPrivate,
 } from '../compas/private.js';
+
+import '../compas/CompasOpen.js';
+import '../compas/CompasSave.js';
+
+import type { Dialog } from '@material/mwc-dialog';
+import type CompasSaveElement from '../compas/CompasSave.js';
+import type { DocRetrievedEvent } from '../compas/CompasOpen.js';
 
 export default class CompasSaveAsVersionMenuPlugin extends LitElement {
   @property()
@@ -88,48 +89,56 @@ export default class CompasSaveAsVersionMenuPlugin extends LitElement {
     }
   }
 
+  private renderDialogContent(): TemplateResult {
+    if (!this.doc || !this.docName) {
+      return html` <compas-loading></compas-loading>`;
+    }
+
+    if (!this.saveToDoc || !this.saveToDocId) {
+      return html`
+        <compas-open
+          .allowLocalFile="${false}"
+          @doc-retrieved=${(event: DocRetrievedEvent) => {
+            this.saveToDoc = event.detail.doc;
+            this.saveToDocName = event.detail.docName;
+            this.saveToDocId = event.detail.docId;
+            this.copyCompasPrivates();
+          }}
+        ></compas-open>
+      `;
+    }
+
+    return html` <compas-save
+        .doc="${this.doc}"
+        .docName="${this.saveToDocName}"
+        .docId="${this.saveToDocId}"
+        .allowLocalFile="${false}"
+        .editCount=${this.editCount}
+        @doc-saved=${() => {
+          this.dialog.close();
+        }}
+      ></compas-save>
+      <mwc-button
+        slot="primaryAction"
+        icon="save"
+        trailingIcon
+        label="${translate('save')}"
+        @click=${() => {
+          if (this.compasSaveElement?.valid()) {
+            this.dispatchEvent(
+              newPendingStateEvent(this.compasSaveElement.saveToCompas())
+            );
+          }
+        }}
+      ></mwc-button>`;
+  }
+
   render(): TemplateResult {
     return html` <mwc-dialog
       id="compas-save-as-version-dlg"
       heading="${translate('compas.save.saveAsVersionTitle')}"
     >
-      ${!this.doc || !this.docName
-        ? html` <compas-loading></compas-loading>`
-        : !this.saveToDoc || !this.saveToDocId
-        ? html`
-            <compas-open
-              .allowLocalFile="${false}"
-              @doc-retrieved=${(event: DocRetrievedEvent) => {
-                this.saveToDoc = event.detail.doc;
-                this.saveToDocName = event.detail.docName;
-                this.saveToDocId = event.detail.docId;
-                this.copyCompasPrivates();
-              }}
-            ></compas-open>
-          `
-        : html` <compas-save
-              .doc="${this.doc}"
-              .docName="${this.saveToDocName}"
-              .docId="${this.saveToDocId}"
-              .allowLocalFile="${false}"
-              .editCount=${this.editCount}
-              @doc-saved=${() => {
-                this.dialog.close();
-              }}
-            ></compas-save>
-            <mwc-button
-              slot="primaryAction"
-              icon="save"
-              trailingIcon
-              label="${translate('save')}"
-              @click=${() => {
-                if (this.compasSaveElement && this.compasSaveElement.valid()) {
-                  this.dispatchEvent(
-                    newPendingStateEvent(this.compasSaveElement.saveToCompas())
-                  );
-                }
-              }}
-            ></mwc-button>`}
+      ${this.renderDialogContent()}
       <mwc-button
         slot="secondaryAction"
         icon=""
@@ -141,7 +150,7 @@ export default class CompasSaveAsVersionMenuPlugin extends LitElement {
     </mwc-dialog>`;
   }
 
-  static styles = css`
+  static readonly styles = css`
     mwc-dialog {
       --mdc-dialog-min-width: 23vw;
       --mdc-dialog-max-width: 92vw;

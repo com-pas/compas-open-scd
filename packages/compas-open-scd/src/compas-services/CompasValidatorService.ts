@@ -10,15 +10,15 @@ import {
 export const SVS_NAMESPACE =
   'https://www.lfenergy.org/compas/SclValidatorService/v1';
 
+function getSclValidatorServiceUrl(): string {
+  return CompasSettings().compasSettings.sclValidatorServiceUrl;
+}
+
+function useWebsocket(): boolean {
+  return CompasSettings().useWebsockets();
+}
+
 export function CompasSclValidatorService() {
-  function getSclValidatorServiceUrl(): string {
-    return CompasSettings().compasSettings.sclValidatorServiceUrl;
-  }
-
-  function useWebsocket(): boolean {
-    return CompasSettings().useWebsockets();
-  }
-
   return {
     validateSCL(
       element: Element,

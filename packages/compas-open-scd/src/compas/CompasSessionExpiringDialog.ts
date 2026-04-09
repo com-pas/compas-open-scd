@@ -10,7 +10,7 @@ import {
 import { translate, translateUnsafeHTML } from 'lit-translate';
 
 import '@material/mwc-dialog';
-import { Dialog } from '@material/mwc-dialog';
+import type { Dialog } from '@material/mwc-dialog';
 
 @customElement('compas-session-expiring-dialog')
 export class CompasSessionExpiringDialogElement extends LitElement {
@@ -20,7 +20,7 @@ export class CompasSessionExpiringDialogElement extends LitElement {
   public expiredSessionMessage: number = 15 * 60 * 1000;
 
   @query('mwc-dialog[id="compasSessionExpiringDialog"]')
-  private dialog!: Dialog;
+  private readonly dialog!: Dialog;
 
   show(): void {
     if (!this.dialog.open) {
@@ -57,7 +57,7 @@ export class CompasSessionExpiringDialogElement extends LitElement {
     `;
   }
 
-  static styles = css`
+  static readonly styles = css`
     #compasSessionExpiringDialog {
       --mdc-dialog-min-width: 23vw;
       --mdc-dialog-max-width: 92vw;

@@ -5,10 +5,10 @@ import {
   LitElement,
   TemplateResult,
 } from 'lit-element';
-import { WizardTextField } from "@compas-oscd/open-scd/dist/wizard-textfield.js";
 import { translate } from 'lit-translate';
 
-import "@compas-oscd/open-scd/dist/wizard-textfield.js";
+import '@compas-oscd/open-scd/dist/wizard-textfield.js';
+import type { WizardTextField } from '@compas-oscd/open-scd/dist/wizard-textfield.js';
 
 @customElement('compas-comment')
 export class CompasCommentElement extends LitElement {
@@ -44,7 +44,7 @@ export class CompasCommentElement extends LitElement {
     `;
   }
 
-  static styles = css`
+  static readonly styles = css`
     wizard-textfield {
       width: 100%;
     }

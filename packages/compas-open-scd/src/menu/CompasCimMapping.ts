@@ -1,8 +1,10 @@
 import { css, html, LitElement, query, TemplateResult } from 'lit-element';
 
-import { newLogEvent } from '@compas-oscd/core';
-import { newOpenDocEvent } from '@compas-oscd/core';
-import { newPendingStateEvent } from '@compas-oscd/core';
+import {
+  newLogEvent,
+  newOpenDocEvent,
+  newPendingStateEvent,
+} from '@compas-oscd/core';
 import { stripExtensionFromName } from '../compas/foundation.js';
 
 import {
@@ -69,7 +71,7 @@ export default class OpenProjectPlugin extends LitElement {
     /> `;
   }
 
-  static styles = css`
+  static readonly styles = css`
     input {
       width: 0;
       height: 0;

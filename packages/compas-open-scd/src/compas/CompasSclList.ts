@@ -14,10 +14,9 @@ import '@material/mwc-icon';
 import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 
-import { SelectedItemsChangedEvent } from '@compas-oscd/open-scd/dist/oscd-filter-button.js';
-
 import '@compas-oscd/open-scd/filtered-list.js';
 import '@compas-oscd/open-scd/dist/oscd-filter-button.js';
+import type { SelectedItemsChangedEvent } from '@compas-oscd/open-scd/dist/oscd-filter-button.js';
 
 import {
   CompasSclDataService,
@@ -66,10 +65,8 @@ export class CompasSclList extends LitElement {
     return this.items.filter(item => {
       const labels = Array.from(item.querySelectorAll('Label') ?? [])
         .map(element => element.textContent)
-        .filter(value => !!value) as string[];
-      return (
-        labels.filter(label => this.selectedLabels.includes(label)).length > 0
-      );
+        .filter(value => !!value);
+      return labels.some(label => this.selectedLabels.includes(label!));
     });
   }
 
@@ -135,9 +132,9 @@ export class CompasSclList extends LitElement {
         >
           <span slot="icon">
             <mwc-icon>
-              ${this.labels.length != this.selectedLabels.length
-                ? 'label'
-                : 'label_off'}
+              ${this.labels.length === this.selectedLabels.length
+                ? 'label_off'
+                : 'label'}
             </mwc-icon>
           </span>
           ${this.labels.map(label => {
@@ -181,7 +178,7 @@ export class CompasSclList extends LitElement {
     `;
   }
 
-  static styles = css`
+  static readonly styles = css`
     .filters {
       padding-left: var(--mdc-list-side-padding, 16px);
       display: flex;

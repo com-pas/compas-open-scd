@@ -195,7 +195,7 @@ describe('CompasValidateSchema', () => {
       const validationError = getValidationError('Message 1');
 
       const result = element['createMessage'](validationError);
-      expect(result).to.be.undefined;
+      expect(result).to.equal(undefined);
     });
 
     it('when only rule name is filled then Rule name string returned', () => {
@@ -230,7 +230,7 @@ describe('CompasValidateSchema', () => {
       const validationError = getValidationError('Message 6');
 
       const result = element['createMessage'](validationError);
-      expect(result).to.be.undefined;
+      expect(result).to.equal(undefined);
     });
 
     it('when rule name and XPath are filled then full message returned', () => {
@@ -281,14 +281,14 @@ describe('CompasValidateSchema', () => {
       const validationError = getValidationError('Message 1');
 
       const result = element['getElement'](validationError);
-      expect(result).to.be.undefined;
+      expect(result).to.equal(undefined);
     });
 
     it('when XPath is invalid element then undefined returned', () => {
       const validationError = getValidationError('Message 2');
 
       const result = element['getElement'](validationError);
-      expect(result).to.be.undefined;
+      expect(result).to.equal(undefined);
     });
 
     it('when XPath is a valid SCL XPath then SCL Element returned', () => {
@@ -308,12 +308,15 @@ describe('CompasValidateSchema', () => {
 
   describe('rewriteXPathForDefaultNamespace', () => {
     it('when passing in default namespace then prefix is added', () => {
-      const result = element['rewriteXPathForDefaultNamespace']('/SCL/Substation[1]');
+      const result =
+        element['rewriteXPathForDefaultNamespace']('/SCL/Substation[1]');
       expect(result).to.be.equal('/scl:SCL/scl:Substation[1]');
     });
 
     it('when passing in CoMPAS namespace then only CoMPAS prefix is preserved', () => {
-      const result = element['rewriteXPathForDefaultNamespace']('/SCL/Private[1]/compas:SclName');
+      const result = element['rewriteXPathForDefaultNamespace'](
+        '/SCL/Private[1]/compas:SclName'
+      );
       expect(result).to.be.equal('/scl:SCL/scl:Private[1]/compas:SclName');
     });
   });

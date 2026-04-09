@@ -62,23 +62,23 @@ export default class CompasValidateSchema extends LitElement {
 
   private createTitle(validationError: Element): string {
     const message = validationError
-      .getElementsByTagNameNS(SVS_NAMESPACE, 'Message')!
+      .getElementsByTagNameNS(SVS_NAMESPACE, 'Message')
       .item(0)?.textContent;
-    return message ? message : 'No validation message';
+    return message ?? 'No validation message';
   }
 
   private createMessage(validationError: Element): string | undefined {
     const ruleName = validationError
-      .getElementsByTagNameNS(SVS_NAMESPACE, 'RuleName')!
+      .getElementsByTagNameNS(SVS_NAMESPACE, 'RuleName')
       .item(0)?.textContent;
     const lineNumber = validationError
-      .getElementsByTagNameNS(SVS_NAMESPACE, 'LineNumber')!
+      .getElementsByTagNameNS(SVS_NAMESPACE, 'LineNumber')
       .item(0)?.textContent;
     const columnNumber = validationError
-      .getElementsByTagNameNS(SVS_NAMESPACE, 'ColumnNumber')!
+      .getElementsByTagNameNS(SVS_NAMESPACE, 'ColumnNumber')
       .item(0)?.textContent;
     const xpath = validationError
-      .getElementsByTagNameNS(SVS_NAMESPACE, 'XPath')!
+      .getElementsByTagNameNS(SVS_NAMESPACE, 'XPath')
       .item(0)?.textContent;
 
     const messageParts: string[] = [];
@@ -95,7 +95,7 @@ export default class CompasValidateSchema extends LitElement {
 
   private getElement(validationError: Element): Element | undefined {
     const xpath = validationError
-      .getElementsByTagNameNS(SVS_NAMESPACE, 'XPath')!
+      .getElementsByTagNameNS(SVS_NAMESPACE, 'XPath')
       .item(0)?.textContent;
 
     if (xpath) {
@@ -131,7 +131,7 @@ export default class CompasValidateSchema extends LitElement {
         .split('/')
         .filter(part => !!part)
         .map(part => {
-          if (part && part.indexOf(':') < 0) {
+          if (part && !part.includes(':')) {
             return 'scl:' + part;
           }
           return part;

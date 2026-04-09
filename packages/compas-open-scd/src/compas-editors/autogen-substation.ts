@@ -1,7 +1,6 @@
 import { LitElement, property } from 'lit-element';
-import { newActionEvent } from '@compas-oscd/core';
+import { newActionEvent, newLogEvent } from '@compas-oscd/core';
 import { createElement } from '@compas-oscd/xml';
-import { newLogEvent } from '@compas-oscd/core';
 import { get } from 'lit-translate';
 
 let cbNum = 1;
@@ -60,14 +59,15 @@ function addLNodes(condEq: Element, cswi: Element): Element {
 //TODO : Got this from guess-wizard, it's unclear if this functionality will stay the same in the guess wizard
 //       Check on a later point if implementation of an export of this function will remain valid.
 function getSwitchGearType(cswi: Element): string {
+  const prefixSelector = cswi.getAttribute('prefix')
+    ? `[prefix="${cswi.getAttribute('prefix')}"]`
+    : ``;
+  const instSelector = cswi.getAttribute('inst')
+    ? `[inst="${cswi.getAttribute('inst')}"]`
+    : ``;
+
   return cswi.parentElement?.querySelector(
-    `LN[lnClass="XCBR"]${
-      cswi.getAttribute('prefix')
-        ? `[prefix="${cswi.getAttribute('prefix')}"]`
-        : ``
-    }${
-      cswi.getAttribute('inst') ? `[inst="${cswi.getAttribute('inst')}"]` : ``
-    }`
+    `LN[lnClass="XCBR"]${prefixSelector}${instSelector}`
   )
     ? 'CBR'
     : 'DIS';
@@ -98,25 +98,22 @@ function isSwitchGear(ln: Element, selectedCtlModel: string[]): boolean {
 
   // ctlModel can be configured as type in DataTypeTemplate section
   const doc = ln.ownerDocument;
-  return (
-    Array.from(
-      doc.querySelectorAll(
-        `DataTypeTemplates > LNodeType[id="${ln.getAttribute(
-          'lnType'
-        )}"] > DO[name="Pos"]`
-      )
+  return Array.from(
+    doc.querySelectorAll(
+      `DataTypeTemplates > LNodeType[id="${ln.getAttribute(
+        'lnType'
+      )}"] > DO[name="Pos"]`
     )
-      .map(DO => (<Element>DO).getAttribute('type'))
-      .flatMap(doType =>
-        Array.from(
-          doc.querySelectorAll(
-            `DOType[id="${doType}"] > DA[name="ctlModel"] > Val`
-          )
+  )
+    .map(DO => DO.getAttribute('type'))
+    .flatMap(doType =>
+      Array.from(
+        doc.querySelectorAll(
+          `DOType[id="${doType}"] > DA[name="ctlModel"] > Val`
         )
       )
-      .filter(val => selectedCtlModel.includes((<Element>val).innerHTML.trim()))
-      .length > 0
-  );
+    )
+    .some(val => selectedCtlModel.includes(val.innerHTML.trim()));
 }
 
 //TODO : Got this from guess-wizard, it's unclear if this functionality will stay the same in the guess wizard
@@ -199,7 +196,7 @@ export default class CompasAutogenerateSubstation extends LitElement {
           desc,
         });
 
-        await this.createVoltageLevels(
+        this.createVoltageLevels(
           substation,
           name + '_'.repeat(this.substationNameLength - name.length)
         );

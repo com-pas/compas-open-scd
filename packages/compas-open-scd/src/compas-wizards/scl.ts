@@ -21,7 +21,7 @@ import {
   getCompasSclName,
   getPrivate,
 } from '../compas/private.js';
-import { CompasLabelsFieldElement } from '../compas/CompasLabelsField.js';
+import type { CompasLabelsFieldElement } from '../compas/CompasLabelsField.js';
 
 export function updateSCL(sclElement: Element): WizardActor {
   return (inputs: WizardInputElement[], wizard: Element): EditorAction[] => {

@@ -10,7 +10,7 @@ import {
 import { translate, translateUnsafeHTML } from 'lit-translate';
 
 import '@material/mwc-dialog';
-import { Dialog } from '@material/mwc-dialog';
+import type { Dialog } from '@material/mwc-dialog';
 
 import { saveDocumentToFile } from '../file.js';
 
@@ -24,7 +24,7 @@ export class CompasSessionExpiredDialogElement extends LitElement {
   public docName = '';
 
   @query('mwc-dialog[id="compasSessionExpiredDialog"]')
-  private dialog!: Dialog;
+  private readonly dialog!: Dialog;
 
   show(): void {
     if (!this.dialog.open) {

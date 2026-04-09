@@ -21,16 +21,18 @@ export function lnHeader(ln: Element, nsDoc: Nsdoc): string {
 
   const data = nsDoc.getDataDescription(ln);
 
-  return `${prefix != null ? `${prefix} - ` : ``}${data.label}${
-    inst ? ` - ${inst}` : ``
-  }`;
+  const prefixPart = prefix ? `${prefix} - ` : '';
+  const instPart = inst ? ` - ${inst}` : '';
+
+  return `${prefixPart}${data.label}${instPart}`;
 }
 
 export function lDeviceHeader(lDevice: Element): string {
   const nameOrInst = getNameAttribute(lDevice) ?? getInstanceAttribute(lDevice);
   const desc = getDescriptionAttribute(lDevice);
 
-  return `${nameOrInst}${desc ? ` - ${desc}` : ``}`;
+  const descPart = desc ? ` - ${desc}` : '';
+  return `${nameOrInst}${descPart}`;
 }
 
 export function iedHeader(ied: Element): string {

@@ -36,7 +36,9 @@ export function websocket(
         .then(doc => {
           if (doc.documentElement.localName === 'ErrorResponse') {
             const message = extractErrorMessage(doc);
-            reject({ type: APPLICATION_ERROR, message });
+            const error = new Error(message);
+            (error as any).type = APPLICATION_ERROR;
+            reject(error);
           } else {
             resolve(doc);
           }
@@ -49,10 +51,9 @@ export function websocket(
     };
 
     websocket.onerror = () => {
-      reject({
-        type: SERVER_ERROR,
-        message: `Websocket Error in service "${serviceName}"`,
-      });
+      const error = new Error(`Websocket Error in service "${serviceName}"`);
+      (error as any).type = SERVER_ERROR;
+      reject(error);
       websocket?.close();
     };
     websocket.onclose = () => {

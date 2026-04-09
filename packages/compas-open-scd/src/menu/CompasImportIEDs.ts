@@ -1,11 +1,11 @@
 import { html, query, TemplateResult } from 'lit-element';
 import { translate } from 'lit-translate';
 
-import { DocRetrievedEvent } from '../compas/CompasOpen.js';
 import ImportingIedPlugin from '@openscd/plugins/src/menu/ImportIEDs.js';
 
-import '../compas/CompasOpen.js';
 import { Dialog } from '@material/mwc-dialog';
+import '../compas/CompasOpen.js';
+import type { DocRetrievedEvent } from '../compas/CompasOpen.js';
 
 export default class CompasImportIEDSMenuPlugin extends ImportingIedPlugin {
   doc!: XMLDocument;

@@ -20,15 +20,15 @@ export interface MapRequestBody {
   cimData: CimData[];
 }
 
+function getCompasSettings() {
+  return CompasSettings().compasSettings;
+}
+
+function useWebsocket() {
+  return CompasSettings().useWebsockets();
+}
+
 export function CompasCimMappingService() {
-  function getCompasSettings() {
-    return CompasSettings().compasSettings;
-  }
-
-  function useWebsocket() {
-    return CompasSettings().useWebsockets();
-  }
-
   return {
     map(element: Element, body: MapRequestBody): Promise<Document> {
       const request = `<?xml version="1.0" encoding="UTF-8"?>

@@ -1,17 +1,16 @@
 import {
   css,
   customElement,
-  html,
   LitElement,
   property,
   TemplateResult,
 } from 'lit-element';
 import { get, translate } from 'lit-translate';
 
-import { patterns } from '@compas-oscd/open-scd/dist/foundation.js';
 import { ComplexAction } from '@compas-oscd/core';
 import {
-  checkValidity,
+  oscdHtml,
+  patterns,
   Wizard,
   WizardAction,
   WizardInputElement,
@@ -19,7 +18,6 @@ import {
 } from '@compas-oscd/open-scd/dist/foundation.js';
 import { Nsdoc } from '@compas-oscd/open-scd/dist/foundation/nsdoc.js';
 
-import { oscdHtml } from '@compas-oscd/open-scd/dist/foundation.js';
 import '@compas-oscd/open-scd/dist/wizard-textfield.js';
 
 import {
@@ -91,9 +89,7 @@ export class LocamationVMUEditElement extends LitElement {
         locamationPrivate,
         'TRANSFORM-PRIMARY',
         getInputFieldValue(this.inputs, 'transformPrimary')
-      )
-    );
-    complexAction.actions.push(
+      ),
       ...createEditorAction(
         locamationPrivate,
         'TRANSFORM-SECONDARY',
@@ -134,7 +130,7 @@ export class LocamationVMUEditElement extends LitElement {
   }
 
   private checkValidityInputs(inputs: WizardInputElement[]): boolean {
-    return Array.from(inputs).every(checkValidity);
+    return Array.from(inputs).every(input => input.checkValidity());
   }
 
   render(): TemplateResult {
@@ -189,8 +185,9 @@ export class LocamationVMUEditElement extends LitElement {
       >
       </wizard-textfield>
 
-      ${hasPrivateElement(locamationPrivate, 'SUM')
-        ? oscdHtml`<wizard-textfield
+      ${
+        hasPrivateElement(locamationPrivate, 'SUM')
+          ? oscdHtml`<wizard-textfield
             id="sum"
             label="${translate('locamation.vmu.sum')}"
             .maybeValue=${getPrivateTextValue(locamationPrivate, 'SUM')}
@@ -200,9 +197,11 @@ export class LocamationVMUEditElement extends LitElement {
             required
           >
           </wizard-textfield>`
-        : oscdHtml``}
-      ${hasPrivateElement(locamationPrivate, 'CHANNEL')
-        ? oscdHtml`<wizard-textfield
+          : oscdHtml``
+      }
+      ${
+        hasPrivateElement(locamationPrivate, 'CHANNEL')
+          ? oscdHtml`<wizard-textfield
             id="channel"
             label="${translate('locamation.vmu.channel')}"
             .maybeValue=${getPrivateTextValue(locamationPrivate, 'CHANNEL')}
@@ -211,7 +210,8 @@ export class LocamationVMUEditElement extends LitElement {
             required
           >
           </wizard-textfield>`
-        : oscdHtml``}
+          : oscdHtml``
+      }
 
       <wizard-textfield
         id="transformPrimary"
@@ -240,7 +240,7 @@ export class LocamationVMUEditElement extends LitElement {
     `;
   }
 
-  static styles = css`
+  static readonly styles = css`
     :host {
       width: 20vw;
     }

@@ -18,15 +18,17 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-list/mwc-check-list-item';
 
-import { Dialog } from '@material/mwc-dialog';
+import type { Dialog } from '@material/mwc-dialog';
 import { MultiSelectedEvent } from '@material/mwc-list/mwc-list-foundation';
 
 import '@compas-oscd/open-scd/dist/plain-compare-list.js';
 
-import { newLogEvent } from '@compas-oscd/core';
-import { newOpenDocEvent } from '@compas-oscd/core';
+import { newLogEvent, newOpenDocEvent } from '@compas-oscd/core';
 
-import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/dist/foundation.js';
+import {
+  newWizardEvent,
+  Wizard,
+} from '@compas-oscd/open-scd/dist/foundation.js';
 
 import {
   CompasSclDataService,
@@ -62,19 +64,17 @@ export default class CompasVersionsPlugin extends LitElement {
     // When the document is updated, we also will retrieve the history again, because probably it has changed.
     if (_changedProperties.has('doc')) {
       this.selectedVersionsOnCompasVersionsEditor = new Set();
-      if (!this.docId) {
-        this.historyItem = [];
-      } else {
+      if (this.docId) {
         this.fetchData();
+      } else {
+        this.historyItem = [];
       }
     }
   }
 
   fetchData(): void {
     this.historyItem = undefined;
-    if (!this.docId) {
-      this.historyItem = [];
-    } else {
+    if (this.docId) {
       const type = getTypeFromDocName(this.docName);
       CompasSclDataService()
         .listSclVersions(type, this.docId)
@@ -86,6 +86,8 @@ export default class CompasVersionsPlugin extends LitElement {
         .catch(() => {
           this.historyItem = [];
         });
+    } else {
+      this.historyItem = [];
     }
   }
 
@@ -258,7 +260,7 @@ export default class CompasVersionsPlugin extends LitElement {
   @state()
   private compareRightTitle: string | undefined;
   @query('mwc-dialog#compareDialog')
-  private compareDialog!: Dialog;
+  private readonly compareDialog!: Dialog;
 
   async compareCurrentVersion(): Promise<void> {
     const selectedVersions = this.getSelectedVersions();
@@ -363,7 +365,7 @@ export default class CompasVersionsPlugin extends LitElement {
     return CompasSclDataService()
       .getSclDocumentVersion(this, type, this.docId, version)
       .then(sclDocument => {
-        return Promise.resolve(<Element>sclDocument.documentElement);
+        return <Element>sclDocument.documentElement;
       })
       .catch(reason => {
         createLogEvent(this, reason);
@@ -389,9 +391,7 @@ export default class CompasVersionsPlugin extends LitElement {
 
   private renderLineInfo(item: Element): TemplateResult {
     let element = getElementByName(item, SDS_NAMESPACE, 'Name');
-    if (element === null) {
-      element = getElementByName(item, SDS_NAMESPACE, 'Id');
-    }
+    element ??= getElementByName(item, SDS_NAMESPACE, 'Id');
     const name = element!.textContent ?? '';
     const version =
       getElementByName(item, SDS_NAMESPACE, 'Version')!.textContent ?? '';
@@ -403,8 +403,7 @@ export default class CompasVersionsPlugin extends LitElement {
 
     return html`<span>${name} (Version: ${version})</span>
       <span slot="secondary">
-        Who: "${who ? who : '-'}", When: "${when ? when : '-'}", What:
-        "${what ? what : '-'}"
+        Who: "${who || '-'}", When: "${when || '-'}", What: "${what || '-'}"
       </span>`;
   }
 
@@ -545,7 +544,7 @@ export default class CompasVersionsPlugin extends LitElement {
       ${this.renderCompareDialog()}`;
   }
 
-  static styles = css`
+  static readonly styles = css`
     ${styles}
 
     mwc-dialog {

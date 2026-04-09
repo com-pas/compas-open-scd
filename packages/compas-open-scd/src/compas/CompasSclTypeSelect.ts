@@ -16,8 +16,8 @@ import {
   CompasSclDataService,
   SDS_NAMESPACE,
 } from '../compas-services/CompasSclDataService.js';
-import { Select } from '@material/mwc-select';
 import { repeat } from 'lit-html/directives/repeat';
+import type { Select } from '@material/mwc-select';
 
 @customElement('compas-scltype-select')
 export class CompasSclTypeSelect extends LitElement {
@@ -87,7 +87,7 @@ export class CompasSclTypeSelect extends LitElement {
     </mwc-select>`;
   }
 
-  static styles = css`
+  static readonly styles = css`
     mwc-select {
       width: 100%;
     }

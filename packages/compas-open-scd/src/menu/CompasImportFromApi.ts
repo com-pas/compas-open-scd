@@ -1,10 +1,13 @@
-import { html, LitElement } from 'lit-element';
+import { LitElement } from 'lit-element';
 import { get } from 'lit-translate';
 
-import { oscdHtml } from '@compas-oscd/open-scd/dist/foundation.js';
 import '@compas-oscd/open-scd/filtered-list.js';
 import '@compas-oscd/open-scd/dist/wizard-textfield.js';
-import { newWizardEvent, Wizard } from '@compas-oscd/open-scd/dist/foundation.js';
+import {
+  newWizardEvent,
+  oscdHtml,
+  Wizard,
+} from '@compas-oscd/open-scd/dist/foundation.js';
 
 import '../compas/CompasImportFromApi.js';
 

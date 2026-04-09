@@ -12,8 +12,7 @@ import '@material/mwc-list';
 import '@material/mwc-list/mwc-check-list-item';
 
 import { newWizardEvent } from '@compas-oscd/open-scd/dist/foundation.js';
-import { newLogEvent } from '@compas-oscd/core';
-import { newOpenDocEvent } from '@compas-oscd/core';
+import { newLogEvent, newOpenDocEvent } from '@compas-oscd/core';
 
 import { CompasSclAutoAlignmentService } from '../compas-services/CompasSclAutoAlignmentService.js';
 import { createLogEvent } from '../compas-services/foundation.js';
@@ -105,7 +104,7 @@ export default class CompasAutoAlignmentElement extends LitElement {
     `;
   }
 
-  static styles = css`
+  static readonly styles = css`
     #noSubstationsToAlign > span {
       color: var(--base1);
     }

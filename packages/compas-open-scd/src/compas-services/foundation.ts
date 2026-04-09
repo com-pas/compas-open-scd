@@ -15,13 +15,13 @@ export async function handleResponse(response: Response): Promise<string> {
     } else if (response.status >= 500) {
       type = SERVER_ERROR;
     }
-    return Promise.reject({
-      type: type,
-      status: response.status,
-      message: await processErrorMessage(response),
-    });
+    const error = new Error(await processErrorMessage(response));
+    (error as any).type = type;
+    (error as any).status = response.status;
+    throw error;
   }
-  return Promise.resolve(response.text());
+
+  return response.text();
 }
 
 export async function processErrorMessage(response: Response): Promise<string> {
@@ -42,10 +42,10 @@ export function extractErrorMessage(doc: Document): string | undefined {
     let errorMessage = '';
     messages.forEach((errorMessageElement, index) => {
       const code = errorMessageElement
-        .getElementsByTagNameNS(COMMONS_NAMESPACE, 'Code')!
+        .getElementsByTagNameNS(COMMONS_NAMESPACE, 'Code')
         .item(0)!.textContent;
       const message = errorMessageElement
-        .getElementsByTagNameNS(COMMONS_NAMESPACE, 'Message')!
+        .getElementsByTagNameNS(COMMONS_NAMESPACE, 'Message')
         .item(0)!.textContent;
 
       if (index > 0) {
@@ -79,9 +79,7 @@ export function extractSclFromResponse(response: Document): Promise<Document> {
   return Promise.resolve(sclDocument);
 }
 
-export function extractSclElementFromMapResponse(
-  response: Document
-): Document {
+export function extractSclElementFromMapResponse(response: Document): Document {
   const sclElement = response.getElementsByTagName('SCL')[0];
   if (!sclElement) {
     throw new Error('No <SCL> element found in MapResponse.');
@@ -91,7 +89,9 @@ export function extractSclElementFromMapResponse(
 }
 
 export function handleError(error: Error): Promise<never> {
-  return Promise.reject({ type: SERVER_ERROR, message: error.message });
+  const newError = new Error(error.message);
+  (newError as any).type = SERVER_ERROR;
+  return Promise.reject(newError);
 }
 
 export function createLogEvent(element: Element, reason: any): void {

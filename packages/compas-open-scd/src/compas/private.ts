@@ -117,7 +117,7 @@ export function copyCompasLabels(
     const toLabels = getLabels(toParent);
 
     if (toLabels) {
-      toParent.removeChild(toLabels);
+      toLabels.remove();
     }
     if (fromLabels) {
       toParent.appendChild(

@@ -7,13 +7,15 @@ import {
   TemplateResult,
 } from 'lit-element';
 
-import { newOpenDocEvent } from '@compas-oscd/core';
-import { newPendingStateEvent } from '@compas-oscd/core';
+import {
+  newLogEvent,
+  newOpenDocEvent,
+  newPendingStateEvent,
+  XMLEditor,
+} from '@compas-oscd/core';
 
 import './addons/CompasSession.js';
 import './addons/CompasLayout.js';
-
-import { newLogEvent } from '@compas-oscd/core'
 
 import '@compas-oscd/open-scd/addons/Waiter.js';
 import '@compas-oscd/open-scd/addons/Settings.js';
@@ -27,14 +29,12 @@ import {
   Plugin,
   MenuPosition,
   PluginKind,
-  ContentContext
+  ContentContext,
 } from '@compas-oscd/open-scd/dist/plugin.js';
 import { ActionDetail } from '@material/mwc-list';
 
 import { officialPlugins as builtinPlugins } from '../public/js/plugins.js';
 import type { PluginSet, Plugin as CorePlugin } from '@compas-oscd/core';
-import { OscdApi, XMLEditor } from '@compas-oscd/core';
-import { classMap } from 'lit-html/directives/class-map.js';
 import {
   newConfigurePluginEvent,
   ConfigurePluginEvent,
@@ -63,7 +63,7 @@ interface EditorPluginConfig
  * Open Substation Configuration Designer. */
 @customElement('open-scd')
 export class OpenSCD extends LitElement {
-  private languageConfig = { loader, languages };
+  private readonly languageConfig = { loader, languages };
   render(): TemplateResult {
     return html`<compas-session>
       <oscd-waiter>
@@ -132,7 +132,7 @@ export class OpenSCD extends LitElement {
 
   @state() private editCount = -1;
 
-  private unsubscribers: (() => any)[] = [];
+  private readonly unsubscribers: (() => any)[] = [];
 
   /** Loads and parses an `XMLDocument` after [[`src`]] has changed. */
   private async loadDoc(src: string): Promise<void> {
@@ -292,7 +292,6 @@ export class OpenSCD extends LitElement {
     const newPlugins = [...storedPlugins];
     newPlugins.splice(pluginIndex, 1, changedPlugin);
 
-    // this.storePlugins(newPlugins);
     this.updateStoredPlugins(newPlugins);
   }
 
@@ -481,7 +480,7 @@ export class OpenSCD extends LitElement {
     return {
       ...plugin,
       content: {
-        tag
+        tag,
       },
     };
   }
@@ -496,10 +495,10 @@ export class OpenSCD extends LitElement {
     }
   }
 
-  @state() private loadedPlugins = new Set<string>();
+  @state() private readonly loadedPlugins = new Set<string>();
 
   // PLUGGING INTERFACES
-  @state() private pluginTags = new Map<string, string>();
+  @state() private readonly pluginTags = new Map<string, string>();
   /**
    * Hashes `uri` using cyrb64 analogous to
    * https://github.com/bryc/code/blob/master/jshash/experimental/cyrb53.js .

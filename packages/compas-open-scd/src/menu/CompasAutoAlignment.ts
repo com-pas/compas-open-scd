@@ -1,17 +1,16 @@
-import { html, LitElement, property } from 'lit-element';
+import { LitElement, property } from 'lit-element';
 import { get } from 'lit-translate';
 
 import { newPendingStateEvent } from '@compas-oscd/core';
-import { oscdHtml } from '@compas-oscd/open-scd/dist/foundation.js';
 import {
   newWizardEvent,
+  oscdHtml,
   Wizard,
   WizardInputElement,
 } from '@compas-oscd/open-scd/dist/foundation.js';
 
-import CompasAutoAlignmentElement from '../compas/CompasAutoAlignment.js';
-
 import '../compas/CompasAutoAlignment.js';
+import type CompasAutoAlignmentElement from '../compas/CompasAutoAlignment.js';
 
 export default class CompasAutoAlignmentMenuPlugin extends LitElement {
   doc!: XMLDocument;

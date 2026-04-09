@@ -2,7 +2,7 @@ import { html, TemplateResult } from 'lit-element';
 
 import '../compas/CompasOpen.js';
 
-import { DocRetrievedEvent } from '../compas/CompasOpen.js';
+import type { DocRetrievedEvent } from '../compas/CompasOpen.js';
 
 import CompareIEDPlugin from '@openscd/plugins/src/menu/CompareIED.js';
 

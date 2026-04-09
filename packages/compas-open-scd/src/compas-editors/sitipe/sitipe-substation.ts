@@ -41,8 +41,9 @@ export const defaultNamingStrategy: NamingStrategy = (
   ).replace(' ', '');
 
   const prefix = 'A';
-  const suffix =
-    typeof index === 'number' ? (index < 10 ? `0${index}` : `${index}`) : '01';
+  const indexSuffix =
+    typeof index === 'number' && index < 10 ? `0${index}` : `${index}`;
+  const suffix = typeof index === 'number' ? indexSuffix : '01';
 
   return `${substationName}_${voltageLevelName}${bayName}${prefix}${suffix}`;
 };
@@ -87,17 +88,20 @@ export class SitipeSubstation extends LitElement {
   voltageLevelHeader(voltageLevel: Element): string {
     const name = voltageLevel.getAttribute('name') ?? '';
     const desc = voltageLevel.getAttribute('desc');
+    const descPart = desc ? `- ${desc}` : '';
+    const voltagePart = this.voltage === null ? '' : `(${this.voltage})`;
 
-    return `${name} ${desc ? `- ${desc}` : ''}
-      ${this.voltage === null ? '' : `(${this.voltage})`}`;
+    return `${name} ${descPart}
+      ${voltagePart}`;
   }
 
   @state()
   bayHeader(bay: Element): string {
     const name = bay.getAttribute('name') ?? '';
     const desc = bay.getAttribute('desc');
+    const descPart = desc ? `(${desc})` : '';
 
-    return `${name} ${desc ? `(${desc})` : ''}`;
+    return `${name} ${descPart}`;
   }
 
   @state()
@@ -143,7 +147,7 @@ export class SitipeSubstation extends LitElement {
       ).map(this.renderVoltageLevel.bind(this))}
     </action-pane>`;
   }
-  static styles = css`
+  static readonly styles = css`
     .bayContainer {
       display: grid;
       grid-gap: 12px;

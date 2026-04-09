@@ -131,7 +131,9 @@ describe('CompasNSDocFileService', () => {
       await service.getNsdocFile(invalidId);
       expect.fail('Should have thrown an error');
     } catch (error) {
-      expect(error).to.equal(`Unable to find nsDoc file with id ${invalidId}`);
+      expect((error as Error).message).to.equal(
+        `Unable to find nsDoc file with id ${invalidId}`
+      );
     }
   });
 

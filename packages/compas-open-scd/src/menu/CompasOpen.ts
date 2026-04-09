@@ -3,11 +3,13 @@ import { translate } from 'lit-translate';
 
 import '@material/mwc-button';
 import '@material/mwc-dialog';
-import { Dialog } from '@material/mwc-dialog';
+import type { Dialog } from '@material/mwc-dialog';
 
-import { newLogEvent } from '@compas-oscd/core';
-import { newOpenDocEvent } from '@compas-oscd/core';
-import { newPendingStateEvent } from '@compas-oscd/core';
+import {
+  newLogEvent,
+  newOpenDocEvent,
+  newPendingStateEvent,
+} from '@compas-oscd/core';
 
 import CompasOpenElement, { DocRetrievedEvent } from '../compas/CompasOpen.js';
 import { updateDocumentInOpenSCD } from '../compas/foundation.js';
@@ -64,7 +66,7 @@ export default class CompasOpenMenuPlugin extends LitElement {
     </mwc-dialog>`;
   }
 
-  static styles = css`
+  static readonly styles = css`
     mwc-dialog {
       --mdc-dialog-min-width: 23vw;
       --mdc-dialog-max-width: 92vw;

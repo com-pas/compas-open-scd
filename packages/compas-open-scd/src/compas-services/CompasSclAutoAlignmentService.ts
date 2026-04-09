@@ -11,15 +11,15 @@ import { websocket } from './Websocket.js';
 export const SAA_NAMESPACE =
   'https://www.lfenergy.org/compas/SclAutoAlignmentService/v1';
 
+function getCompasSettings() {
+  return CompasSettings().compasSettings;
+}
+
+function useWebsocket() {
+  return CompasSettings().useWebsockets();
+}
+
 export function CompasSclAutoAlignmentService() {
-  function getCompasSettings() {
-    return CompasSettings().compasSettings;
-  }
-
-  function useWebsocket() {
-    return CompasSettings().useWebsockets();
-  }
-
   return {
     updateSCL(
       element: Element,

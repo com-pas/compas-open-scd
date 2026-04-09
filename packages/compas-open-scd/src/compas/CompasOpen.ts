@@ -14,12 +14,12 @@ import { newPendingStateEvent } from '@compas-oscd/core';
 
 import { CompasSclDataService } from '../compas-services/CompasSclDataService.js';
 import { createLogEvent } from '../compas-services/foundation.js';
-import { SclSelectedEvent } from './CompasSclList.js';
-import { TypeSelectedEvent } from './CompasSclTypeList.js';
 
 import '@compas-oscd/open-scd/dist/WizardDivider.js';
 import './CompasSclTypeList.js';
 import './CompasSclList.js';
+import type { SclSelectedEvent } from './CompasSclList.js';
+import type { TypeSelectedEvent } from './CompasSclTypeList.js';
 
 import { nothing } from 'lit-html';
 import { buildDocName } from './foundation.js';
@@ -53,7 +53,7 @@ export default class CompasOpenElement extends LitElement {
   allowLocalFile = true;
 
   @query('#scl-file')
-  private sclFileUI!: HTMLInputElement;
+  private readonly sclFileUI!: HTMLInputElement;
 
   private async getSclDocument(docId?: string): Promise<void> {
     const doc = await CompasSclDataService()

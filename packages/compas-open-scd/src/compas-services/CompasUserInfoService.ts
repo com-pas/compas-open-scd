@@ -1,15 +1,15 @@
-import {CompasSettings} from "../compas/CompasSettings.js";
-import {handleError, handleResponse, parseXml} from "./foundation.js";
+import { CompasSettings } from '../compas/CompasSettings.js';
+import { handleError, handleResponse, parseXml } from './foundation.js';
+
+function getCompasSettings() {
+  return CompasSettings().compasSettings;
+}
 
 export function CompasUserInfoService() {
-
-  function getCompasSettings() {
-    return CompasSettings().compasSettings;
-  }
-
   return {
     getCompasUserInfo(): Promise<Document> {
-      const userInfoUrl = getCompasSettings().sclDataServiceUrl + '/common/v1/userinfo';
+      const userInfoUrl =
+        getCompasSettings().sclDataServiceUrl + '/common/v1/userinfo';
       return fetch(userInfoUrl)
         .catch(handleError)
         .then(handleResponse)
@@ -18,9 +18,7 @@ export function CompasUserInfoService() {
 
     ping(): Promise<string> {
       const pingUrl = getCompasSettings().sclDataServiceUrl + '/q/health/ready';
-      return fetch(pingUrl)
-        .catch(handleError)
-        .then(handleResponse);
-    }
-  }
+      return fetch(pingUrl).catch(handleError).then(handleResponse);
+    },
+  };
 }

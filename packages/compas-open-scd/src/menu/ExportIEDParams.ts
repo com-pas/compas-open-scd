@@ -241,7 +241,7 @@ export default class ExportIEDParamsPlugin extends LitElement {
           }
           return this.getValue(element, column.attributeName);
         })
-        .filter(value => value!)
+        .filter(value => value)
         .join(' / ');
     });
   }
@@ -254,9 +254,10 @@ export default class ExportIEDParamsPlugin extends LitElement {
   private cvsLines(configuration: Configuration): string[][] {
     const ieds = this.ieds;
     if (ieds.length > 0) {
-      return ieds
-        .sort(compareNames)
-        .map(iedElement => this.cvsLine(configuration, iedElement));
+      const sortedIeds = ieds.sort(compareNames);
+      return sortedIeds.map(iedElement =>
+        this.cvsLine(configuration, iedElement)
+      );
     }
     return [[get('compas.exportIEDParams.noIEDs')]];
   }
@@ -300,7 +301,7 @@ export default class ExportIEDParamsPlugin extends LitElement {
     a.style.display = 'none';
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
+    a.remove();
     setTimeout(function () {
       URL.revokeObjectURL(a.href);
     }, 5000);

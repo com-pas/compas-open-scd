@@ -22,8 +22,8 @@ export async function retrieveUserInfo(element: Element): Promise<void> {
         '10';
       element.dispatchEvent(
         newSetSessionTimeoutsEvent(
-          parseInt(sessionWarning),
-          parseInt(sessionExpires)
+          Number.parseInt(sessionWarning),
+          Number.parseInt(sessionExpires)
         )
       );
     })

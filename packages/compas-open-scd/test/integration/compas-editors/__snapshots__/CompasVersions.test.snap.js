@@ -79,8 +79,7 @@ snapshots["compas-versions-plugin items-in-list looks like the latest snapshot"]
           demo_station1 (Version: 1.0.0)
         </span>
         <span slot="secondary">
-          Who: "Mr Editor", When: "2021-11-22T03:47:00+01:00", What:
-        "SCL created, test configuration for station 0001"
+          Who: "Mr Editor", When: "2021-11-22T03:47:00+01:00", What: "SCL created, test configuration for station 0001"
         </span>
         <span slot="graphic">
           <mwc-icon>
@@ -103,8 +102,7 @@ snapshots["compas-versions-plugin items-in-list looks like the latest snapshot"]
           demo_station1 (Version: 2.0.0)
         </span>
         <span slot="secondary">
-          Who: "Mr Editor", When: "2021-11-22T03:47:16+01:00", What:
-        "SCL updated, Updated the Station with breakers"
+          Who: "Mr Editor", When: "2021-11-22T03:47:16+01:00", What: "SCL updated, Updated the Station with breakers"
         </span>
         <span slot="graphic">
           <mwc-icon>
@@ -127,8 +125,7 @@ snapshots["compas-versions-plugin items-in-list looks like the latest snapshot"]
           3b572a56-51cc-479b-97fd-e404ebf9ae67 (Version: 2.1.0)
         </span>
         <span slot="secondary">
-          Who: "Mr Editor", When: "2021-11-22T03:47:18+01:00", What:
-        "SCL updated, Updated the Station with breakers"
+          Who: "Mr Editor", When: "2021-11-22T03:47:18+01:00", What: "SCL updated, Updated the Station with breakers"
         </span>
         <span slot="graphic">
           <mwc-icon>

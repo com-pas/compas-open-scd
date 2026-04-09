@@ -31,20 +31,20 @@ export interface UpdateRequestBody {
   doc: Document;
 }
 
+function getSclDataServiceUrl(): string {
+  return CompasSettings().compasSettings.sclDataServiceUrl;
+}
+
+function useWebsocket(): boolean {
+  return CompasSettings().useWebsockets();
+}
+
+function listSclTypes(): Promise<Document> {
+  const sclUrl = getSclDataServiceUrl() + '/common/v1/type/list';
+  return fetch(sclUrl).catch(handleError).then(handleResponse).then(parseXml);
+}
+
 export function CompasSclDataService() {
-  function getSclDataServiceUrl(): string {
-    return CompasSettings().compasSettings.sclDataServiceUrl;
-  }
-
-  function useWebsocket(): boolean {
-    return CompasSettings().useWebsockets();
-  }
-
-  function listSclTypes(): Promise<Document> {
-    const sclUrl = getSclDataServiceUrl() + '/common/v1/type/list';
-    return fetch(sclUrl).catch(handleError).then(handleResponse).then(parseXml);
-  }
-
   return {
     listOrderedSclTypes(): Promise<Element[]> {
       return listSclTypes().then(xmlResponse => {
@@ -52,11 +52,11 @@ export function CompasSclDataService() {
           (type1, type2) => {
             const description1 =
               type1
-                .getElementsByTagNameNS(SDS_NAMESPACE, 'Description')!
+                .getElementsByTagNameNS(SDS_NAMESPACE, 'Description')
                 .item(0)!.textContent ?? '';
             const description2 =
               type2
-                .getElementsByTagNameNS(SDS_NAMESPACE, 'Description')!
+                .getElementsByTagNameNS(SDS_NAMESPACE, 'Description')
                 .item(0)!.textContent ?? '';
             return description1.localeCompare(description2);
           }
