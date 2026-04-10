@@ -30,3 +30,7 @@
 	path = packages/external-plugins/oscd-bay-template-editor
 	url = https://github.com/com-pas/oscd-bay-template-editor
 	branch = deploy
+[submodule "packages/external-plugins/oscd-editor-ied"]
+	path = packages/external-plugins/oscd-editor-ied
+	url = https://github.com/OMICRONEnergyOSS/oscd-editor-ied
+	branch = deploy
