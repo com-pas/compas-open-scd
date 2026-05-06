@@ -24,6 +24,22 @@ export const de: Translations = {
       nsdoc: 'NSDoc-Datei konnte nicht geladen werden',
       nsdocDetails: 'Die {{url}} kann nicht geladen werden',
     },
+    codeComponents: {
+      error: 'IEC 61850 Code-Komponenten konnten nicht geladen werden',
+      errorDetails: '{{path}} konnte nicht abgerufen werden ({{status}})',
+    },
+    nsd: {
+      fileMissing: 'NSD-Datei nicht verfügbar',
+      fileMissingDetails: 'NSD-Datei konnte nicht geladen werden: {{filename}}',
+    },
+    nsdoc: {
+      fileMissing: 'NSDoc-Datei nicht verfügbar',
+      fileMissingDetails:
+        'NSDoc-Datei konnte nicht geladen werden: {{filename}}',
+      editionNotSupported: 'IEC 61850 Edition noch nicht unterstützt',
+      editionNotSupportedDetails:
+        'Keine Code-Komponenten für Edition {{edition}} definiert. Es wird auf Mustererkennung zurückgegriffen.',
+    },
     changeset: {
       major: '???',
       minor: '???',
