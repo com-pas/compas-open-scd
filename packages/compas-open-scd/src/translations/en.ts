@@ -33,9 +33,10 @@ export const en = {
     nsdoc: {
       fileMissing: 'NSDoc file not available',
       fileMissingDetails: 'Could not load NSDoc file: {{filename}}',
-      editionNotSupported: 'IEC 61850 edition not yet supported',
+      editionNotSupported:
+        'Could not load NSDoc files for IEC 61850 edition {{edition}}',
       editionNotSupportedDetails:
-        'No code components defined for edition {{edition}}. Falling back to pattern discovery.',
+        'No code components are configured for edition {{edition}}. NSDoc-based validation will not be available.',
     },
     changeset: {
       major: 'Major change',
