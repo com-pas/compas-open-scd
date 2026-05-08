@@ -40,15 +40,10 @@ export async function loadNsdocFilesForEdition(
     return;
   }
 
-  const parts: Array<[string, string]> = [
-    ['7-2', 'IEC 61850-7-2'],
-    ['7-3', 'IEC 61850-7-3'],
-    ['7-4', 'IEC 61850-7-4'],
-    ['8-1', 'IEC 61850-8-1'],
-  ];
+  const parts = ['7-2', '7-3', '7-4', '8-1'];
 
   await Promise.all(
-    parts.map(async ([part, nsdocId]) => {
+    parts.map(async (part) => {
       const entry: CodeComponentEntry | undefined = editionComponents[part];
       if (!entry?.NSDOC) {
         component.dispatchEvent(

@@ -10,23 +10,16 @@ export interface CodeComponentEntry {
 
 export type EditionComponents = Partial<Record<string, CodeComponentEntry>>;
 
-interface CodeComponentsJson {
+export interface CodeComponentsJson {
   IEC61850_code_components: Partial<Record<IEC61850Edition, EditionComponents>>;
 }
 
 const CODE_COMPONENTS_PATH = 'public/xml/IEC61850_code_components.json';
 
-let cachedComponents: CodeComponentsJson | null = null;
+let cachedRequest: Promise<CodeComponentsJson | null> | null = null;
 
 /**
- * Fetches and caches the IEC61850_code_components.json file.
- *
- * The file is served from `public/xml/`. At deploy time the private repo
- * overwrites the bundled baseline with the latest version — so this is always
- * a single fetch against one location.
- *
- * Dispatches an error log event on the given element if the file cannot be
- * fetched or parsed.
+ * Fetches and caches the IEC61850_code_components.json file from `public/xml/`.
  *
  * @param element - Element used for dispatching error log events.
  * @returns The parsed JSON, or null on failure.
@@ -34,10 +27,17 @@ let cachedComponents: CodeComponentsJson | null = null;
 export async function loadCodeComponentsJson(
   element: Element
 ): Promise<CodeComponentsJson | null> {
-  if (cachedComponents !== null) {
-    return cachedComponents;
-  }
+  cachedRequest ??= fetchCodeComponentsJson(element);
+  return cachedRequest;
+}
 
+export function resetCodeComponentsCache(): void {
+  cachedRequest = null;
+}
+
+async function fetchCodeComponentsJson(
+  element: Element
+): Promise<CodeComponentsJson | null> {
   try {
     const response = await fetch(CODE_COMPONENTS_PATH);
     if (!response.ok) {
@@ -46,14 +46,14 @@ export async function loadCodeComponentsJson(
         CODE_COMPONENTS_PATH,
         response.status
       );
+      cachedRequest = null;
       return null;
     }
-    const json = (await response.json()) as CodeComponentsJson;
-    cachedComponents = json;
-    return json;
+    return (await response.json()) as CodeComponentsJson;
   } catch (err) {
     console.warn('Failed to fetch IEC61850 code components JSON:', err);
     dispatchCodeComponentsError(element, CODE_COMPONENTS_PATH);
+    cachedRequest = null;
     return null;
   }
 }

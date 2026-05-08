@@ -36,9 +36,10 @@ export const de: Translations = {
       fileMissing: 'NSDoc-Datei nicht verfügbar',
       fileMissingDetails:
         'NSDoc-Datei konnte nicht geladen werden: {{filename}}',
-      editionNotSupported: 'IEC 61850 Edition noch nicht unterstützt',
+      editionNotSupported:
+        'NSDoc-Dateien für IEC 61850 Edition {{edition}} konnten nicht geladen werden',
       editionNotSupportedDetails:
-        'Keine Code-Komponenten für Edition {{edition}} definiert. Es wird auf Mustererkennung zurückgegriffen.',
+        'Für Edition {{edition}} sind keine Code-Komponenten konfiguriert. NSDoc-basierte Validierung ist nicht verfügbar.',
     },
     changeset: {
       major: '???',
