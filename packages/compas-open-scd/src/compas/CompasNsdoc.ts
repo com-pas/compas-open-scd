@@ -1,80 +1,89 @@
-import {
-  createLogEvent,
-  createNSDocLogEvent,
-} from '../compas-services/foundation.js';
-import { CompasNSDocFileService } from '../compas-services/CompasNSDocFileService.js';
-import { newLoadNsdocEvent } from '@compas-oscd/core';
+import { get } from 'lit-translate';
+import { newLoadNsdocEvent, newLogEvent } from '@compas-oscd/core';
+import type {
+  IEC61850Edition,
+  EditionComponents,
+  CodeComponentEntry,
+} from '../compas-services/CompasCodeComponentsService.js';
 
-interface NsdocFileResponse {
-  id: string;
-  nsdocId: string;
-  filename: string;
-  checksum: string;
-}
-
-interface NsdocListResponse {
-  files: NsdocFileResponse[];
-}
-
-interface NsdocContentResponse {
-  content: string;
-}
+const NSDOC_BASE_PATH = '/public/nsdoc/';
 
 /**
- * Load a single entry. Use the nsdocId to look in the Local Storage, if already loaded,
- * and if the checksum is the same.
- * If one of them isn't the case use the ID to retrieve the content of the NSDoc File and
- * fire the #newLoadNsdocEvent to add the content to the Local Storage.
+ * Loads NSDOC files for the given IEC 61850 edition using filenames from the
+ * code components JSON.
  *
- * @param component - The Element on which the event are dispatched.
- * @param id        - A unique id use to retrieve the content of NSDoc File from the SCL Validator Service.
- * @param nsdocId   - The NSDoc ID to be used in the Local Storage.
- * @param filename  - The name of the file, just for logging.
- * @param checksum  - The checksum of the NSDoc File in the SCL Validator Service.
+ * For each IEC 61850 part (7-2, 7-3, 7-4, 8-1), the NSDOC file is fetched
+ * from `/public/nsdoc/`. Missing or unreachable files are reported as warnings.
+ *
+ * Successfully loaded files are dispatched as `newLoadNsdocEvent` so the
+ * upstream Settings addon stores them in localStorage and re-initializes the
+ * `Nsdoc` object.
+ *
+ * @param component         - Element on which events are dispatched.
+ * @param edition           - The detected IEC 61850 edition.
+ * @param editionComponents - Entry map from code components JSON, or null when
+ *                            the edition has no entries yet (reports an error).
  */
-async function processNsdocFile(
+export async function loadNsdocFilesForEdition(
   component: Element,
-  id: string,
-  nsdocId: string,
-  filename: string,
-  checksum: string
+  edition: IEC61850Edition,
+  editionComponents: EditionComponents | null
 ): Promise<void> {
-  const checksumKey = nsdocId + '.checksum';
-  const checksumStored = localStorage.getItem(checksumKey);
-  if (
-    localStorage.getItem(nsdocId) === null ||
-    checksumStored === null ||
-    checksumStored !== checksum
-  ) {
-    console.info(`Loading NSDoc File '${nsdocId}' with ID '${id}'.`);
-    await CompasNSDocFileService()
-      .getNsdocFile(id)
-      .then((response: NsdocContentResponse) => {
-        component.dispatchEvent(newLoadNsdocEvent(response.content, filename));
-        localStorage.setItem(checksumKey, checksum);
+  if (editionComponents === null) {
+    component.dispatchEvent(
+      newLogEvent({
+        kind: 'error',
+        title: get('compas.nsdoc.editionNotSupported'),
+        message: get('compas.nsdoc.editionNotSupportedDetails', { edition }),
       })
-      .catch(() => {
-        createNSDocLogEvent(component, filename);
-      });
-  } else {
-    console.debug(`Loading NSDoc File '${nsdocId}' skipped, already loaded.`);
+    );
+    return;
   }
-}
 
-/**
- * Call backend to get the list of available NSDoc Files on the SCL Validator Service.
- * Load each item found using the function #processNsdocFile.
- */
-export async function loadNsdocFiles(component: Element): Promise<void> {
-  await CompasNSDocFileService()
-    .listNsdocFiles()
-    .then((response: NsdocListResponse) => {
-      response.files.forEach(nsdocFile => {
-        const { id, nsdocId, filename, checksum } = nsdocFile;
-        processNsdocFile(component, id, nsdocId, filename, checksum);
-      });
+  const parts = ['7-2', '7-3', '7-4', '8-1'];
+
+  await Promise.all(
+    parts.map(async (part) => {
+      const entry: CodeComponentEntry | undefined = editionComponents[part];
+      if (!entry?.NSDOC) {
+        component.dispatchEvent(
+          newLogEvent({
+            kind: 'warning',
+            title: get('compas.nsdoc.fileMissing'),
+            message: get('compas.nsdoc.fileMissingDetails', {
+              filename: `NSDOC for part ${part} (edition ${edition})`,
+            }),
+          })
+        );
+        return;
+      }
+
+      const filename = entry.NSDOC;
+      const url = `${NSDOC_BASE_PATH}${filename}`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          component.dispatchEvent(
+            newLogEvent({
+              kind: 'warning',
+              title: get('compas.nsdoc.fileMissing'),
+              message: get('compas.nsdoc.fileMissingDetails', { filename }),
+            })
+          );
+          return;
+        }
+        const content = await response.text();
+        component.dispatchEvent(newLoadNsdocEvent(content, filename));
+      } catch {
+        component.dispatchEvent(
+          newLogEvent({
+            kind: 'warning',
+            title: get('compas.nsdoc.fileMissing'),
+            message: get('compas.nsdoc.fileMissingDetails', { filename }),
+          })
+        );
+      }
     })
-    .catch(reason => {
-      createLogEvent(component, reason);
-    });
+  );
 }

@@ -44,6 +44,14 @@ import packageJson from '../package.json';
 import { CompasSclDataService } from './compas-services/CompasSclDataService.js';
 import { createLogEvent } from './compas-services/foundation.js';
 import { languages, loader } from './translations/loader.js';
+import {
+  loadCodeComponentsJson,
+  getEditionComponents,
+} from './compas-services/CompasCodeComponentsService.js';
+import { getIec61850Edition } from './compas/IEC61850Edition.js';
+import { loadNsdFilesForEdition } from './compas/CompasNsd.js';
+import { loadNsdocFilesForEdition } from './compas/CompasNsdoc.js';
+import type { IEC61850Edition } from './compas-services/CompasCodeComponentsService.js';
 
 const LNODE_LIB_DOC_ID = 'fc55c46d-c109-4ccd-bf66-9f1d0e135689';
 
@@ -116,6 +124,9 @@ export class OpenSCD extends LitElement {
   /** Object containing all *.nsdoc files and a function extracting element's label form them*/
   @property({ attribute: false })
   nsdoc: Nsdoc = initializeNsdoc();
+
+  /** The IEC 61850 edition of the currently open document. */
+  @state() private currentEdition: IEC61850Edition | undefined = undefined;
 
   private currentSrc = '';
   /** The current file's URL. `blob:` URLs are *revoked after parsing*! */
@@ -230,10 +241,40 @@ export class OpenSCD extends LitElement {
 
     // TODO: let Lit handle the event listeners, move to render()
     this.addEventListener('reset-plugins', this.resetPlugins);
+    this.addEventListener('oscd-open', this.onDocumentOpened);
+    this.addEventListener('open-doc', this.onDocumentOpened);
+  }
+
+  /**
+   * Handles the `open-doc` / `oscd-open` events fired whenever a document is
+   * opened or created. Detects the IEC 61850 edition from the SCL root element
+   * and triggers edition-specific NSD and NSDOC loading when the edition changes.
+   */
+  private async onDocumentOpened(event: CustomEvent): Promise<void> {
+    const doc: XMLDocument | undefined = event.detail?.doc;
+    if (!doc) return;
+
+    const edition = getIec61850Edition(doc);
+    if (edition === undefined || edition === this.currentEdition) return;
+
+    this.currentEdition = edition;
+
+    const components = await loadCodeComponentsJson(this);
+    const editionComponents = components
+      ? getEditionComponents(components, edition)
+      : null;
+
+    await Promise.all([
+      loadNsdFilesForEdition(this, edition, editionComponents),
+      loadNsdocFilesForEdition(this, edition, editionComponents),
+    ]);
   }
 
   disconnectedCallback(): void {
     this.unsubscribers.forEach(u => u());
+    this.removeEventListener('reset-plugins', this.resetPlugins);
+    this.removeEventListener('oscd-open', this.onDocumentOpened);
+    this.removeEventListener('open-doc', this.onDocumentOpened);
   }
 
   /**

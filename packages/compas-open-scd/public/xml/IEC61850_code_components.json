@@ -1,0 +1,24 @@
+{
+  "IEC61850_code_components": {
+    "Edition_1": {},
+    "Edition_2": {},
+    "Edition_2_1": {
+      "7-2": {
+        "NSD": "IEC_61850-7-2_2007B5.nsd",
+        "NSDOC": "IEC_61850-7-2_2007B5-en.nsdoc"
+      },
+      "7-3": {
+        "NSD": "IEC_61850-7-3_2007B5.nsd",
+        "NSDOC": "IEC_61850-7-3_2007B5-en.nsdoc"
+      },
+      "7-4": {
+        "NSD": "IEC_61850-7-4_2007B5.nsd",
+        "NSDOC": "IEC_61850-7-4_2007B5-en.nsdoc"
+      },
+      "8-1": {
+        "NSD": "IEC_61850-8-1_2003A2.nsd",
+        "NSDOC": "IEC_61850-8-1_2003A2-en.nsdoc"
+      }
+    }
+  }
+}

@@ -22,6 +22,22 @@ export const en = {
       nsdoc: 'Could not load NSDoc file',
       nsdocDetails: 'Cannot load {{url}}',
     },
+    codeComponents: {
+      error: 'Could not load IEC 61850 code components',
+      errorDetails: 'Failed to fetch {{path}} ({{status}})',
+    },
+    nsd: {
+      fileMissing: 'NSD file not available',
+      fileMissingDetails: 'Could not load NSD file: {{filename}}',
+    },
+    nsdoc: {
+      fileMissing: 'NSDoc file not available',
+      fileMissingDetails: 'Could not load NSDoc file: {{filename}}',
+      editionNotSupported:
+        'Could not load NSDoc files for IEC 61850 edition {{edition}}',
+      editionNotSupportedDetails:
+        'No code components are configured for edition {{edition}}. NSDoc-based validation will not be available.',
+    },
     changeset: {
       major: 'Major change',
       minor: 'Minor change',
