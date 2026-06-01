@@ -16,8 +16,8 @@ import '../compas/CompasSessionExpiredDialog.js';
 import type { CompasSessionExpiringDialogElement } from '../compas/CompasSessionExpiringDialog.js';
 import type { CompasSessionExpiredDialogElement } from '../compas/CompasSessionExpiredDialog.js';
 
-import { loadNsdocFiles } from '../compas/CompasNsdoc.js';
 import { retrieveUserInfo } from '../compas/CompasUserInfo.js';
+import { loadCodeComponentsJson } from '../compas-services/CompasCodeComponentsService.js';
 
 /** Event to handle the Session Expire Timers value */
 export interface SetSessionTimeoutsDetail {
@@ -132,10 +132,13 @@ export class CompasSession extends LitElement {
       retrieveUserInfo(this).finally(() =>
         console.info('User info retrieved from CoMPAS')
       );
-      // And we will start loading the Nsdoc Files from the Compas Backend Service.
-      loadNsdocFiles(this).finally(() =>
-        console.info('Nsdoc Files loaded from CoMPAS')
-      );
+      // Pre-fetch the code components JSON so it is cached before any project is opened.
+      // Edition-specific NSD/NSDOC loading is triggered in open-scd.ts when a document is opened.
+      loadCodeComponentsJson(this).then(components => {
+        if (components) {
+          console.info('IEC61850 code components JSON loaded.');
+        }
+      });
     });
   }
 
