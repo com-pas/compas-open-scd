@@ -392,5 +392,21 @@ export const officialPlugins = [
     kind: 'menu',
     requireDoc: true,
     position: 'middle',
-  }
+  },
+  {
+    name: 'Engineering Wizard',
+    src: 'https://ase-compas.github.io/compas-transnetbw-plugins/compas/plugins/engineering-wizard/1.3.5/index.js',
+    icon: 'star',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Template Generator',
+    src: 'https://ase-compas.github.io/compas-transnetbw-plugins/compas/plugins/template-generator/2.4.1/index.js',
+    icon: 'copy_all',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
 ];
