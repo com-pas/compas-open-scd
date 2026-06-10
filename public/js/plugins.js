@@ -395,7 +395,7 @@ export const officialPlugins = [
   },
   {
     name: 'Engineering Wizard',
-    src: 'https://ase-compas.github.io/compas-transnetbw-plugins/compas/plugins/engineering-wizard/1.3.5/index.js',
+    src: 'https://transnetbw-openscd.github.io/compas-transnetbw-plugins/bearingpoint/compas/plugins/engineering-wizard/index.js',
     icon: 'star',
     activeByDefault: true,
     kind: 'editor',
@@ -403,7 +403,7 @@ export const officialPlugins = [
   },
   {
     name: 'Template Generator',
-    src: 'https://ase-compas.github.io/compas-transnetbw-plugins/compas/plugins/template-generator/2.4.1/index.js',
+    src: 'https://transnetbw-openscd.github.io/compas-transnetbw-plugins/bearingpoint/compas/plugins/template-generator/index.js',
     icon: 'copy_all',
     activeByDefault: true,
     kind: 'editor',
