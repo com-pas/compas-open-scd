@@ -245,6 +245,15 @@ export const officialPlugins = [
     position: 'middle',
   },
   {
+    name: 'Extract IED',
+    src: '/external-plugins/mbg-ied-extractor/mbg-icd-extractor.js',
+    icon: 'code',
+    activeByDefault: true,
+    kind: 'menu',
+    requireDoc: true,
+    position: 'middle',
+  },
+  {
     name: 'Create Virtual IED',
     src: '/oscd-plugins/menu/VirtualTemplateIED.js',
     icon: 'developer_board',
@@ -392,5 +401,6 @@ export const officialPlugins = [
     kind: 'menu',
     requireDoc: true,
     position: 'middle',
-  }
+  },
+
 ];

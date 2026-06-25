@@ -34,3 +34,7 @@
 	path = packages/external-plugins/oscd-editor-ied
 	url = https://github.com/OMICRONEnergyOSS/oscd-editor-ied
 	branch = deploy
+[submodule "packages/external-plugins/mbg-ied-extractor"]
+	path = packages/external-plugins/mbg-ied-extractor
+	url = https://github.com/meinberg-sync/mbg-ied-extractor
+	branch = gh-pages
