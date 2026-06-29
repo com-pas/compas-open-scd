@@ -96,3 +96,12 @@ Plugins are defined in `remote-plugins.json` at the repository root:
 - Pin downloads to a specific version or commit-based URL rather than a moving
   branch name (e.g. prefer a tagged release URL over a `main` branch URL) so that
   rebuilding the image always produces the same result.
+- To enforce that every plugin has a SHA-256 hash, pass `REQUIRE_SHA256=true` as a
+  Docker build argument:
+
+  ```sh
+  docker build --build-arg REQUIRE_SHA256=true -t compas-open-scd .
+  ```
+
+  The build will fail immediately for any plugin entry that has an empty `sha256`
+  field, making it impossible to accidentally ship un-verified plugins.

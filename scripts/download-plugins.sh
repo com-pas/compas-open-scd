@@ -70,7 +70,11 @@ while [ "$i" -lt "$PLUGIN_COUNT" ]; do
         fi
         echo "  SHA256 OK"
     else
-        echo "  Warning: No SHA256 provided for plugin '$NAME'. Skipping integrity check."
+        echo "  WARNING: No SHA256 provided for plugin '$NAME'. Integrity check skipped." >&2
+        if [ "${REQUIRE_SHA256:-false}" = "true" ]; then
+            echo "Error: REQUIRE_SHA256=true but no sha256 set for plugin '$NAME'." >&2
+            exit 1
+        fi
     fi
 
     i=$((i + 1))

@@ -15,8 +15,11 @@ WORKDIR /build
 COPY remote-plugins.json .
 COPY scripts/download-plugins.sh .
 
+# Set REQUIRE_SHA256=true to make the build fail for any plugin without a sha256 hash.
+ARG REQUIRE_SHA256=false
+
 RUN chmod +x download-plugins.sh && \
-    ./download-plugins.sh remote-plugins.json /build/external-plugins
+    REQUIRE_SHA256="${REQUIRE_SHA256}" ./download-plugins.sh remote-plugins.json /build/external-plugins
 
 # Stage 2: Final nginx image that serves the application and downloaded plugins.
 FROM public.ecr.aws/nginx/nginx:1.31.2
