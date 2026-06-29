@@ -1,0 +1,58 @@
+{
+  "plugins": [
+    {
+      "name": "IED Editor",
+      "url": "https://raw.githubusercontent.com/OMICRONEnergyOSS/oscd-editor-ied/deploy/IedEditor.js",
+      "dest": "IedEditor.js",
+      "sha256": ""
+    },
+    {
+      "name": "Publisher",
+      "url": "https://raw.githubusercontent.com/com-pas/oscd-publisher/deploy/oscd-publisher.js",
+      "dest": "oscd-publisher/oscd-publisher.js",
+      "sha256": ""
+    },
+    {
+      "name": "Communication Explorer",
+      "url": "https://raw.githubusercontent.com/sprinteins/oscd-plugins/gh-pages/communication-explorer/0.0.32/index.js",
+      "dest": "oscd-plugins/communication-explorer/0.0.32/index.js",
+      "sha256": ""
+    },
+    {
+      "name": "Template Generator",
+      "url": "https://raw.githubusercontent.com/com-pas/oscd-template-generator/deploy/oscd-template-generator.js",
+      "dest": "oscd-template-generator/oscd-template-generator.js",
+      "sha256": ""
+    },
+    {
+      "name": "Subscribe (Later Binding)",
+      "url": "https://raw.githubusercontent.com/danyill/oscd-subscriber-later-binding/gh-pages/oscd-subscriber-later-binding.js",
+      "dest": "oscd-subscriber-later-binding/oscd-subscriber-later-binding.js",
+      "sha256": ""
+    },
+    {
+      "name": "Template Update",
+      "url": "https://raw.githubusercontent.com/com-pas/scl-template-update/deploy/scl-template-update.js",
+      "dest": "scl-template-update/scl-template-update.js",
+      "sha256": ""
+    },
+    {
+      "name": "Bay Template",
+      "url": "https://raw.githubusercontent.com/com-pas/scl-bay-template/deploy/scl-bay-template.js",
+      "dest": "scl-bay-template/scl-bay-template.js",
+      "sha256": ""
+    },
+    {
+      "name": "Bay Template Editor",
+      "url": "https://raw.githubusercontent.com/com-pas/oscd-bay-template-editor/deploy/bay-template-editor.js",
+      "dest": "oscd-bay-template-editor/bay-template-editor.js",
+      "sha256": ""
+    },
+    {
+      "name": "Wizarding",
+      "url": "https://raw.githubusercontent.com/openenergytools/scl-wizarding/deploy/scl-wizarding.js",
+      "dest": "scl-wizarding/scl-wizarding.js",
+      "sha256": ""
+    }
+  ]
+}
