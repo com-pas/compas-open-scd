@@ -15,13 +15,18 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Use Node.js 20.x
+      - name: Setup pnpm
+        uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
+        with:
+          cache: true
+          
+      - name: Use Node.js 24.x
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6
         with:
-          node-version: "20.x"
+          node-version: '24.x'
 
       - name: Install and Test
         run: |
-          npm ci
-          npm run-script build
-          npm run-script test
+          pnpm ci
+          pnpm run-script build
+          pnpm run-script test

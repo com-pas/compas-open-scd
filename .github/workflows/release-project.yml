@@ -37,6 +37,7 @@ jobs:
         shell: bash
         # Extra the tagname form the git reference, value of GITHUB_REF will be something like refs/tags/<tag_name>.
         run: echo "##[set-output name=tagname;]$(echo ${GITHUB_REF##*/})"
+      
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@d7f5e7f509e45cec5c76c4d5afdd7de93d0b3df5 #v4.1.0
@@ -45,15 +46,21 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
         with:
-          node-version: '20.x'
+          cache: true
+          
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6
+        with:
+          node-version: '24.x'
 
-      - name: Build application with npm
+      - name: Build application with pnpm
         run: |
-          npm ci
-          npm run-script build
+          pnpm ci
+          pnpm run-script build
       - name: Build and push docker image to Docker Hub
         id: build-push
         uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf #v7.2.0

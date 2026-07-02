@@ -5,9 +5,9 @@
 ## system files
 .DS_Store
 
-## npm
+## pnpm
 node_modules/
-/npm-debug.log
+/pnpm-debug.log
 
 ## testing
 /coverage/

@@ -1,65 +1,58 @@
-# OpenSCD Contributing Guide
+# CoMPAS OpenSCD Contributing Guide
 
-Hi! We're really excited that you're interested in contributing to OpenSCD! Before submitting your contribution, please read through the following guide.
+Hi! We're really excited that you're interested in contributing to CoMPAS OpenSCD! Before submitting your contribution, please read through the following guide.
 
-The easiest way to get in touch is to join us on the [↗ Zulip Chat](https://openscd.zulipchat.com/join/k3cyur3wx526tvafkjwubhjn/). 
+The easiest way to get in touch is to join us on the [↗ Slack compas channel](https://lfenergy.slack.com). 
 If you say "hi" there we will be more than happy to help you find your way around this project.
 
 ## Non-Code Contributions
 
 You don't need to be a software developer to contribute to this effort!
 Apart from contributions in the form of code we are also very thankful for
-- [bug reports](https://github.com/openscd/open-scd/issues?q=is%3Aopen+type%3ABug)
-  alerting us of errors in the `open-scd` component or its `foundation` library
-  functions,
-- [ideas for enhancements](https://github.com/openscd/open-scd/issues?q=is%3Aopen+type%3AFeature)
-  to `open-scd` or its `foundation` library,
-- [improvements to our wiki](https://github.com/openscd/open-scd/wiki)
-  which contains knowledge about how to use both OpenSCD and SCL in general.
+- [bug reports](https://github.com/com-pas/compas-open-scd/issues?q=is%3Aopen+type%3ABug)
+- [ideas for enhancements](https://github.com/com-pas/compas-open-scd/issues?q=is%3Aopen+type%3AFeature)
+- [improvements to our wiki](https://github.com/com-pas/compas-open-scd/wiki)
+  which contains knowledge about how to use both CoMPAS OpenSCD and SCL in general.
 
 ## Code Contributions
 
-> [!NOTE]
-> The following is a set of guidelines for contributing to [OpenSCD](https://github.com/openscd/open-scd#readme), not a list of strict rules.
-> Use your best judgment and feel free to propose changes to this document in a pull request.
+Find our contributing guide, code of conduct and more here: https://com-pas.github.io/contributing/
 
 ### Repo Setup
 
-To develop locally, fork the OpenSCD repository and clone it in your local machine. The OpenSCD repo is a [↗ monorepo](https://en.wikipedia.org/wiki/Monorepo) using pnpm workspaces. The package manager used to install and link dependencies must be [↗ npm](https://docs.npmjs.com/cli/using-npm/workspaces).
-
-To find out more about the development of each packages, such as the base distribution or the plugins, please refer to their respective READMEs:
-- [open-scd](packages/openscd/README.md): provides the base distribution available on [openscd.github.io](https://openscd.github.io)
-- [core](packages/core/README.md): provides the agreed api of OpenSCD Core
-
+To develop locally, fork the CoMPAS OpenSCD repository and clone it in your local machine. The CoMPAS OpenSCD repo uses pnpm as a package manager.
 
 To develop, follow these steps :
 
 1. Install [↗ Node.js](https://nodejs.org/en/download/package-manager)
 
 > [!IMPORTANT]  
-> `Node.js` version should be set to `18.x.x` as there are incompatibilities with higher version
+> `Node.js` version should be set to at leat`22` in order to use `pnpm`. 
 
-2. Run `npm ci` in OpenSCD's root folder.
+2. Install `pnpm`
+```
+npm i -g pnpm@11
+```
 
-3. Run `npm run build` in OpenSCD's root folder.
+3. Run `pnpm install`.
 
-4. Run `npm start` in OpenSCD's root folder.
 
-> [!NOTE]
-> If you run in the following error :
-> `Lerna (powered by Nx)   Daemon process terminated and closed the connection`
-> Rerun `npm start` and it should work as expected
+4. Run `pnpm start`.
 
 To test, follow these steps :
 
 1. Install a compatible compatible [↗ playright](https://playwright.dev/docs/browsers#introduction) browser 
-2. Run `npx playwright install` in OpenSCD's root folder, to install a compatible `playright` browser libraries
+2. Run `npx playwright install` to install a compatible `playright` browser libraries
 
 > [!NOTE]
 > If you are using `chromium`, you might need to add :
 > `CHROME_PATH=path-to-your-chromium-app` in your .env file in OpenSCD's root folder, see `.env.example`.
 
 ### Commit Messages
+
+* **All commits must be signed.** We require signed commits for security purposes.
+  See the [Git documentation](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)
+  for instructions on how to set up commit signing on your machine.
 
 * Use the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
   format for commit messages.
