@@ -31,7 +31,7 @@
 <body>
   <open-scd></open-scd>
 
-  <script src="./src/polyfill/scoped-custom-elements-polyfill.js"></script>
+  <script src="./polyfill/scoped-custom-elements-polyfill.js"></script>
 
   <script>
     const _customElementsDefine = window.customElements.define;
@@ -42,7 +42,7 @@
     };
   </script>
   <script type="module" src="./src/open-scd.js"></script>
-  <script src="./public/init-js/init.js"></script>
+  <script src="./init-js/init.js"></script>
   <script>
     if ('serviceWorker' in navigator)
       navigator.serviceWorker.register('/sw.js');

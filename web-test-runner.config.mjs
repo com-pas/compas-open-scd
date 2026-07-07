@@ -18,6 +18,11 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
    */
   browserLogs: false,
 
+  coverageConfig: {
+    include: ['src/**/*.ts'],
+    exclude: ['**/node_modules/**'],
+  },
+
   /** specify groups for unit and integrations tests
    * hint: no --group definition runs all groups
    */

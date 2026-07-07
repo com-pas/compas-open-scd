@@ -81,7 +81,7 @@ export const officialPlugins = [
   },
   {
     name: 'CoMPAS Versions',
-    src: '/src/compas-editors/CompasVersions.js',
+    src: '/compas-plugins/compas-editors/CompasVersions.js',
     icon: 'copy_all',
     activeByDefault: true,
     kind: 'editor',
@@ -153,7 +153,7 @@ export const officialPlugins = [
   },
   {
     name: 'Open project',
-    src: '/src/menu/CompasOpen.js',
+    src: '/compas-plugins/menu/CompasOpen.js',
     icon: 'folder_open',
     activeByDefault: true,
     kind: 'menu',
@@ -171,7 +171,7 @@ export const officialPlugins = [
   },
   {
     name: 'Project from CIM',
-    src: '/src/menu/CompasCimMapping.js',
+    src: '/compas-plugins/menu/CompasCimMapping.js',
     icon: 'input',
     activeByDefault: true,
     kind: 'menu',
@@ -180,7 +180,7 @@ export const officialPlugins = [
   },
   {
     name: 'Import from API',
-    src: '/src/menu/CompasImportFromApi.js',
+    src: '/compas-plugins/menu/CompasImportFromApi.js',
     icon: 'cloud_download',
     activeByDefault: false,
     kind: 'menu',
@@ -189,7 +189,7 @@ export const officialPlugins = [
   },
   {
     name: 'Save project',
-    src: '/src/menu/CompasSave.js',
+    src: '/compas-plugins/menu/CompasSave.js',
     icon: 'save',
     activeByDefault: true,
     kind: 'menu',
@@ -198,7 +198,7 @@ export const officialPlugins = [
   },
   {
     name: 'Save project as',
-    src: '/src/menu/CompasSaveAs.js',
+    src: '/compas-plugins/menu/CompasSaveAs.js',
     icon: 'save',
     activeByDefault: true,
     kind: 'menu',
@@ -207,7 +207,7 @@ export const officialPlugins = [
   },
   {
     name: 'Save as version',
-    src: '/src/menu/CompasSaveAsVersion.js',
+    src: '/compas-plugins/menu/CompasSaveAsVersion.js',
     icon: 'save',
     activeByDefault: true,
     kind: 'menu',
@@ -216,7 +216,7 @@ export const officialPlugins = [
   },
   {
     name: '[WIP] Validate using OCL',
-    src: '/src/validators/CompasValidateSchema.js',
+    src: '/compas-plugins/validators/CompasValidateSchema.js',
     icon: 'rule_folder',
     activeByDefault: false,
     kind: 'validator'
@@ -237,7 +237,7 @@ export const officialPlugins = [
   },
   {
     name: 'Import IEDs',
-    src: '/src/menu/CompasImportIEDs.js',
+    src: '/compas-plugins/menu/CompasImportIEDs.js',
     icon: 'snippet_folder',
     activeByDefault: true,
     kind: 'menu',
@@ -279,7 +279,7 @@ export const officialPlugins = [
   },
   {
     name: 'Merge Project',
-    src: '/src/menu/CompasMerge.js',
+    src: '/compas-plugins/menu/CompasMerge.js',
     icon: 'merge_type',
     activeByDefault: true,
     kind: 'menu',
@@ -288,7 +288,7 @@ export const officialPlugins = [
   },
   {
     name: 'Update Substation',
-    src: '/src/menu/CompasUpdateSubstation.js',
+    src: '/compas-plugins/menu/CompasUpdateSubstation.js',
     icon: 'merge_type',
     activeByDefault: true,
     kind: 'menu',
@@ -297,7 +297,7 @@ export const officialPlugins = [
   },
   {
     name: 'Compare IED',
-    src: '/src/menu/CompasCompareIED.js',
+    src: '/compas-plugins/menu/CompasCompareIED.js',
     icon: 'compare_arrows',
     activeByDefault: true,
     kind: 'menu',
@@ -306,7 +306,7 @@ export const officialPlugins = [
   },
   {
     name: 'Auto Align SLD',
-    src: '/src/menu/CompasAutoAlignment.js',
+    src: '/compas-plugins/menu/CompasAutoAlignment.js',
     icon: 'dashboard',
     activeByDefault: true,
     kind: 'menu',
@@ -315,7 +315,7 @@ export const officialPlugins = [
   },
   {
     name: 'Export IED Params',
-    src: '/src/menu/ExportIEDParams.js',
+    src: '/compas-plugins/menu/ExportIEDParams.js',
     icon: 'download',
     activeByDefault: false,
     kind: 'menu',
@@ -324,7 +324,7 @@ export const officialPlugins = [
   },
   {
     name: 'Locamation VMU',
-    src: '/src/menu/LocamationVMU.js',
+    src: '/compas-plugins/menu/LocamationVMU.js',
     icon: 'edit_note',
     activeByDefault: false,
     kind: 'menu',
@@ -351,7 +351,7 @@ export const officialPlugins = [
   },
   {
     name: 'CoMPAS Settings',
-    src: '/src/menu/CompasSettings.js',
+    src: '/compas-plugins/menu/CompasSettings.js',
     icon: 'settings',
     activeByDefault: true,
     kind: 'menu',
@@ -378,7 +378,7 @@ export const officialPlugins = [
   },
   {
     name: 'Sitipe',
-    src: '/src/compas-editors/Sitipe.js',
+    src: '/compas-plugins/compas-editors/Sitipe.js',
     icon: 'precision_manufacturing',
     activeByDefault: true,
     kind: 'editor',
@@ -386,7 +386,7 @@ export const officialPlugins = [
   },
   {
     name: 'Autogen Substation',
-    src: '/src/compas-editors/autogen-substation.js',
+    src: '/compas-plugins/compas-editors/autogen-substation.js',
     icon: 'playlist_add_circle',
     activeByDefault: true,
     kind: 'menu',

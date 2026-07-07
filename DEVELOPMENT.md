@@ -12,13 +12,13 @@ If you want to build CoMPAS OpenSCD yourself in order to make some changes to yo
 to the project, you may first want to install [Node.js](https://nodejs.org/) in order to be able to use our local
 development setup.
 
-Once Node.js is installed on your system, you may get started by entering the following lines in your command prompt:
+Once Node.js is installed on your system, make sure you [install `pnpm`](https://pnpm.io/installation), the package manager we use. Then get started by entering the following lines in your command prompt:
 
 ```
 git clone https://github.com/com-pas/compas-open-scd
 cd compas-open-scd
-npm install
-npm start
+pnpm install
+pnpm start
 ```
 
 This will start a local development server and open a browser window which will automatically be reloaded as soon as you
@@ -37,14 +37,13 @@ This project uses [TypeDoc](https://typedoc.org/) to transform documentation com
 
 ## Scripts
 
-We provide the following `npm` scripts for your convenience:
+We provide the following `pnpm` scripts for your convenience:
 
-- `npm start` runs `CoMPAS OpenSCD` for development, reloading on file changes
-- `npm test` runs the test suite with Web Test Runner
-- `npm run lint` runs the linter (fixes problems in your code)
-- `npm run format` runs the formatter (formats your code in a unified way)
-- `npm run doc` builds HTML documentation into the `doc` directory
-- `npm run build` builds a deployable version of the project into the `build` directory
+- `pnpm start` runs `CoMPAS OpenSCD` for development, reloading on file changes
+- `pnpm test` runs the test suite with Web Test Runner
+- `pnpm run lint` runs the linter (fixes problems in your code)
+- `pnpm run format` runs the formatter (formats your code in a unified way)
+- `pnpm run build` builds a deployable version of the project into the `dist` directory
 
 ## Docker
 

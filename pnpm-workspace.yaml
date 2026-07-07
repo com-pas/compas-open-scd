@@ -1,0 +1,6 @@
+saveExact: true
+minimumReleaseAge: 4320 # 3 days
+allowBuilds:
+  core-js-bundle: true
+  core-js-pure: true
+  esbuild: true

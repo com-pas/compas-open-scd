@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 #v7.0.0
         with:
           submodules: 'true'
 
@@ -27,7 +27,7 @@ jobs:
         uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 #v4.1.2
 
       - name: Cache Docker Register
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae #v5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 #v6.1.0
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ hashFiles('**/Dockerfile') }}
@@ -37,26 +37,33 @@ jobs:
         shell: bash
         # Extra the tagname form the git reference, value of GITHUB_REF will be something like refs/tags/<tag_name>.
         run: echo "##[set-output name=tagname;]$(echo ${GITHUB_REF##*/})"
+      
       - name: Set up Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd #v4.0.0
+        uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c #v4.2.0
       - name: Login to Docker Hub
         uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
         with:
-          node-version: '20.x'
+          cache: true
+          
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e #v6
+        with:
+          node-version: '24.x'
 
-      - name: Build application with npm
+      - name: Build application with pnpm
         run: |
-          npm ci
-          npm run-script build
+          pnpm ci
+          pnpm run-script build
       - name: Build and push docker image to Docker Hub
         id: build-push
-        uses: docker/build-push-action@bcafcacb16a39f128d818304e6c9c0c18556b85f #v7.1.0
+        uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a #v7.3.0
         with:
           # Set the context to use the root directory and not execute it's own git checkout.
           context: .
