@@ -51,6 +51,12 @@ It's also possible to run CoMPAS OpenSCD as a docker. All image-related configur
 `distribution/` directory. Of every release a docker image is created and pushed to Docker
 Hub. To run the docker container use the following command.
 
+To build the image locally from the repository root, use:
+
+```sh
+docker build -f distribution/Dockerfile -t compas-open-scd .
+```
+
 ```
 docker run -it --rm -d -p 8080:8080 --name compas-open-scd lfenergy/compas-open-scd:latest
 ```
