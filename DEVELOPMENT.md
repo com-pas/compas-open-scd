@@ -47,7 +47,8 @@ We provide the following `pnpm` scripts for your convenience:
 
 ## Docker
 
-It's also possible to run CoMPAS OpenSCD as a docker. Of every release a docker image is created and pushed to Docker
+It's also possible to run CoMPAS OpenSCD as a docker. All image-related configuration is stored in the
+`distribution/` directory. Of every release a docker image is created and pushed to Docker
 Hub. To run the docker container use the following command.
 
 ```

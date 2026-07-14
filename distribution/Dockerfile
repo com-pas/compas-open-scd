@@ -12,7 +12,7 @@ RUN echo "deb http://deb.debian.org/debian sid main" > /etc/apt/sources.list.d/s
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ./nginx/default.conf.template /etc/nginx/templates/default.conf.template
+COPY ./distribution/nginx/default.conf.template /etc/nginx/templates/default.conf.template
 COPY dist/. /usr/share/nginx/html
 
 ENV NGINX_PORT=8080
