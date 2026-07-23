@@ -392,5 +392,21 @@ export const officialPlugins = [
     kind: 'menu',
     requireDoc: true,
     position: 'middle',
-  }
+  },
+  {
+    name: 'Engineering Wizard',
+    src: 'https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/engineering-wizard/1.0.0/index.js',
+    icon: 'star',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Template Generator',
+    src: 'https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/template-generator/1.0.0/index.js',
+    icon: 'copy_all',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
 ];
