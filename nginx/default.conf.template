@@ -3,6 +3,10 @@ server {
     listen  [::]:${NGINX_PORT};
     server_name  localhost;
 
+    location ^~ /public/ {
+        rewrite ^/public/(.*)$ /$1 last;
+    }
+
     location / {
         root   /usr/share/nginx/html;
         index  index.html index.htm;

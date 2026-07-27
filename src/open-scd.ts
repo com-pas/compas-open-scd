@@ -32,7 +32,7 @@ import {
 } from '@compas-oscd/open-scd/dist/plugin.js';
 import { ActionDetail } from '@material/mwc-list';
 
-import { officialPlugins as builtinPlugins } from '../public/public/js/plugins.js';
+import { officialPlugins as builtinPlugins } from '../public/js/plugins.js';
 import type { PluginSet, Plugin as CorePlugin } from '@compas-oscd/core';
 import { XMLEditor } from '@openscd/oscd-editor';
 import {
