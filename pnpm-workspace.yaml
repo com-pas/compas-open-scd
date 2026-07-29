@@ -4,3 +4,6 @@ allowBuilds:
   core-js-bundle: true
   core-js-pure: true
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@compas-oscd/open-scd'
+  - '@compas-oscd/plugins'

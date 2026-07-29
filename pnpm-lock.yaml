@@ -12,11 +12,11 @@ importers:
         specifier: 0.2.1
         version: 0.2.1
       '@compas-oscd/open-scd':
-        specifier: 0.34.51
-        version: 0.34.51
+        specifier: 0.35.2
+        version: 0.35.2
       '@compas-oscd/plugins':
-        specifier: 0.0.13
-        version: 0.0.13
+        specifier: 0.1.2
+        version: 0.1.2
       '@compas-oscd/xml':
         specifier: 0.0.2
         version: 0.0.2
@@ -856,17 +856,23 @@ packages:
   '@compas-oscd/core@0.2.1':
     resolution: {integrity: sha512-pA1TtMSD+j13FDLiLalK08st7bq+tNE5lmwSQBDDmK0+yzSLUC8MR3IqdBJobNLUhqcR2v5ES8xIR5qbuy1ylg==}
 
-  '@compas-oscd/open-scd@0.34.51':
-    resolution: {integrity: sha512-hZ9qpJolo0CuWmpbogTKvHHJEEkRfw9h9NscbS7CVgUZrHqJ/Ac/0JeBT4/PVY8g9J9EOLX2fk/y6ngqGTBd9A==}
+  '@compas-oscd/core@0.2.3':
+    resolution: {integrity: sha512-SfuKaABmWBc7VA84CHeS4xhJUqGkhD3UFWNNhTZ9gXQ4BxjrDFYqWw61Kanv007G27v98LyZnTgvlDvjPP/b3g==}
 
-  '@compas-oscd/plugins@0.0.13':
-    resolution: {integrity: sha512-zzkMvGTka9lQVVAFB/nT83XbZlYWJhHJd49s5jq6hCiK/3FbBgCYBAxjWK+md6bG/IQQWUiB6wRRBoMcNuzgSQ==}
+  '@compas-oscd/open-scd@0.35.2':
+    resolution: {integrity: sha512-CTI610b1nycODZKIwVQEBYaQbnb91iC7S0Iq6v3u3Uk2HjAx2DvecH0LEvZP35/L2mo81Sgcv8nOndNKgoxDAA==}
+
+  '@compas-oscd/plugins@0.1.2':
+    resolution: {integrity: sha512-moxSZPwXrGiNr0zvJQWARmkiL4mh7ntyARPc9fPFGKIxcj2j47q265aMnIJqM0p0JI9LNSMSFO0JEPoyIr4r/Q==}
 
   '@compas-oscd/xml@0.0.1':
     resolution: {integrity: sha512-pAfpo0ekenyKDLf4IjokMf0ej+L8U4BbHxxJVvKr6/NCdnletXCRoh2zPNIvjWCp4GTq/oIbM1ZInPwa86YLig==}
 
   '@compas-oscd/xml@0.0.2':
     resolution: {integrity: sha512-xt38zEjbC4bIxbvyNs4iHsZqBfLqAVRUnVEkRR3V+2jEvf2v3Oft6WSU/8cR+bBuUAFfeDKsVZHsf10orLgF9w==}
+
+  '@compas-oscd/xml@0.0.5':
+    resolution: {integrity: sha512-Gr7Hb0LB1ek3p2W79G1DiyjxO51LnRh3aFHRITE3R0W1WQJ8QBvrSoPvWsXXSYkqyTwWOd2TVSI94Yez317iLQ==}
 
   '@conventional-changelog/git-client@2.7.0':
     resolution: {integrity: sha512-j7A8/LBEQ+3rugMzPXoKYzyUPpw/0CBQCyvtTR7Lmu4olG4yRC/Tfkq79Mr3yuPs0SUitlO2HwGP3gitMJnRFw==}
@@ -957,11 +963,17 @@ packages:
   '@material/animation@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-R1QbY4fC6RBOoi4Dq/3yuD5OK0ts02WxGt1JXaddsdnO6szZJcfXm2aiCweU1GUpchoah+YzDBJrsmSoqFCKIg==}
 
+  '@material/animation@14.0.0':
+    resolution: {integrity: sha512-VlYSfUaIj/BBVtRZI8Gv0VvzikFf+XgK0Zdgsok5c1v5DDnNz5tpB8mnGrveWz0rHbp1X4+CWLKrTwNmjrw3Xw==}
+
   '@material/animation@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-GBuR4VmcTQW1D0lPXEosf5Giho72LLbyGIydWGtaEUtLJoive/D9kFkwTN4Fsyt9Kkl7hbhs35vrNe6QkAH4/Q==}
 
   '@material/base@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-bCxGPqFQPh3rfBdqG+UvlrnRPSP2CzHhn0f44NqELY/SkmujIfS30rJOX965IKoD6lGdKWIfi/sAm03I81pZ7g==}
+
+  '@material/base@14.0.0':
+    resolution: {integrity: sha512-Ou7vS7n1H4Y10MUZyYAbt6H0t67c6urxoCgeVT7M38aQlaNUwFMODp7KT/myjYz2YULfhu3PtfSV3Sltgac9mA==}
 
   '@material/base@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-UJKbXwZtkrA3sfQDmj8Zbw1Q3Tqtl6KdfVFws95Yf7TCUgTFzbZI/FSx1w7dVugQPOEnIBuZnzqZam/MtHkx4w==}
@@ -969,14 +981,26 @@ packages:
   '@material/button@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-FV44k7WH8d0Z7TjKldEILWXG+bgVz0CplqAYiPiRoxIaGljOq/D7+enuC8tJOUst+zyihVSKyYT69ghWuOKjjg==}
 
+  '@material/button@14.0.0':
+    resolution: {integrity: sha512-dqqHaJq0peyXBZupFzCjmvScrfljyVU66ZCS3oldsaaj5iz8sn33I/45Z4zPzdR5F5z8ExToHkRcXhakj1UEAA==}
+
   '@material/density@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-uCOzDL3U8EAOU6A+3lwbys6lB5P24PwEsNoe5YoB7CmkNS+8LLFPdemp4dMdVY2xGlDX+McaUOKJKmFub4cPUA==}
+
+  '@material/density@14.0.0':
+    resolution: {integrity: sha512-NlxXBV5XjNsKd8UXF4K/+fOXLxoFNecKbsaQO6O2u+iG8QBfFreKRmkhEBb2hPPwC3w8nrODwXX0lHV+toICQw==}
 
   '@material/dialog@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-WOK+HN7HQa3mHvNEsEnleDOHCLRAbpFOhGuGyqnSDOCyxTl2DcNCUqsWupDVDpAlLv2OfLdmceyJrejMF+8q7g==}
 
+  '@material/dialog@14.0.0':
+    resolution: {integrity: sha512-E07NEE4jP8jHaw/y2Il2R1a3f4wDFh2sgfCBtRO/Xh0xxJUMuQ7YXo/F3SAA8jfMbbkUv/PHdJUM3I3HmI9mAA==}
+
   '@material/dom@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-9XvFE2OuOZizYXF3ptyMcJuN/JHZA4vKq5lPLrIbcTXnd4DzJ7L4JrMcMb75xfjugxj8uaXjdfI62gwHfzP/aw==}
+
+  '@material/dom@14.0.0':
+    resolution: {integrity: sha512-8t88XyacclTj8qsIw9q0vEj4PI2KVncLoIsIMzwuMx49P2FZg6TsLjor262MI3Qs00UWAifuLMrhnOnfyrbe7Q==}
 
   '@material/dom@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-aR+rfncF6oi2ivdOlKSJI4UXwNzWV5rXM88MLDoSJF1D7lXxhAKhge+tMUBodWGV/q0+FnXLuVAa0WYTrKjo+A==}
@@ -987,11 +1011,17 @@ packages:
   '@material/elevation@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-fuOG6w7Crz+9iibkBAXOQGYBWMCDZSvXA9PlZFW1JFCHUWyzzTMJeJIaHAVMHFzhbVF/rjqF6CliDZyAz4fULg==}
 
+  '@material/elevation@14.0.0':
+    resolution: {integrity: sha512-Di3tkxTpXwvf1GJUmaC8rd+zVh5dB2SWMBGagL4+kT8UmjSISif/OPRGuGnXs3QhF6nmEjkdC0ijdZLcYQkepw==}
+
   '@material/elevation@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-3h+EkR588RMZ5TSNQ4UeXD1FOBnL3ABQix0DQIGwtNJCqSMoPndT/oJEFvwQbTkZNDbFIKN9p1Q7/KuFPVY8Pw==}
 
   '@material/feature-targeting@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-e72VDSIMrwF5aX4rkQcO1AHewX/ydWOujFtMBk4QD/asyDPKBv+bKwO6f/msM+Wqen8I+DbHC0PH/2K15gQ3pQ==}
+
+  '@material/feature-targeting@14.0.0':
+    resolution: {integrity: sha512-a5WGgHEq5lJeeNL5yevtgoZjBjXWy6+klfVWQEh8oyix/rMJygGgO7gEc52uv8fB8uAIoYEB3iBMOv8jRq8FeA==}
 
   '@material/feature-targeting@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-fn7Af3PRyARtNeYqtjxXmE3Y/dCpnpQVWWys57MqiGR/nvc6qpgOfJ6rOdcu/MrOysOE/oebTUDmDnTmwpe9Hw==}
@@ -999,11 +1029,17 @@ packages:
   '@material/floating-label@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-MZIVki9uD6JMyfQ6v5FIgt2WEZQ3fOCpoOiE8c9cHuNiawVJc3pmoA5wT/38hJs3iMCx86D1jL1vK9UdyIdF7A==}
 
+  '@material/focus-ring@14.0.0':
+    resolution: {integrity: sha512-fqqka6iSfQGJG3Le48RxPCtnOiaLGPDPikhktGbxlyW9srBVMgeCiONfHM7IT/1eu80O0Y67Lh/4ohu5+C+VAQ==}
+
   '@material/form-field@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-wYNyh1RMqEviuWcredWYx8ENEjR1GYdQu/NE9SKlfK7zKsFxF7szwHDd/3cZd7BSYVJUeylveDW+KgXQaW0YpQ==}
 
   '@material/icon-button@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-2cKO9FIEYwQqd6qlvuC2IbZQ3m8xvw690sx+H/+1UFs17TY/STDfJRj1p5qf+MnIqaiz5jsoxQemuUkcej+uBw==}
+
+  '@material/icon-button@14.0.0':
+    resolution: {integrity: sha512-wHMqzm7Q/UwbWLoWv32Li1r2iVYxadIrwTNxT0+p+7NdfI3lEwMN3NoB0CvoJnHTljjXDzce0KJ3nZloa0P0gA==}
 
   '@material/line-ripple@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-9LL/d3jWNesupmwvZtNbV2B1rc1i5BHatFgVt62B1xvfaViRL7EyS0K/+kv9SPWU6nqPLfdj33vOMukn2zIgAg==}
@@ -1160,11 +1196,17 @@ packages:
   '@material/ripple@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-IzBtXi4EWx27Hkfd5Zkx/MrZAXJZe0AAQCo37Etl/af0/aJPIOyCOdHQiwoK2FqRH71pmNfUGrUWOeUxFyaSdw==}
 
+  '@material/ripple@14.0.0':
+    resolution: {integrity: sha512-9XoGBFd5JhFgELgW7pqtiLy+CnCIcV2s9cQ2BWbOQeA8faX9UZIDUx/g76nHLZ7UzKFtsULJxZTwORmsEt2zvw==}
+
   '@material/ripple@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-6g2G62vd8DsMuIUSXlRrzb98qkZ4o8ZREknNwNP2zaLQEOkJ//4j9HaqDt98/3LIjUTY9UIVFTQENiMmlwKHYQ==}
 
   '@material/rtl@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-R7u7w5U+mvRwsj15tpf/CbALs3FrGVidsTkv8C1uZDK1ae490De8HSe839lcFcXmM8c/PFSx5B3rKyQG2AyraQ==}
+
+  '@material/rtl@14.0.0':
+    resolution: {integrity: sha512-xl6OZYyRjuiW2hmbjV2omMV8sQtfmKAjeWnD1RMiAPLCTyOW9Lh/PYYnXjxUrNa0cRwIIbOn5J7OYXokja8puA==}
 
   '@material/rtl@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-f08LT0HSa0WYU+4Jz/tbm1TQ9Fcf2k+H6dPPYv0J1sZmX6hMgCEmNiUdUFLQFvszoXx2XrRi1/hIFjbz2e69Yg==}
@@ -1174,6 +1216,9 @@ packages:
 
   '@material/shape@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-yKC+cqdjGYg3sseZ4baNe9OLhBENHwX2SpJGZORZ7ix4/8pxzFG3wO80eZ8LsldzYem9MmtcbRilBZ4rvvxh0A==}
+
+  '@material/shape@14.0.0':
+    resolution: {integrity: sha512-o0mJB0+feOv473KckI8gFnUo8IQAaEA6ynXzw3VIYFjPi48pJwrxa0mZcJP/OoTXrCbDzDeFJfDPXEmRioBb9A==}
 
   '@material/shape@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-RyjInLCNe+nI/ulKea0ZLHphXQDiDqYazS25SRn18g8Hoa5qGNaY5oOBncDXUYn3jm5oI5kFc9oif//kulkbjg==}
@@ -1202,8 +1247,14 @@ packages:
   '@material/theme@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-r4xYCgc+CrbvDxCINVqXwAFWQ1WgV3s2+bUse/2iw53YqyemhhtzFjfp+DXLdC4zJSOuObWC45eaDKeseLMGMw==}
 
+  '@material/theme@14.0.0':
+    resolution: {integrity: sha512-6/SENWNIFuXzeHMPHrYwbsXKgkvCtWuzzQ3cUu4UEt3KcQ5YpViazIM6h8ByYKZP8A9d8QpkJ0WGX5btGDcVoA==}
+
   '@material/theme@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-S06XAevDCDWMe+GgsEpITMS07imUidzadNaTbJsqssFajBLr53QWVZsG84BpjXKXoYvyEJvb0hX5U0lq6ip9UQ==}
+
+  '@material/tokens@14.0.0':
+    resolution: {integrity: sha512-SXgB9VwsKW4DFkHmJfDIS0x0cGdMWC1D06m6z/WQQ5P5j6/m0pKrbHVlrLzXcRjau+mFhXGvj/KyPo9Pp/Rc8Q==}
 
   '@material/top-app-bar@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-fTS0kOHyUAKBhtz8olDvsCtZ6VxJEJ5QNUAZdHbJsTjig87poLLUP2CKJ18t5DjzW/KFMFjNYMSbah6NOREvqg==}
@@ -1214,8 +1265,14 @@ packages:
   '@material/touch-target@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-aPEMmR+xRI5ywD9JM+njTgU14CCsgRSS7CLZwd+wsfJkMYPCi8rBM3t23bu/jILa4IT6TIe32Ew1xIBVxJNpgQ==}
 
+  '@material/touch-target@14.0.0':
+    resolution: {integrity: sha512-o3kvxmS4HkmZoQTvtzLJrqSG+ezYXkyINm3Uiwio1PTg67pDgK5FRwInkz0VNaWPcw9+5jqjUQGjuZMtjQMq8w==}
+
   '@material/typography@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-lIzU4IFjaSfVRbhsabTiri8CD+fEe9/DaGpoDm89sHm7b8RbN1+m+7OrePICcWgWFo2swRndph8qhzh7gTYdew==}
+
+  '@material/typography@14.0.0':
+    resolution: {integrity: sha512-/QtHBYiTR+TPMryM/CT386B2WlAQf/Ae32V324Z7P40gHLKY/YBXx7FDutAWZFeOerq/two4Nd2aAHBcMM2wMw==}
 
   '@material/typography@14.0.0-canary.53b3cad2f.0':
     resolution: {integrity: sha512-9J0k2fq7uyHsRzRqJDJLGmg3YzRpfRPtFDVeUH/xBcYoqpZE7wYw5Mb7s/l8eP626EtR7HhXhSPjvRTLA6NIJg==}
@@ -6667,10 +6724,19 @@ snapshots:
       '@openscd/oscd-api': 0.1.6
       lit: 2.8.0
 
-  '@compas-oscd/open-scd@0.34.51':
+  '@compas-oscd/core@0.2.3':
+    dependencies:
+      '@lit/localize': 0.11.4
+      '@open-wc/lit-helpers': 0.5.1(lit@2.8.0)
+      '@openscd/oscd-api': 0.1.6
+      lit: 2.8.0
+
+  '@compas-oscd/open-scd@0.35.2':
     dependencies:
       '@compas-oscd/core': 0.1.23
       '@compas-oscd/xml': 0.0.1
+      '@material/mwc-button': 0.22.1
+      '@material/mwc-checkbox': 0.22.1
       '@material/mwc-dialog': 0.22.1
       '@material/mwc-drawer': 0.22.1
       '@material/mwc-fab': 0.22.1
@@ -6693,15 +6759,20 @@ snapshots:
       '@openscd/oscd-editor': 1.8.0
       ace-custom-element: 1.6.5
       lit: 2.8.0
+      lit-element: 2.5.1
+      lit-html: 1.4.1
       lit-translate: 1.2.1
       marked: 4.3.0
       panzoom: 9.4.4
 
-  '@compas-oscd/plugins@0.0.13':
+  '@compas-oscd/plugins@0.1.2':
     dependencies:
-      '@compas-oscd/core': 0.1.23
-      '@compas-oscd/open-scd': 0.34.51
-      '@compas-oscd/xml': 0.0.1
+      '@compas-oscd/core': 0.2.3
+      '@compas-oscd/open-scd': 0.35.2
+      '@compas-oscd/xml': 0.0.5
+      '@material/dialog': 14.0.0
+      '@material/mwc-button': 0.22.1
+      '@material/mwc-checkbox': 0.22.1
       '@material/mwc-dialog': 0.22.1
       '@material/mwc-fab': 0.22.1
       '@material/mwc-formfield': 0.22.1
@@ -6710,6 +6781,7 @@ snapshots:
       '@material/mwc-icon-button-toggle': 0.22.1
       '@material/mwc-list': 0.22.1
       '@material/mwc-menu': 0.22.1
+      '@material/mwc-radio': 0.22.1
       '@material/mwc-select': 0.22.1
       '@material/mwc-switch': 0.22.1
       '@material/mwc-textarea': 0.22.1
@@ -6717,6 +6789,8 @@ snapshots:
       '@omicronenergy/oscd-ui': 0.0.11
       '@openenergytools/scl-lib': 1.8.0
       lit: 2.8.0
+      lit-element: 2.5.1
+      lit-html: 1.4.1
       lit-translate: 1.2.1
       marked: 4.3.0
       panzoom: 9.4.4
@@ -6724,6 +6798,8 @@ snapshots:
   '@compas-oscd/xml@0.0.1': {}
 
   '@compas-oscd/xml@0.0.2': {}
+
+  '@compas-oscd/xml@0.0.5': {}
 
   '@conventional-changelog/git-client@2.7.0(conventional-commits-parser@6.4.0)':
     dependencies:
@@ -6831,11 +6907,19 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@material/animation@14.0.0':
+    dependencies:
+      tslib: 2.8.1
+
   '@material/animation@14.0.0-canary.53b3cad2f.0':
     dependencies:
       tslib: 2.8.1
 
   '@material/base@12.0.0-canary.22d29cbb4.0':
+    dependencies:
+      tslib: 2.8.1
+
+  '@material/base@14.0.0':
     dependencies:
       tslib: 2.8.1
 
@@ -6857,7 +6941,27 @@ snapshots:
       '@material/typography': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
 
+  '@material/button@14.0.0':
+    dependencies:
+      '@material/density': 14.0.0
+      '@material/dom': 14.0.0
+      '@material/elevation': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/focus-ring': 14.0.0
+      '@material/ripple': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/shape': 14.0.0
+      '@material/theme': 14.0.0
+      '@material/tokens': 14.0.0
+      '@material/touch-target': 14.0.0
+      '@material/typography': 14.0.0
+      tslib: 2.8.1
+
   '@material/density@12.0.0-canary.22d29cbb4.0':
+    dependencies:
+      tslib: 2.8.1
+
+  '@material/density@14.0.0':
     dependencies:
       tslib: 2.8.1
 
@@ -6878,9 +6982,32 @@ snapshots:
       '@material/typography': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
 
+  '@material/dialog@14.0.0':
+    dependencies:
+      '@material/animation': 14.0.0
+      '@material/base': 14.0.0
+      '@material/button': 14.0.0
+      '@material/dom': 14.0.0
+      '@material/elevation': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/icon-button': 14.0.0
+      '@material/ripple': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/shape': 14.0.0
+      '@material/theme': 14.0.0
+      '@material/tokens': 14.0.0
+      '@material/touch-target': 14.0.0
+      '@material/typography': 14.0.0
+      tslib: 2.8.1
+
   '@material/dom@12.0.0-canary.22d29cbb4.0':
     dependencies:
       '@material/feature-targeting': 12.0.0-canary.22d29cbb4.0
+      tslib: 2.8.1
+
+  '@material/dom@14.0.0':
+    dependencies:
+      '@material/feature-targeting': 14.0.0
       tslib: 2.8.1
 
   '@material/dom@14.0.0-canary.53b3cad2f.0':
@@ -6911,6 +7038,15 @@ snapshots:
       '@material/theme': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
 
+  '@material/elevation@14.0.0':
+    dependencies:
+      '@material/animation': 14.0.0
+      '@material/base': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/theme': 14.0.0
+      tslib: 2.8.1
+
   '@material/elevation@14.0.0-canary.53b3cad2f.0':
     dependencies:
       '@material/animation': 14.0.0-canary.53b3cad2f.0
@@ -6921,6 +7057,10 @@ snapshots:
       tslib: 2.8.1
 
   '@material/feature-targeting@12.0.0-canary.22d29cbb4.0':
+    dependencies:
+      tslib: 2.8.1
+
+  '@material/feature-targeting@14.0.0':
     dependencies:
       tslib: 2.8.1
 
@@ -6938,6 +7078,12 @@ snapshots:
       '@material/theme': 12.0.0-canary.22d29cbb4.0
       '@material/typography': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
+
+  '@material/focus-ring@14.0.0':
+    dependencies:
+      '@material/dom': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/rtl': 14.0.0
 
   '@material/form-field@12.0.0-canary.22d29cbb4.0':
     dependencies:
@@ -6958,6 +7104,20 @@ snapshots:
       '@material/rtl': 12.0.0-canary.22d29cbb4.0
       '@material/theme': 12.0.0-canary.22d29cbb4.0
       '@material/touch-target': 12.0.0-canary.22d29cbb4.0
+      tslib: 2.8.1
+
+  '@material/icon-button@14.0.0':
+    dependencies:
+      '@material/base': 14.0.0
+      '@material/density': 14.0.0
+      '@material/dom': 14.0.0
+      '@material/elevation': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/focus-ring': 14.0.0
+      '@material/ripple': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/theme': 14.0.0
+      '@material/touch-target': 14.0.0
       tslib: 2.8.1
 
   '@material/line-ripple@12.0.0-canary.22d29cbb4.0':
@@ -7329,6 +7489,16 @@ snapshots:
       '@material/theme': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
 
+  '@material/ripple@14.0.0':
+    dependencies:
+      '@material/animation': 14.0.0
+      '@material/base': 14.0.0
+      '@material/dom': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/theme': 14.0.0
+      tslib: 2.8.1
+
   '@material/ripple@14.0.0-canary.53b3cad2f.0':
     dependencies:
       '@material/animation': 14.0.0-canary.53b3cad2f.0
@@ -7342,6 +7512,11 @@ snapshots:
   '@material/rtl@12.0.0-canary.22d29cbb4.0':
     dependencies:
       '@material/theme': 12.0.0-canary.22d29cbb4.0
+      tslib: 2.8.1
+
+  '@material/rtl@14.0.0':
+    dependencies:
+      '@material/theme': 14.0.0
       tslib: 2.8.1
 
   '@material/rtl@14.0.0-canary.53b3cad2f.0':
@@ -7374,6 +7549,13 @@ snapshots:
       '@material/feature-targeting': 12.0.0-canary.22d29cbb4.0
       '@material/rtl': 12.0.0-canary.22d29cbb4.0
       '@material/theme': 12.0.0-canary.22d29cbb4.0
+      tslib: 2.8.1
+
+  '@material/shape@14.0.0':
+    dependencies:
+      '@material/feature-targeting': 14.0.0
+      '@material/rtl': 14.0.0
+      '@material/theme': 14.0.0
       tslib: 2.8.1
 
   '@material/shape@14.0.0-canary.53b3cad2f.0':
@@ -7478,10 +7660,19 @@ snapshots:
       '@material/feature-targeting': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
 
+  '@material/theme@14.0.0':
+    dependencies:
+      '@material/feature-targeting': 14.0.0
+      tslib: 2.8.1
+
   '@material/theme@14.0.0-canary.53b3cad2f.0':
     dependencies:
       '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
       tslib: 2.8.1
+
+  '@material/tokens@14.0.0':
+    dependencies:
+      '@material/elevation': 14.0.0
 
   '@material/top-app-bar@12.0.0-canary.22d29cbb4.0':
     dependencies:
@@ -7513,10 +7704,23 @@ snapshots:
       '@material/feature-targeting': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
 
+  '@material/touch-target@14.0.0':
+    dependencies:
+      '@material/base': 14.0.0
+      '@material/feature-targeting': 14.0.0
+      '@material/rtl': 14.0.0
+      tslib: 2.8.1
+
   '@material/typography@12.0.0-canary.22d29cbb4.0':
     dependencies:
       '@material/feature-targeting': 12.0.0-canary.22d29cbb4.0
       '@material/theme': 12.0.0-canary.22d29cbb4.0
+      tslib: 2.8.1
+
+  '@material/typography@14.0.0':
+    dependencies:
+      '@material/feature-targeting': 14.0.0
+      '@material/theme': 14.0.0
       tslib: 2.8.1
 
   '@material/typography@14.0.0-canary.53b3cad2f.0':

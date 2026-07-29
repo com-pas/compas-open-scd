@@ -20,8 +20,8 @@
   "packageManager": "pnpm@11.5.0",
   "dependencies": {
     "@compas-oscd/core": "0.2.1",
-    "@compas-oscd/open-scd": "0.34.51",
-    "@compas-oscd/plugins": "0.0.13",
+    "@compas-oscd/open-scd": "0.35.2",
+    "@compas-oscd/plugins": "0.1.2",
     "@compas-oscd/xml": "0.0.2",
     "@material/mwc-button": "0.22.1",
     "@material/mwc-dialog": "0.22.1",
