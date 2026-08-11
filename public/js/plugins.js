@@ -112,6 +112,14 @@ export const officialPlugins = [
     requireDoc: true,
   },
   {
+    name: 'Template Generator (TransnetBW)',
+    src: '/external-plugins/transnetbw-plugins/compas/plugins/template-generator/1.0.0/index.js',
+    icon: 'copy_all',
+    activeByDefault: false,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
     name: 'Cleanup',
     src: '/oscd-plugins/editors/Cleanup.js',
     icon: 'cleaning_services',
