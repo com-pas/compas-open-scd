@@ -17,6 +17,7 @@ Once Node.js is installed on your system, make sure you [install `pnpm`](https:/
 ```
 git clone https://github.com/com-pas/compas-open-scd
 cd compas-open-scd
+git submodule update --init --recursive
 pnpm install
 pnpm start
 ```
