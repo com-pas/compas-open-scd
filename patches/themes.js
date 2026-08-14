@@ -5,8 +5,8 @@ export function getTheme(theme) {
     ${themes[theme]}
     <style>
       * {
-        --primary: var(--cyan);
-        --secondary: var(--violet);
+        --primary: #330000;  /* var(--cyan); */
+        --secondary: #98847A; /* var(--violet); */
         --mdc-theme-primary: var(--primary);
         --mdc-theme-secondary: var(--secondary);
         --mdc-theme-background: var(--base3);
@@ -37,8 +37,8 @@ export function getTheme(theme) {
 
         --mdc-icon-font: 'Material Icons Outlined';
 
-        --oscd-primary: var(--oscd-theme-primary, var(--cyan));
-        --oscd-secondary: var(--oscd-theme-secondary, var(--violet));
+        --oscd-primary: var(--oscd-theme-primary, var(--primary, var(--cyan)));
+        --oscd-secondary: var(--oscd-theme-secondary, var(--primary, var(--violet)));
         --oscd-error: var(--oscd-theme-error, var(--red));
 
         --oscd-base03: var(--oscd-theme-base03, var(--base03));
@@ -99,7 +99,7 @@ export function getTheme(theme) {
 }
 const bodyStyles = {
     dark: 'background: #073642',
-    light: 'background: #eee8d5',
+    light: 'background: #ffffff', /* #eee8d5', */
 };
 const themes = {
     light: html `
@@ -111,8 +111,8 @@ const themes = {
         --base00: #657b83;
         --base0: #839496;
         --base1: #93a1a1;
-        --base2: #eee8d5;
-        --base3: #fdf6e3;
+        --base2: #ffffff; /* #eee8d5; */
+        --base3: #e3e3e3; /* #fdf6e3; */
         --yellow: #b58900;
         --orange: #cb4b16;
         --red: #dc322f;
