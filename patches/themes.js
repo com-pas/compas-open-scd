@@ -6,12 +6,13 @@ export function getTheme(theme) {
     <style>
       * {
         --primary: #330000;  /* var(--cyan); */
+        --on-primary: white;
         --secondary: #98847A; /* var(--violet); */
         --mdc-theme-primary: var(--primary);
         --mdc-theme-secondary: var(--secondary);
         --mdc-theme-background: var(--base3);
         --mdc-theme-surface: var(--base3);
-        --mdc-theme-on-primary: var(--base2);
+        --mdc-theme-on-primary: var(--on-primary);
         --mdc-theme-on-secondary: var(--base2);
         --mdc-theme-on-background: var(--base00);
         --mdc-theme-on-surface: var(--base00);
@@ -38,6 +39,7 @@ export function getTheme(theme) {
         --mdc-icon-font: 'Material Icons Outlined';
 
         --oscd-primary: var(--oscd-theme-primary, var(--primary, var(--cyan)));
+        --oscd-on-primary: var(--oscd-theme-on-primary, var(--on-primary, var(--base2)));
         --oscd-secondary: var(--oscd-theme-secondary, var(--primary, var(--violet)));
         --oscd-error: var(--oscd-theme-error, var(--red));
 
@@ -75,7 +77,7 @@ export function getTheme(theme) {
         /* --md-menu-item-selected-label-text-color: var(--oscd-base01); */
         --md-icon-button-disabled-icon-color: var(--oscd-base3);
 
-        /* textfield */ disabled-label-text-color
+        /* textfield */
         --md-filled-text-field-container-color: var(--oscd-base2);
         --md-filled-text-field-disabled-container-color: var(--oscd-base3);
         --md-filled-text-field-disabled-input-text-color: var(--oscd-base00);

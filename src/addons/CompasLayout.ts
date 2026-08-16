@@ -3,6 +3,7 @@ import {
   html,
   property,
   TemplateResult,
+  css,
 } from 'lit-element';
 import { get } from 'lit-translate';
 import { classMap } from 'lit-html/directives/class-map.js';
@@ -50,15 +51,90 @@ export class CompasLayout extends OscdLayout {
   @property({ type: String }) username: string | undefined;
   @property({ attribute: false }) compasApi?: CompasApi;
 
+  static styles: any = [
+    OscdLayout.styles,
+    css`
+      #compas-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+      }
+      #app-title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Roboto, sans-serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: white;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+      oscd-menu-tabs {
+        --mdc-tab-text-label-color-default: white;
+        --mdc-tab-color-default: white;
+        --mdc-theme-on-primary: yellow;
+      }
+      :host(.hide-editor-tabs) oscd-menu-tabs {
+        display: none !important;
+      }
+    `,
+  ];
+
   connectedCallback(): void {
     super.connectedCallback();
 
     this.onUserInfo = this.onUserInfo.bind(this);
     this.host.addEventListener('userinfo', this.onUserInfo);
+
+    /** Engineering Wizard hides/shows oscd-menu-tabs (IED, Substation, …) for its fullscreen views. */
+    this.addEventListener('toggle-editor-tabs', (e: Event) => {
+      const { detail } = e as CustomEvent<{ visible?: boolean }>;
+      const visible = detail?.visible ?? true;
+      this.classList.toggle('hide-editor-tabs', !visible);
+    });
   }
 
   private onUserInfo(event: UserInfoEvent) {
     this.username = event.detail.name;
+  }
+
+  protected renderTitle(): TemplateResult {
+    return this.componentHtml`
+      <div slot="title">
+        <span id="app-title">${this.docName}</span>
+      </div>
+    `;
+  }
+
+  protected renderHeader(): TemplateResult {
+    return this.componentHtml`
+      <mwc-top-app-bar-fixed>
+        <mwc-icon-button
+          icon="menu"
+          label="Menu"
+          slot="navigationIcon"
+          @click=${() => ((this as any).menuUI.open = true)}
+        ></mwc-icon-button>
+        <div slot="title" id="title" style="display: flex; flex-direction: row; align-items: center; width: 50vw;">
+          <img
+            src="../../public/bearingpoint.bdegree.logo.png"
+            alt="BearingPoint B°"
+            style="height: 30px; width: auto;"
+          />
+          <img
+            src="../../public/bearingpoint.logo.png"
+            alt="BearingPoint"
+            style="height: 25px; width: auto; margin-top: 4px; margin-left: 0.6rem;"
+          />
+        </div>
+        ${this.renderTitle()}
+        ${this.renderActionItems()}
+      </mwc-top-app-bar-fixed>
+    `;
   }
 
   protected renderPluginContent(plugin: RenderAblePlugin): TemplateResult {
