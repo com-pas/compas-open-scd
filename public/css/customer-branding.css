@@ -1,0 +1,76 @@
+/*
+ * Customer branding overrides.
+ *
+ * Set only --oscd-theme-* here. OpenSCD maps them to --oscd-*, --mdc-*, and --md-*.
+ * Unset tokens keep the Solarized defaults from themes.ts.
+ * Use light-dark(<light>, <dark>) so the app light/dark setting is respected.
+ *
+ * --oscd-theme-body-bg is independent of --oscd-theme-base2 (page background vs UI surfaces).
+ */
+* {
+  /* White / Black */
+  --white: #ffffff;
+  --black: #330000;
+
+  /* Gray scale */
+  --gray-10: #faf8f7;
+  --gray-20: #e6deda;
+  --gray-30: #ccc1bc;
+  --gray-40: #b2a59f;
+  --gray-50: #98847a;
+  --gray-60: #806659;
+  --gray-70: #735c50;
+  --gray-80: #665247;
+  --gray-90: #5a473e;
+
+  /* Interactive */
+  --interactive-100: #e5d6ff;
+  --interactive-500: #a070ff;
+  --interactive-700: #704eb2;
+
+  /* Success */
+  --success-100: #def0e6;
+  --success-500: #239c5b;
+  --success-700: #1c7d49;
+
+  /* Warning */
+  --warning-100: #fff0b9;
+  --warning-500: #ffcc17;
+  --warning-700: #e5b815;
+
+  /* Danger */
+  --danger-100: #ffd6d8;
+  --danger-500: #ff3d47;
+  --danger-700: #cc2931;
+
+  --oscd-theme-body-bg: light-dark(var(--white), var(--black));
+  --oscd-theme-primary: var(--black);
+  --oscd-theme-on-primary: var(--white);
+  --oscd-theme-secondary: var(--gray-50);
+  --oscd-theme-on-secondary: var(--black);
+  --oscd-theme-error: var(--danger-500);
+  --oscd-theme-warning: var(--warning-500);
+  --oscd-theme-success: var(--success-500);
+  --oscd-theme-black: light-dark(var(--black), var(--white));
+  --oscd-theme-white: light-dark(var(--white), var(--black));
+  
+  --oscd-theme-base03: light-dark(var(--gray-90), var(--gray-10));
+  --oscd-theme-base02: light-dark(var(--gray-80), var(--gray-20));
+  --oscd-theme-base01: light-dark(var(--gray-70), var(--gray-30));
+  --oscd-theme-base00: light-dark(var(--gray-60), var(--gray-40));
+  --oscd-theme-base0: light-dark(var(--gray-40), var(--gray-60));
+  --oscd-theme-base1: light-dark(var(--gray-30), var(--gray-70));
+  --oscd-theme-base2: light-dark(var(--gray-20), var(--gray-80));
+  --oscd-theme-base3: light-dark(var(--gray-10), var(--gray-90));
+  --oscd-theme-yellow: #b58900;
+  --oscd-theme-orange: #cb4b16;
+  --oscd-theme-red: #dc322f;
+  --oscd-theme-magenta: #d33682;
+  --oscd-theme-violet: #6c71c4;
+  --oscd-theme-blue: #268bd2;
+  --oscd-theme-cyan: #2aa198;
+  --oscd-theme-green: #859900;
+  
+  --oscd-theme-text-font: 'Roboto';
+  --oscd-theme-icon-font: 'Material Icons Outlined';
+}

@@ -82,6 +82,39 @@ export class CompasLayout extends OscdLayout {
         display: none !important;
       }
     `,
+    // fixes from open-scd project for Issue #534 (PR comming soon)
+    css`
+      /* mwc-drawer hardcodes title/subtitle to rgba(0,0,0,…). Color the slotted
+       * nodes here so they follow the Solarized scale in light and dark. */
+      mwc-drawer [slot='title'] {
+        color: var(--oscd-base02);
+      }
+  
+      mwc-drawer [slot='subtitle'] {
+        color: var(--oscd-base01);
+      }
+  
+      mwc-top-app-bar-fixed {
+        /* MWC reads --mdc-theme-on-primary for icon ink. Rebind only here:
+         * the global --mdc-theme-on-primary is frozen to --oscd-base2 for plugins. */
+        --mdc-theme-on-primary: var(--oscd-on-primary);
+        --mdc-theme-text-disabled-on-light: color-mix(
+          in srgb,
+          var(--oscd-on-primary) 38%,
+          transparent
+        );
+      }
+  
+      mwc-tab {
+        background-color: var(--oscd-primary);
+        --mdc-theme-primary: var(--oscd-nav-active);
+      }
+
+      .landing_icon {
+        color: var(--oscd-on-secondary);
+        background: var(--oscd-secondary);
+      }
+    `,
   ];
 
   connectedCallback(): void {
