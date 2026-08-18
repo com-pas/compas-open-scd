@@ -19,6 +19,7 @@ export function getTheme(theme) {
       /*
        * Token layers:
        *   --oscd-theme-*     customer overrides (customer-branding.css)
+       *   --oscd-theme-branding  optional brand id for plugin style queries
        *   --oscd-*           resolved tokens for OpenSCD and plugins
        *   --mdc-theme-*      legacy Material aliases; do not use, may be removed
        *   --md-*             Material Design 3 mappings for MD3 components
@@ -50,18 +51,19 @@ export function getTheme(theme) {
          * (--oscd-on-*) are independent so branding can keep a fixed primary
          * and still pick a readable ink (or let ink follow base2). */
         --oscd-primary: var(--oscd-theme-primary, var(--oscd-cyan));
-        --oscd-secondary: var(--oscd-theme-secondary, var(--oscd-violet));
-        --oscd-error: var(--oscd-theme-error, var(--oscd-red));
-        --oscd-warning: var(--oscd-theme-warning, var(--oscd-yellow));
-        --oscd-success: var(--oscd-theme-success, var(--oscd-green));
-        --oscd-black: var(--oscd-theme-black, light-dark(#000000, #ffffff));
-        --oscd-white: var(--oscd-theme-white, light-dark(#ffffff, #000000));
-        --oscd-success: var(--oscd-theme-success, var(--oscd-green));
         --oscd-on-primary: var(--oscd-theme-on-primary, var(--oscd-base2));
+        --oscd-secondary: var(--oscd-theme-secondary, var(--oscd-violet));
         --oscd-on-secondary: var(--oscd-theme-on-secondary, var(--oscd-base2));
-        --oscd-on-error: var(--oscd-theme-on-error, var(--oscd-base3));
+        --oscd-error: var(--oscd-theme-error, #ff3d47);
+        --oscd-on-error: var(--oscd-theme-on-error, #073642);
+        --oscd-warning: var(--oscd-theme-warning, #ffcc17);
         --oscd-on-warning: var(--oscd-theme-on-warning, #073642);
+        --oscd-success: var(--oscd-theme-success, #239c5b);
         --oscd-on-success: var(--oscd-theme-on-success, #073642);
+
+        /* paper = lightest ground, ink = darkest mark. Values swap in dark mode. */
+        --oscd-paper: var(--oscd-theme-paper, light-dark(#ffffff, #000000));
+        --oscd-ink: var(--oscd-theme-ink, light-dark(#000000, #ffffff));
         --oscd-nav-active: var(--oscd-theme-nav-active, var(--oscd-on-primary));
 
         --oscd-text-font: var(--oscd-theme-text-font, 'Roboto');

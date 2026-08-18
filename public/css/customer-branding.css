@@ -6,8 +6,15 @@
  * Use light-dark(<light>, <dark>) so the app light/dark setting is respected.
  *
  * --oscd-theme-body-bg is independent of --oscd-theme-base2 (page background vs UI surfaces).
+ * --oscd-theme-paper / --oscd-theme-ink are the lightest ground and darkest mark
+ * (they swap in dark mode; they are not always #fff / #000).
+ *
+ * --oscd-theme-branding lets plugins target this host for quickfixes:
+ *   @container style(--oscd-theme-branding: Bearingpoint) { ... }
  */
 * {
+  --oscd-theme-branding: Bearingpoint;
+
   /* White / Black */
   --white: #ffffff;
   --black: #330000;
@@ -46,13 +53,14 @@
   --oscd-theme-body-bg: light-dark(var(--white), var(--black));
   --oscd-theme-primary: var(--black);
   --oscd-theme-on-primary: var(--white);
-  --oscd-theme-secondary: var(--gray-50);
+  --oscd-theme-nav-active: yellow; /* oder --warning-500 ? */
+  --oscd-theme-secondary: var(--interactive-500);
   --oscd-theme-on-secondary: var(--black);
   --oscd-theme-error: var(--danger-500);
   --oscd-theme-warning: var(--warning-500);
   --oscd-theme-success: var(--success-500);
-  --oscd-theme-black: light-dark(var(--black), var(--white));
-  --oscd-theme-white: light-dark(var(--white), var(--black));
+  --oscd-theme-ink: light-dark(var(--black), var(--white));
+  --oscd-theme-paper: light-dark(var(--white), var(--black));
   
   --oscd-theme-base03: light-dark(var(--gray-90), var(--gray-10));
   --oscd-theme-base02: light-dark(var(--gray-80), var(--gray-20));

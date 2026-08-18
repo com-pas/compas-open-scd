@@ -82,7 +82,8 @@ export class CompasLayout extends OscdLayout {
         display: none !important;
       }
     `,
-    // fixes from open-scd project for Issue #534 (PR comming soon)
+    // TODO: Delete this block when Open-SCD is upgraded to the release that
+    // already contains these Layout / menu-tabs theme fixes (issue #534).
     css`
       /* mwc-drawer hardcodes title/subtitle to rgba(0,0,0,…). Color the slotted
        * nodes here so they follow the Solarized scale in light and dark. */
