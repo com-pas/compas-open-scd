@@ -30,8 +30,8 @@ importers:
         specifier: 0.22.1
         version: 0.22.1
       '@material/mwc-fab':
-        specifier: 0.22.1
-        version: 0.22.1
+        specifier: 0.27.0
+        version: 0.27.0
       '@material/mwc-formfield':
         specifier: 0.22.1
         version: 0.22.1
@@ -1084,6 +1084,10 @@ packages:
     resolution: {integrity: sha512-KFzZFFr/Nq3bJ0JJyEy7SHsvVLhoqMCTELEjcy2s4fZYT1mLUmHK+Iip1vuKP2I96Yvnym4wkFEcwz/zAMCWbA==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
 
+  '@material/mwc-fab@0.27.0':
+    resolution: {integrity: sha512-7XUxeO14etuXe0FQdB1Y6bg8TilbQKX/NGi9b0O6D0hkcY3Y0Vk2xyoAvQArbHRz3hGfiH1cS7FaJGRSilWcjg==}
+    deprecated: MWC beta is longer supported. Please upgrade to @material/web
+
   '@material/mwc-floating-label@0.22.1':
     resolution: {integrity: sha512-BkFt9WL8RE05JESv73egh7XUsmXALL78u1ev98T579SER3kwfIepQhXTvAAnFRHFa7QjT8qa/U6RmsvHe1zYbg==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
@@ -1130,6 +1134,10 @@ packages:
 
   '@material/mwc-ripple@0.22.1':
     resolution: {integrity: sha512-QQyWWPBZ6veWNbBMWo8WQw0iY9QUjLLANorug8mPHv13ETdhwVUUozeKOY0ZCXWupNlqtap1Gd0IQjv6HVRMjA==}
+    deprecated: MWC beta is longer supported. Please upgrade to @material/web
+
+  '@material/mwc-ripple@0.27.0':
+    resolution: {integrity: sha512-by0O8d8g3Rd96/sUB8hxy6MrDx1QTstqOsA64vqypWd526hMTBGRik08jTNap5sVIyrN9Vq17jb4NJLWQLnNHQ==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
 
   '@material/mwc-select@0.22.1':
@@ -7234,6 +7242,12 @@ snapshots:
       lit-html: 1.4.1
       tslib: 2.8.1
 
+  '@material/mwc-fab@0.27.0':
+    dependencies:
+      '@material/mwc-ripple': 0.27.0
+      lit: 2.8.0
+      tslib: 2.8.1
+
   '@material/mwc-floating-label@0.22.1':
     dependencies:
       '@material/floating-label': 12.0.0-canary.22d29cbb4.0
@@ -7332,6 +7346,14 @@ snapshots:
       '@material/ripple': 12.0.0-canary.22d29cbb4.0
       lit-element: 2.5.1
       lit-html: 1.4.1
+      tslib: 2.8.1
+
+  '@material/mwc-ripple@0.27.0':
+    dependencies:
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/mwc-base': 0.27.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      lit: 2.8.0
       tslib: 2.8.1
 
   '@material/mwc-select@0.22.1':
