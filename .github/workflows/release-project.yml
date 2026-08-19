@@ -68,6 +68,7 @@ jobs:
         with:
           # Set the context to use the root directory and not execute it's own git checkout.
           context: .
+          file: distribution/Dockerfile
           push: true
           # Tag the images using the tagname and also latest.
           tags: |
