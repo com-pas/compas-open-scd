@@ -35,6 +35,10 @@ function getSclDataServiceUrl(): string {
   return CompasSettings().compasSettings.sclDataServiceUrl;
 }
 
+function sclPath(...segments: string[]): string {
+  return segments.map(encodeURIComponent).join('/');
+}
+
 function useWebsocket(): boolean {
   return CompasSettings().useWebsockets();
 }
@@ -65,7 +69,8 @@ export function CompasSclDataService() {
     },
 
     listScls(type: string): Promise<Document> {
-      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + type + '/list';
+      const sclUrl =
+        getSclDataServiceUrl() + '/scl/v1/' + sclPath(type) + '/list';
       return fetch(sclUrl)
         .catch(handleError)
         .then(handleResponse)
@@ -74,7 +79,10 @@ export function CompasSclDataService() {
 
     listSclVersions(type: string, id: string): Promise<Document> {
       const sclUrl =
-        getSclDataServiceUrl() + '/scl/v1/' + type + '/' + id + '/versions';
+        getSclDataServiceUrl() +
+        '/scl/v1/' +
+        sclPath(type, id) +
+        '/versions';
       return fetch(sclUrl)
         .catch(handleError)
         .then(handleResponse)
@@ -92,7 +100,8 @@ export function CompasSclDataService() {
            <sds:Id>${id}</sds:Id>
          </sds:GetWsRequest>`;
 
-        const sclUrl = getSclDataServiceUrl() + '/scl-ws/v1/' + type + '/get';
+        const sclUrl =
+          getSclDataServiceUrl() + '/scl-ws/v1/' + sclPath(type) + '/get';
         return websocket(
           element,
           'CompasSclDataService',
@@ -101,7 +110,8 @@ export function CompasSclDataService() {
         ).then(extractSclFromResponse);
       }
 
-      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + type + '/' + id;
+      const sclUrl =
+        getSclDataServiceUrl() + '/scl/v1/' + sclPath(type, id);
       return fetch(sclUrl)
         .catch(handleError)
         .then(handleResponse)
@@ -123,7 +133,10 @@ export function CompasSclDataService() {
          </sds:GetVersionWsRequest>`;
 
         const sclUrl =
-          getSclDataServiceUrl() + '/scl-ws/v1/' + type + '/get-version';
+          getSclDataServiceUrl() +
+          '/scl-ws/v1/' +
+          sclPath(type) +
+          '/get-version';
         return websocket(
           element,
           'CompasSclDataService',
@@ -133,7 +146,7 @@ export function CompasSclDataService() {
       }
 
       const sclUrl =
-        getSclDataServiceUrl() + '/scl/v1/' + type + '/' + id + '/' + version;
+        getSclDataServiceUrl() + '/scl/v1/' + sclPath(type, id, version);
       return fetch(sclUrl)
         .catch(handleError)
         .then(handleResponse)
@@ -147,14 +160,14 @@ export function CompasSclDataService() {
       version: string
     ): Promise<string> {
       const sclUrl =
-        getSclDataServiceUrl() + '/scl/v1/' + type + '/' + id + '/' + version;
+        getSclDataServiceUrl() + '/scl/v1/' + sclPath(type, id, version);
       return fetch(sclUrl, { method: 'DELETE' })
         .catch(handleError)
         .then(handleResponse);
     },
 
     deleteSclDocument(type: string, id: string): Promise<string> {
-      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + type + '/' + id;
+      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + sclPath(type, id);
       return fetch(sclUrl, { method: 'DELETE' })
         .catch(handleError)
         .then(handleResponse);
@@ -176,7 +189,7 @@ export function CompasSclDataService() {
          </sds:CreateWsRequest>`;
 
         const sclUrl =
-          getSclDataServiceUrl() + '/scl-ws/v1/' + type + '/create';
+          getSclDataServiceUrl() + '/scl-ws/v1/' + sclPath(type) + '/create';
         return websocket(
           element,
           'CompasSclDataService',
@@ -194,7 +207,7 @@ export function CompasSclDataService() {
             )}]]></sds:SclData>
          </sds:CreateRequest>`;
 
-      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + type;
+      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + sclPath(type);
       return fetch(sclUrl, {
         method: 'POST',
         headers: {
@@ -226,7 +239,7 @@ export function CompasSclDataService() {
          </sds:UpdateWsRequest>`;
 
         const sclUrl =
-          getSclDataServiceUrl() + '/scl-ws/v1/' + type + '/update';
+          getSclDataServiceUrl() + '/scl-ws/v1/' + sclPath(type) + '/update';
         return websocket(
           element,
           'CompasSclDataService',
@@ -244,7 +257,7 @@ export function CompasSclDataService() {
            )}]]></sds:SclData>
          </sds:UpdateRequest>`;
 
-      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + type + '/' + id;
+      const sclUrl = getSclDataServiceUrl() + '/scl/v1/' + sclPath(type, id);
       return fetch(sclUrl, {
         method: 'PUT',
         headers: {
