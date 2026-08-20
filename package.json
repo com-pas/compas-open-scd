@@ -66,7 +66,8 @@
     "test:manual": "web-test-runner --manual",
     "test:watch": "web-test-runner --watch",
     "test:unit": "web-test-runner --watch --group unit",
-    "test:integration": "web-test-runner --watch --group integration"
+    "test:integration": "web-test-runner --watch --group integration",
+    "postinstall": "node patches/patch.cjs"
   },
   "devDependencies": {
     "@commitlint/cli": "21.1.0",

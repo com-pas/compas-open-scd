@@ -99,15 +99,15 @@ export const officialPlugins = [
     name: 'Communication Explorer',
     src: '/external-plugins/oscd-plugins/communication-explorer/0.0.32/index.js',
     icon: 'lan',
-    activeByDefault: true,
+    activeByDefault: false,
     kind: 'editor',
     requireDoc: true,
   },
   {
-    name: 'Template Generator',
+    name: 'OSCD Template Generator',
     src: '/external-plugins/oscd-template-generator/oscd-template-generator.js',
     icon: 'copy_all',
-    activeByDefault: true,
+    activeByDefault: false,
     kind: 'editor',
     requireDoc: true,
   },
@@ -131,7 +131,7 @@ export const officialPlugins = [
     name: 'Subscribe (Later Binding)',
     src: '/external-plugins/oscd-subscriber-later-binding/oscd-subscriber-later-binding.js',
     icon: 'link',
-    activeByDefault: false,
+    activeByDefault: true,
     kind: 'editor',
     requireDoc: true
   },
@@ -409,5 +409,155 @@ export const officialPlugins = [
     kind: 'menu',
     requireDoc: true,
     position: 'middle',
+  },
+
+  // --------------------------------
+  // SprintEins plugins
+  // --------------------------------
+
+  {
+    name: 'Auto Doc',
+    src: '/external-plugins/oscd-transnetbw-plugins/auto-doc/1.18.12/index.js',
+    icon: 'edit',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Communication Explorer SE',
+    src: '/external-plugins/oscd-transnetbw-plugins/communication-explorer/0.0.41/index.js',
+    icon: 'edit',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Network Explorer',
+    src: '/external-plugins/oscd-transnetbw-plugins/network-explorer/0.0.21/index.js',
+    icon: 'edit',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Type Designer',
+    src: '/external-plugins/oscd-transnetbw-plugins/type-designer/3.16.2/index.js',
+    icon: 'edit',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Type Distributor',
+    src: '/external-plugins/oscd-transnetbw-plugins/type-distributor/1.1.0/index.js',
+    icon: 'edit',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: "OSCD Launcher",
+    src: '/external-plugins/oscd-launcher/index.js',
+    icon: 'start',
+    activeByDefault: true,
+    kind: 'editor',
+  },
+  {
+    name: "Plugin Store",
+    src: '/external-plugins/oscd-plugin-store/index.js',
+    icon: 'storefront',
+    activeByDefault: true,
+    kind: 'menu',
+    position: 'middle',
+  },
+  {
+    name: 'Type Switcher',
+    src: '/external-plugins/oscd-transnetbw-plugins/type-switcher/0.0.19/index.js',
+    icon: 'edit',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'I/O Center',
+    src: '/external-plugins/oscd-transnetbw-plugins/io-center/3.0.2/index.js',
+    icon: 'edit',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'TSLD',
+    src: '/external-plugins/ase-compas-transnetbw-plugins/bearingpoint/compas/plugins/tsld/index.js',
+    icon: 'device_hub',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+
+  // --------------------------------
+  // Bearingpoint TransnetBW self-hosted plugins
+  // --------------------------------
+
+  {
+    name: 'Engineering Wizard',
+    src: '/external-plugins/ase-compas-transnetbw-plugins/bearingpoint/compas/plugins/engineering-wizard/index.js',
+    icon: 'star',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Template Generator',
+    src: '/external-plugins/ase-compas-transnetbw-plugins/bearingpoint/compas/plugins/template-generator/index.js',
+    icon: 'copy_all',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Location Manager',
+    src: '/external-plugins/ase-compas-transnetbw-plugins/bearingpoint/compas/plugins/location-manager/index.js',
+    icon: 'edit_location_alt',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Location Viewer',
+    src: '/external-plugins/ase-compas-transnetbw-plugins/bearingpoint/compas/plugins/location-viewer/index.js',
+    icon: 'location_on',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'History Viewer',
+    src: '/external-plugins/ase-compas-transnetbw-plugins/bearingpoint/compas/plugins/history-viewer/index.js',
+    icon: 'history',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+  {
+    name: 'Archive Explorer',
+    src: '/external-plugins/ase-compas-transnetbw-plugins/bearingpoint/compas/plugins/archive-explorer/index.js',
+    icon: 'archive',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,
+  },
+
+  // --------------------------------
+  // Bearingpoint self-hosted plugins
+  // --------------------------------
+
+  {
+    name: 'Plugin Hub',
+    src: '/external-plugins/ase-compas-bearingpoint-plugins/compas/plugins/plugins-hub/index.js',
+    icon: 'hub',
+    activeByDefault: true,
+    kind: 'editor',
+    requireDoc: true,  // not realy!, but Open-SCD doesn't fully support that for editor-plugins. Try it out yourself: you will see it immediatly.
   }
 ];

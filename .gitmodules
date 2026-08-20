@@ -42,3 +42,23 @@
 	path = packages/external-plugins/transnetbw-plugins
 	url = https://github.com/TransnetBW-openSCD/compas-transnetbw-plugins
 	branch = published-plugins
+[submodule "packages/external-plugins/oscd-transnetbw-plugins"]
+	path = packages/external-plugins/oscd-transnetbw-plugins
+	url = https://github.com/TransnetBW-openSCD/oscd-transnetbw-plugins.git
+	branch = gh-pages
+[submodule "packages/external-plugins/oscd-launcher"]
+	path = packages/external-plugins/oscd-launcher
+	url = https://github.com/sprinteins/oscd-launcher.git
+	branch = gh-pages
+[submodule "packages/external-plugins/oscd-plugin-store"]
+	path = packages/external-plugins/oscd-plugin-store
+	url = https://github.com/sprinteins/oscd-plugin-store.git
+	branch = gh-pages
+[submodule "packages/external-plugins/ase-compas-transnetbw-plugins"]
+	path = packages/external-plugins/ase-compas-transnetbw-plugins
+	url = https://github.com/ase-compas/compas-transnetbw-plugins.git
+	branch = published-plugins
+[submodule "packages/external-plugins/ase-compas-bearingpoint-plugins"]
+	path = packages/external-plugins/ase-compas-bearingpoint-plugins
+	url = https://github.com/ase-compas/compas-bearingpoint-plugins.git
+	branch = gh-pages
