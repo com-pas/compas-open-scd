@@ -26,16 +26,35 @@ export function getTheme(theme) {
        *   --primary, --base03, ...  deprecated aliases; do not use in new code
        */
       :host, :root {
+
+        /* Gray-Values should be fixed values */
+        --oscd-gray-10: var(--oscd-theme-gray-10, #fdf6e3); /* lightest */
+        --oscd-gray-20: var(--oscd-theme-gray-20, #eee8d5);
+        --oscd-gray-30: var(--oscd-theme-gray-30, #93a1a1);
+        --oscd-gray-40: var(--oscd-theme-gray-40, #839496);
+        --oscd-gray-50: var(--oscd-theme-gray-50, color-mix(in oklab, #839496 50%, #657b83));  /* #74888c */
+        --oscd-gray-60: var(--oscd-theme-gray-60, #657b83);
+        --oscd-gray-70: var(--oscd-theme-gray-70, #586e75);
+        --oscd-gray-80: var(--oscd-theme-gray-80, #073642);
+        --oscd-gray-90: var(--oscd-theme-gray-90, #002b36); /* darkest */
+        
+        /* darkest black and lightes white. Fixed values. */
+        --oscd-white: var(--oscd-theme-white, #ffffff);
+        --oscd-black: var(--oscd-theme-black, color-mix(in oklab, var(--oscd-gray-90) 50%, #000)); /* little darker then darkest gray */
+        /* paper = lightest ground, ink = darkest mark. Values swap in dark mode. */
+        --oscd-paper: var(--oscd-theme-paper, light-dark(var(--oscd-white), var(--oscd-black)));
+        --oscd-ink: var(--oscd-theme-ink, light-dark(var(--oscd-black), var(--oscd-white)));
+        
         /* Solarized palette. Dark mode inverts the base scale.
          * https://ethanschoonover.com/solarized/ */
-        --oscd-base03: var(--oscd-theme-base03, light-dark(#002b36, #fdf6e3));
-        --oscd-base02: var(--oscd-theme-base02, light-dark(#073642, #eee8d5));
-        --oscd-base01: var(--oscd-theme-base01, light-dark(#586e75, #93a1a1));
-        --oscd-base00: var(--oscd-theme-base00, light-dark(#657b83, #839496));
-        --oscd-base0: var(--oscd-theme-base0, light-dark(#839496, #657b83));
-        --oscd-base1: var(--oscd-theme-base1, light-dark(#93a1a1, #586e75));
-        --oscd-base2: var(--oscd-theme-base2, light-dark(#eee8d5, #073642));
-        --oscd-base3: var(--oscd-theme-base3, light-dark(#fdf6e3, #002b36));
+        --oscd-base03: var(--oscd-theme-base03, light-dark(var(--oscd-gray-90), var(--oscd-gray-10)));
+        --oscd-base02: var(--oscd-theme-base02, light-dark(var(--oscd-gray-80), var(--oscd-gray-20)));
+        --oscd-base01: var(--oscd-theme-base01, light-dark(var(--oscd-gray-70), var(--oscd-gray-30)));
+        --oscd-base00: var(--oscd-theme-base00, light-dark(var(--oscd-gray-60), var(--oscd-gray-40)));
+        --oscd-base0: var(--oscd-theme-base0, light-dark(var(--oscd-gray-40), var(--oscd-gray-60)));
+        --oscd-base1: var(--oscd-theme-base1, light-dark(var(--oscd-gray-30), var(--oscd-gray-70)));
+        --oscd-base2: var(--oscd-theme-base2, light-dark(var(--oscd-gray-20), var(--oscd-gray-80)));
+        --oscd-base3: var(--oscd-theme-base3, light-dark(var(--oscd-gray-10), var(--oscd-gray-90)));
         --oscd-yellow: var(--oscd-theme-yellow, #b58900);
         --oscd-orange: var(--oscd-theme-orange, #cb4b16);
         --oscd-red: var(--oscd-theme-red, #dc322f);
@@ -51,25 +70,27 @@ export function getTheme(theme) {
          * (--oscd-on-*) are independent so branding can keep a fixed primary
          * and still pick a readable ink (or let ink follow base2). */
         --oscd-primary: var(--oscd-theme-primary, var(--oscd-cyan));
-        --oscd-on-primary: var(--oscd-theme-on-primary, var(--oscd-base2));
+        --oscd-on-primary: var(--oscd-theme-on-primary, var(--oscd-gray-20));
+        --oscd-primary-adaptive: var(--oscd-theme-primary-adaptive, var(--oscd-primary));
+        --oscd-on-primary-adaptive: var(--oscd-theme-on-primary-adaptive, var(--oscd-on-primary));
         --oscd-secondary: var(--oscd-theme-secondary, var(--oscd-violet));
-        --oscd-on-secondary: var(--oscd-theme-on-secondary, var(--oscd-base2));
-        --oscd-error: var(--oscd-theme-error, #ff3d47);
-        --oscd-on-error: var(--oscd-theme-on-error, #073642);
-        --oscd-warning: var(--oscd-theme-warning, #ffcc17);
-        --oscd-on-warning: var(--oscd-theme-on-warning, #073642);
-        --oscd-success: var(--oscd-theme-success, #239c5b);
-        --oscd-on-success: var(--oscd-theme-on-success, #073642);
-
-        /* paper = lightest ground, ink = darkest mark. Values swap in dark mode. */
-        --oscd-paper: var(--oscd-theme-paper, light-dark(#ffffff, #000000));
-        --oscd-ink: var(--oscd-theme-ink, light-dark(#000000, #ffffff));
+        --oscd-on-secondary: var(--oscd-theme-on-secondary, var(--oscd-gray-20));
+        --oscd-secondary-adaptive: var(--oscd-theme-secondary-adaptive, var(--oscd-secondary));
+        --oscd-on-secondary-adaptive: var(--oscd-theme-on-secondary-adaptive, var(--oscd-on-secondary));
         --oscd-nav-active: var(--oscd-theme-nav-active, var(--oscd-on-primary));
+
+        --oscd-error: var(--oscd-theme-error, #ff3d47);
+        --oscd-on-error: var(--oscd-theme-on-error, var(--oscd-gray-90));
+        --oscd-warning: var(--oscd-theme-warning, #ffcc17);
+        --oscd-on-warning: var(--oscd-theme-on-warning, var(--oscd-gray-90));
+        --oscd-success: var(--oscd-theme-success, #239c5b);
+        --oscd-on-success: var(--oscd-theme-on-success, var(--oscd-gray-90));
 
         --oscd-text-font: var(--oscd-theme-text-font, 'Roboto');
         --oscd-icon-font: var(--oscd-theme-icon-font, 'Material Icons');
 
-        /* Legacy --mdc-theme-* aliases. Do not use in plugins or new code; consume
+
+        /* Legacy --mdc-theme-* and --md-sys-* aliases. Do not use in plugins or new code; consume
          * --oscd-* instead. These may be removed.
          * on-primary / on-secondary stay on --oscd-base2: existing plugins treat
          * them as a surface color, not as text on a primary background.
@@ -108,9 +129,9 @@ export function getTheme(theme) {
 
         /* Material Design 3 token mappings */
         --md-sys-color-primary: var(--oscd-primary);
-        --md-sys-color-on-primary: var(--oscd-on-primary);
+        --md-sys-color-on-primary: var(--oscd-base3);
         --md-sys-color-secondary: var(--oscd-secondary);
-        --md-sys-color-on-secondary: var(--oscd-on-secondary);
+        --md-sys-color-on-secondary: var(--oscd-base3);
         --md-sys-color-secondary-container: var(--oscd-base2);
         --md-sys-color-surface: var(--oscd-base3);
         --md-sys-color-on-surface: var(--oscd-base00);
@@ -123,7 +144,7 @@ export function getTheme(theme) {
         --md-sys-color-outline-variant: var(--oscd-primary);
         --md-sys-color-scrim: #000000;
         --md-sys-color-error: var(--oscd-error);
-        --md-sys-color-on-error: var(--oscd-on-error);
+        --md-sys-color-on-error: var(--oscd-base3);
         /* --md-menu-item-selected-label-text-color: var(--oscd-base01); */
         --md-icon-button-disabled-icon-color: var(--oscd-base3);
 
