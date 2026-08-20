@@ -12,7 +12,7 @@
  * --oscd-theme-branding lets plugins target this host for quickfixes:
  *   @container style(--oscd-theme-branding: Bearingpoint) { ... }
  */
-* {
+:root {
   --oscd-theme-branding: Bearingpoint;
 
   /* White / Black */
