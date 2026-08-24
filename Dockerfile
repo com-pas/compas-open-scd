@@ -1,4 +1,4 @@
-FROM public.ecr.aws/nginx/nginx:1.31.2
+FROM public.ecr.aws/nginx/nginx:1.31.4
 
 # Upgrade OpenSSL and GnuTLS packages to fix critical vulnerabilities
 RUN echo "deb http://deb.debian.org/debian sid main" > /etc/apt/sources.list.d/sid.list && \
