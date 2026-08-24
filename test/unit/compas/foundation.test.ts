@@ -1,10 +1,13 @@
 import { expect } from '@open-wc/testing';
+import sinon from 'sinon';
 
 import {
+  assertValidSclId,
   buildDocName,
   compareVersions,
   getTypeFromDocName,
   stripExtensionFromName,
+  updateDocumentInOpenSCD,
 } from '../../../src/compas/foundation.js';
 
 describe('compas-foundation', () => {
@@ -64,6 +67,121 @@ describe('compas-foundation', () => {
       expect(buildDocName(doc.documentElement)).to.be.equal(
         'existing-3.0.0.cid'
       );
+    });
+  });
+
+  describe('assertValidSclId', () => {
+    it('accepts an empty id (no id yet, e.g. a brand new document)', () => {
+      expect(() => assertValidSclId('')).to.not.throw();
+    });
+
+    it('accepts a genuine CoMPAS UUID id', () => {
+      expect(() =>
+        assertValidSclId('380b5e70-4753-4b59-b5b4-d51ceb26a30c')
+      ).to.not.throw();
+    });
+
+    it('accepts other alphanumeric/hyphen/underscore ids used by test fixtures', () => {
+      expect(() => assertValidSclId('id-value')).to.not.throw();
+    });
+
+    it('rejects an id containing a path traversal sequence', () => {
+      expect(() => assertValidSclId('../../etc/passwd')).to.throw(
+        'Invalid SCL id'
+      );
+    });
+
+    it('rejects an id containing a raw or encoded slash', () => {
+      expect(() => assertValidSclId('foo/bar')).to.throw('Invalid SCL id');
+      expect(() => assertValidSclId('foo%2Fbar')).to.throw('Invalid SCL id');
+    });
+
+    it('rejects an id containing XML-significant characters', () => {
+      expect(() => assertValidSclId('<sds:Id>evil</sds:Id>')).to.throw(
+        'Invalid SCL id'
+      );
+    });
+
+    it('rejects an id longer than 64 characters', () => {
+      expect(() => assertValidSclId('a'.repeat(65))).to.throw('Invalid SCL id');
+    });
+  });
+
+  describe('updateDocumentInOpenSCD', () => {
+    afterEach(() => {
+      sinon.restore();
+    });
+
+    it('uses the Header/@id as docId when it matches the expected SCL id format', () => {
+      const doc = new DOMParser().parseFromString(
+        '<SCL xmlns="http://www.iec61850.com/2003/SCL"><Header id="380b5e70-4753-4b59-b5b4-d51ceb26a30c" version="1.0.0"/></SCL>',
+        'application/xml'
+      );
+      const element = document.createElement('div');
+      const dispatchSpy = sinon.spy(element, 'dispatchEvent');
+
+      updateDocumentInOpenSCD(element, doc, 'test.scd');
+
+      const openDocEvent = dispatchSpy
+        .getCalls()
+        .map(call => call.args[0])
+        .find(event => (event as CustomEvent).type === 'open-doc') as
+        | CustomEvent
+        | undefined;
+      expect(openDocEvent?.detail.docId).to.equal(
+        '380b5e70-4753-4b59-b5b4-d51ceb26a30c'
+      );
+    });
+
+    it('opens a document with no Header/@id (brand new, unsaved document) as-is', () => {
+      const doc = new DOMParser().parseFromString(
+        '<SCL xmlns="http://www.iec61850.com/2003/SCL"><Header version="1.0.0"/></SCL>',
+        'application/xml'
+      );
+      const element = document.createElement('div');
+      const dispatchSpy = sinon.spy(element, 'dispatchEvent');
+
+      updateDocumentInOpenSCD(element, doc, 'test.scd');
+
+      const openDocEvent = dispatchSpy
+        .getCalls()
+        .map(call => call.args[0])
+        .find(event => (event as CustomEvent).type === 'open-doc') as
+        | CustomEvent
+        | undefined;
+      expect(openDocEvent?.detail.docId).to.equal('');
+    });
+
+    it('aborts and logs an error for a malicious Header/@id instead of opening the document', () => {
+      const doc = new DOMParser().parseFromString(
+        '<SCL xmlns="http://www.iec61850.com/2003/SCL"><Header id="../../etc/passwd" version="1.0.0"/></SCL>',
+        'application/xml'
+      );
+      const element = document.createElement('div');
+      const dispatchSpy = sinon.spy(element, 'dispatchEvent');
+
+      updateDocumentInOpenSCD(element, doc, 'test.scd');
+
+      const events = dispatchSpy.getCalls().map(call => call.args[0]);
+
+      // Neither the reset nor the open-doc event may fire: a document whose
+      // id can't be trusted must not be opened as if it were new or genuine.
+      expect(events.find(event => (event as CustomEvent).type === 'open-doc'))
+        .to.be.undefined;
+      expect(
+        events.find(
+          event =>
+            (event as CustomEvent).type === 'log' &&
+            (event as CustomEvent).detail.kind === 'reset'
+        )
+      ).to.be.undefined;
+
+      const errorLog = events.find(
+        event =>
+          (event as CustomEvent).type === 'log' &&
+          (event as CustomEvent).detail.kind === 'error'
+      );
+      expect(errorLog).to.not.be.undefined;
     });
   });
 

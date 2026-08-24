@@ -17,6 +17,7 @@ export const en = {
       type: 'Unable to determine type from document name!',
       server: 'Error communicating with CoMPAS Ecosystem',
       serverDetails: '{{type}}: {{message}}',
+      invalidSclId: 'Refused to open document with an invalid SCL document id',
     },
     warning: {
       nsdoc: 'Could not load NSDoc file',
