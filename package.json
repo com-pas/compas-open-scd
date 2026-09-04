@@ -67,7 +67,7 @@
     "test:watch": "web-test-runner --watch",
     "test:unit": "web-test-runner --watch --group unit",
     "test:integration": "web-test-runner --watch --group integration",
-    "postinstall": "pnpm run plugins:download",
+    "postinstall": "node patches/patch.cjs && pnpm run plugins:download",
     "plugins:add": "node distribution/scripts/manage-plugins.js add",
     "plugins:update": "node distribution/scripts/manage-plugins.js update",
     "plugins:delete": "node distribution/scripts/manage-plugins.js delete",

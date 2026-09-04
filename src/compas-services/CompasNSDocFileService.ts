@@ -80,7 +80,7 @@ function parseNsDocFilename(filename: string): NsDocFileInfo | null {
 
 async function isValidNsDocFile(filename: string): Promise<boolean> {
   try {
-    const response = await fetch(`/public/nsdoc/${filename}`);
+    const response = await fetch(`/nsdoc/${filename}`);
     if (!response.ok) {
       return false;
     }
@@ -100,7 +100,7 @@ async function isValidNsDocFile(filename: string): Promise<boolean> {
 // Get NSDOC files from manifest.json
 async function getNsDocFilesFromManifest(): Promise<string[]> {
   try {
-    const manifestResponse = await fetch('/public/nsdoc/manifest.json');
+    const manifestResponse = await fetch('/nsdoc/manifest.json');
     if (!manifestResponse.ok) {
       return [];
     }
@@ -131,7 +131,7 @@ async function getNsDocFilesByPattern(): Promise<string[]> {
     for (let release = 5; release <= 9; release++) {
       const filename = `IEC_61850-${standard}_2007B${release}-en.nsdoc`;
       try {
-        const response = await fetch(`/public/nsdoc/${filename}`);
+        const response = await fetch(`/nsdoc/${filename}`);
         if (response.ok) {
           discoveredFiles.push(filename);
           break;
@@ -146,7 +146,7 @@ async function getNsDocFilesByPattern(): Promise<string[]> {
   for (let release = 2; release <= 9; release++) {
     const filename = `IEC_61850-8-1_2003A${release}-en.nsdoc`;
     try {
-      const response = await fetch(`/public/nsdoc/${filename}`);
+      const response = await fetch(`/nsdoc/${filename}`);
       if (response.ok) {
         discoveredFiles.push(filename);
         break;
@@ -266,7 +266,7 @@ export function CompasNSDocFileService(): {
         throw new Error(`Unable to find nsDoc file with id ${id}`);
       }
 
-      const content = await fetch(`/public/nsdoc/${nsDocFile.filename}`)
+      const content = await fetch(`/nsdoc/${nsDocFile.filename}`)
         .catch(handleError)
         .then(handleResponse);
 
