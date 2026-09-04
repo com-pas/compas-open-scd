@@ -6,14 +6,12 @@
 # Placing the plugin configuration copy before the download command means Docker's
 # layer cache is only invalidated for this stage when remote-plugins.json changes,
 # keeping incremental builds fast when only the application code is updated.
-FROM alpine:3.20 AS plugin-downloader
-
-RUN apk add --no-cache curl jq
+FROM node:20-alpine AS plugin-downloader
 
 WORKDIR /build
 
 COPY distribution/remote-plugins.json .
-COPY distribution/scripts/download-plugins.sh .
+COPY distribution/scripts/download-plugins.mjs .
 
 # Set REQUIRE_SHA256=true to make the build fail for any plugin without a sha256 hash.
 # You can use the --build-arg option when building the image:
@@ -24,9 +22,8 @@ COPY distribution/scripts/download-plugins.sh .
 #     args:
 #       REQUIRE_SHA256: "true"
 ARG REQUIRE_SHA256=false
-
-RUN chmod +x download-plugins.sh && \
-    REQUIRE_SHA256="${REQUIRE_SHA256}" ./download-plugins.sh remote-plugins.json /build/external-plugins
+RUN REQUIRE_SHA256="${REQUIRE_SHA256}" \
+    node download-plugins.mjs remote-plugins.json /build/external-plugins
 
 # Stage 2: Final nginx image that serves the application and downloaded plugins.
 FROM public.ecr.aws/nginx/nginx:1.31.2
@@ -54,6 +51,6 @@ ENV NGINX_PORT=8080
 EXPOSE 8080
 
 VOLUME /etc/nginx/
-VOLUME /usr/share/nginx/html/public/cim
-VOLUME /usr/share/nginx/html/public/conf
-VOLUME /usr/share/nginx/html/public/nsdoc
+VOLUME /usr/share/nginx/html/cim
+VOLUME /usr/share/nginx/html/conf
+VOLUME /usr/share/nginx/html/nsdoc

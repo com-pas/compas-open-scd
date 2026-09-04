@@ -17,6 +17,7 @@ Once Node.js is installed on your system, make sure you [install `pnpm`](https:/
 ```
 git clone https://github.com/com-pas/compas-open-scd
 cd compas-open-scd
+git submodule update --init --remote --recursive
 pnpm install
 pnpm start
 ```
@@ -55,6 +56,24 @@ docker run -it --rm -d -p 8080:8080 --name compas-open-scd lfenergy/compas-open-
 ```
 
 Now open a browser and go to "http://localhost:8080". CoMPAS OpenSCD is shown.
+
+### Build the image locally
+
+The Dockerfile copies the `dist/` folder, so build the application first. Run these commands from the **repository root** (`compas-open-scd`). The trailing `.` is the build context and is required: without it, Podman/Buildah uses `distribution/` as context and `COPY distribution/remote-plugins.json` fails.
+
+```
+pnpm ci
+pnpm run build
+docker build -f distribution/Dockerfile -t compas-bearingpoint:local .
+```
+
+Then run the image:
+
+```
+docker run --rm --replace -p 8080:8080 --name compas-bearingpoint compas-bearingpoint:local
+```
+
+Open a browser at "http://localhost:8080". Without `pnpm run build`, `dist/` is missing and the Docker build fails.
 
 ## CoMPAS Service
 
