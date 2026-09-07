@@ -27,8 +27,8 @@ importers:
         specifier: 0.22.1
         version: 0.22.1
       '@material/mwc-drawer':
-        specifier: 0.22.1
-        version: 0.22.1
+        specifier: 0.27.0
+        version: 0.27.0
       '@material/mwc-fab':
         specifier: 0.22.1
         version: 0.22.1
@@ -990,6 +990,9 @@ packages:
   '@material/density@14.0.0':
     resolution: {integrity: sha512-NlxXBV5XjNsKd8UXF4K/+fOXLxoFNecKbsaQO6O2u+iG8QBfFreKRmkhEBb2hPPwC3w8nrODwXX0lHV+toICQw==}
 
+  '@material/density@14.0.0-canary.53b3cad2f.0':
+    resolution: {integrity: sha512-Eh/vZ3vVyqtpylg5Ci33qlgtToS4H1/ppd450Ib3tcdISIoodgijYY0w4XsRvrnZgbI/h/1STFdLxdzS0UNuFw==}
+
   '@material/dialog@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-WOK+HN7HQa3mHvNEsEnleDOHCLRAbpFOhGuGyqnSDOCyxTl2DcNCUqsWupDVDpAlLv2OfLdmceyJrejMF+8q7g==}
 
@@ -1007,6 +1010,9 @@ packages:
 
   '@material/drawer@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-a5tGNXOXJglDpq/5blE3ZxbfTnuYU6pnkswWHliSUc71fC1A6XmK51vLz/PCGPGV3qL8JS2sakOVMdssRuLPxA==}
+
+  '@material/drawer@14.0.0-canary.53b3cad2f.0':
+    resolution: {integrity: sha512-MXzRGq7NoONgbHa+AhAu4HvOUA9V37nSsY4g4Alita08UqRAvvFFr4K1CF9GI2K9pLCpyQv1UbN0Lw5b78HrVQ==}
 
   '@material/elevation@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-fuOG6w7Crz+9iibkBAXOQGYBWMCDZSvXA9PlZFW1JFCHUWyzzTMJeJIaHAVMHFzhbVF/rjqF6CliDZyAz4fULg==}
@@ -1050,6 +1056,9 @@ packages:
   '@material/list@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-Vai+ggNyDBuWM0ihBs3ELGEKCdRmFoTFEhfcZ321VEI2YE8EY6eW1tvazzBfSzpLZkrqcn2QkqD6UpQBzkp4AA==}
 
+  '@material/list@14.0.0-canary.53b3cad2f.0':
+    resolution: {integrity: sha512-mkMpltSKAYLBtFnTTCk/mQIDzwxF/VLh1gh59ehOtmRXt7FvTz83RoAa4tqe53hpVrbX4HoLDBu+vILhq/wkjw==}
+
   '@material/menu-surface@12.0.0-canary.22d29cbb4.0':
     resolution: {integrity: sha512-kvfewRPo4sJtGzBK/T94jjRYnnIaQbC5xqQ+AmGZHGUBsV713cVE1IWVSm0d+7MbERsqKMG9/JZik2Um3YZetQ==}
 
@@ -1078,6 +1087,10 @@ packages:
 
   '@material/mwc-drawer@0.22.1':
     resolution: {integrity: sha512-klwo4VMIIeV4UY+0t4HJ5/2Z8hUjsPHoleEFamRf97yVgPnmCHHaXhe7fjq8srxgkXK81PzwA7PFGBofS248ag==}
+    deprecated: MWC beta is longer supported. Please upgrade to @material/web
+
+  '@material/mwc-drawer@0.27.0':
+    resolution: {integrity: sha512-dy/uwt+aI5aiUDqFcT6Z4GhGmLZR7fu3HMkfqtQDwoJShxnf5hHwk18fiD1VHHCDf9CZ5wjl7ug4fjpcs9r18A==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
 
   '@material/mwc-fab@0.22.1':
@@ -2085,6 +2098,10 @@ packages:
     resolution: {integrity: sha512-s7iGf5GaVMxEG0ENN9x+xTr7GFZCb1ZP/1uATUpCEK2X78nDB3RwbtFCo9pGAf9ru+VwoQ464DkaLEeRM08wJA==}
     engines: {node: '>=4'}
 
+  axe-core@4.13.0:
+    resolution: {integrity: sha512-UzGt8zg7Ny8djbYMhxl2zuEevVa7r2gJjYY5Lwr1xM7+XU2nd6CkIWFTVcCIbAP63vSz71NaVyyuSk9lHKcy0A==}
+    engines: {node: '>=4'}
+
   axobject-query@2.2.0:
     resolution: {integrity: sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==}
 
@@ -2516,8 +2533,8 @@ packages:
   core-js-compat@3.49.0:
     resolution: {integrity: sha512-VQXt1jr9cBz03b331DFDCCP90b3fanciLkgiOoy8SBHy06gNf+vQ1A3WFLqG7I8TipYIKeYK9wxd0tUrvHcOZA==}
 
-  core-js-pure@3.49.0:
-    resolution: {integrity: sha512-XM4RFka59xATyJv/cS3O3Kml72hQXUeGRuuTmMYFxwzc9/7C8OYTaIR/Ji+Yt8DXzsFLNhat15cE/JP15HrCgw==}
+  core-js-pure@3.50.0:
+    resolution: {integrity: sha512-6GP3Pxz4IKyWjAfa747vIu/jilB5z29JWROLqH/b+pXVcpgh6tM06ZIBwSuglgVqzDYURhOK6oEzTrG0bCHitA==}
 
   core-util-is@1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
@@ -6574,7 +6591,7 @@ snapshots:
 
   '@babel/runtime-corejs3@7.29.7':
     dependencies:
-      core-js-pure: 3.49.0
+      core-js-pure: 3.50.0
 
   '@babel/runtime@7.29.7': {}
 
@@ -6965,6 +6982,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@material/density@14.0.0-canary.53b3cad2f.0':
+    dependencies:
+      tslib: 2.8.1
+
   '@material/dialog@12.0.0-canary.22d29cbb4.0':
     dependencies:
       '@material/animation': 12.0.0-canary.22d29cbb4.0
@@ -7028,6 +7049,21 @@ snapshots:
       '@material/shape': 12.0.0-canary.22d29cbb4.0
       '@material/theme': 12.0.0-canary.22d29cbb4.0
       '@material/typography': 12.0.0-canary.22d29cbb4.0
+      tslib: 2.8.1
+
+  '@material/drawer@14.0.0-canary.53b3cad2f.0':
+    dependencies:
+      '@material/animation': 14.0.0-canary.53b3cad2f.0
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/elevation': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/list': 14.0.0-canary.53b3cad2f.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/shape': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      '@material/typography': 14.0.0-canary.53b3cad2f.0
       tslib: 2.8.1
 
   '@material/elevation@12.0.0-canary.22d29cbb4.0':
@@ -7151,6 +7187,19 @@ snapshots:
       '@material/typography': 12.0.0-canary.22d29cbb4.0
       tslib: 2.8.1
 
+  '@material/list@14.0.0-canary.53b3cad2f.0':
+    dependencies:
+      '@material/base': 14.0.0-canary.53b3cad2f.0
+      '@material/density': 14.0.0-canary.53b3cad2f.0
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/feature-targeting': 14.0.0-canary.53b3cad2f.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      '@material/rtl': 14.0.0-canary.53b3cad2f.0
+      '@material/shape': 14.0.0-canary.53b3cad2f.0
+      '@material/theme': 14.0.0-canary.53b3cad2f.0
+      '@material/typography': 14.0.0-canary.53b3cad2f.0
+      tslib: 2.8.1
+
   '@material/menu-surface@12.0.0-canary.22d29cbb4.0':
     dependencies:
       '@material/animation': 12.0.0-canary.22d29cbb4.0
@@ -7224,6 +7273,15 @@ snapshots:
       blocking-elements: 0.1.1
       lit-element: 2.5.1
       lit-html: 1.4.1
+      tslib: 2.8.1
+      wicg-inert: 3.1.3
+
+  '@material/mwc-drawer@0.27.0':
+    dependencies:
+      '@material/drawer': 14.0.0-canary.53b3cad2f.0
+      '@material/mwc-base': 0.27.0
+      blocking-elements: 0.1.1
+      lit: 2.8.0
       tslib: 2.8.1
       wicg-inert: 3.1.3
 
@@ -8778,6 +8836,8 @@ snapshots:
 
   axe-core@4.12.1: {}
 
+  axe-core@4.13.0: {}
+
   axobject-query@2.2.0: {}
 
   babel-plugin-polyfill-corejs2@0.4.17(@babel/core@7.29.7):
@@ -9308,7 +9368,7 @@ snapshots:
     dependencies:
       browserslist: 4.28.2
 
-  core-js-pure@3.49.0: {}
+  core-js-pure@3.50.0: {}
 
   core-util-is@1.0.2: {}
 
@@ -9831,7 +9891,7 @@ snapshots:
   eslint-plugin-lit-a11y@1.1.0(eslint@7.32.0):
     dependencies:
       aria-query: 4.2.2
-      axe-core: 4.12.1
+      axe-core: 4.13.0
       axobject-query: 2.2.0
       dom5: 3.0.1
       emoji-regex: 9.2.2
