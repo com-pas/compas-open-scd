@@ -1,20 +1,10 @@
-const packageJson = require('./package.json');
-
 module.exports = {
-  cacheId: `compas-${packageJson.version}`,
+  cacheId: 'compas',
   globDirectory: 'dist/',
   globPatterns: [
-    '_snowpack/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
-    'public/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
-    'src/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
-    'plugins/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
-    'external-plugins/**/*.{md,js,png,xml,pdf,css,html,info,json,ico,svg,wasm}',
-    '*.{md,json,ico,xml}',
-    'package.json.proxy.js',
+    'assets/**/*.{js,css,png,jpg,jpeg,gif,webp,svg,ico,woff,woff2,wasm}',
   ],
-  globIgnores: [
-    'public/nsdoc/README.md'
-  ],
+  maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
   swDest: 'dist/sw.js',
   runtimeCaching: [
     {
@@ -22,11 +12,12 @@ module.exports = {
       handler: 'NetworkFirst',
     },
     {
-      urlPattern: /\/(_snowpack|public|src)\/.*/,
+      urlPattern: /\/external-plugins\/.*/,
       handler: 'NetworkFirst',
       options: {
-        cacheName: 'compas-runtime-http',
+        cacheName: 'compas-external-plugins',
         fetchOptions: {
+          cache: 'reload',
           credentials: 'include',
         },
       },
