@@ -58,13 +58,13 @@
   
   --oscd-theme-shape: 8px;
 
-/*   Host distribution only. --oscd-theme-body-bg is the page fallback behind plugin surfaces. */
-    
+  /* Host distribution only. --oscd-theme-body-bg is the page fallback behind plugin surfaces. */
   --oscd-theme-body-bg: var(--oscd-theme-base3);
   --oscd-theme-nav-primary: var(--internal-primary-light);
   --oscd-theme-nav-primary-active: var(--oscd-theme-secondary);
   --oscd-theme-nav-primary-text: #fff;
   --oscd-theme-nav-primary-text-active: #fff;
+
 }
 
 /* Experimental: Simulate High Contrast variant for Bearingpoint-Distribution. */

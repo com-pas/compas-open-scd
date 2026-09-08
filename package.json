@@ -55,7 +55,6 @@
     "start": "vite",
     "preview": "vite build && vite preview",
     "build": "vite build && workbox generateSW workbox-config.cjs",
-    "download:plugins": "node distribution/scripts/download-plugins.mjs distribution/remote-plugins.json distribution/external-plugins",
     "lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .ts,.html . --fix --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" \"**/*.ts\" --check --ignore-path .gitignore",
@@ -68,12 +67,14 @@
     "test:watch": "web-test-runner --watch",
     "test:unit": "web-test-runner --watch --group unit",
     "test:integration": "web-test-runner --watch --group integration",
-    "postinstall": "node patches/patch.cjs",
+    "postinstall": "node patches/patch.cjs && pnpm run plugins:download",
     "plugins:add": "node distribution/scripts/manage-plugins.js add",
     "plugins:update": "node distribution/scripts/manage-plugins.js update",
     "plugins:delete": "node distribution/scripts/manage-plugins.js delete",
     "plugins:list": "node distribution/scripts/manage-plugins.js list",
-    "plugins:verify": "node distribution/scripts/manage-plugins.js verify"
+    "plugins:verify": "node distribution/scripts/manage-plugins.js verify",
+    "plugins:update-empty-hashes": "node distribution/scripts/manage-plugins.js update-empty-hashes",
+    "plugins:download": "node distribution/scripts/manage-plugins.js download"
   },
   "devDependencies": {
     "@commitlint/cli": "21.1.0",

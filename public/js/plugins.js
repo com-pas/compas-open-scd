@@ -405,7 +405,7 @@ export const officialPlugins = [
   {
     name: 'Plugins Hub',
     src: '/external-plugins/compas-bearingpoint-plugins/plugins/plugins-hub/index.js',
-    icon: 'details-icon',
+    icon: 'hub',
     activeByDefault: true,
     kind: 'editor',
     requireDoc: true,
