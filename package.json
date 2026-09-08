@@ -55,6 +55,7 @@
     "start": "vite",
     "preview": "vite build && vite preview",
     "build": "vite build && workbox generateSW workbox-config.cjs",
+    "download:plugins": "sh distribution/scripts/download-plugins.sh distribution/remote-plugins.json distribution/external-plugins",
     "lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .ts,.html . --fix --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" \"**/*.ts\" --check --ignore-path .gitignore",
@@ -66,7 +67,12 @@
     "test:manual": "web-test-runner --manual",
     "test:watch": "web-test-runner --watch",
     "test:unit": "web-test-runner --watch --group unit",
-    "test:integration": "web-test-runner --watch --group integration"
+    "test:integration": "web-test-runner --watch --group integration",
+    "plugins:add": "node distribution/scripts/manage-plugins.js add",
+    "plugins:update": "node distribution/scripts/manage-plugins.js update",
+    "plugins:delete": "node distribution/scripts/manage-plugins.js delete",
+    "plugins:list": "node distribution/scripts/manage-plugins.js list",
+    "plugins:verify": "node distribution/scripts/manage-plugins.js verify"
   },
   "devDependencies": {
     "@commitlint/cli": "21.1.0",

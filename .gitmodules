@@ -38,7 +38,3 @@
 	path = packages/external-plugins/mbg-ied-extractor
 	url = https://github.com/meinberg-sync/mbg-ied-extractor
 	branch = gh-pages
-[submodule "packages/external-plugins/transnetbw-plugins"]
-	path = packages/external-plugins/transnetbw-plugins
-	url = https://github.com/TransnetBW-openSCD/compas-transnetbw-plugins
-	branch = published-plugins

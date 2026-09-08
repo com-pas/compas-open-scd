@@ -20,6 +20,7 @@ node_modules/
 /.tsbuildinfo
 /.rollup.cache
 /build
+/distribution/external-plugins
 
 # lerna
 /lerna-debug.log
