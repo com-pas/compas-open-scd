@@ -44,8 +44,23 @@
   <script type="module" src="./src/open-scd.js"></script>
   <script src="./init-js/init.js"></script>
   <script>
-    if ('serviceWorker' in navigator)
-      navigator.serviceWorker.register('/sw.js');
+    if ('serviceWorker' in navigator) {
+      const hasServiceWorkerController = Boolean(
+        navigator.serviceWorker.controller
+      );
+      let reloadingForServiceWorkerUpdate = false;
+
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (hasServiceWorkerController && !reloadingForServiceWorkerUpdate) {
+          reloadingForServiceWorkerUpdate = true;
+          window.location.reload();
+        }
+      });
+
+      navigator.serviceWorker
+        .register('/sw.js', { updateViaCache: 'none' })
+        .then(registration => registration.update());
+    }
   </script>
   <script>
     const openScd = document.querySelector("open-scd");

@@ -425,7 +425,9 @@ export class OpenSCD extends LitElement {
     this.updateStoredPlugins(newPlugins);
   }
 
-  private loadPlugins() {
+  private async loadPlugins(): Promise<void> {
+    await this.removeLegacyWorkboxCaches();
+
     const localPluginConfigs = this.getPluginConfigsFromLocalStorage();
 
     const overwritesOfBultInPlugins = localPluginConfigs.filter(p => {
@@ -454,6 +456,20 @@ export class OpenSCD extends LitElement {
     this.updateStoredPlugins(mergedPlugins);
   }
 
+  private async removeLegacyWorkboxCaches(): Promise<void> {
+    if (!('caches' in window)) return;
+
+    const cacheNames = await caches.keys();
+    const legacyCacheNames = cacheNames.filter(
+      cacheName =>
+        /^compas-.+-precache-v2-/.test(cacheName) ||
+        cacheName === 'compas-runtime-http'
+    );
+    await Promise.all(
+      legacyCacheNames.map(cacheName => caches.delete(cacheName))
+    );
+  }
+
   protected getBuiltInPlugins(): CorePlugin[] {
     return builtinPlugins as CorePlugin[];
   }
@@ -475,7 +491,7 @@ export class OpenSCD extends LitElement {
 
     if (!this.loadedPlugins.has(tag)) {
       this.loadedPlugins.add(tag);
-      import(plugin.src).then(mod => {
+      import(this.versionedPluginSrc(plugin.src)).then(mod => {
         customElements.define(tag, mod.default);
       });
     }
@@ -485,6 +501,11 @@ export class OpenSCD extends LitElement {
         tag,
       },
     };
+  }
+
+  private versionedPluginSrc(src: string): string {
+    const separator = src.includes('?') ? '&' : '?';
+    return `${src}${separator}v=${encodeURIComponent(packageJson.version)}`;
   }
 
   private checkAppVersion(): void {

@@ -2,14 +2,34 @@ server {
     listen       ${NGINX_PORT};
     listen  [::]:${NGINX_PORT};
     server_name  localhost;
+    root   /usr/share/nginx/html;
+
+    location = /index.html {
+        add_header Cache-Control "no-cache, no-store, must-revalidate" always;
+    }
+
+    location = /sw.js {
+        add_header Cache-Control "no-cache, no-store, must-revalidate" always;
+    }
+
+    location = /manifest.json {
+        add_header Cache-Control "no-cache, must-revalidate" always;
+    }
+
+    location /assets/ {
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+    }
+
+    location /external-plugins/ {
+        add_header Cache-Control "no-cache, must-revalidate" always;
+    }
 
     location / {
-        root   /usr/share/nginx/html;
         index  index.html index.htm;
+        add_header Cache-Control "no-cache, must-revalidate" always;
     }
 
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
-        root   /usr/share/nginx/html;
     }
 }
