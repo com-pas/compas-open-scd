@@ -31,7 +31,7 @@ Plugins are defined in [`remote-plugins.json`](./remote-plugins.json) at the rep
       "name": "Human-readable name shown in build logs",
       "url": "https://example.com/path/to/plugin.js",
       "dest": "relative/dest/within/external-plugins",
-      "sha256": "64-character hex SHA-256 digest (leave empty to skip verification)"
+      "sha256": "64-character hex SHA-256 digest (omit to skip verification for snapshots)"
     }
   ]
 }
@@ -42,7 +42,7 @@ Plugins are defined in [`remote-plugins.json`](./remote-plugins.json) at the rep
 | `name`   | ✅       | Displayed in build output for easy identification.                                                                                                                                                             |
 | `url`    | ✅       | Full URL of the plugin JavaScript file to download.                                                                                                                                                            |
 | `dest`   | ✅       | Destination path **relative to** the `external-plugins/` directory. The path determines the URL at which nginx serves the plugin (e.g. `dest: "my-plugin/index.js"` → `/external-plugins/my-plugin/index.js`). |
-| `sha256` | ⚠️       | Hex-encoded SHA-256 digest of the expected file content. Strongly recommended for all production deployments. Leave as `""` to skip integrity verification.                                                    |
+| `sha256` | ⚠️       | Hex SHA-256 of the JS file. Present and non-empty: integrity check and download cache. `""`: pin intended but digest not filled yet (`plugins:update-empty-hashes`). Omit the field for SNAPSHOT URLs that must always be downloaded. |
 
 ## Managing plugins
 
@@ -59,11 +59,11 @@ npm run plugins:add -- \
   [--allow-insecure]
 ```
 
-This appends the entry to `remote-plugins.json`.
-The plugin is downloaded during the build, its SHA-256 hash is generated
-automatically, and the hash is stored in `remote-plugins.json`. Add
-`--allow-insecure` to leave `sha256` empty. If `--dest` is omitted it defaults
-to the URL path (without the leading `/`). Existing plugins
+This appends the entry to `remote-plugins.json` and writes the JS (plus optional
+sibling `style.css`) to `distribution/external-plugins`. The SHA-256 hash is
+generated automatically unless `--allow-insecure` is used, which **omits**
+`sha256` (snapshot: always re-downloaded, never cached). If `--dest` is omitted
+it defaults to the URL path (without the leading `/`). Existing plugins
 with the same name, url, or dest are rejected.
 
 ### Update a plugin
@@ -77,8 +77,28 @@ npm run plugins:update -- \
 ```
 
 The flags `--name` and `--url` are required. The script finds the existing
-entry by name, re-downloads the content from the new URL, recomputes `sha256`
-automatically unless `--allow-insecure` is used.
+entry by name, re-downloads the JS into `distribution/external-plugins`, and
+recomputes `sha256` unless `--allow-insecure` is used (then `sha256` is omitted).
+
+### Download plugins
+
+```sh
+npm run plugins:download
+```
+
+Writes every plugin from `remote-plugins.json` into `distribution/external-plugins`.
+Pinned hashes skip the HTTP fetch when the dest file already matches. Snapshots
+(no `sha256` field) are always fetched. Set `REQUIRE_SHA256=true` to fail on
+empty or omitted hashes.
+
+### Fill empty hashes
+
+```sh
+npm run plugins:update-empty-hashes
+```
+
+For every entry whose `sha256` is `""`, downloads the JS and writes the digest.
+Entries with no `sha256` field (snapshots) are left unchanged.
 
 ### Delete a plugin
 
@@ -103,9 +123,10 @@ Prints all plugin entries currently defined in `remote-plugins.json`.
 npm run plugins:verify -- [--name <plugin-name>] [--allow-insecure]
 ```
 
-Downloads every plugin and compares against its stored `sha256`. `--name` selects a specific plugin to verify. 
-Empty `sha256` values fail unless `--allow-insecure` is used, which skips the hash
-comparison for every selected plugin. Mismatches and empty responses exit non-zero.
+Downloads every plugin and compares against its stored `sha256`. `--name` selects a specific plugin to verify.
+Empty `sha256` (`""`) fails unless `--allow-insecure` is used. Omitted `sha256` (snapshot) skips the hash
+comparison after a successful download. `--allow-insecure` skips hashing for every selected plugin.
+Mismatches and empty responses exit non-zero.
 
 ### Rebuild the image
 
@@ -150,23 +171,18 @@ The remote plugin system uses a **multi-stage Docker build** and zero-dependency
 
 #### Implementation details
 
-**Plugin Download Script** ([`download-plugins.sh`](scripts/download-plugins.sh)):
-- Parses JSON configuration using `jq`
-- Creates destination directories automatically
-- Downloads each plugin with `curl --fail` to abort on HTTP errors
-- Validates SHA256 if provided; skips validation if empty
-- Respects `REQUIRE_SHA256` environment variable to enforce hash verification
-
 **Plugin Management CLI** ([`manage-plugins.js`](scripts/manage-plugins.js)):
 - Pure Node.js (>= 18) with zero external dependencies; uses only built-in modules
 - Validates HTTPS URLs and SHA256 digests
 - Normalizes destination paths (prevents directory traversal, backslashes, absolute paths)
-- Five commands:
-  - **add**: Appends plugin to `remote-plugins.json`, downloads content, and computes SHA256
-  - **update**: Re-downloads plugin and updates metadata; recomputes SHA256 unless `--allow-insecure`
+- Commands:
+  - **add**: Appends plugin to `remote-plugins.json`, writes JS under `distribution/external-plugins`, computes SHA256
+  - **update**: Re-downloads plugin to disk and updates metadata; recomputes SHA256 unless `--allow-insecure`
+  - **update-empty-hashes**: Fills `sha256: ""` entries and writes the JS to disk
   - **delete**: Removes a plugin entry from `remote-plugins.json` by name
   - **list**: Prints all configured plugin entries from `remote-plugins.json`
   - **verify**: Downloads all plugins and compares against stored hashes; reports mismatches or empty responses as errors
+  - **download**: Writes every plugin into `distribution/external-plugins` (cached when pinned sha256 matches)
 
 **Optional Custom Styles**:
 If a plugin includes a `style.css` file alongside its `index.js`, the build script automatically copies it:
@@ -183,8 +199,7 @@ The Dockerfile copies `distribution/remote-plugins.json` before running the down
 
 - **Build Host**: Requires `curl`, `jq`, and `openssl` (provided by Alpine Docker image)
 - **Plugin Management**: Requires Node.js >= 18.x (for built-in `fetch` API)
-- **Windows Local Dev**: Execute `distribution/scripts/download-plugins.sh` or `npm run download:plugins` from Git Bash or WSL; 
-  PowerShell/`cmd.exe` doesn't support directly `.sh` files.
+- **Windows Local Dev**: `npm run plugins:download` (Node.js; no Git Bash required).
 - **Configuration Location**: `distribution/remote-plugins.json` must be valid JSON
 - **Output Directory**: Plugins copied to `/usr/share/nginx/html/external-plugins` in final image
 

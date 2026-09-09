@@ -121,7 +121,7 @@ export function createNSDocLogEvent(element: Element, fileName: string): void {
         kind: 'warning',
         title: get('compas.warning.nsdoc'),
         message: get('compas.warning.nsdocDetails', {
-          url: `/public/nsdoc/${fileName}`,
+          url: `/nsdoc/${fileName}`,
         }),
       })
     );

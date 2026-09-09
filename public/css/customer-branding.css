@@ -1,0 +1,96 @@
+/*
+ * Set only --oscd-theme-* here. Unset tokens keep the themes.ts defaults.
+ * Use light-dark(light, dark) to follow the app theme; omit it for a fixed color.
+ *
+ *   primary / secondary — plugin brand fills; contrast with --oscd-theme-base2 or --oscd-theme-base3
+ *   base03 … base3 / yellow … green — Solarized surfaces (invert in dark mode) and fixed accents
+ *   warning / text-font / text-font-mono / icon-font / shape — optional; unset keeps host defaults
+ *   nav-* / body-bg — host chrome only (app bar, tabs, page); plugins must not use these
+ *
+ * See:
+ *   docs/how-to/customer-branding.md
+ *   docs/how-to/plugin-theming.md
+ */
+:root {
+  --oscd-theme-branding: Bearingpoint;
+
+  /* Brand */
+  --internal-primary-light: #330000;
+  --internal-primary-dark: #e5d6ff;
+  --internal-secondary-light: #6845ae;
+  --internal-secondary-dark: #a070ff;
+
+  /* Gray scale */
+  --internal-gray-10: #f7f7f7; /* lightest */
+  --internal-gray-20: #e6e6e6;
+  --internal-gray-30: #cccccc;
+  --internal-gray-40: #b3b3b3;
+  --internal-gray-50: #999999;
+  --internal-gray-60: #808080;
+  --internal-gray-70: #666666;
+  --internal-gray-80: #4d4d4d;
+  --internal-gray-90: #333333; /* darkest */
+
+  --oscd-theme-primary: light-dark(var(--internal-primary-light), var(--internal-primary-dark));
+  --oscd-theme-secondary: light-dark(var(--internal-secondary-light), var(--internal-secondary-dark));
+
+  --oscd-theme-base03: light-dark(var(--internal-gray-90), var(--internal-gray-10));
+  --oscd-theme-base02: light-dark(var(--internal-gray-80), var(--internal-gray-20));
+  --oscd-theme-base01: light-dark(var(--internal-gray-70), var(--internal-gray-30));
+  --oscd-theme-base00: light-dark(var(--internal-gray-60), var(--internal-gray-40));
+  --oscd-theme-base0: light-dark(var(--internal-gray-40), var(--internal-gray-60));
+  --oscd-theme-base1: light-dark(var(--internal-gray-30), var(--internal-gray-70));
+  --oscd-theme-base2: light-dark(var(--internal-gray-20), var(--internal-gray-80));
+  --oscd-theme-base3: light-dark(var(--internal-gray-10), var(--internal-gray-90));
+
+  --oscd-theme-yellow: #b58900;
+  --oscd-theme-orange: #cb4b16;
+  --oscd-theme-red: #dc322f;
+  --oscd-theme-magenta: #d33682;
+  --oscd-theme-violet: #6c71c4;
+  --oscd-theme-blue: #268bd2;
+  --oscd-theme-cyan: #2aa198;
+  --oscd-theme-green: #859900;
+
+  --oscd-theme-text-font: 'Roboto';
+  --oscd-theme-text-font-mono: 'Roboto Mono';
+  --oscd-theme-icon-font: 'Material Symbols Outlined';
+  
+  --oscd-theme-shape: 8px;
+
+  /* Host distribution only. --oscd-theme-body-bg is the page fallback behind plugin surfaces. */
+  --oscd-theme-body-bg: var(--oscd-theme-base3);
+  --oscd-theme-nav-primary: var(--internal-primary-light);
+  --oscd-theme-nav-primary-active: var(--oscd-theme-secondary);
+  --oscd-theme-nav-primary-text: #fff;
+  --oscd-theme-nav-primary-text-active: #fff;
+
+}
+
+/* Experimental: Simulate High Contrast variant for Bearingpoint-Distribution. */
+@media (prefers-contrast: more) {
+  :root {
+    /* Brand – High Contrast */
+    --internal-primary-light: #1a0000;
+    --internal-primary-dark: #f2e9ff;
+    --internal-secondary-light: #3b1a8c;
+    --internal-secondary-dark: #c4a0ff;
+    
+    /* Gray scale – High Contrast */
+    --internal-gray-10: #ffffff; /* lightest */
+    --internal-gray-20: #e0e0e0;
+    --internal-gray-30: #c0c0c0;
+    --internal-gray-40: #b0b0b0;
+    --internal-gray-50: #808080;
+    --internal-gray-60: #505050;
+    --internal-gray-70: #404040;
+    --internal-gray-80: #202020;
+    --internal-gray-90: #000000; /* darkest */
+    
+    --oscd-theme-body-bg: var(--oscd-theme-base3);
+    --oscd-theme-nav-primary: var(--internal-primary-light);
+    --oscd-theme-nav-primary-active: var(--oscd-theme-secondary);
+    --oscd-theme-nav-primary-text: #fff;
+    --oscd-theme-nav-primary-text-active: #fff;
+  }
+}
