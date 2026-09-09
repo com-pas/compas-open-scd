@@ -4,43 +4,41 @@
       "name": "engineering-wizard",
       "url": "https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/engineering-wizard/1.0.0/index.js",
       "dest": "compas-transnetbw-plugins/plugins/engineering-wizard/index.js",
-      "sha256": ""
+      "sha256": "83eefb051b5fae0085a0c09eddaa0ff8bf3702d7cf3740cfed07c6be59745541"
     },
     {
       "name": "template-generator",
       "url": "https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/template-generator/1.0.0/index.js",
       "dest": "compas-transnetbw-plugins/plugins/template-generator/index.js",
-      "sha256": ""
+      "sha256": "2213d7f1c072a9a8ab406df1faf6f180c42f54990b6b8115f7f2a79a10503823"
     },
     {
       "name": "archive-explorer",
       "url": "https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/archive-explorer/1.0.0/index.js",
       "dest": "compas-transnetbw-plugins/plugins/archive-explorer/index.js",
-      "sha256": ""
+      "sha256": "b229dd45afd5e5f9e9c048e966bf66098b854ffd94a685c08027108434e76adb"
     },
     {
       "name": "history-viewer",
       "url": "https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/history-viewer/1.0.0/index.js",
       "dest": "compas-transnetbw-plugins/plugins/history-viewer/index.js",
-      "sha256": ""
+      "sha256": "9f57487b7b8cfd71720d9faa181acc0ac367b87fec41f9a69f4ea6915e828e1e"
     },
     {
       "name": "location-viewer",
       "url": "https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/location-viewer/index.js",
-      "dest": "compas-transnetbw-plugins/plugins/location-viewer/index.js",
-      "sha256": ""
+      "dest": "compas-transnetbw-plugins/plugins/location-viewer/index.js"
     },
     {
       "name": "location-manager",
       "url": "https://transnetbw-openscd.github.io/compas-transnetbw-plugins/compas/plugins/location-manager/index.js",
-      "dest": "compas-transnetbw-plugins/plugins/location-manager/index.js",
-      "sha256": ""
+      "dest": "compas-transnetbw-plugins/plugins/location-manager/index.js"
     },
     {
       "name": "plugins-hub",
       "url": "https://ase-compas.github.io/compas-bearingpoint-plugins/compas/plugins/plugins-hub/0.0.6/index.js",
       "dest": "compas-bearingpoint-plugins/plugins/plugins-hub/index.js",
-      "sha256": ""
+      "sha256": "d9f394df8bb66196e1eecb87cf75e36a33e0da1f61ef02934890a1701980d20a"
     }
   ]
 }
