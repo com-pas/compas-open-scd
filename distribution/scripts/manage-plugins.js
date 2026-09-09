@@ -6,15 +6,21 @@
 // CLI helper to manage the external plugin registry:
 //   * add    - append a new plugin to remote-plugins.json. The plugin is
 //              downloaded so sha256 can be generated automatically unless
-//              --allow-insecure is used.
+//              --allow-insecure is used (then sha256 is omitted: snapshot).
 //   * update - locate a plugin in remote-plugins.json by name and change its
 //              url and/or dest, always re-downloading and recomputing sha256
-//              unless --allow-insecure is used.
+//              unless --allow-insecure is used (then sha256 is omitted).
+//   * update-empty-hashes - download every plugin whose sha256 is "" and
+//              fill in the digest. Plugins with no sha256 field are snapshots
+//              and are left unchanged.
 //   * delete - remove a plugin from remote-plugins.json by its name.
 //   * list   - print all current plugin entries from remote-plugins.json.
 //   * verify - download every listed plugin and compare content against the
-//              stored sha256 (entries without sha256 fail unless
-//              --allow-insecure is used).
+//              stored sha256. Empty sha256 ("") fails unless --allow-insecure.
+//              Omitted sha256 is a snapshot: download is checked, hash is skipped.
+//   * download - write every plugin JS (and optional sibling style.css) into
+//              distribution/external-plugins. Cached when dest exists and
+//              pinned sha256 matches. REQUIRE_SHA256=true fails empty/omitted hashes.
 //
 // This is a plain Node >= 18 script with NO runtime dependencies. It relies
 // only on Node built-ins (fs, path, url, crypto) and the global fetch.
@@ -34,7 +40,20 @@ const REMOTE_PLUGINS_PATH = path.join(
   'distribution',
   'remote-plugins.json',
 );
-const ACCEPTED_COMMANDS = ['add', 'update', 'delete', 'list', 'verify'];
+const EXTERNAL_PLUGINS_DIR = path.join(
+  REPO_ROOT,
+  'distribution',
+  'external-plugins',
+);
+const ACCEPTED_COMMANDS = [
+  'add',
+  'update',
+  'update-empty-hashes',
+  'delete',
+  'list',
+  'verify',
+  'download',
+];
 
 
 // ---------------------------------------------------------------------------
@@ -47,25 +66,30 @@ function usage() {
     'Usage: node manage-plugins.js <command> [flags]',
     '',
     'Commands:',
-    '  add     Add a plugin to remote-plugins.json',
-    '  update  Change url and/or dest of an existing plugin (re-downloads sha256)',
-    '  delete  Remove a plugin from remote-plugins.json by plugin name',
-    '  list    List current entries from remote-plugins.json',
-    '  verify  Download every plugin and compare against stored sha256',
+    '  add                    Add a plugin to remote-plugins.json',
+    '  update                 Change url and/or dest of an existing plugin (re-downloads sha256)',
+    '  update-empty-hashes    Fill sha256 for entries that currently have ""',
+    '  delete                 Remove a plugin from remote-plugins.json by plugin name',
+    '  list                   List current entries from remote-plugins.json',
+    '  verify                 Download every plugin and compare against stored sha256',
+    '  download               Write plugins into distribution/external-plugins',
     '',
     'Flags for "add":',
     '  --name <name>              (required) Plugin display name',
     '  --url <url>                (required) Remote https URL to fetch from',
     '  --dest <path>              (optional) Relative destination (defaults to',
     '                             the last URL path segment)',
-    '  --allow-insecure           (optional) Skip automatic sha256 generation',
+    '  --allow-insecure           (optional) Omit sha256 (snapshot; always downloaded)',
     '',
     'Flags for "update":',
     '  --name <name>              (required) Existing plugin name',
     '  --url <url>                (required) New https URL',
     '  --dest <path>              (optional) New destination',
-    '  --allow-insecure           (optional) Skip automatic sha256 generation',
+    '  --allow-insecure           (optional) Omit sha256 (snapshot; always downloaded)',
     '  (the name must match an existing plugin entry)',
+    '',
+    'Flags for "update-empty-hashes":',
+    '  (no flags; only entries with sha256: "" are updated)',
     '',
     'Flags for "delete":',
     '  --name <name>              (required) Existing plugin name',
@@ -76,6 +100,9 @@ function usage() {
     'Flags for "verify":',
     '  --name <name>              (optional) Verify only the given plugin',
     '  --allow-insecure           (optional) Skip sha256 comparison for all entries',
+    '',
+    'Flags for "download":',
+    '  (no flags; uses remote-plugins.json and distribution/external-plugins)',
   ].join('\n');
   process.stderr.write(msg + '\n');
 }
@@ -123,6 +150,27 @@ function destFromUrl(urlStr) {
 // Compute the sha256 hex digest of a buffer.
 function sha256(buffer) {
   return crypto.createHash('sha256').update(buffer).digest('hex');
+}
+
+// sha256 present and non-empty: pinned digest used as cache key.
+function hasPinnedSha256(plugin) {
+  return typeof plugin.sha256 === 'string' && plugin.sha256.length > 0;
+}
+
+// sha256: "" means "pin this, but the digest is not filled in yet".
+function hasEmptySha256(plugin) {
+  return plugin.sha256 === '';
+}
+
+// No sha256 field: SNAPSHOT URL, always downloaded, never hashed.
+function isSnapshot(plugin) {
+  return !Object.prototype.hasOwnProperty.call(plugin, 'sha256');
+}
+
+function formatSha256(plugin) {
+  if (isSnapshot(plugin)) return '(omitted / snapshot)';
+  if (hasEmptySha256(plugin)) return '(empty)';
+  return plugin.sha256;
 }
 
 // ---------------------------------------------------------------------------
@@ -333,6 +381,56 @@ async function download(urlStr) {
   return Buffer.from(await response.arrayBuffer());
 }
 
+function resolvePluginDest(dest) {
+  const destPath = path.resolve(EXTERNAL_PLUGINS_DIR, dest);
+  const root = path.resolve(EXTERNAL_PLUGINS_DIR);
+  if (
+    destPath !== root &&
+    !destPath.startsWith(`${root}${path.sep}`)
+  ) {
+    fail(`Invalid dest path (path traversal): ${dest}`);
+  }
+  return destPath;
+}
+
+// Write JS to dest under distribution/external-plugins and try sibling style.css.
+async function writePluginToDisk(url, dest, js) {
+  const destPath = resolvePluginDest(dest);
+  const destDir = path.dirname(destPath);
+  fs.mkdirSync(destDir, { recursive: true });
+  fs.writeFileSync(destPath, js);
+
+  const slash = url.lastIndexOf('/');
+  const styleUrl = slash === -1 ? null : `${url.slice(0, slash)}/style.css`;
+  if (styleUrl) {
+    try {
+      fs.writeFileSync(path.join(destDir, 'style.css'), await download(styleUrl));
+      process.stdout.write('  Style: Downloaded\n');
+    } catch {
+      try {
+        fs.unlinkSync(path.join(destDir, 'style.css'));
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+  return destPath;
+}
+
+async function downloadBuffer(url, label) {
+  process.stdout.write(`Downloading "${label}" from ${url}...\n`);
+  let buffer;
+  try {
+    buffer = await download(url);
+  } catch (e) {
+    fail(`Failed to download from ${url}: ${e.message}`);
+  }
+  if (!buffer || buffer.length === 0) {
+    fail(`Downloaded content from ${url} is empty.`);
+  }
+  return buffer;
+}
+
 // ---------------------------------------------------------------------------
 // Commands
 // ---------------------------------------------------------------------------
@@ -363,23 +461,17 @@ async function cmdAdd(args) {
   }
 
 
-  process.stdout.write(`Downloading "${args.name}" from ${args.url}...\n`);
-  let buffer;
-  try {
-    buffer = await download(args.url);
-  } catch (e) {
-    fail(`Failed to download from ${args.url}: ${e.message}`);
-  }
-  if (!buffer || buffer.length === 0) {
-    fail(`Downloaded content from ${args.url} is empty.`);
-  }
+  const buffer = await downloadBuffer(args.url, args.name);
+  await writePluginToDisk(args.url, args.dest, buffer);
 
   const newEntry = {
     name: args.name,
     url: args.url,
     dest: args.dest,
-    sha256: args.allowInsecure ? '' : sha256(buffer),
   };
+  if (!args.allowInsecure) {
+    newEntry.sha256 = sha256(buffer);
+  }
 
   data.plugins.push(newEntry);
   writeRemotePlugins(data, rawEndsWithNewline);
@@ -388,7 +480,7 @@ async function cmdAdd(args) {
     `Added plugin "${args.name}"\n` +
     `  url  : ${newEntry.url}\n` +
     `  dest : ${newEntry.dest}\n` +
-    `  sha256: ${newEntry.sha256 || '(empty)'}\n`,
+    `  sha256: ${formatSha256(newEntry)}\n`,
   );
 }
 
@@ -407,21 +499,16 @@ async function cmdUpdate(args) {
   const newUrl = args.url;
   const newDest = args.dest !== undefined ? args.dest : plugin.dest;
 
-  process.stdout.write(`Downloading "${plugin.name}" from ${newUrl}...\n`);
-  let buffer;
-  try {
-    buffer = await download(newUrl);
-  } catch (e) {
-    fail(`Failed to download from ${newUrl}: ${e.message}`);
-  }
-  if (!buffer || buffer.length === 0) {
-    fail(`Downloaded content from ${newUrl} is empty.`);
-  }
+  const buffer = await downloadBuffer(newUrl, plugin.name);
+  await writePluginToDisk(newUrl, newDest, buffer);
 
   plugin.url = newUrl;
   plugin.dest = newDest;
-  plugin.sha256 = args.allowInsecure ? '' : sha256(buffer);
-
+  if (args.allowInsecure) {
+    delete plugin.sha256;
+  } else {
+    plugin.sha256 = sha256(buffer);
+  }
 
   writeRemotePlugins(data, rawEndsWithNewline);
 
@@ -429,7 +516,50 @@ async function cmdUpdate(args) {
     `Updated plugin "${plugin.name}"\n` +
     `  url   : ${plugin.url}\n` +
     `  dest  : ${plugin.dest}\n` +
-    `  sha256: ${plugin.sha256}\n`,
+    `  sha256: ${formatSha256(plugin)}\n`,
+  );
+}
+
+// Download every plugin that still has sha256: "" and write the digest.
+// Plugins without a sha256 field are snapshots and are not touched.
+async function cmdUpdateEmptyHashes() {
+  const { data, rawEndsWithNewline } = readRemotePlugins();
+  let updated = 0;
+  let skipped = 0;
+
+  for (const plugin of data.plugins) {
+    if (isSnapshot(plugin)) {
+      skipped++;
+      process.stdout.write(
+        `Skipping "${plugin.name}" (no sha256 field; snapshot).\n`,
+      );
+      continue;
+    }
+    if (hasPinnedSha256(plugin)) {
+      skipped++;
+      continue;
+    }
+    if (!hasEmptySha256(plugin)) {
+      skipped++;
+      process.stdout.write(
+        `Skipping "${plugin.name}" (unexpected sha256 value).\n`,
+      );
+      continue;
+    }
+
+    const buffer = await downloadBuffer(plugin.url, plugin.name);
+    await writePluginToDisk(plugin.url, plugin.dest, buffer);
+    plugin.sha256 = sha256(buffer);
+    updated++;
+    process.stdout.write(`  sha256: ${plugin.sha256}\n`);
+  }
+
+  if (updated > 0) {
+    writeRemotePlugins(data, rawEndsWithNewline);
+  }
+  process.stdout.write(
+    `\nUpdated ${updated} hash(es), skipped ${skipped} ` +
+    `(total ${data.plugins.length}).\n`,
   );
 }
 
@@ -450,7 +580,7 @@ function cmdDelete(args) {
     `Deleted plugin "${removed.name}"\n` +
     `  url   : ${removed.url}\n` +
     `  dest  : ${removed.dest}\n` +
-    `  sha256: ${removed.sha256 || '(empty)'}\n`,
+    `  sha256: ${formatSha256(removed)}\n`,
   );
 }
 
@@ -471,7 +601,13 @@ function cmdList() {
       `[${i + 1}] ${plugin.name}\n` +
       `  url   : ${plugin.url}\n` +
       `  dest  : ${plugin.dest}\n` +
-      `  sha256: ${plugin.sha256 ? '(set)' : '(empty)'}\n`,
+      `  sha256: ${
+        hasPinnedSha256(plugin)
+          ? '(set)'
+          : hasEmptySha256(plugin)
+            ? '(empty)'
+            : '(omitted / snapshot)'
+      }\n`,
     );
     if (i < plugins.length - 1) {
       process.stdout.write('\n');
@@ -481,7 +617,7 @@ function cmdList() {
 
 // Download every plugin (or a single one when --name is given) and compare
 // its content against the stored sha256. Reports OK / SKIP (--allow-insecure) /
-// FAIL (missing sha256, mismatch, download error, or empty response) per
+// FAIL (empty sha256, mismatch, download error, or empty response) per
 // plugin and exits non-zero on any failure.
 async function cmdVerify(args) {
   const { data } = readRemotePlugins();
@@ -521,12 +657,19 @@ async function cmdVerify(args) {
       process.stdout.write('SKIP (--allow-insecure)\n');
       continue;
     }
-    if (!plugin.sha256) {
+    if (isSnapshot(plugin)) {
+      skipped++;
+      process.stdout.write('SKIP (snapshot; no sha256 field)\n');
+      continue;
+    }
+    if (!hasPinnedSha256(plugin)) {
       failed++;
       failures.push(
-        `${plugin.name}: missing sha256 (use --allow-insecure to bypass hash verification)`,
+        `${plugin.name}: empty sha256 (run update-empty-hashes, or use --allow-insecure)`,
       );
-      process.stdout.write('FAIL (missing sha256; use --allow-insecure to bypass)\n');
+      process.stdout.write(
+        'FAIL (empty sha256; run update-empty-hashes or use --allow-insecure)\n',
+      );
       continue;
     }
     const actual = sha256(buffer);
@@ -555,6 +698,74 @@ async function cmdVerify(args) {
   }
 }
 
+// Write every plugin into distribution/external-plugins. Skip the HTTP fetch
+// when dest exists and a pinned sha256 matches the file on disk.
+async function cmdDownload() {
+  const { data } = readRemotePlugins();
+  const { plugins } = data;
+  if (plugins.length === 0) {
+    fail('No plugins defined.');
+  }
+
+  const requireSha256 = process.env.REQUIRE_SHA256 === 'true';
+  process.stdout.write(
+    `Downloading ${plugins.length} plugin(s) from '${REMOTE_PLUGINS_PATH}' ` +
+    `into '${EXTERNAL_PLUGINS_DIR}'...\n`,
+  );
+
+  for (const [i, plugin] of plugins.entries()) {
+    const destPath = resolvePluginDest(plugin.dest);
+    process.stdout.write(
+      `\n[${i + 1}/${plugins.length}] ${plugin.name}\n` +
+      `  URL : ${plugin.url}\n` +
+      `  Dest: ${destPath}\n`,
+    );
+
+    if (hasPinnedSha256(plugin) && fs.existsSync(destPath)) {
+      const existing = fs.readFileSync(destPath);
+      if (sha256(existing) === plugin.sha256) {
+        process.stdout.write('  Cache: hit (sha256 matches), skipping download\n');
+        continue;
+      }
+      process.stdout.write('  Cache: stale (sha256 mismatch), re-downloading\n');
+    }
+
+    const js = await downloadBuffer(plugin.url, plugin.name);
+
+    if (hasPinnedSha256(plugin)) {
+      const actual = sha256(js);
+      if (actual !== plugin.sha256) {
+        fail(
+          `SHA256 mismatch for plugin '${plugin.name}'.\n` +
+          `  Expected : ${plugin.sha256}\n` +
+          `  Actual   : ${actual}`,
+        );
+      }
+      process.stdout.write('  SHA256 OK\n');
+    } else if (hasEmptySha256(plugin)) {
+      process.stderr.write(
+        `  WARNING: Empty sha256 for plugin '${plugin.name}' (not cached).\n`,
+      );
+      if (requireSha256) {
+        fail(`REQUIRE_SHA256=true but sha256 is empty for '${plugin.name}'.`);
+      }
+    } else {
+      process.stderr.write(
+        `  WARNING: No sha256 for plugin '${plugin.name}' (snapshot, always downloaded).\n`,
+      );
+      if (requireSha256) {
+        fail(`REQUIRE_SHA256=true but no sha256 for '${plugin.name}'.`);
+      }
+    }
+
+    await writePluginToDisk(plugin.url, plugin.dest, js);
+  }
+
+  process.stdout.write(
+    `\nAll ${plugins.length} plugin(s) downloaded successfully.\n`,
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Entry point
 // ---------------------------------------------------------------------------
@@ -568,6 +779,9 @@ async function main() {
     case 'update':
       await cmdUpdate(args);
       break;
+    case 'update-empty-hashes':
+      await cmdUpdateEmptyHashes();
+      break;
     case 'delete':
       cmdDelete(args);
       break;
@@ -576,6 +790,9 @@ async function main() {
       break;
     case 'verify':
       await cmdVerify(args);
+      break;
+    case 'download':
+      await cmdDownload();
       break;
     default:
       usage();
