@@ -34,7 +34,7 @@ jobs:
       - name: Set up Docker Buildx
         id: buildx
         if: ${{ github.event_name == 'pull_request' }}
-        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e #v4.3.0
+        uses: docker/setup-buildx-action@594f3bf4285d9ea8dc53c9a0c9c4092420091003 #v4.4.0
       
       - name: Setup pnpm
         uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
