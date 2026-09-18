@@ -169,7 +169,7 @@ export class OpenSCD extends LitElement {
     try {
       const doc = await CompasSclDataService().getSclDocument(
         this,
-        'SSD',
+        'LNT',
         LNODE_LIB_DOC_ID
       );
       if (doc instanceof Document) {
