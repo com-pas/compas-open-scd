@@ -87,8 +87,8 @@ importers:
         specifier: 6.8.0
         version: 6.8.0
       lit-element:
-        specifier: 2.5.1
-        version: 2.5.1
+        specifier: 4.2.2
+        version: 4.2.2
       lit-html:
         specifier: 1.4.1
         version: 1.4.1
