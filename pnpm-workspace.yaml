@@ -5,5 +5,7 @@ allowBuilds:
   core-js-pure: true
   esbuild: true
 minimumReleaseAgeExclude:
+  - '@compas-oscd/core'
   - '@compas-oscd/open-scd'
   - '@compas-oscd/plugins'
+  - '@compas-oscd/xml'

@@ -19,6 +19,6 @@ ENV NGINX_PORT=8080
 EXPOSE 8080
 
 VOLUME /etc/nginx/
-VOLUME /usr/share/nginx/html/public/cim
-VOLUME /usr/share/nginx/html/public/conf
-VOLUME /usr/share/nginx/html/public/nsdoc
+VOLUME /usr/share/nginx/html/cim
+VOLUME /usr/share/nginx/html/conf
+VOLUME /usr/share/nginx/html/nsdoc

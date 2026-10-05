@@ -1,0 +1,38 @@
+/*
+ * Set only --oscd-theme-* here. Unset tokens keep the themes.ts defaults.
+ * Use light-dark(light, dark) to follow the app theme; omit it for a fixed color.
+ *
+ *   primary / secondary — plugin brand fills; contrast with --oscd-theme-base2 or --oscd-theme-base3
+ *   base03 … base3 / yellow … green — Solarized surfaces (invert in dark mode) and fixed accents
+ *   warning / text-font / text-font-mono / icon-font / shape — optional; unset keeps themes.ts defaults
+ *   nav-* / body-bg — host chrome only (app bar, tabs, page); plugins must not use these
+ *
+ * See:
+ *   https://github.com/ase-compas/open-scd/blob/main/docs/how-to/customer-branding.md
+ *   https://github.com/ase-compas/open-scd/blob/main/docs/how-to/plugin-theming.md
+ */
+:root {
+/*   SIMPLE EXAMPLE CONFIG: */
+/*   Plugin brand fills */
+/*   --oscd-theme-primary: light-dark(#00695c, #80cbc4); */
+/*   --oscd-theme-secondary: #6c71c4; */
+
+/*   Solarized color/gray-scala */
+/*   --oscd-theme-base03: light-dark(#00362d, #f3faf7); */
+/*   --oscd-theme-base02: light-dark(#074238, #e6f2ee); */
+/*   --oscd-theme-base01: light-dark(#587570, #8ba39e); */
+/*   --oscd-theme-base00: light-dark(#65837e, #7a9690); */
+/*   --oscd-theme-base0: light-dark(#839693, #5a7871); */
+/*   --oscd-theme-base1: light-dark(#93a19f, #4d6b64); */
+/*   --oscd-theme-base2: light-dark(#e6f2ee, #074238); */
+/*   --oscd-theme-base3: light-dark(#f3faf7, #00362d); */
+
+/*   App bar / editor tabs (host only) */
+/*   --oscd-theme-nav-primary: #004d40; */
+/*   --oscd-theme-nav-primary-active: #004d40; */
+/*   --oscd-theme-nav-primary-text: #eee; */
+/*   --oscd-theme-nav-primary-text-active: yellow; */
+
+/*   Page background (host only) */
+/*   --oscd-theme-body-bg: light-dark(#fff, color-mix(in oklab, #004d40 50%, #000)); */
+}

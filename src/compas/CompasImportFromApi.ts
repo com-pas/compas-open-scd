@@ -19,7 +19,7 @@ import { CompasCimMappingService } from '../compas-services/CompasCimMappingServ
 @customElement('compas-import-from-api')
 export default class CompasImportFromApiElement extends LitElement {
   private async processCimFile(name: string) {
-    const doc = await fetch('/public/cim/' + name + '.xml')
+    const doc = await fetch('/cim/' + name + '.xml')
       .catch(handleError)
       .then(handleResponse)
       .then(parseXml);

@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@compas-oscd/core':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.3.0
+        version: 0.3.0
       '@compas-oscd/open-scd':
-        specifier: 0.35.3
-        version: 0.35.3
+        specifier: 0.36.0
+        version: 0.36.0
       '@compas-oscd/plugins':
-        specifier: 0.1.3
-        version: 0.1.3
+        specifier: 0.2.0
+        version: 0.2.0
       '@compas-oscd/xml':
-        specifier: 0.0.2
-        version: 0.0.2
+        specifier: 0.0.6
+        version: 0.0.6
       '@material/mwc-button':
         specifier: 0.22.1
         version: 0.22.1
@@ -850,29 +850,20 @@ packages:
     resolution: {integrity: sha512-YodnnnH1Cp+08nP8HGNJAIuB6L3/vdCTHVRTfF8Ik/wRCLOTsU9zwv3yO1cSPQRDa9CLYtE+UJ2K67r7CwMSFw==}
     engines: {node: '>=22.12.0'}
 
-  '@compas-oscd/core@0.1.23':
-    resolution: {integrity: sha512-ZYz5P0mbi3D9PUmZQ6nZcxT7+TVghM/AKqRqCld8qvPRN1KOnkTD1XsXy3smsbYsf3iZbwPlYJIiZmiTiP6EEw==}
+  '@compas-oscd/core@0.3.0':
+    resolution: {integrity: sha512-iXo785DEM420b+of/SHq339snWzV1qw5RWUoqYXfUOlohrpvz0p+ta0vrFkA8STHiEDmDaS/D/dNeGXMue+zBQ==}
 
-  '@compas-oscd/core@0.2.1':
-    resolution: {integrity: sha512-pA1TtMSD+j13FDLiLalK08st7bq+tNE5lmwSQBDDmK0+yzSLUC8MR3IqdBJobNLUhqcR2v5ES8xIR5qbuy1ylg==}
+  '@compas-oscd/open-scd@0.36.0':
+    resolution: {integrity: sha512-6u/BEd1bW3tdIIduw1MUIGl3Qp+jhZCFsPEVmCsEUS/WsOLwr0lArJd8bgcf8huJ6HLdBvCF+UBdoAe4XucLPw==}
 
-  '@compas-oscd/core@0.2.3':
-    resolution: {integrity: sha512-SfuKaABmWBc7VA84CHeS4xhJUqGkhD3UFWNNhTZ9gXQ4BxjrDFYqWw61Kanv007G27v98LyZnTgvlDvjPP/b3g==}
-
-  '@compas-oscd/open-scd@0.35.3':
-    resolution: {integrity: sha512-L5TuYrwvEX52xtXo2hBHeNbl4lBtTcy+g2B4HMcH8TtTrnT644w7rzBqmBY+BleW1kHsE2+uXv77zSTEl1h/hw==}
-
-  '@compas-oscd/plugins@0.1.3':
-    resolution: {integrity: sha512-SwWiWsuDJM49TVX66QcuMCkRhdRuMeIAu5nTxL7nXxAT6RPR1aMuXRkkD4y5qZR7QPEicdS+FnT44/VAdCU7lw==}
+  '@compas-oscd/plugins@0.2.0':
+    resolution: {integrity: sha512-WiSnY7+lo/tDm9AISRFjTtzlXZxowgJNZWSvai+5J7wpNj4f+K2r+pMJUS6HTdz5kU4FcbWat7+6geu5TkTdfw==}
 
   '@compas-oscd/xml@0.0.1':
     resolution: {integrity: sha512-pAfpo0ekenyKDLf4IjokMf0ej+L8U4BbHxxJVvKr6/NCdnletXCRoh2zPNIvjWCp4GTq/oIbM1ZInPwa86YLig==}
 
-  '@compas-oscd/xml@0.0.2':
-    resolution: {integrity: sha512-xt38zEjbC4bIxbvyNs4iHsZqBfLqAVRUnVEkRR3V+2jEvf2v3Oft6WSU/8cR+bBuUAFfeDKsVZHsf10orLgF9w==}
-
-  '@compas-oscd/xml@0.0.5':
-    resolution: {integrity: sha512-Gr7Hb0LB1ek3p2W79G1DiyjxO51LnRh3aFHRITE3R0W1WQJ8QBvrSoPvWsXXSYkqyTwWOd2TVSI94Yez317iLQ==}
+  '@compas-oscd/xml@0.0.6':
+    resolution: {integrity: sha512-RLCRcLjixrgmy3dC9rRe8R3wLOk1RLn2F7HKjpQCmJVd7fXKtn5I/e0dem1rofXjgtqA5dLUluT1H+kESKjz3w==}
 
   '@conventional-changelog/git-client@2.7.0':
     resolution: {integrity: sha512-j7A8/LBEQ+3rugMzPXoKYzyUPpw/0CBQCyvtTR7Lmu4olG4yRC/Tfkq79Mr3yuPs0SUitlO2HwGP3gitMJnRFw==}
@@ -6710,30 +6701,16 @@ snapshots:
       conventional-commits-parser: 6.4.0
       picocolors: 1.1.1
 
-  '@compas-oscd/core@0.1.23':
+  '@compas-oscd/core@0.3.0':
     dependencies:
       '@lit/localize': 0.11.4
       '@open-wc/lit-helpers': 0.5.1(lit@2.8.0)
       '@openscd/oscd-api': 0.1.6
       lit: 2.8.0
 
-  '@compas-oscd/core@0.2.1':
+  '@compas-oscd/open-scd@0.36.0':
     dependencies:
-      '@lit/localize': 0.11.4
-      '@open-wc/lit-helpers': 0.5.1(lit@2.8.0)
-      '@openscd/oscd-api': 0.1.6
-      lit: 2.8.0
-
-  '@compas-oscd/core@0.2.3':
-    dependencies:
-      '@lit/localize': 0.11.4
-      '@open-wc/lit-helpers': 0.5.1(lit@2.8.0)
-      '@openscd/oscd-api': 0.1.6
-      lit: 2.8.0
-
-  '@compas-oscd/open-scd@0.35.3':
-    dependencies:
-      '@compas-oscd/core': 0.1.23
+      '@compas-oscd/core': 0.3.0
       '@compas-oscd/xml': 0.0.1
       '@material/mwc-button': 0.22.1
       '@material/mwc-checkbox': 0.22.1
@@ -6765,11 +6742,11 @@ snapshots:
       marked: 4.3.0
       panzoom: 9.4.4
 
-  '@compas-oscd/plugins@0.1.3':
+  '@compas-oscd/plugins@0.2.0':
     dependencies:
-      '@compas-oscd/core': 0.2.3
-      '@compas-oscd/open-scd': 0.35.3
-      '@compas-oscd/xml': 0.0.5
+      '@compas-oscd/core': 0.3.0
+      '@compas-oscd/open-scd': 0.36.0
+      '@compas-oscd/xml': 0.0.6
       '@material/dialog': 14.0.0
       '@material/mwc-button': 0.22.1
       '@material/mwc-checkbox': 0.22.1
@@ -6797,9 +6774,7 @@ snapshots:
 
   '@compas-oscd/xml@0.0.1': {}
 
-  '@compas-oscd/xml@0.0.2': {}
-
-  '@compas-oscd/xml@0.0.5': {}
+  '@compas-oscd/xml@0.0.6': {}
 
   '@conventional-changelog/git-client@2.7.0(conventional-commits-parser@6.4.0)':
     dependencies:
