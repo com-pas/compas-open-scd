@@ -19,6 +19,7 @@ export const de: Translations = {
       type: '???',
       server: '???',
       serverDetails: '{{type}}: {{message}}',
+      invalidSclId: 'Das Dokument konnte nicht geöffnet werden, da die SCL-Dokument-ID ungültig ist',
     },
     warning: {
       nsdoc: 'NSDoc-Datei konnte nicht geladen werden',
