@@ -1,4 +1,6 @@
 saveExact: true
+overrides:
+  "@compas-oscd/open-scd": 0.36.2
 minimumReleaseAge: 4320 # 3 days
 allowBuilds:
   core-js-bundle: true
