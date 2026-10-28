@@ -332,15 +332,6 @@ export const officialPlugins = [
     position: 'middle',
   },
   {
-    name: 'Locamation VMU',
-    src: '/compas-plugins/menu/LocamationVMU.js',
-    icon: 'edit_note',
-    activeByDefault: false,
-    kind: 'menu',
-    requireDoc: true,
-    position: 'middle',
-  },
-  {
     name: 'Wizarding',
     src: '/external-plugins/scl-wizarding/scl-wizarding.js',
     icon: 'edit',
