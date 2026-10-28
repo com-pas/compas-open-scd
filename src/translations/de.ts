@@ -155,34 +155,5 @@ export const de: Translations = {
           'Es wurde kein Substation Element gefunden für VoltageLevel "{{ voltageLevelName }}" für ioa "{{ ioa }}"',
       },
     },
-  },
-  locamation: {
-    vmu: {
-      ied: {
-        title: '???',
-        missing: '???',
-        name: '???',
-      },
-      ldevice: {
-        name: '???',
-      },
-      ln: {
-        title: '???',
-        editTitle: '???',
-        name: '???',
-      },
-      version: '???',
-      identifier: '???',
-      identifierHelper: '???',
-      sum: '???',
-      sumHelper: '???',
-      channel: '???',
-      channelHelper: '???',
-      transformPrimary: '???',
-      transformPrimaryHelper: '???',
-      transformSecondary: '???',
-      transformSecondaryHelper: '???',
-      updateAction: '???',
-    },
-  },
+  }
 };
