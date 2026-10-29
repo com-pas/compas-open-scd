@@ -16,7 +16,6 @@ import { default as CompasUpdateSubstation } from './menu/CompasUpdateSubstation
 import { default as CompasCompareIED } from './menu/CompasCompareIED.js';
 import { default as CompasAutoAlignment } from './menu/CompasAutoAlignment.js';
 import { default as ExportIEDParams } from './menu/ExportIEDParams.js';
-import { default as LocamationVMU } from './menu/LocamationVMU.js';
 import { default as CompasSettings } from './menu/CompasSettings.js';
 
 export enum CompasPluginSrc {
@@ -39,7 +38,6 @@ export enum CompasPluginSrc {
   CompasCompareIED = '/compas-plugins/menu/CompasCompareIED.js',
   CompasAutoAlignment = '/compas-plugins/menu/CompasAutoAlignment.js',
   ExportIEDParams = '/compas-plugins/menu/ExportIEDParams.js',
-  LocamationVMU = '/compas-plugins/menu/LocamationVMU.js',
   CompasSettings = '/compas-plugins/menu/CompasSettings.js'
 }
 
@@ -60,7 +58,6 @@ const plugins: { [key in CompasPluginSrc]: CustomElementConstructor } = {
   [CompasPluginSrc.CompasCompareIED]: CompasCompareIED,
   [CompasPluginSrc.CompasAutoAlignment]: CompasAutoAlignment,
   [CompasPluginSrc.ExportIEDParams]: ExportIEDParams,
-  [CompasPluginSrc.LocamationVMU]: LocamationVMU,
   [CompasPluginSrc.CompasSettings]: CompasSettings
 }
 
