@@ -24,8 +24,8 @@ importers:
         specifier: 0.0.6
         version: 0.0.6
       '@material/mwc-button':
-        specifier: 0.22.1
-        version: 0.22.1
+        specifier: 0.27.0
+        version: 0.27.0
       '@material/mwc-dialog':
         specifier: 0.22.1
         version: 0.22.1
@@ -764,8 +764,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0 || ^8.0.0-0 <8.0.0
 
-  '@babel/runtime-corejs3@7.29.7':
-    resolution: {integrity: sha512-ppj9ouYku+RX0ljtgZd+KMO5mkM2bCqg8H2PYAFWnLsHEIKIdRojqbJ2i3eVHrisuxy7nOFCmngTDdWtUCdXUQ==}
+  '@babel/runtime-corejs3@7.29.10':
+    resolution: {integrity: sha512-R4FKrg4Vy0hB7PfAxf9LOorEPd5/36SCIXPXAvjlQaQmPvtrjwoDXV15jsSm2ecsqBW1Iewwb7mEnG83xIEApg==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.29.10':
+    resolution: {integrity: sha512-NpugTzbKgGrNe45Ui32cN8vCFFMxVtP/9rtfwv0nP5FRDAjvYBxJcLVpYA9mr1jxP6cnIT7x9LUzuDTbWYYNRA==}
     engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.29.7':
@@ -1062,6 +1066,10 @@ packages:
     resolution: {integrity: sha512-Z+NOM+d7QkmIOGbVT7BA/rzLJMXGaxC4Bp+dXcm3ESu6ohPBtG878IyZGSGiMXXDtmAKgMAIp74z4gE/Y0j1pA==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
 
+  '@material/mwc-button@0.27.0':
+    resolution: {integrity: sha512-t5m2zfE93RNKHMjdsU67X6csFzuSG08VJKKvXVQ+BriGE3xBgzY5nZdmZXomFpaWjDENPAlyS4ppCFm6o+DILw==}
+    deprecated: MWC beta is longer supported. Please upgrade to @material/web
+
   '@material/mwc-checkbox@0.22.1':
     resolution: {integrity: sha512-JfUEVWAos/sscPH1k9oUKhjtCbTuU4rl7GgKcenCF6EnxTaXbzxGJKPz28BUS5I14JM7vHNUwfqTC+M/87tNxg==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
@@ -1098,6 +1106,10 @@ packages:
     resolution: {integrity: sha512-LX4MUThlYEBfpTr1O53J27KbzFhPbe2dBGouY9piztCI3FObbRVQI+LXFlXJm6KU0BzemaQfz105ZAuLlPAN4g==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
 
+  '@material/mwc-icon@0.27.0':
+    resolution: {integrity: sha512-Sul44I37M9Ewynn0A9DjkEBrmll2VtNbth6Pxj7I1A/EAwEfaCrPvryyGqfIu1T2hTsRcaojzQx6QjF+B5QW9A==}
+    deprecated: MWC beta is longer supported. Please upgrade to @material/web
+
   '@material/mwc-line-ripple@0.22.1':
     resolution: {integrity: sha512-Wx2BHD+/z4Fm8TXyiv59UVeNAirunTfR3uCEjGMU/R7mXUwjpjOhY5bNYGUcP9VyMGG5CkLovc8XX96/iKs1ag==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
@@ -1124,6 +1136,10 @@ packages:
 
   '@material/mwc-ripple@0.22.1':
     resolution: {integrity: sha512-QQyWWPBZ6veWNbBMWo8WQw0iY9QUjLLANorug8mPHv13ETdhwVUUozeKOY0ZCXWupNlqtap1Gd0IQjv6HVRMjA==}
+    deprecated: MWC beta is longer supported. Please upgrade to @material/web
+
+  '@material/mwc-ripple@0.27.0':
+    resolution: {integrity: sha512-by0O8d8g3Rd96/sUB8hxy6MrDx1QTstqOsA64vqypWd526hMTBGRik08jTNap5sVIyrN9Vq17jb4NJLWQLnNHQ==}
     deprecated: MWC beta is longer supported. Please upgrade to @material/web
 
   '@material/mwc-select@0.22.1':
@@ -2001,8 +2017,8 @@ packages:
   array-ify@1.0.0:
     resolution: {integrity: sha512-c5AMf34bKdvPhQ7tBGhqkgKNUzMr4WUs+WDtC2ZUGOUncbxKMTvqxYctiseW3+L4bA8ec+GcZ6/A/FW4m8ukng==}
 
-  array-includes@3.1.9:
-    resolution: {integrity: sha512-FmeCCAenzH0KH381SPT5FZmiA/TmpndpcaShhfgEN9eCVjnFBqq3l1xrI42y8+PPLI6hypzou4GXw00WHmPBLQ==}
+  array-includes@3.2.0:
+    resolution: {integrity: sha512-VXY5eFRarnXcYxwBjJzPmEhH55+rmP79/+ueDhi0F+TuqfHCItagIHqxeUZrmgrOPa31QTh9H85DjX3FfJ0FTg==}
     engines: {node: '>= 0.4'}
 
   array-union@2.1.0:
@@ -2077,6 +2093,10 @@ packages:
 
   axe-core@4.12.1:
     resolution: {integrity: sha512-s7iGf5GaVMxEG0ENN9x+xTr7GFZCb1ZP/1uATUpCEK2X78nDB3RwbtFCo9pGAf9ru+VwoQ464DkaLEeRM08wJA==}
+    engines: {node: '>=4'}
+
+  axe-core@4.14.0:
+    resolution: {integrity: sha512-9WTZxEjsZ7b13TH8JPmbV2z8CHbl80/2hm3XPEG4JgNdQLK81IBRXmSxHfMAOkSqQeRxT/0dwNDz2GOm3zzpcQ==}
     engines: {node: '>=4'}
 
   axobject-query@2.2.0:
@@ -2510,8 +2530,8 @@ packages:
   core-js-compat@3.49.0:
     resolution: {integrity: sha512-VQXt1jr9cBz03b331DFDCCP90b3fanciLkgiOoy8SBHy06gNf+vQ1A3WFLqG7I8TipYIKeYK9wxd0tUrvHcOZA==}
 
-  core-js-pure@3.49.0:
-    resolution: {integrity: sha512-XM4RFka59xATyJv/cS3O3Kml72hQXUeGRuuTmMYFxwzc9/7C8OYTaIR/Ji+Yt8DXzsFLNhat15cE/JP15HrCgw==}
+  core-js-pure@3.51.0:
+    resolution: {integrity: sha512-NE4SFDJ+qzQeqHG2vVSNwopzS6zZNPYJ5kinIqs+OofTqGzOmICgT89E/yvS9XY7rwb3eU1utWXTJ9nVFqv74A==}
 
   core-util-is@1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
@@ -3553,6 +3573,10 @@ packages:
 
   is-core-module@2.16.2:
     resolution: {integrity: sha512-evOr8xfXKxE6qSR0hSXL2r3sd7ALj8+7jQEUvPYcm5sgZFdJ+AYzT6yNmJenvIYQBgIGwfwz08sL8zoL7yq2BA==}
+    engines: {node: '>= 0.4'}
+
+  is-core-module@2.17.0:
+    resolution: {integrity: sha512-J/vG0zBCbIKOQFfufSwyXdMrsohyJIUNkrnmo6WZGzoM7tr/lsbfW5b2BvisL6zsyMzK9UxV9L6c7AoFbyXHOA==}
     engines: {node: '>= 0.4'}
 
   is-data-view@1.0.2:
@@ -6566,9 +6590,11 @@ snapshots:
       '@babel/types': 7.29.7
       esutils: 2.0.3
 
-  '@babel/runtime-corejs3@7.29.7':
+  '@babel/runtime-corejs3@7.29.10':
     dependencies:
-      core-js-pure: 3.49.0
+      core-js-pure: 3.51.0
+
+  '@babel/runtime@7.29.10': {}
 
   '@babel/runtime@7.29.7': {}
 
@@ -7175,6 +7201,13 @@ snapshots:
       lit-html: 1.4.1
       tslib: 2.8.1
 
+  '@material/mwc-button@0.27.0':
+    dependencies:
+      '@material/mwc-icon': 0.27.0
+      '@material/mwc-ripple': 0.27.0
+      lit: 2.8.0
+      tslib: 2.8.1
+
   '@material/mwc-checkbox@0.22.1':
     dependencies:
       '@material/mwc-base': 0.22.1
@@ -7246,6 +7279,11 @@ snapshots:
       lit-element: 2.5.1
       tslib: 2.8.1
 
+  '@material/mwc-icon@0.27.0':
+    dependencies:
+      lit: 2.8.0
+      tslib: 2.8.1
+
   '@material/mwc-line-ripple@0.22.1':
     dependencies:
       '@material/line-ripple': 12.0.0-canary.22d29cbb4.0
@@ -7310,6 +7348,14 @@ snapshots:
       '@material/ripple': 12.0.0-canary.22d29cbb4.0
       lit-element: 2.5.1
       lit-html: 1.4.1
+      tslib: 2.8.1
+
+  '@material/mwc-ripple@0.27.0':
+    dependencies:
+      '@material/dom': 14.0.0-canary.53b3cad2f.0
+      '@material/mwc-base': 0.27.0
+      '@material/ripple': 14.0.0-canary.53b3cad2f.0
+      lit: 2.8.0
       tslib: 2.8.1
 
   '@material/mwc-select@0.22.1':
@@ -8650,8 +8696,8 @@ snapshots:
 
   aria-query@4.2.2:
     dependencies:
-      '@babel/runtime': 7.29.7
-      '@babel/runtime-corejs3': 7.29.7
+      '@babel/runtime': 7.29.10
+      '@babel/runtime-corejs3': 7.29.10
 
   array-back@3.1.0: {}
 
@@ -8666,14 +8712,14 @@ snapshots:
 
   array-ify@1.0.0: {}
 
-  array-includes@3.1.9:
+  array-includes@3.2.0:
     dependencies:
       call-bind: 1.0.9
       call-bound: 1.0.4
       define-properties: 1.2.1
       es-abstract: 1.24.2
       es-object-atoms: 1.1.2
-      get-intrinsic: 1.3.0
+      es-shim-unscopables: 1.1.0
       is-string: 1.1.1
       math-intrinsics: 1.1.0
 
@@ -8755,6 +8801,8 @@ snapshots:
   aws4@1.13.2: {}
 
   axe-core@4.12.1: {}
+
+  axe-core@4.14.0: {}
 
   axobject-query@2.2.0: {}
 
@@ -9286,7 +9334,7 @@ snapshots:
     dependencies:
       browserslist: 4.28.2
 
-  core-js-pure@3.49.0: {}
+  core-js-pure@3.51.0: {}
 
   core-util-is@1.0.2: {}
 
@@ -9753,7 +9801,7 @@ snapshots:
   eslint-import-resolver-node@0.3.10:
     dependencies:
       debug: 3.2.7
-      is-core-module: 2.16.2
+      is-core-module: 2.17.0
       resolve: 2.0.0-next.7
     transitivePeerDependencies:
       - supports-color
@@ -9780,7 +9828,7 @@ snapshots:
   eslint-plugin-import@2.32.0(@typescript-eslint/parser@5.62.0(eslint@7.32.0)(typescript@5.9.3))(eslint@7.32.0):
     dependencies:
       '@rtsao/scc': 1.1.0
-      array-includes: 3.1.9
+      array-includes: 3.2.0
       array.prototype.findlastindex: 1.2.6
       array.prototype.flat: 1.3.3
       array.prototype.flatmap: 1.3.3
@@ -9790,7 +9838,7 @@ snapshots:
       eslint-import-resolver-node: 0.3.10
       eslint-module-utils: 2.14.0(@typescript-eslint/parser@5.62.0(eslint@7.32.0)(typescript@5.9.3))(eslint-import-resolver-node@0.3.10)(eslint@7.32.0)
       hasown: 2.0.4
-      is-core-module: 2.16.2
+      is-core-module: 2.17.0
       is-glob: 4.0.3
       minimatch: 3.1.5
       object.fromentries: 2.0.8
@@ -9809,7 +9857,7 @@ snapshots:
   eslint-plugin-lit-a11y@1.1.0(eslint@7.32.0):
     dependencies:
       aria-query: 4.2.2
-      axe-core: 4.12.1
+      axe-core: 4.14.0
       axobject-query: 2.2.0
       dom5: 3.0.1
       emoji-regex: 9.2.2
@@ -10465,6 +10513,10 @@ snapshots:
       ci-info: 2.0.0
 
   is-core-module@2.16.2:
+    dependencies:
+      hasown: 2.0.4
+
+  is-core-module@2.17.0:
     dependencies:
       hasown: 2.0.4
 
@@ -11775,7 +11827,7 @@ snapshots:
   resolve@2.0.0-next.7:
     dependencies:
       es-errors: 1.3.0
-      is-core-module: 2.16.2
+      is-core-module: 2.17.0
       node-exports-info: 1.6.2
       object-keys: 1.1.1
       path-parse: 1.0.7
