@@ -7,6 +7,9 @@ import {
   getCompasSclName,
   getPrivate,
 } from './private.js';
+import { assertValidSclId, SCL_ID_PATTERN } from '../scl-identifiers.js';
+
+export { assertValidSclId, SCL_ID_PATTERN };
 
 const FILE_EXTENSION_LENGTH = 3;
 
@@ -55,6 +58,19 @@ export function updateDocumentInOpenSCD(
 ): void {
   const headerElement = doc.querySelector(':root > Header');
   const id = headerElement?.getAttribute('id') ?? '';
+
+  try {
+    assertValidSclId(id);
+  } catch (error) {
+    element.dispatchEvent(
+      newLogEvent({
+        kind: 'error',
+        title: get('compas.error.invalidSclId'),
+        message: (error as Error).message,
+      })
+    );
+    return;
+  }
 
   element.dispatchEvent(newLogEvent({ kind: 'reset' }));
   element.dispatchEvent(

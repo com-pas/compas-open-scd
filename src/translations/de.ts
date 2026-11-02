@@ -19,6 +19,7 @@ export const de: Translations = {
       type: '???',
       server: '???',
       serverDetails: '{{type}}: {{message}}',
+      invalidSclId: 'Das Dokument konnte nicht geöffnet werden, da die SCL-Dokument-ID ungültig ist',
     },
     warning: {
       nsdoc: 'NSDoc-Datei konnte nicht geladen werden',
@@ -154,34 +155,5 @@ export const de: Translations = {
           'Es wurde kein Substation Element gefunden für VoltageLevel "{{ voltageLevelName }}" für ioa "{{ ioa }}"',
       },
     },
-  },
-  locamation: {
-    vmu: {
-      ied: {
-        title: '???',
-        missing: '???',
-        name: '???',
-      },
-      ldevice: {
-        name: '???',
-      },
-      ln: {
-        title: '???',
-        editTitle: '???',
-        name: '???',
-      },
-      version: '???',
-      identifier: '???',
-      identifierHelper: '???',
-      sum: '???',
-      sumHelper: '???',
-      channel: '???',
-      channelHelper: '???',
-      transformPrimary: '???',
-      transformPrimaryHelper: '???',
-      transformSecondary: '???',
-      transformSecondaryHelper: '???',
-      updateAction: '???',
-    },
-  },
+  }
 };

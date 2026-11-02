@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@compas-oscd/open-scd': 0.36.2
+
 importers:
 
   .:
@@ -12,8 +15,8 @@ importers:
         specifier: 0.3.0
         version: 0.3.0
       '@compas-oscd/open-scd':
-        specifier: 0.36.0
-        version: 0.36.0
+        specifier: 0.36.2
+        version: 0.36.2
       '@compas-oscd/plugins':
         specifier: 0.2.0
         version: 0.2.0
@@ -853,8 +856,8 @@ packages:
   '@compas-oscd/core@0.3.0':
     resolution: {integrity: sha512-iXo785DEM420b+of/SHq339snWzV1qw5RWUoqYXfUOlohrpvz0p+ta0vrFkA8STHiEDmDaS/D/dNeGXMue+zBQ==}
 
-  '@compas-oscd/open-scd@0.36.0':
-    resolution: {integrity: sha512-6u/BEd1bW3tdIIduw1MUIGl3Qp+jhZCFsPEVmCsEUS/WsOLwr0lArJd8bgcf8huJ6HLdBvCF+UBdoAe4XucLPw==}
+  '@compas-oscd/open-scd@0.36.2':
+    resolution: {integrity: sha512-D5PdZrKguGuamPdem613NdvSk1Pe3diUDY6oVgJj/gLR3CfZVJ9CU43EFbBdbvWNsYeHLpW5HU8DIf+vdT8Z/A==}
 
   '@compas-oscd/plugins@0.2.0':
     resolution: {integrity: sha512-WiSnY7+lo/tDm9AISRFjTtzlXZxowgJNZWSvai+5J7wpNj4f+K2r+pMJUS6HTdz5kU4FcbWat7+6geu5TkTdfw==}
@@ -6708,7 +6711,7 @@ snapshots:
       '@openscd/oscd-api': 0.1.6
       lit: 2.8.0
 
-  '@compas-oscd/open-scd@0.36.0':
+  '@compas-oscd/open-scd@0.36.2':
     dependencies:
       '@compas-oscd/core': 0.3.0
       '@compas-oscd/xml': 0.0.1
@@ -6745,7 +6748,7 @@ snapshots:
   '@compas-oscd/plugins@0.2.0':
     dependencies:
       '@compas-oscd/core': 0.3.0
-      '@compas-oscd/open-scd': 0.36.0
+      '@compas-oscd/open-scd': 0.36.2
       '@compas-oscd/xml': 0.0.6
       '@material/dialog': 14.0.0
       '@material/mwc-button': 0.22.1

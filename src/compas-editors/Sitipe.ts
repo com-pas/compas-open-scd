@@ -48,15 +48,10 @@ export default class SitipePlugin extends LitElement {
   }
 
   static readonly styles = css`
-    :host {
-      width: 100vw;
-      padding: 16px;
-    }
-
     .container {
       display: flex;
       padding: 8px 6px 16px;
-      height: calc(100vh - 136px);
+      height: 100%;
       box-sizing: border-box;
       width: 100%;
     }
