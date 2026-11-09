@@ -24,36 +24,28 @@ export const officialPlugins = [
     requireDoc: true,
   },
   {
-    name: 'Subscriber Message Binding (GOOSE)',
-    src: '/oscd-plugins/editors/GooseSubscriberMessageBinding.js',
+    name: 'Subscriber Message Binding',
+    src: '/oscd-plugins/editors/SubscriberMessageBinding.js',
     icon: 'link',
     activeByDefault: false,
     kind: 'editor',
     requireDoc: true,
   },
   {
-    name: 'Subscriber Data Binding (GOOSE)',
-    src: '/oscd-plugins/editors/GooseSubscriberDataBinding.js',
+    name: 'Subscriber Data Binding',
+    src: '/oscd-plugins/editors/SubscriberDataBinding.js',
     icon: 'link',
     activeByDefault: false,
     kind: 'editor',
     requireDoc: true,
   },
-  {
-    name: 'Subscriber Message Binding (SMV)',
-    src: '/oscd-plugins/editors/SMVSubscriberMessageBinding.js',
+    {
+    name: 'Subscriber Later Binding',
+    src: '/external-plugins/oscd-subscriber-later-binding/oscd-subscriber-later-binding.js',
     icon: 'link',
     activeByDefault: false,
     kind: 'editor',
-    requireDoc: true,
-  },
-  {
-    name: 'Subscriber Data Binding (SMV)',
-    src: '/oscd-plugins/editors/SMVSubscriberDataBinding.js',
-    icon: 'link',
-    activeByDefault: false,
-    kind: 'editor',
-    requireDoc: true,
+    requireDoc: true
   },
   {
     name: 'Communication',
@@ -118,14 +110,6 @@ export const officialPlugins = [
     activeByDefault: false,
     kind: 'editor',
     requireDoc: true,
-  },
-  {
-    name: 'Subscribe (Later Binding)',
-    src: '/external-plugins/oscd-subscriber-later-binding/oscd-subscriber-later-binding.js',
-    icon: 'link',
-    activeByDefault: false,
-    kind: 'editor',
-    requireDoc: true
   },
   {
     name: 'Template Update',

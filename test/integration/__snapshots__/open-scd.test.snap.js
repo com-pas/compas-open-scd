@@ -734,36 +734,6 @@ snapshots["open-scd looks like its snapshot"] =
       hasmeta=""
       left=""
       mwc-list-item=""
-      tabindex="-1"
-      value="/src/editors/GooseSubscriberMessageBinding.js"
-    >
-      <mwc-icon slot="meta">
-        link
-      </mwc-icon>
-      Subscriber Message Binding (GOOSE)
-    </mwc-check-list-item>
-    <mwc-check-list-item
-      aria-disabled="false"
-      class="official"
-      graphic="control"
-      hasmeta=""
-      left=""
-      mwc-list-item=""
-      tabindex="-1"
-      value="/src/editors/GooseSubscriberDataBinding.js"
-    >
-      <mwc-icon slot="meta">
-        link
-      </mwc-icon>
-      Subscriber Data Binding (GOOSE)
-    </mwc-check-list-item>
-    <mwc-check-list-item
-      aria-disabled="false"
-      class="official"
-      graphic="control"
-      hasmeta=""
-      left=""
-      mwc-list-item=""
       selected=""
       tabindex="-1"
       value="/src/editors/GooseSubscriberLaterBinding.js"
@@ -772,36 +742,6 @@ snapshots["open-scd looks like its snapshot"] =
         link
       </mwc-icon>
       Subscriber Later Binding (GOOSE)
-    </mwc-check-list-item>
-    <mwc-check-list-item
-      aria-disabled="false"
-      class="official"
-      graphic="control"
-      hasmeta=""
-      left=""
-      mwc-list-item=""
-      tabindex="-1"
-      value="/src/editors/SMVSubscriberMessageBinding.js"
-    >
-      <mwc-icon slot="meta">
-        link
-      </mwc-icon>
-      Subscriber Message Binding (SMV)
-    </mwc-check-list-item>
-    <mwc-check-list-item
-      aria-disabled="false"
-      class="official"
-      graphic="control"
-      hasmeta=""
-      left=""
-      mwc-list-item=""
-      tabindex="-1"
-      value="/src/editors/SMVSubscriberDataBinding.js"
-    >
-      <mwc-icon slot="meta">
-        link
-      </mwc-icon>
-      Subscriber Data Binding (SMV)
     </mwc-check-list-item>
     <mwc-check-list-item
       aria-disabled="false"
@@ -1694,4 +1634,3 @@ snapshots["open-scd looks like its snapshot"] =
 </mwc-linear-progress>
 `;
 /* end snapshot open-scd looks like its snapshot */
-
