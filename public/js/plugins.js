@@ -246,7 +246,7 @@ export const officialPlugins = [
   },
   {
     name: 'Extract IED',
-    src: '/external-plugins/mbg-ied-extractor/mbg-icd-extractor.js',
+    src: '/external-plugins/mbg-ied-extractor/mbg-ied-extractor.js',
     icon: 'code',
     activeByDefault: true,
     kind: 'menu',
