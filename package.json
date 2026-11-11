@@ -42,6 +42,8 @@
     "@material/mwc-textarea": "0.22.1",
     "@material/mwc-textfield": "0.22.1",
     "@material/mwc-top-app-bar-fixed": "0.27.0",
+    "@omicronenergy/oscd-editor-subscriber-databinding": "0.0.6",
+    "@omicronenergy/oscd-editor-subscriber-msgbinding": "0.0.4",
     "@openscd/oscd-editor": "1.8.0",
     "ace-custom-element": "1.6.5",
     "csv-stringify": "6.8.0",

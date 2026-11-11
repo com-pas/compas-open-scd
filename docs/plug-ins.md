@@ -45,38 +45,6 @@ implemented in these plugins.
 > https://openscd.github.io/plugins/src/editors/SingleLineDiagram.js
 > ```
 
-### Subscriber Message Binding (GOOSE)
-
-> <kbd>✅ Official</kbd> | <kbd>Editor</kbd> | by [OpenSCD](https://github.com/openscd) | [Repository](https://github.com/openscd/open-scd/)
-> 
-> ```
-> https://openscd.github.io/plugins/src/editors/GooseSubscriberMessageBinding.js
-> ```
-
-### Subscriber Data Binding (GOOSE)
-
-> <kbd>✅ Official</kbd> | <kbd>Editor</kbd> | by [OpenSCD](https://github.com/openscd) | [Repository](https://github.com/openscd/open-scd/)
-> 
-> ```
-> https://openscd.github.io/plugins/src/editors/GooseSubscriberDataBinding.js
-> ```
-
-### Subscriber Message Binding (SMV)
-
-> <kbd>✅ Official</kbd> | <kbd>Editor</kbd> | by [OpenSCD](https://github.com/openscd) | [Repository](https://github.com/openscd/open-scd/)
-> 
-> ```
-> https://openscd.github.io/plugins/src/editors/SMVSubscriberMessageBinding.js
-> ```
-
-### Subscriber Data Binding (SMV)
-
-> <kbd>✅ Official</kbd> | <kbd>Editor</kbd> | by [OpenSCD](https://github.com/openscd) | [Repository](https://github.com/openscd/open-scd/)
-> 
-> ```
-> https://openscd.github.io/plugins/src/editors/SMVSubscriberDataBinding.js
-> ```
-
 ### Communication
 
 > <kbd>✅ Official</kbd> | <kbd>Editor</kbd> | by [OpenSCD](https://github.com/openscd) | [Repository](https://github.com/openscd/open-scd/)
