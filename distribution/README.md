@@ -30,6 +30,8 @@ Plugins are defined in [`remote-plugins.json`](./remote-plugins.json) at the rep
     {
       "name": "Human-readable name shown in build logs",
       "url": "https://example.com/path/to/plugin.js",
+      "downloadType": "empty, github or azure-devops",
+      "tokenEnv": "ENV_TOKEN_VARIABLE",
       "dest": "relative/dest/within/external-plugins",
       "sha256": "64-character hex SHA-256 digest (omit to skip verification for snapshots)"
     }
@@ -37,12 +39,14 @@ Plugins are defined in [`remote-plugins.json`](./remote-plugins.json) at the rep
 }
 ```
 
-| Field    | Required | Description                                                                                                                                                                                                    |
-| -------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`   | ✅       | Displayed in build output for easy identification.                                                                                                                                                             |
-| `url`    | ✅       | Full URL of the plugin JavaScript file to download.                                                                                                                                                            |
-| `dest`   | ✅       | Destination path **relative to** the `external-plugins/` directory. The path determines the URL at which nginx serves the plugin (e.g. `dest: "my-plugin/index.js"` → `/external-plugins/my-plugin/index.js`). |
-| `sha256` | ⚠️       | Hex SHA-256 of the JS file. Present and non-empty: integrity check and download cache. `""`: pin intended but digest not filled yet (`plugins:update-empty-hashes`). Omit the field for SNAPSHOT URLs that must always be downloaded. |
+| Field          | Required | Description                                                                                                                                                                                                                           |
+|----------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`         | ✅       | Displayed in build output for easy identification.                                                                                                                                                                                    |
+| `url`          | ✅       | Full HTTPS URL of the plugin JavaScript file to download.                                                                                                                                                                             |
+| `downloadType` | ❌       | Authentication provider: `github` or `azure-devops`. Set with `tokenEnv`. Omit or leave empty for unauthenticated downloads.                                                                                                          |
+| `tokenEnv`     | ❌       | Name of the environment variable containing the token used for the authentication. Set with `downloadType`. Omit or leave empty for unauthenticated downloads.                                                                        |
+| `dest`         | ✅       | Destination path **relative to** the `external-plugins/` directory. The path determines the URL at which nginx serves the plugin (e.g. `dest: "my-plugin/index.js"` → `/external-plugins/my-plugin/index.js`).                        |
+| `sha256`       | ⚠️       | Hex SHA-256 of the JS file. Present and non-empty: integrity check and download cache. `""`: pin intended but digest not filled yet (`plugins:update-empty-hashes`). Omit the field for SNAPSHOT URLs that must always be downloaded. |
 
 ## Managing plugins
 
@@ -50,34 +54,95 @@ Use the [`manage-plugins.js`](scripts/manage-plugins.js) helper
 (exposed as npm scripts) to manage plugin entries in `remote-plugins.json`.
 All URLs must use `https`.
 
+### Optional authentication
+
+Set both `downloadType` and `tokenEnv` on a plugin to enable authentication:
+
+```json
+{
+  "name": "Private GitHub plugin",
+  "url": "https://api.github.com/repos/OWNER/REPO/contents/plugins/index.js?ref=develop",
+  "downloadType": "github",
+  "tokenEnv": "GITHUB_TOKEN",
+  "dest": "private-plugin/index.js"
+}
+```
+
+- `downloadType`: `github` (Bearer token, raw file response) or `azure-devops`
+  (Basic authentication with an empty username and the PAT as password).
+- `tokenEnv`: Name of the environment variable containing the token, never the
+  token itself. Provide it in the environment of the Node.js process.
+- Both fields empty (`""`) or omitted: no authentication, even if a token exists
+  in the environment. Existing public plugins remain anonymous.
+- Only one field configured: configuration error. All authentication configuration
+  errors across the registry are collected and printed together before any download;
+  the command exits non-zero. Unknown types and invalid variable names also fail.
+
+For Azure DevOps, use `"downloadType": "azure-devops"` and, for example,
+`"tokenEnv": "AZDO_PAT"`. The URL must return raw file content, for example:
+`https://dev.azure.com/ORG/PROJECT/_apis/git/repositories/REPO/items?versionDescriptor.version=develop&versionDescriptor.versionType=branch&api-version=7.1&path=/plugins/index.js`.
+
+Authenticated downloads reject redirects to prevent token forwarding. A missing
+or empty token causes the download to fail; there is no anonymous fallback. The
+same authentication applies to the optional sibling `style.css`;
+API query parameters such as the branch are preserved. `--allow-insecure` only
+controls hash verification, not authentication.
+
 ### Add a plugin
 
 ```sh
 npm run plugins:add -- \
   --name "My Plugin" \
   --url  "https://example.com/path/to/plugin.js" \
+  [--download-type <type> --token-env <ENV_VAR>] \
   [--allow-insecure]
 ```
 
 This appends the entry to `remote-plugins.json` and writes the JS (plus optional
-sibling `style.css`) to `distribution/external-plugins`. The SHA-256 hash is
-generated automatically unless `--allow-insecure` is used, which **omits**
-`sha256` (snapshot: always re-downloaded, never cached). If `--dest` is omitted
-it defaults to the URL path (without the leading `/`). Existing plugins
-with the same name, url, or dest are rejected.
+sibling `style.css`) to `distribution/external-plugins` using the URL and
+optional authentication. The SHA-256 hash is generated automatically unless
+`--allow-insecure` is used, which **omits** `sha256` (snapshot: always
+re-downloaded, never cached).
+If `--dest` is omitted the destination is inferred from the URL:
+
+- GitHub contents API URLs use `<repo>/<file path>` (e.g.
+  `/repos/OWNER/REPO/contents/plugins/index.js` → `REPO/plugins/index.js`).
+- Azure DevOps items API URLs use `<repo>/<path query parameter>` (e.g.
+  `...?path=/plugins/index.js` → `REPO/plugins/index.js`).
+- Other URLs use URL path without leading `/` (e.g.
+  `https://example.com/path/to/plugin.js` → `path/to/plugin.js`).
+
+For `api.github.com` and `dev.azure.com`, URLs that do not match the expected API
+shape cannot be inferred. If no path can be inferred, specify `--dest`. Existing
+plugins with the same name, url, or dest are rejected.
+
+To use plugins from private repositories, specify both `--download-type` and
+`--token-env`. `--download-type` selects the type of the source and can be
+either `github` or `azure-devops`. `--token-env` names the environment variable
+containing the token used for the authentication.
 
 ### Update a plugin
 
 ```sh
 npm run plugins:update -- \
   --name "My Plugin" \
-  --url <new-url> \
+  [--url <new-url>] \
   [--dest <new-dest>] \
+  [--download-type <type> --token-env <ENV_VAR>] \
   [--allow-insecure]
 ```
 
-The flags `--name` and `--url` are required. The script finds the existing
-entry by name, re-downloads the JS into `distribution/external-plugins`, and
+The `--name` flag is required. Specify at least one of `--url`, `--dest`, or
+both `--download-type` and `--token-env` flags. Omitted values keep their
+current settings. Changing the URL or destination to one already used by
+another plugin is rejected.
+
+Pass both authentication flags with non-empty values to set or change the
+authentication. To remove authentication, pass both as empty strings:
+`npm run plugins:update -- --name "My Plugin" --download-type "" --token-env ""`.
+
+The script finds the existing entry by name, re-downloads the JS into
+`distribution/external-plugins` using the URL and optional authentication, and
 recomputes `sha256` unless `--allow-insecure` is used (then `sha256` is omitted).
 
 ### Download plugins
@@ -160,6 +225,8 @@ The remote plugin system uses a **multi-stage Docker build** and zero-dependency
 1. **Plugin Metadata**: Each plugin entry in `remote-plugins.json` specifies:
    - `name`: Display name for build logs
    - `url`: HTTPS URL to the plugin JavaScript file (must be absolute and use https://)
+   - `downloadType`: Optional authentication provider (either 'github' or 'azure-devops')
+   - `tokenEnv`: Optional environment variables used for the authenticated download
    - `dest`: Relative destination path within the `/external-plugins/` directory
    - `sha256`: Optional 64-character hex SHA256 digest for integrity verification
 
