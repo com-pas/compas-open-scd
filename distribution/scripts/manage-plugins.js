@@ -23,13 +23,14 @@
 //              distribution/external-plugins. Cached when dest exists and
 //              pinned sha256 matches. REQUIRE_SHA256=true fails empty/omitted hashes.
 //
-// This is a plain Node >= 18 script with NO runtime dependencies. It relies
-// only on Node built-ins (fs, path, url, crypto) and the global fetch.
+// This is a plain Node >= 18 script using dotenv for local environment variables.
+// Downloads rely on Node built-ins (fs, path, url, crypto) and the global fetch.
 
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { URL, fileURLToPath } from 'node:url';
+import dotenv from 'dotenv';
 
 // ---------------------------------------------------------------------------
 // Paths (resolved relative to this script so it works from any CWD)
@@ -56,6 +57,11 @@ const ACCEPTED_COMMANDS = [
   'download',
 ];
 
+dotenv.config({
+  path: path.join(REPO_ROOT, '.env'),
+  quiet: true,
+  override: false,
+});
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -210,6 +216,29 @@ function hasTokenEnv(plugin) {
   return typeof plugin.tokenEnv === 'string' && plugin.tokenEnv.length > 0;
 }
 
+// Validate authentication settings and collect errors:
+// downloadType and tokenEnv are optional but must be set together.
+function authErrors(downloadType, tokenEnv) {
+  const hasType = downloadType !== undefined && downloadType !== '';
+  const envSet = tokenEnv !== undefined && tokenEnv !== '';
+  const errors = [];
+
+  if (hasType !== envSet || (!hasType && downloadType !== tokenEnv)) {
+    errors.push('downloadType and tokenEnv must both be set or both be empty/omitted.');
+  }
+  if (hasType && !['github', 'azure-devops'].includes(downloadType)) {
+    errors.push('downloadType must be empty, "github" or "azure-devops".');
+  }
+  if (
+    envSet &&
+    (typeof tokenEnv !== 'string' || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(tokenEnv))
+  ) {
+    errors.push('tokenEnv must be empty or a valid environment variable name.');
+  }
+
+  return errors;
+}
+
 // ---------------------------------------------------------------------------
 // Argument parsing
 // ---------------------------------------------------------------------------
@@ -305,20 +334,7 @@ function validateAddArgs(args) {
     fail(`Invalid URL: "${args.url}". Must be an https URL.`);
   }
 
-  const hasDownloadType = args.downloadType !== undefined;
-  const hasTokenEnv = args.tokenEnv !== undefined;
-  if (hasDownloadType !== hasTokenEnv) {
-    fail('"add" requires both --download-type and --token-env when authenticating.');
-  }
-  if (hasDownloadType && !['github', 'azure-devops'].includes(args.downloadType)) {
-    fail(`Invalid --download-type "${args.downloadType}". Must be "github" or "azure-devops".`);
-  }
-  if (
-    hasTokenEnv &&
-    (typeof args.tokenEnv !== 'string' || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(args.tokenEnv))
-  ) {
-    fail(`Invalid --token-env "${args.tokenEnv}". Must be a valid environment variable name.`);
-  }
+  validateAuthArgs(args);
 
   if (args.dest !== undefined) {
     const normalized = normalizeDest(args.dest);
@@ -345,13 +361,11 @@ function validateUpdateArgs(args) {
     usage();
     fail('"update" requires --name.');
   }
-  const hasDownloadType = args.downloadType !== undefined;
-  const hasTokenEnv = args.tokenEnv !== undefined;
   if (
     args.url === undefined &&
     args.dest === undefined &&
-    !hasDownloadType &&
-    !hasTokenEnv
+    args.downloadType === undefined &&
+    args.tokenEnv === undefined
   ) {
     usage();
     fail('"update" requires at least one of --url, --dest, or both authentication flags.');
@@ -361,31 +375,8 @@ function validateUpdateArgs(args) {
     fail(`Invalid URL: "${args.url}". Must be an https URL.`);
   }
 
-  if (
-    hasDownloadType !== hasTokenEnv ||
-    (hasDownloadType && (args.downloadType === '') !== (args.tokenEnv === ''))
-  ) {
-    fail(
-      '"update" requires both --download-type and --token-env to be ' +
-      'set to change authentication or empty to remove authentication.',
-    );
-  }
-  if (hasDownloadType && !['', 'github', 'azure-devops'].includes(args.downloadType)) {
-    fail(
-      `Invalid --download-type "${args.downloadType}". ` +
-      'Must be empty, "github" or "azure-devops".',
-    );
-  }
-  if (
-    hasTokenEnv &&
-    (typeof args.tokenEnv !== 'string' ||
-      (args.tokenEnv !== '' && !/^[A-Za-z_][A-Za-z0-9_]*$/.test(args.tokenEnv)))
-  ) {
-    fail(
-      `Invalid --token-env "${args.tokenEnv}". ` +
-      'Must be empty or a valid environment variable name.',
-    );
-  }
+  validateAuthArgs(args);
+
   if (args.dest !== undefined) {
     const normalized = normalizeDest(args.dest);
     if (normalized === null) {
@@ -403,6 +394,18 @@ function validateDeleteArgs(args) {
   if (!args.name) {
     usage();
     fail('"delete" requires --name.');
+  }
+}
+
+// Enforce the authentication flags requirements for the "add" and "update" commands.
+function validateAuthArgs(args) {
+  const errors = authErrors(args.downloadType, args.tokenEnv);
+  if (errors.length > 0) {
+    fail(
+      `Invalid configuration for authentication flags --download-type and --token-env:\n${
+        errors.map(error => `  - ${error}`).join('\n')
+      }`
+    );
   }
 }
 
@@ -444,21 +447,8 @@ function readRemotePlugins() {
       errors.push(`${label}: URL must be a valid https URL.`);
     }
 
-    const hasAuthType = hasDownloadType(plugin);
-    const hasAuthEnv = hasTokenEnv(plugin);
-    if (hasAuthType !== hasAuthEnv) {
-      errors.push(
-        `${label}: downloadType and tokenEnv must both be set or both be empty/omitted.`
-      );
-    }
-    if (hasAuthType && !['github', 'azure-devops'].includes(plugin.downloadType)) {
-      errors.push(`${label}: downloadType must be "github" or "azure-devops".`);
-    }
-    if (
-      hasAuthEnv &&
-      (typeof plugin.tokenEnv !== 'string' || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(plugin.tokenEnv))
-    ) {
-      errors.push(`${label}: tokenEnv must be a valid environment variable name.`);
+    for (const error of authErrors(plugin.downloadType, plugin.tokenEnv)) {
+      errors.push(`${label}: ${error}`);
     }
 
     if (!plugin.dest || normalizeDest(plugin.dest) === null) {
@@ -527,6 +517,7 @@ async function download(urlStr, auth = {}) {
       headers['X-GitHub-Api-Version'] = '2026-03-10';
     } else if (auth.downloadType === 'azure-devops') {
       headers.Authorization = `Basic ${Buffer.from(`:${token}`).toString('base64')}`;
+      headers.Accept = 'application/octet-stream';
     }
   }
   const response = await fetch(urlStr, {
@@ -644,8 +635,8 @@ async function cmdAdd(args) {
   const newEntry = {
     name: args.name,
     url: args.url,
-    downloadType: args.downloadType,
-    tokenEnv: args.tokenEnv,
+    downloadType: args.downloadType || undefined,
+    tokenEnv: args.tokenEnv || undefined,
     dest: args.dest,
   };
 

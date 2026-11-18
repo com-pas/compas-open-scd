@@ -69,7 +69,8 @@ Set both `downloadType` and `tokenEnv` on a plugin to enable authentication:
 ```
 
 - `downloadType`: `github` (Bearer token, raw file response) or `azure-devops`
-  (Basic authentication with an empty username and the PAT as password).
+  (Basic authentication with an empty username, the PAT as password, and
+  `Accept: application/octet-stream` to request raw file content).
 - `tokenEnv`: Name of the environment variable containing the token, never the
   token itself. Provide it in the environment of the Node.js process.
 - Both fields empty (`""`) or omitted: no authentication, even if a token exists
@@ -80,7 +81,7 @@ Set both `downloadType` and `tokenEnv` on a plugin to enable authentication:
 
 For Azure DevOps, use `"downloadType": "azure-devops"` and, for example,
 `"tokenEnv": "AZDO_PAT"`. The URL must return raw file content, for example:
-`https://dev.azure.com/ORG/PROJECT/_apis/git/repositories/REPO/items?versionDescriptor.version=develop&versionDescriptor.versionType=branch&api-version=7.1&path=/plugins/index.js`.
+`https://dev.azure.com/ORG/PROJECT/_apis/git/repositories/REPO/items?versionDescriptor.version=develop&versionDescriptor.versionType=branch&download=true&api-version=7.1&path=/plugins/index.js`.
 
 Authenticated downloads reject redirects to prevent token forwarding. A missing
 or empty token causes the download to fail; there is no anonymous fallback. The

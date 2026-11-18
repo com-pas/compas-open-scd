@@ -45,6 +45,7 @@
     "@openscd/oscd-editor": "1.8.0",
     "ace-custom-element": "1.6.5",
     "csv-stringify": "6.8.0",
+    "dotenv": "18.0.10",
     "lit-element": "2.5.1",
     "lit-html": "1.4.1",
     "lit-translate": "1.2.1",
