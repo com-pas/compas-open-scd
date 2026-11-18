@@ -64,6 +64,16 @@ dotenv.config({
 });
 
 // ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+const REGEX_GITHUB_CONTENTS_API =
+  /^\/repos\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.+)$/;
+const REGEX_AZURE_ITEMS_API =
+  /^\/(?<organization>[^/]+)\/(?:(?<project>[^/]+)\/)?_apis\/git\/repositories\/(?<repo>[^/]+)\/items$/;
+const REGEX_ENV_VARIABLES = /^[A-Za-z_][A-Za-z0-9_]*$/;
+const ALLOWED_DOWNLOAD_TYPES = ['github', 'azure-devops'];
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -161,16 +171,10 @@ function destFromUrl(urlStr) {
   const url = new URL(urlStr);
 
   if (url.hostname === 'api.github.com') {
-    const match =
-      /^\/repos\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.+)$/.exec(
-        url.pathname,
-      );
+    const match = REGEX_GITHUB_CONTENTS_API.exec(url.pathname);
     return match ? `${match.groups.repo}/${match.groups.path}` : null;
   } else if (url.hostname === 'dev.azure.com') {
-    const match =
-      /^\/(?<organization>[^/]+)\/(?:(?<project>[^/]+)\/)?_apis\/git\/repositories\/(?<repo>[^/]+)\/items$/.exec(
-        url.pathname,
-      );
+    const match = REGEX_AZURE_ITEMS_API.exec(url.pathname);
     const itemPath = url.searchParams.get('path')?.replace(/^\/+/, '');
     return match && itemPath ? `${match.groups.repo}/${itemPath}` : null;
   }
@@ -226,12 +230,12 @@ function authErrors(downloadType, tokenEnv) {
   if (hasType !== envSet || (!hasType && downloadType !== tokenEnv)) {
     errors.push('downloadType and tokenEnv must both be set or both be empty/omitted.');
   }
-  if (hasType && !['github', 'azure-devops'].includes(downloadType)) {
+  if (hasType && !ALLOWED_DOWNLOAD_TYPES.includes(downloadType)) {
     errors.push('downloadType must be empty, "github" or "azure-devops".');
   }
   if (
     envSet &&
-    (typeof tokenEnv !== 'string' || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(tokenEnv))
+    (typeof tokenEnv !== 'string' || !REGEX_ENV_VARIABLES.test(tokenEnv))
   ) {
     errors.push('tokenEnv must be empty or a valid environment variable name.');
   }
@@ -346,7 +350,7 @@ function validateAddArgs(args) {
     }
     args.dest = normalized;
   } else {
-    const inferred = destFromUrl(args.url);
+    const inferred = normalizeDest(destFromUrl(args.url));
     if (!inferred) {
       fail(`Cannot infer --dest from URL "${args.url}". Please specify --dest.`);
     }
@@ -434,9 +438,19 @@ function readRemotePlugins() {
   if (!parsed || !Array.isArray(parsed.plugins)) {
     fail(`Invalid ${REMOTE_PLUGINS_PATH}: expected a "plugins" array.`);
   }
+  return { data: parsed, rawEndsWithNewline: raw.endsWith('\n') };
+}
 
+// Check plugin names, HTTPS URLs, authentication settings, and destination
+// paths. Report all configuration errors together before exiting.
+function validatePlugins(plugins) {
   const errors = [];
-  for (const [index, plugin] of parsed.plugins.entries()) {
+  for (const [index, plugin] of plugins.entries()) {
+    if (plugin === null) {
+      errors.push(`Plugin #${index + 1}: expected a plugin object.`);
+      continue;
+    }
+
     const label = plugin.name
       ? `${plugin.name} (Plugin #${index + 1})`
       : `Plugin #${index + 1}`;
@@ -463,7 +477,6 @@ function readRemotePlugins() {
         .join('\n')}`
     );
   }
-  return { data: parsed, rawEndsWithNewline: raw.endsWith('\n') };
 }
 
 // Serialize the plugin registry back to disk with 2-space indentation.
@@ -502,6 +515,7 @@ function findPluginDestIndex(plugins, dest) {
 // downloads by the built-in fetch. Resolves with the response body as a Buffer;
 // throws on non-2xx status or network error.
 async function download(urlStr, auth = {}) {
+  let requestUrl = urlStr;
   const headers = { 'User-Agent': 'manage-plugins/1.0' };
   const authenticated = Boolean(hasDownloadType(auth) && hasTokenEnv(auth));
   if (authenticated) {
@@ -511,16 +525,29 @@ async function download(urlStr, auth = {}) {
         `Missing token environment variable "${auth.tokenEnv}".`
       );
     }
-    if (auth.downloadType === 'github') {
+    const url = new URL(urlStr);
+    if (
+      auth.downloadType === 'github' &&
+      url.origin === 'https://api.github.com'
+    ) {
       headers.Authorization = `Bearer ${token}`;
       headers.Accept = 'application/vnd.github.raw+json';
       headers['X-GitHub-Api-Version'] = '2026-03-10';
-    } else if (auth.downloadType === 'azure-devops') {
+    } else if (
+      auth.downloadType === 'azure-devops' &&
+      url.origin === 'https://dev.azure.com'
+    ) {
       headers.Authorization = `Basic ${Buffer.from(`:${token}`).toString('base64')}`;
       headers.Accept = 'application/octet-stream';
+      url.searchParams.set('download', 'true');
+      requestUrl = url.href;
+    } else {
+      throw new Error(
+        `Untrusted origin "${url.origin}" for auth "${auth.downloadType}".`,
+      );
     }
   }
-  const response = await fetch(urlStr, {
+  const response = await fetch(requestUrl, {
     headers: headers,
     redirect: authenticated ? 'error' : 'follow',
   });
@@ -551,7 +578,8 @@ async function writePluginToDisk(plugin, js) {
 
   const styleUrl = new URL(plugin.url);
   if (
-    plugin.downloadType === 'azure-devops' &&
+    styleUrl.hostname === 'dev.azure.com' &&
+    REGEX_AZURE_ITEMS_API.test(styleUrl.pathname) &&
     styleUrl.searchParams.has('path')
   ) {
     const sourcePath = styleUrl.searchParams.get('path');
@@ -704,6 +732,7 @@ async function cmdUpdate(args) {
     );
   }
 
+  validatePlugins([updatedPlugin]);
   const buffer = await downloadBuffer(updatedPlugin);
   await writePluginToDisk(updatedPlugin, buffer);
 
@@ -730,6 +759,8 @@ async function cmdUpdate(args) {
 // Plugins without a sha256 field are snapshots and are not touched.
 async function cmdUpdateEmptyHashes() {
   const { data, rawEndsWithNewline } = readRemotePlugins();
+  validatePlugins(data.plugins);
+
   let updated = 0;
   let skipped = 0;
 
@@ -839,6 +870,7 @@ async function cmdVerify(args) {
     }
     plugins = [plugins[idx]];
   }
+  validatePlugins(plugins);
 
   let ok = 0;
   let skipped = 0;
@@ -919,6 +951,7 @@ async function cmdDownload() {
   if (plugins.length === 0) {
     fail('No plugins defined.');
   }
+  validatePlugins(plugins);
 
   const requireSha256 = process.env.REQUIRE_SHA256 === 'true';
   process.stdout.write(

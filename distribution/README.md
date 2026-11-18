@@ -63,7 +63,7 @@ Set both `downloadType` and `tokenEnv` on a plugin to enable authentication:
   "name": "Private GitHub plugin",
   "url": "https://api.github.com/repos/OWNER/REPO/contents/plugins/index.js?ref=develop",
   "downloadType": "github",
-  "tokenEnv": "GITHUB_TOKEN",
+  "tokenEnv": "GITHUB_PLUGIN_TOKEN",
   "dest": "private-plugin/index.js"
 }
 ```
@@ -75,19 +75,31 @@ Set both `downloadType` and `tokenEnv` on a plugin to enable authentication:
   token itself. Provide it in the environment of the Node.js process.
 - Both fields empty (`""`) or omitted: no authentication, even if a token exists
   in the environment. Existing public plugins remain anonymous.
-- Only one field configured: configuration error. All authentication configuration
-  errors across the registry are collected and printed together before any download;
-  the command exits non-zero. Unknown types and invalid variable names also fail.
+- Only one field configured: configuration error. Unknown types and invalid
+  variable names also fail.
 
 For Azure DevOps, use `"downloadType": "azure-devops"` and, for example,
 `"tokenEnv": "AZDO_PAT"`. The URL must return raw file content, for example:
 `https://dev.azure.com/ORG/PROJECT/_apis/git/repositories/REPO/items?versionDescriptor.version=develop&versionDescriptor.versionType=branch&download=true&api-version=7.1&path=/plugins/index.js`.
 
-Authenticated downloads reject redirects to prevent token forwarding. A missing
+Authenticated downloads reject redirects to prevent token forwarding and only
+accept `https://api.github.com` for `github` and `https://dev.azure.com` for
+`azure-devops`. Other origins are rejected before any request. A missing
 or empty token causes the download to fail; there is no anonymous fallback. The
 same authentication applies to the optional sibling `style.css`;
 API query parameters such as the branch are preserved. `--allow-insecure` only
 controls hash verification, not authentication.
+
+### Configuration validation
+
+`download`, `update-empty-hashes`, and `verify` without `--name` validate every
+entry's name, HTTPS URL, authentication settings, and destination path before
+any download. Configuration errors are collected and printed together; the
+command exits non-zero. `update` validates the resulting entry, and
+`verify --name` validates only the selected entry. Invalid settings in unrelated
+entries do not block these commands. `list` and `delete` skip entry validation
+so invalid settings can be inspected or removed. All commands still require
+valid JSON with a `plugins` array.
 
 ### Add a plugin
 
@@ -96,6 +108,7 @@ npm run plugins:add -- \
   --name "My Plugin" \
   --url  "https://example.com/path/to/plugin.js" \
   [--download-type <type> --token-env <ENV_VAR>] \
+  [--dest <path>] \
   [--allow-insecure]
 ```
 
@@ -128,8 +141,8 @@ containing the token used for the authentication.
 npm run plugins:update -- \
   --name "My Plugin" \
   [--url <new-url>] \
-  [--dest <new-dest>] \
   [--download-type <type> --token-env <ENV_VAR>] \
+  [--dest <new-dest>] \
   [--allow-insecure]
 ```
 
@@ -227,7 +240,7 @@ The remote plugin system uses a **multi-stage Docker build** and zero-dependency
    - `name`: Display name for build logs
    - `url`: HTTPS URL to the plugin JavaScript file (must be absolute and use https://)
    - `downloadType`: Optional authentication provider (either 'github' or 'azure-devops')
-   - `tokenEnv`: Optional environment variables used for the authenticated download
+   - `tokenEnv`: Optional name of the environment variable used for the authenticated download
    - `dest`: Relative destination path within the `/external-plugins/` directory
    - `sha256`: Optional 64-character hex SHA256 digest for integrity verification
 
