@@ -4,8 +4,8 @@
 
 # Remote Plugins
 
-The CoMPAS nginx container can download external plugins at **container build time** and
-serve them directly, so the browser never needs to reach external sources.
+The CoMPAS build downloads external plugins before building the nginx image.
+The container serves them directly, so the browser never needs to reach external sources.
 
 ## How it works
 
@@ -13,16 +13,17 @@ Plugin entries are read from [`remote-plugins.json`](./remote-plugins.json).
 
 At build time, the GitHub Actions Build Pipeline downloads the plugins listed in 
 [`distribution/remote-plugins.json`](./remote-plugins.json) to the directory 
-`/build/external-plugins`. For each plugin, the JavaScript file at `url` is downloaded to `dest`.
+`distribution/external-plugins`. For each plugin, the JavaScript file at `url` is downloaded to `dest`.
 Optionally, the build also attempts to download `style.css` (relative to the plugin URL)
-to `/build/external-plugins/<DEST_DIRECTORY>/style.css`.
+to `distribution/external-plugins/<DEST_DIRECTORY>/style.css`.
 
+The application build copies these files to `dist/external-plugins`.
 The directory `/external-plugins` and its underlying directories and files are then provided by the
 built Docker service at the URL `https://<DOMAIN>/external-plugins`.
 
 ## Configuration file format
 
-Plugins are defined in [`remote-plugins.json`](./remote-plugins.json) at the repository root:
+Plugins are defined in [`distribution/remote-plugins.json`](./remote-plugins.json):
 
 ```json
 {
@@ -209,9 +210,13 @@ Mismatches and empty responses exit non-zero.
 
 ### Rebuild the image
 
-After any change, rebuild the Docker image so nginx serves the new file set:
+After any change, rebuild the Docker image so nginx serves the new file set.
+Run these commands from the repository root with dependencies installed and any
+required tokens set:
 
 ```sh
+pnpm run plugins:download
+pnpm run build
 docker build -f distribution/Dockerfile -t compas-open-scd .
 ```
 
@@ -221,18 +226,30 @@ docker build -f distribution/Dockerfile -t compas-open-scd .
 
 #### Architecture
 
-The remote plugin system uses a **multi-stage Docker build** and zero-dependency Node.js CLI tooling:
+The remote plugin system uses a Node.js CLI to download plugins before the Docker build:
 
-**Stage 1: Plugin Downloader (Alpine Linux)**
-- Fetches all plugins listed in `remote-plugins.json` using `curl`
-- Validates SHA256 hashes using `openssl` (if provided)
-- Stores downloaded files in `/build/external-plugins`
-- Fails the build immediately if validation fails or `REQUIRE_SHA256=true` finds an empty hash
+1. **Install dependencies:** `pnpm ci` runs `plugins:download` through the
+   `postinstall` script. The Node.js CLI downloads plugins into
+   `distribution/external-plugins` and verifies pinned SHA-256 hashes.
+2. **Build the application:** `pnpm run build` copies the downloaded plugins
+   into `dist/external-plugins`.
+3. **Build the image:** `distribution/Dockerfile` copies `dist/` into nginx's
+   web root.
 
-**Stage 2: Nginx Server (Debian-based)**
-- Copies the entire `dist/` build output (compiled application)
-- Copies the downloaded plugins from Stage 1
-- Serves both application and plugins from a single nginx instance on port 8080
+For private plugins, make each token available to the process that runs
+`pnpm ci` or `pnpm run plugins:download`. For local development, the CLI uses
+`dotenv` to load the repository-root `.env` without overriding existing
+environment variables. In GitHub Actions, map each secret to the exact variable
+name in `tokenEnv` on the step that installs dependencies or downloads plugins:
+
+```yaml
+- name: Install dependencies and download plugins
+  env:
+    GITHUB_PLUGIN_TOKEN: ${{ secrets.PRIVATE_PLUGINS_TOKEN }}
+  run: pnpm ci
+```
+
+Keep tokens out of `remote-plugins.json`, source control, and Docker build arguments.
 
 #### How plugins are registered and loaded
 
@@ -253,7 +270,7 @@ The remote plugin system uses a **multi-stage Docker build** and zero-dependency
 #### Implementation details
 
 **Plugin Management CLI** ([`manage-plugins.js`](scripts/manage-plugins.js)):
-- Pure Node.js (>= 18) with zero external dependencies; uses only built-in modules
+- Uses Node.js (>= 18) built-in modules for downloads and hashing, and `dotenv` to load local environment variables
 - Validates HTTPS URLs and SHA256 digests
 - Normalizes destination paths (prevents directory traversal, backslashes, absolute paths)
 - Commands:
@@ -267,19 +284,19 @@ The remote plugin system uses a **multi-stage Docker build** and zero-dependency
 
 **Optional Custom Styles**:
 If a plugin includes a `style.css` file alongside its `index.js`, the build script automatically copies it:
-- Source: `../style.css` (sibling directory to the downloaded file)
+- Source: `style.css` in the same remote directory as the JavaScript file
 - Destination: `<DEST_DIRECTORY>/style.css` in the nginx image
 
 Note that the `sha256` field in `remote-plugins.json` only applies to `index.js`; `style.css` is not verified.
 
-#### Build-time caching and layer optimization
+#### Download caching
 
-The Dockerfile copies `distribution/remote-plugins.json` before running the download script. This strategy allows Docker layer caching to skip plugin re-downloads when only application code changes, significantly speeding up incremental builds.
+The CLI skips a download when the existing JavaScript file matches the pinned
+SHA-256 hash. Snapshots without a hash are always downloaded.
 
 #### Environment and requirements
 
-- **Build Host**: Requires `curl`, `jq`, and `openssl` (provided by Alpine Docker image)
-- **Plugin Management**: Requires Node.js >= 18.x (for built-in `fetch` API)
+- **Build Host**: Use the Node.js and pnpm toolchain in the [contributing guide](../CONTRIBUTING.md#repo-setup)
 - **Windows Local Dev**: `npm run plugins:download` (Node.js; no Git Bash required).
 - **Configuration Location**: `distribution/remote-plugins.json` must be valid JSON
 - **Output Directory**: Plugins copied to `/usr/share/nginx/html/external-plugins` in final image
@@ -291,15 +308,15 @@ The Dockerfile copies `distribution/remote-plugins.json` before running the down
 - Pin downloads to a specific version or commit-based URL rather than a moving
   branch name (e.g. prefer a tagged release URL over a `main` branch URL) so that
   rebuilding the image always produces the same result.
-- To enforce that every plugin has a SHA-256 hash, pass `REQUIRE_SHA256=true` as a
-  Docker build argument:
+- To enforce that every plugin has a SHA-256 hash, pass `REQUIRE_SHA256=true` as
+  an environment variable:
 
   ```sh
-  docker build --build-arg REQUIRE_SHA256=true -f distribution/Dockerfile -t compas-open-scd .
+  REQUIRE_SHA256=true pnpm run plugins:download
   ```
 
-  The build will fail immediately for any plugin entry that has an empty `sha256`
-  field, making it impossible to accidentally ship un-verified plugins.
+  The command fails for any plugin entry that has an empty or omitted `sha256`
+  field.
 
 ### Manual Validation
 
