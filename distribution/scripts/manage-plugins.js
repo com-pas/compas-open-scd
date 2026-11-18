@@ -67,9 +67,9 @@ dotenv.config({
 // Constants
 // ---------------------------------------------------------------------------
 const REGEX_GITHUB_CONTENTS_API =
-  /^\/repos\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.+)$/;
+  /^\/(?<enterprise>api\/v3\/)?repos\/(?<owner>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.+)$/;
 const REGEX_AZURE_ITEMS_API =
-  /^\/(?<organization>[^/]+)\/(?:(?<project>[^/]+)\/)?_apis\/git\/repositories\/(?<repo>[^/]+)\/items$/;
+  /^\/(?:[^/]+\/)+_apis\/git\/repositories\/(?<repo>[^/]+)\/items$/;
 const REGEX_ENV_VARIABLES = /^[A-Za-z_][A-Za-z0-9_]*$/;
 const ALLOWED_DOWNLOAD_TYPES = ['github', 'azure-devops'];
 
@@ -96,7 +96,8 @@ function usage() {
     '  --name <name>              (required) Plugin display name',
     '  --url <url>                (required) Remote https URL to fetch from',
     '  --dest <path>              (optional) Relative destination (defaults to',
-    '                                        the last URL path segment)',
+    '                                        repo/file for repository APIs,',
+    '                                        otherwise the last URL path segment)',
     '  --download-type <type>     (optional) github or azure-devops',
     '                                        requires --token-env',
     '  --token-env <name>         (optional) Environment variable holding token',
@@ -170,13 +171,15 @@ function normalizeDest(value) {
 function destFromUrl(urlStr) {
   const url = new URL(urlStr);
 
-  if (url.hostname === 'api.github.com') {
-    const match = REGEX_GITHUB_CONTENTS_API.exec(url.pathname);
-    return match ? `${match.groups.repo}/${match.groups.path}` : null;
-  } else if (url.hostname === 'dev.azure.com') {
-    const match = REGEX_AZURE_ITEMS_API.exec(url.pathname);
+  const github = REGEX_GITHUB_CONTENTS_API.exec(url.pathname);
+  if (url.hostname === 'api.github.com' || github?.groups.enterprise) {
+    return github ? `${github.groups.repo}/${github.groups.path}` : null;
+  }
+
+  const azure = REGEX_AZURE_ITEMS_API.exec(url.pathname);
+  if (url.hostname === 'dev.azure.com' || azure) {
     const itemPath = url.searchParams.get('path')?.replace(/^\/+/, '');
-    return match && itemPath ? `${match.groups.repo}/${itemPath}` : null;
+    return azure && itemPath ? `${azure.groups.repo}/${itemPath}` : null;
   }
 
   const segments = url.pathname.split('/').filter(Boolean);
@@ -511,9 +514,21 @@ function findPluginDestIndex(plugins, dest) {
 // HTTP download
 // ---------------------------------------------------------------------------
 
-// Download an https resource. Redirects are followed for non-authenticated
-// downloads by the built-in fetch. Resolves with the response body as a Buffer;
-// throws on non-2xx status or network error.
+// Allow credentials only for the provider's default HTTPS origin or an exact
+// origin in the comma-separated environment allowlist.
+function isTrustedOrigin(url, defaultOrigin, originsEnv) {
+  const extraOrigins = (process.env[originsEnv] ?? '').split(',');
+  return (
+    url.protocol === 'https:' &&
+    (url.origin === defaultOrigin ||
+      extraOrigins.some(origin => origin.trim() === url.origin))
+  );
+}
+
+// Download an HTTPS resource. Authenticated requests require a trusted origin
+// and reject redirects so credentials stay on that origin. Unauthenticated
+// requests follow redirects. Resolves with the response body as a Buffer;
+// throws on rejected requests, non-2xx status, or network error.
 async function download(urlStr, auth = {}) {
   let requestUrl = urlStr;
   const headers = { 'User-Agent': 'manage-plugins/1.0' };
@@ -528,14 +543,15 @@ async function download(urlStr, auth = {}) {
     const url = new URL(urlStr);
     if (
       auth.downloadType === 'github' &&
-      url.origin === 'https://api.github.com'
+      isTrustedOrigin(url, 'https://api.github.com', 'PLUGIN_GITHUB_ORIGINS')
     ) {
       headers.Authorization = `Bearer ${token}`;
       headers.Accept = 'application/vnd.github.raw+json';
-      headers['X-GitHub-Api-Version'] = '2026-03-10';
+      headers['X-GitHub-Api-Version'] =
+        process.env.PLUGIN_GITHUB_API_VERSION || '2026-03-10';
     } else if (
       auth.downloadType === 'azure-devops' &&
-      url.origin === 'https://dev.azure.com'
+      isTrustedOrigin(url, 'https://dev.azure.com', 'PLUGIN_AZURE_DEVOPS_ORIGINS')
     ) {
       headers.Authorization = `Basic ${Buffer.from(`:${token}`).toString('base64')}`;
       headers.Accept = 'application/octet-stream';
@@ -543,7 +559,7 @@ async function download(urlStr, auth = {}) {
       requestUrl = url.href;
     } else {
       throw new Error(
-        `Untrusted origin "${url.origin}" for auth "${auth.downloadType}".`,
+        `Untrusted origin "${url.origin}" for auth type "${auth.downloadType}".`,
       );
     }
   }
@@ -578,7 +594,6 @@ async function writePluginToDisk(plugin, js) {
 
   const styleUrl = new URL(plugin.url);
   if (
-    styleUrl.hostname === 'dev.azure.com' &&
     REGEX_AZURE_ITEMS_API.test(styleUrl.pathname) &&
     styleUrl.searchParams.has('path')
   ) {

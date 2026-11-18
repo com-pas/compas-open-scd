@@ -83,13 +83,24 @@ For Azure DevOps, use `"downloadType": "azure-devops"` and, for example,
 `"tokenEnv": "AZDO_PAT"`. The URL must return raw file content, for example:
 `https://dev.azure.com/ORG/PROJECT/_apis/git/repositories/REPO/items?versionDescriptor.version=develop&versionDescriptor.versionType=branch&download=true&api-version=7.1&path=/plugins/index.js`.
 
-Authenticated downloads reject redirects to prevent token forwarding and only
-accept `https://api.github.com` for `github` and `https://dev.azure.com` for
-`azure-devops`. Other origins are rejected before any request. A missing
-or empty token causes the download to fail; there is no anonymous fallback. The
-same authentication applies to the optional sibling `style.css`;
-API query parameters such as the branch are preserved. `--allow-insecure` only
-controls hash verification, not authentication.
+Authenticated downloads reject redirects to prevent token forwarding. By
+default, they trust `https://api.github.com` for `github` and
+`https://dev.azure.com` for `azure-devops`. Set `PLUGIN_GITHUB_ORIGINS` or
+`PLUGIN_AZURE_DEVOPS_ORIGINS` in the local `.env` or CI environment to trust
+additional origins for that provider. Use comma-separated HTTPS origins,
+including any non-default port, with no trailing slash or path. Only add
+origins you trust with your plugin token.
+
+GitHub requests use API version `2026-03-10` unless
+`PLUGIN_GITHUB_API_VERSION` overrides it. For Azure DevOps Server, specify
+the server's supported `api-version` in the URL.
+
+Untrusted origins are rejected before any authenticated request. Missing or
+empty tokens fail without anonymous fallback. The same authentication applies
+to the optional sibling `style.css`. For Azure DevOps Items API URLs, the CLI
+changes only the `path` query parameter to find the sibling, preserving the
+branch and API version. `--allow-insecure` only controls hash verification,
+not authentication.
 
 ### Configuration validation
 
@@ -120,10 +131,13 @@ optional authentication. The SHA-256 hash is generated automatically unless
 re-downloaded, never cached).
 If `--dest` is omitted the destination is inferred from the URL:
 
-- GitHub contents API URLs use `<repo>/<file path>` (e.g.
-  `/repos/OWNER/REPO/contents/plugins/index.js` → `REPO/plugins/index.js`).
-- Azure DevOps items API URLs use `<repo>/<path query parameter>` (e.g.
-  `...?path=/plugins/index.js` → `REPO/plugins/index.js`).
+- GitHub contents API URLs use `<repo>/<file path>`. For example,
+  `/repos/OWNER/REPO/contents/plugins/index.js` and the GitHub Enterprise Server
+  path `/api/v3/repos/OWNER/REPO/contents/plugins/index.js` both give
+  `REPO/plugins/index.js`.
+- Azure DevOps Items API URLs use `<repo>/<path query parameter>` on both
+  cloud and self-hosted servers. For example, `...?path=/plugins/index.js`
+  gives `REPO/plugins/index.js`.
 - Other URLs use URL path without leading `/` (e.g.
   `https://example.com/path/to/plugin.js` → `path/to/plugin.js`).
 
