@@ -89,9 +89,6 @@ importers:
       csv-stringify:
         specifier: 6.8.0
         version: 6.8.0
-      dotenv:
-        specifier: 18.0.10
-        version: 18.0.10
       lit-element:
         specifier: 2.5.1
         version: 2.5.1
@@ -141,6 +138,9 @@ importers:
       concurrently:
         specifier: 6.5.1
         version: 6.5.1
+      dotenv:
+        specifier: 18.0.10
+        version: 18.0.10
       es-dev-server:
         specifier: 2.1.0
         version: 2.1.0
