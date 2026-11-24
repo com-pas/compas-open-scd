@@ -42,8 +42,8 @@ We provide the following `pnpm` scripts for your convenience:
 
 - `pnpm start` runs `CoMPAS OpenSCD` for development, reloading on file changes
 - `pnpm test` runs the test suite with Web Test Runner
-- `pnpm run lint` runs the linter (fixes problems in your code)
-- `pnpm run format` runs the formatter (formats your code in a unified way)
+- `pnpm lint` checks the code with ESLint and Prettier without modifying any files
+- `pnpm format` writes the ESLint and Prettier fixes to your files
 - `pnpm run build` builds a deployable version of the project into the `dist` directory
 
 ## Docker
