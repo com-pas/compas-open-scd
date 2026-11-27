@@ -3,14 +3,12 @@ import { pluginTag } from '@compas-oscd/open-scd/dist/plugin-tag.js';
 // editor plugins
 import { default as Substation } from '@compas-oscd/plugins/dist/editors/Substation.js';
 import { default as SingleLineDiagram } from '@compas-oscd/plugins/dist/editors/SingleLineDiagram.js';
-import { default as GooseSubscriberMessageBinding } from '@compas-oscd/plugins/dist/editors/GooseSubscriberMessageBinding.js';
-import { default as GooseSubscriberDataBinding } from '@compas-oscd/plugins/dist/editors/GooseSubscriberDataBinding.js';
-import { default as SMVSubscriberMessageBinding } from '@compas-oscd/plugins/dist/editors/SMVSubscriberMessageBinding.js';
-import { default as SMVSubscriberDataBinding } from '@compas-oscd/plugins/dist/editors/SMVSubscriberDataBinding.js';
 import { default as Communication } from '@compas-oscd/plugins/dist/editors/Communication.js';
 import { default as Protocol104 } from '@compas-oscd/plugins/dist/editors/Protocol104.js';
 import { default as Templates } from '@compas-oscd/plugins/dist/editors/Templates.js';
 import { default as Cleanup } from '@compas-oscd/plugins/dist/editors/Cleanup.js';
+import { default as SubscriberMessageBinding } from '@omicronenergy/oscd-editor-subscriber-msgbinding';
+import { default as SubscriberDataBinding } from '@omicronenergy/oscd-editor-subscriber-databinding';
 // validator plugins
 import { default as ValidateSchema } from '@compas-oscd/plugins/dist/validators/ValidateSchema.js';
 import { default as ValidateTemplates } from '@compas-oscd/plugins/dist/validators/ValidateTemplates.js';
@@ -27,10 +25,8 @@ import { default as ExportCommunication } from '@compas-oscd/plugins/dist/menu/E
 export enum OscdPluginSrc {
   Substation = '/oscd-plugins/editors/Substation.js',
   SingleLineDiagram = '/oscd-plugins/editors/SingleLineDiagram.js',
-  GooseSubscriberMessageBinding = '/oscd-plugins/editors/GooseSubscriberMessageBinding.js',
-  GooseSubscriberDataBinding = '/oscd-plugins/editors/GooseSubscriberDataBinding.js',
-  SMVSubscriberMessageBinding = '/oscd-plugins/editors/SMVSubscriberMessageBinding.js',
-  SMVSubscriberDataBinding = '/oscd-plugins/editors/SMVSubscriberDataBinding.js',
+  SubscriberMessageBinding = '/oscd-plugins/editors/SubscriberMessageBinding.js',
+  SubscriberDataBinding = '/oscd-plugins/editors/SubscriberDataBinding.js',
   Communication = '/oscd-plugins/editors/Communication.js',
   Protocol104 = '/oscd-plugins/editors/Protocol104.js',
   Templates = '/oscd-plugins/editors/Templates.js',
@@ -44,16 +40,14 @@ export enum OscdPluginSrc {
   UpdateDescriptionSEL = '/oscd-plugins/menu/UpdateDescriptionSEL.js',
   SclHistory = '/oscd-plugins/menu/SclHistory.js',
   Help = '/oscd-plugins/menu/Help.js',
-  ExportCommunication = '/oscd-plugins/menu/ExportCommunication.js'
+  ExportCommunication = '/oscd-plugins/menu/ExportCommunication.js',
 }
 
 const plugins: { [key in OscdPluginSrc]: CustomElementConstructor } = {
   [OscdPluginSrc.Substation]: Substation,
   [OscdPluginSrc.SingleLineDiagram]: SingleLineDiagram,
-  [OscdPluginSrc.GooseSubscriberMessageBinding]: GooseSubscriberMessageBinding,
-  [OscdPluginSrc.GooseSubscriberDataBinding]: GooseSubscriberDataBinding,
-  [OscdPluginSrc.SMVSubscriberMessageBinding]: SMVSubscriberMessageBinding,
-  [OscdPluginSrc.SMVSubscriberDataBinding]: SMVSubscriberDataBinding,
+  [OscdPluginSrc.SubscriberMessageBinding]: SubscriberMessageBinding,
+  [OscdPluginSrc.SubscriberDataBinding]: SubscriberDataBinding,
   [OscdPluginSrc.Communication]: Communication,
   [OscdPluginSrc.Protocol104]: Protocol104,
   [OscdPluginSrc.Templates]: Templates,
@@ -67,7 +61,7 @@ const plugins: { [key in OscdPluginSrc]: CustomElementConstructor } = {
   [OscdPluginSrc.UpdateDescriptionSEL]: UpdateDescriptionSEL,
   [OscdPluginSrc.SclHistory]: SclHistory,
   [OscdPluginSrc.Help]: Help,
-  [OscdPluginSrc.ExportCommunication]: ExportCommunication
+  [OscdPluginSrc.ExportCommunication]: ExportCommunication,
 };
 
 export function registerOscdPlugins() {
